@@ -6,7 +6,6 @@
 ## Getting started
 The first time you want to use these files you need to follow two steps.
 1. Clone the project  
-
 Make sure you've got an SSH key  
 Navigate to a suitable repository on your machine (make sure it's not inside another git repository).  
 Use
