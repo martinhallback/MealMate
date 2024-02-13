@@ -7,7 +7,7 @@
 The first time you want to use these files you need to follow two steps.
 1. Clone the project
 Make sure you've got an SSH key
-Navigate to a suitable repository on your machine (make sure it's not inside another git repository)
+Navigate to a suitable repository on your machine (make sure it's not inside another git repository).
 Use
 ```
 git clone git@gitlab.liu.se:ponat404/tddd83project.git
@@ -17,7 +17,9 @@ to clone via SSH
 
 2. Install venv:
 Use 
-```cd server``` 
+```
+cd server
+``` 
 and then install venv using this command:
 ```
 python3 -m venv venv
