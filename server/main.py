@@ -9,4 +9,4 @@ def hello():
    return jsonify("Hello, World!")
 
 if __name__ == "__main__":
-   app.run(port=5000) # På MacOS, byt till 5001 eller dylikt
+   app.run(port=5001, debug=True) # På MacOS, byt till 5001 eller dylikt
