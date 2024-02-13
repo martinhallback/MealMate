@@ -2,11 +2,26 @@
 
 
 
+
 ## Getting started
+The first time you want to use these files you need to follow two steps.
+1. Clone the project
+Make sure you've got an SSH key
+Navigate to a suitable repository on your machine (make sure it's not inside another git repository)
+Use
+```
+git clone git@gitlab.liu.se:ponat404/tddd83project.git
+```
+to clone via SSH
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+2. Install venv:
+Use 
+```cd server``` 
+and then install venv using this command:
+```
+python3 -m venv venv
+```
 
 ## Add your files
 
