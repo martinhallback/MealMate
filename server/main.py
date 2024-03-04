@@ -20,14 +20,22 @@ import userClasses
 
 
 #Route import
-from os.path import dirname, basename, join #isfile was used in addition to isfile(f) in the if statement
+from os.path import dirname, basename, isfile, join #isfile was used in addition to isfile(f) in the if statement
 import glob
-modules = glob.glob(join(dirname(__file__), "*.py"))
-__all__ = [basename(f)[:-3] for f in modules if not f.endswith('__init__.py')]
+"""
+modules = glob.glob(join(dirname(__file__), "routes", "*.py"))
+__all__ = [basename(f)[:-3] for f in modules if isfile(f) and not f.endswith('__init__.py')]
+"""
 
-@app.route("/")
-def client():
-   return app.send_static_file('index.html')
+route_files = glob.glob(join(dirname(__file__), "routes", "*.py"))
+for route in route_files:
+    if isfile(route) and not route.endswith('__init__.py'):
+        module_name = basename(route)[:-3]
+        module = __import__(f'routes.{module_name}', fromlist=[''])  # Import module
+        if hasattr(module, 'bp'):  # Check if module has a 'bp' attribute (Blueprint)
+            app.register_blueprint(module.bp)
+
+
 
 if __name__ == "__main__":
    app.run(port=5001, debug=True) # På MacOS, byt till 5001 eller dylikt

@@ -1,5 +1,8 @@
-from main import app
+from flask import Blueprint, current_app
 
-@app.route("/")
+bp = Blueprint('index', __name__)
+
+@bp.route("/")
 def client():
-   return app.send_static_file('index.html')
+    return current_app.send_static_file('client.html')
+
