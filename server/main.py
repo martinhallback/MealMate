@@ -17,9 +17,13 @@ db = SQLAlchemy(app)
 #Project files
 import userClasses
 
-@app.route('/hello')
-def hello():
-   return jsonify("Hello, World!")
+
+
+#Route import
+from os.path import dirname, basename, join #isfile was used in addition to isfile(f) in the if statement
+import glob
+modules = glob.glob(join(dirname(__file__), "*.py"))
+__all__ = [basename(f)[:-3] for f in modules if not f.endswith('__init__.py')]
 
 @app.route("/")
 def client():
