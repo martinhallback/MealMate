@@ -1,4 +1,6 @@
-
+.foodNearMe{
+    text-align: center;
+}
 
 .adcontainer {
     text-align: center;
@@ -6,6 +8,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
 
 .card {
     width: 30%; /* Adjust this value as per your design */
