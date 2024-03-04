@@ -69,7 +69,7 @@ This will lead to you having to resolve any potential conflicts.
 
 
 ### Merge Branch:
-Once the conflicts has been resolved, create a merge request and assign the development responsible as the reviewer.  
+Once the conflicts has been resolved, create a merge request and assign the development responsible as the reviewer.  (This is done in GitLab)
 Make sure the delete source branch when merge is enabled.
 
 #### If it's not removed:
