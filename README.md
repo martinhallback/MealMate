@@ -63,7 +63,7 @@ git push origin feature/your-feature-name
 ### Fetch(Pull) from main
 Once you're done with the development, fetch the current state of main in order to resolve conflicts before merging. This is done by:
 ```
-git fetch origin feature/your-feature-name
+git fetch origin main
 ```
 This will lead to you having to resolve any potential conflicts.
 
