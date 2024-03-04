@@ -16,5 +16,9 @@ db = SQLAlchemy(app)
 def hello():
    return jsonify("Hello, World!")
 
+@app.route("/")
+def client():
+   return app.send_static_file('index.html')
+
 if __name__ == "__main__":
    app.run(port=5001, debug=True) # På MacOS, byt till 5001 eller dylikt
