@@ -60,14 +60,16 @@ Once you're satisfied with the changes in your feature branch, push it to the re
 git push origin feature/your-feature-name
 ```
 
-### Create Pull Request:
-Visit the repository on your Git hosting platform (e.g., GitLab) and navigate to the Pull Requests (or Merge Requests) section.  
-- Create a new pull request from your feature branch to the main development branch.  
-- Add a description so the pull can be reviewed faster.  
-- Add the frontend/backend responsible as reviewer and submit. 
+### Fetch(Pull) from main
+Once you're done with the development, fetch the current state of main in order to resolve conflicts before merging. This is done by:
+```
+git fetch origin feature/your-feature-name
+```
+This will lead to you having to resolve any potential conflicts.
 
-### Merge Pull Request:
-Once the pull request has been approved, create a merge request and assign the development responsible as the reviewer.  
+
+### Merge Branch:
+Once the conflicts has been resolved, create a merge request and assign the development responsible as the reviewer.  
 Make sure the delete source branch when merge is enabled.
 
 #### If it's not removed:
