@@ -12,7 +12,7 @@ from flask_jwt_extended import get_jwt_identity
 
 
 
-bp = Blueprint('index', __name__)
+bp = Blueprint('sign_in', __name__)
 
 
 

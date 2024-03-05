@@ -10,7 +10,8 @@ from flask_bcrypt import generate_password_hash
 from flask_jwt_extended import JWTManager
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import get_jwt_identity
-bp = Blueprint('index', __name__)
+
+bp = Blueprint('sign_up', __name__)
 
 
 
