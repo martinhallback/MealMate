@@ -4,5 +4,5 @@ bp = Blueprint('index', __name__)
 
 @bp.route("/")
 def client():
-    return current_app.send_static_file('client.html')
+    return current_app.send_static_file('index.html')
 
