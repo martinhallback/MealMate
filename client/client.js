@@ -12,9 +12,22 @@ $(document).ready(function () {
           break;
         case 'Contact':
               
-          break;      
-        default:        
-      }
+              break;
+            
+            case 'Sign up':
+              console.log('SIngup');
+              loadSignUpContent();
+
+            break;
+
+            case 'Log in':
+              console.log('Klick');
+            loadLogInContent();
+            break;
+
+            default:
+              
+          }
     });
     
 });
@@ -71,3 +84,30 @@ function foodAdModal(card){
                                 '</div>' +
                             '</div>';
 }
+//document.getElementById>("#Example").innerhtml = //Source path till signup.html
+
+function loadSignUpContent() {
+  console.log('Load Sign Up Content');
+  $("#signUpContainer").load("signup.html #signup-modal", function () {
+
+    showSignUpModal();
+  });
+}
+
+function showSignUpModal(){
+  console.log('showsignup');
+  $('#signup-modal').modal('show');
+}
+
+function loadLogInContent() {
+  console.log('Load Log in Content');
+  $("#logInContainer").load("login.html #login-modal", function () {
+    showLogInModal();
+  });
+}
+
+function showLogInModal(){
+  console.log('showlogin');
+  $('#login-modal').modal('show');
+}
+
