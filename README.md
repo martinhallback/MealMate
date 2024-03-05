@@ -54,18 +54,27 @@ git commit -m "Implement feature XYZ"
 
 ## Submit Pull Request and Merge Feature Branch
 
-### Push Feature Branch to Remote:
-Once you're satisfied with the changes in your feature branch, push it to the remote repository:  
-```
-git push origin feature/your-feature-name
-```
-
 ### Fetch(Pull) from main
 Once you're done with the development, fetch the current state of main in order to resolve conflicts before merging. This is done by:
 ```
 git fetch origin main
 ```
 This will lead to you having to resolve any potential conflicts.
+
+### Rebase if needed:
+If a lot has happened since you branched out, you might want to rebase as well to make sure it works with the newly implemented changes. Use 
+
+```
+git rebase origin/main
+```
+
+### Push Feature Branch to Remote:
+Once you're satisfied with the changes in your feature branch, push it to the remote repository:  
+```
+git push origin feature/your-feature-name
+```
+
+
 
 
 ### Merge Branch:
