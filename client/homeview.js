@@ -26,6 +26,248 @@ function homeview(){
             reviews: '1'
         }
       },
+      { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'Card Title 1',
+        text: 'Some quick example text for card 1.',
+        extraInfo: 'Some extra info for card 1',
+        seller: {
+          name: 'Seller 1',
+          rating: '4',
+          reviews: '14'
+      }
+    },
+    { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'Card Title 2',
+        text: 'Some quick example text for card 2.',
+        extraInfo: 'Some extra info for card 2',
+        seller: {
+          name: 'Seller 2',
+          rating: '3',
+          reviews: '1'
+      }
+    },
+    { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'Card Title 1',
+        text: 'Some quick example text for card 1.',
+        extraInfo: 'Some extra info for card 1',
+        seller: {
+          name: 'Seller 1',
+          rating: '4',
+          reviews: '14'
+      }
+    },
+    { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'Card Title 2',
+        text: 'Some quick example text for card 2.',
+        extraInfo: 'Some extra info for card 2',
+        seller: {
+          name: 'Seller 2',
+          rating: '3',
+          reviews: '1'
+      }
+    },
+    { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'Card Title 1',
+        text: 'Some quick example text for card 1.',
+        extraInfo: 'Some extra info for card 1',
+        seller: {
+          name: 'Seller 1',
+          rating: '4',
+          reviews: '14'
+      }
+    },
+    { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'Card Title 2',
+        text: 'Some quick example text for card 2.',
+        extraInfo: 'Some extra info for card 2',
+        seller: {
+          name: 'Seller 2',
+          rating: '3',
+          reviews: '1'
+      }
+    },
+    { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'Card Title 1',
+        text: 'Some quick example text for card 1.',
+        extraInfo: 'Some extra info for card 1',
+        seller: {
+          name: 'Seller 1',
+          rating: '4',
+          reviews: '14'
+      }
+    },
+    { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'Card Title 2',
+        text: 'Some quick example text for card 2.',
+        extraInfo: 'Some extra info for card 2',
+        seller: {
+          name: 'Seller 2',
+          rating: '3',
+          reviews: '1'
+      }
+    },
+    { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'Card Title 1',
+        text: 'Some quick example text for card 1.',
+        extraInfo: 'Some extra info for card 1',
+        seller: {
+          name: 'Seller 1',
+          rating: '4',
+          reviews: '14'
+      }
+    },
+    { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'Card Title 2',
+        text: 'Some quick example text for card 2.',
+        extraInfo: 'Some extra info for card 2',
+        seller: {
+          name: 'Seller 2',
+          rating: '3',
+          reviews: '1'
+      }
+    },
+    { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'Card Title 1',
+        text: 'Some quick example text for card 1.',
+        extraInfo: 'Some extra info for card 1',
+        seller: {
+          name: 'Seller 1',
+          rating: '4',
+          reviews: '14'
+      }
+    },
+    { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'Card Title 2',
+        text: 'Some quick example text for card 2.',
+        extraInfo: 'Some extra info for card 2',
+        seller: {
+          name: 'Seller 2',
+          rating: '3',
+          reviews: '1'
+      }
+    },
+    { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'Card Title 1',
+        text: 'Some quick example text for card 1.',
+        extraInfo: 'Some extra info for card 1',
+        seller: {
+          name: 'Seller 1',
+          rating: '4',
+          reviews: '14'
+      }
+    },
+    { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'Card Title 2',
+        text: 'Some quick example text for card 2.',
+        extraInfo: 'Some extra info for card 2',
+        seller: {
+          name: 'Seller 2',
+          rating: '3',
+          reviews: '1'
+      }
+    },
+    { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'Card Title 1',
+        text: 'Some quick example text for card 1.',
+        extraInfo: 'Some extra info for card 1',
+        seller: {
+          name: 'Seller 1',
+          rating: '4',
+          reviews: '14'
+      }
+    },
+    { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'Card Title 2',
+        text: 'Some quick example text for card 2.',
+        extraInfo: 'Some extra info for card 2',
+        seller: {
+          name: 'Seller 2',
+          rating: '3',
+          reviews: '1'
+      }
+    },
+    { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'Card Title 1',
+        text: 'Some quick example text for card 1.',
+        extraInfo: 'Some extra info for card 1',
+        seller: {
+          name: 'Seller 1',
+          rating: '4',
+          reviews: '14'
+      }
+    },
+    { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'Card Title 2',
+        text: 'Some quick example text for card 2.',
+        extraInfo: 'Some extra info for card 2',
+        seller: {
+          name: 'Seller 2',
+          rating: '3',
+          reviews: '1'
+      }
+    },
+    { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'Card Title 1',
+        text: 'Some quick example text for card 1.',
+        extraInfo: 'Some extra info for card 1',
+        seller: {
+          name: 'Seller 1',
+          rating: '4',
+          reviews: '14'
+      }
+    },
+    { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'Card Title 2',
+        text: 'Some quick example text for card 2.',
+        extraInfo: 'Some extra info for card 2',
+        seller: {
+          name: 'Seller 2',
+          rating: '3',
+          reviews: '1'
+      }
+    },
+    { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'Card Title 1',
+        text: 'Some quick example text for card 1.',
+        extraInfo: 'Some extra info for card 1',
+        seller: {
+          name: 'Seller 1',
+          rating: '4',
+          reviews: '14'
+      }
+    },
+    { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'Card Title 2',
+        text: 'Some quick example text for card 2.',
+        extraInfo: 'Some extra info for card 2',
+        seller: {
+          name: 'Seller 2',
+          rating: '3',
+          reviews: '1'
+      }
+    },
     ];
     
     $.each(cardData, function(index, card) {
