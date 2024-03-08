@@ -1,6 +1,6 @@
 function loadSignUpContent() {
     console.log('Load Sign Up Content');
-    $("#signUpContainer").append("signup.html #signup-modal", function () {
+    $("#signUpContainer").load("signup.html #signup-modal", function () {
       showSignUpModal();
     });
 }

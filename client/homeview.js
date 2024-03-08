@@ -24,19 +24,24 @@ function homeview(){
                               '<img src="' + card.imgSrc + '" class="card-img-top" alt="...">' +
                               '<h5 class="card-title">' + card.title + '</h5>' +
                               '<p class="card-text">' + card.text + '</p>' +
-                              '<button type="button" class="btn">Buy</button>' +
+                              '<button type="button" class="btn btn-primary buy-btn" data-toggle="modal" data-target="#myModal_' + index + '">Buy</button>' +
                           '</div>' +
                       '</div>';
   
       $('.adcontainer').append(cardHtml);
-  
-      //add button handler for Buy button and call foodAdModal() when pressed
+      var modal = foodAdModal(card, index);
+      $('.container').append(modal);
+        
+    });
+    $('.container').on('click', '.buy-btn', function() {
+        var modalIndex = $(this).data('target').split('_')[1];
+        $('#myModal_' + modalIndex).modal('show');
     });
 }
   
   
-function foodAdModal(card){
-    var modalHtml = '<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
+function foodAdModal(card, index){
+    var modalHtml = '<div class="modal fade" id="myModal_' + index + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
                                   '<div class="modal-dialog">' +
                                       '<div class="modal-content">' +
                                           '<div class="modal-header">' +
@@ -49,4 +54,9 @@ function foodAdModal(card){
                                       '</div>' +
                                   '</div>' +
                               '</div>';
+    return modalHtml;
+}
+
+function showModal(modal){
+    //show the modal when button is pressed
 }
