@@ -1,7 +1,6 @@
 $(document).ready(function () {
   homeview();
   $('li.nav-item a.nav-link').click(function (e) {
-    $('.container').empty();
     e.preventDefault();
       var linkText = $(this).text();
       switch (linkText) {
@@ -12,7 +11,7 @@ $(document).ready(function () {
               
           break;
         case 'Contact':
-            loadContact()
+          $(".container").load("contact.html .contactContainer", function () {});
             break;
             
         case 'Sign up':
@@ -29,6 +28,8 @@ $(document).ready(function () {
     });
     
 });
+
+
 
 
 
