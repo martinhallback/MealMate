@@ -259,7 +259,7 @@ function homeview(){
     },
     { 
         imgSrc: 'Images/TestFoodImage.jpg',
-        title: 'Card Title 2',
+        title: 'last card',
         text: 'Some quick example text for card 2.',
         extraInfo: 'Some extra info for card 2',
         seller: {
