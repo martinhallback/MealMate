@@ -1,7 +1,7 @@
 $(document).ready(function () {
   homeview();
   $(".footer").load("footer.html", function () {});
-  $('.footer').fadeIn();
+  //$('.footer').fadeIn();
   $(window).scrollTop(0);
   
 
