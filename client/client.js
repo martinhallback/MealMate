@@ -1,21 +1,9 @@
 $(document).ready(function () {
   homeview();
   $(".footer").load("footer.html", function () {});
-
-  $(window).scroll(function () {
-     // Calculate the bottom position of the window
-     var bottomWindow = $(window).scrollTop() + $(window).height();
-     // Calculate the height of the document
-     var documentHeight = $(document).height();
-
-     // Check if the bottom of the window is at the bottom of the document
-     if (bottomWindow + 10 >= documentHeight) {
-      console.log("fade in footer");
-         $('.footer').fadeIn();
-     } else {
-         $('.footer').fadeOut();
-     }
-  });
+  $('.footer').fadeIn();
+  $(window).scrollTop(0);
+  
 
   $('li.nav-item a.nav-link').click(function (e) {
     e.preventDefault();
