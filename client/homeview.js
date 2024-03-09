@@ -26,6 +26,17 @@ function homeview(){
             reviews: '1'
         }
       },
+      { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'last card',
+        text: 'Some quick example text for last card',
+        extraInfo: 'Some extra info for last card',
+        seller: {
+          name: 'Seller 2',
+          rating: '3',
+          reviews: '1'
+        }
+      },
     ];
     
     $.each(cardData, function(index, card) {

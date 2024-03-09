@@ -1,5 +1,10 @@
 $(document).ready(function () {
   homeview();
+  $(".footer").load("footer.html", function () {});
+  //$('.footer').fadeIn();
+  $(window).scrollTop(0);
+  
+
   $('li.nav-item a.nav-link').click(function (e) {
     e.preventDefault();
       var linkText = $(this).text();
