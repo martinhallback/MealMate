@@ -16,7 +16,7 @@ $(document).ready(function () {
           //$(".footer").load("footer.html .container", function () {});
           break;
         case 'Sell':
-              
+          loadSellContent();    
           break;
         case 'Contact':
           $('.container').empty();
