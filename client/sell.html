@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+
+<body>
+    <div id="sellContainer">
+        <h1>Sell Your Lunchbox</h1>
+        <form id="sellForm">
+            <div class="form-group">
+                <label for="lunchboxTitle">Title:</label>
+                <input type="text" class="form-control" id="lunchboxTitle" name="lunchboxTitle" required>
+            </div>
+            <div class="form-group">
+                <label for="lunchboxDescription">Description:</label>
+                <textarea class="form-control" id="lunchboxDescription" name="lunchboxDescription" rows="4"
+                    required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="lunchboxMadeDate">Made Date:</label>
+                <input type="date" class="form-control" id="lunchboxMadeDate" name="lunchboxMadeDate" required>
+            </div>
+            <div class="form-group">
+                <label for="lunchboxAllergens">Allergens:</label>
+                <input type="text" class="form-control" id="lunchboxAllergens" name="lunchboxAllergens">
+            </div>
+            <div class="form-group">
+                <label for="lunchboxImage">Upload Image:</label>
+                <input type="file" class="form-control-file" id="lunchboxImage" name="lunchboxImage">
+            </div>
+            <button type="submit" class="btn btn-primary">Create Ad</button>
+        </form>
+    </div>
+</body>
+
+</html>

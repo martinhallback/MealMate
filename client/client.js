@@ -13,7 +13,7 @@ $(document).ready(function () {
           homeview();
           break;
         case 'Sell':
-              
+          loadSellContent();    
           break;
         case 'Contact':
           $(".container").load("contact.html .contactContainer", function () {});
