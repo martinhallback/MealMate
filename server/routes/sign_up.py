@@ -11,15 +11,31 @@ from flask_jwt_extended import JWTManager
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import get_jwt_identity
 from flask import Blueprint, current_app
-from main import db
-
+from main import app, db
 
 bp = Blueprint('sign_up', __name__)
+
+
+@app.route('/sign-up', methods = ['POST'])
+def sign_up():
+    print(db.mealMate)
+
+    db.mealMate.insertOne({
+        "random" : "user",
+        "What" : "is up?"
+    })
+    data = request.get_json()
+
+    return jsonify({'error' : "Functionality not yet implemented"}), 401
 
 
 
 @bp.route('/sign-up', methods = ['POST'])
 def sign_up():
+    db.mealMate.insert({
+        "random" : "user",
+        "What" : "is up?"
+    })
     data = request.get_json()
 
     return jsonify({'error' : "Functionality not yet implemented"}), 401
