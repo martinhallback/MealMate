@@ -13,8 +13,9 @@ $(document).ready(function () {
           homeview();
           break;
         case 'Sell':
-          loadSellContent();    
+          sellview();    
           break;
+
         case 'Contact':
           $(".container").load("contact.html .contactContainer", function () {});
             break;
