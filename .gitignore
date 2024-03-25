@@ -6,3 +6,6 @@ venv/
 
 # Server config
 server/serverAuth.py
+
+#DS_store
+.DS_store
