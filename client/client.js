@@ -1,10 +1,11 @@
 $(document).ready(function () {
   homeview();
-  $('li.nav-item a.nav-link').click(function (e) {
+  $('li.nav-item a.nav-link, .navbar-brand.larger-text').click(function (e) {
     e.preventDefault();
       var linkText = $(this).text();
       switch (linkText) {
         case 'MealMate':
+          console.log('Hemknapp');
           homeview();
           break;
         case 'Sell':
@@ -89,7 +90,6 @@ function foodAdModal(card){
 function loadSignUpContent() {
   console.log('Load Sign Up Content');
   $("#signUpContainer").load("signup.html #signup-modal", function () {
-
     showSignUpModal();
   });
 }
