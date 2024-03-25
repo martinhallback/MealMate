@@ -1,8 +1,8 @@
 $(document).ready(function () {
   homeview();
-  $(".footer").load("footer.html", function () {});
-  //$('.footer').fadeIn();
-  $(window).scrollTop(0);
+  $("#footer").load("footer.html .footer", function () {});
+  
+  $(window).scrollTop(0); //ensuring start on the top of the page
   
 
   //$('li.nav-item a.nav-link').click(function (e) {
@@ -13,12 +13,15 @@ $(document).ready(function () {
         case 'MealMate':
           console.log('Hemknapp');
           homeview();
+          //$(".footer").load("footer.html .container", function () {});
           break;
         case 'Sell':
               
           break;
         case 'Contact':
+          $('.container').empty();
           $(".container").load("contact.html .contactContainer", function () {});
+          //$(".footer").load("footer.html .container", function () {});
             break;
             
         case 'Sign up':
@@ -32,6 +35,7 @@ $(document).ready(function () {
         default:
               
       }
+  
     });
     
 });
