@@ -1,11 +1,11 @@
-from main import db
+"""from main import db
 from main import bcrypt
-from main import app
+from main import app"""
 from flask import request
 from flask import jsonify
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 
-
+"""
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
@@ -34,4 +34,4 @@ class User(db.Model):
         return '<user {}: {}, email: {}, is_admin: {}>'.format(self.id, self.name, self.email, self.is_admin)
    
     def serialize(self):
-        return dict(test="Test")
+        return dict(test="Test")"""
