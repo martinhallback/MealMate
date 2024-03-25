@@ -1,6 +1,6 @@
 $(document).ready(function () {
   homeview();
-  $(".footer").load("footer.html .container", function () {});
+  $("#footer").load("footer.html .footer", function () {});
   
   $(window).scrollTop(0); //ensuring start on the top of the page
   
@@ -13,7 +13,7 @@ $(document).ready(function () {
         case 'MealMate':
           console.log('Hemknapp');
           homeview();
-          $(".footer").load("footer.html .container", function () {});
+          //$(".footer").load("footer.html .container", function () {});
           break;
         case 'Sell':
               
@@ -21,7 +21,7 @@ $(document).ready(function () {
         case 'Contact':
           $('.container').empty();
           $(".container").load("contact.html .contactContainer", function () {});
-          $(".footer").load("footer.html .container", function () {});
+          //$(".footer").load("footer.html .container", function () {});
             break;
             
         case 'Sign up':

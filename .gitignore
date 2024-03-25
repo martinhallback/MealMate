@@ -7,8 +7,13 @@ venv/
 # Database
 server/database.db
 
+<<<<<<< HEAD
 # serverauth
 server/serverAuth.Py
 
 #DS_Store
 .DS_Store
+=======
+#server auth
+server/serverAuth.py
+>>>>>>> cf818eb (fixed footer)
