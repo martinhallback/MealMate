@@ -33,6 +33,9 @@ $(document).ready(function () {
           loadLogInContent();
           break;
 
+        case 'My profile':
+          $('.container').empty();
+          $(".container").load("profile.html .profileContainer", function () {});
         default:
               
       }
