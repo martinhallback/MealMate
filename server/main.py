@@ -4,21 +4,28 @@ from flask import jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask import request
 from flask_bcrypt import Bcrypt
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+from flask_jwt_extended import JWTManager
 from pymongo import MongoClient
 from serverAuth import credentialConfig
+from datetime import timedelta
 
 import certifi
 ca = certifi.where()
 
+logout_timer = timedelta(days=1)
 
 #Application configuration
 app = Flask(__name__, static_folder='../client', static_url_path='/')
 app.config['SECRET_KEY'] = "d23796e2834c3ed59ac6482bb656a802273e8aa755c851469aabe23347ab3b29" #Protects versus cross site access
-uri = "mongodb+srv://{}:{}@tddd83.cs9janp.mongodb.net/?retryWrites=true&w=majority&appName={}".format(credentialConfig["username"],credentialConfig["password"], credentialConfig["app_name"])
+
+app.config["JWT_SECRET_KEY"] = "fhuiYUEFnpur3r276h54fh63era65qjhs6p84ki485jurje749rumaWHFn"  # Change this!
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = logout_timer
+jwt = JWTManager(app)
+
 bcrypt = Bcrypt(app)
 
 #DB connection
+uri = "mongodb+srv://{}:{}@tddd83.cs9janp.mongodb.net/?retryWrites=true&w=majority&appName={}".format(credentialConfig["username"],credentialConfig["password"], credentialConfig["app_name"])
 databaseClient = MongoClient(uri,  tlsCAFile=ca)
 db = databaseClient["mealMate"]
 
