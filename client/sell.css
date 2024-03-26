@@ -1,7 +1,4 @@
-/* Updated sell.css */
-form {
-    margin-top: 20px;
-}
+/* sell.css */
 
 .sellcontainerjs {
     text-align: center;
@@ -12,20 +9,6 @@ form {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-}
-
-label {
-    font-weight: bold;
-}
-
-textarea {
-    resize: vertical; /* Allow vertical resizing of textarea */
-    width: 100%; /* Ensures textarea utilizes full container width */
-    padding: 12px 20px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
 }
 
 .startSelling {
@@ -103,7 +86,7 @@ textarea {
 
 
 /* Adjusting inputs and the submit button to match */
-input[type="text"], input[type="date"], input[type="file"], textarea, button[type="submit"] {
+input[class="sellinput"], textarea[class="sellinput"] {
     text-align: center;
     width: 100%;
     padding: 12px 20px;
@@ -113,10 +96,10 @@ input[type="text"], input[type="date"], input[type="file"], textarea, button[typ
     border-radius: 4px;
     box-sizing: border-box;
     font-family: 'Titillium Web', sans-serif; /* Apply Titillium Web for titles */
-    font-weight: bold; /* Make titles bold */
+    font-weight: normal; /* Make titles bold */
 }
 
-button[type="submit"] {
+button[id="submitCreateAd"] {
     background-color: #df6b3f;
     color: white;
     padding: 14px 20px;
@@ -128,6 +111,6 @@ button[type="submit"] {
     box-shadow: 0px 0px 0px 2px #ffffff; /* Add a box-shadow to create a border-like effect */
 }
 
-button[type="submit"]:hover {
+button[id="submitCreateAd"]:hover {
     background-color: #b64519;
 }
