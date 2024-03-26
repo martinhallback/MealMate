@@ -16,7 +16,11 @@ def sign_up():
     if not all (key in data for key in['email', 'password', 'name', 'phonenumber', 'university', 'student_ID']):
         return jsonify({'error': "Invalid sign-up information", 'errorCode' : 1}), 400
 
-    
+    users = db['user']
+    cursor = users.find_one({'email' : data['email']})
+    if cursor is not None:
+        return jsonify({'error': "User with this email already exists", 'errorCode' : 11}), 400
+
 
     db.mealMate.insert({
         "random" : "user",
