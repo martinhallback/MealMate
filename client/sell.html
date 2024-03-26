@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
-
+<!--
 <body>
     <div id="sellContainer">
-        <h1>Sell Your Lunchbox</h1>
         <form id="sellForm">
+        <h3 style="text-align: center;">Please fill in the details of the lunchbox you wish to sell below:</h3>
             <div class="form-group">
                 <label for="lunchboxTitle">Title:</label>
                 <input type="text" class="form-control" id="lunchboxTitle" name="lunchboxTitle" required>
@@ -30,5 +30,62 @@
         </form>
     </div>
 </body>
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Your Lunchbox</title>
+    <link rel="stylesheet" href="sell.css"> <!-- Include your CSS file -->
+</head>
 
+<body>
+    <div id="sellContainer" class="sellcontainerjs">
+        <!-- Image -->
+        <img src="file:///home/louer141/Downloads/pexels-ella-olsson-1640776.jpg" alt="Lunchbox Image" class="lunchbox-image">
+
+        <!-- Text with Benefits -->
+        <div class="benefits-text">
+            <h2>Why Sell Your Lunchbox?</h2>
+            <p>Selling your homemade lunchboxes can be a rewarding experience! Not only can you earn extra income, but you'll also:</p>
+            <ul>
+                <li>Connect with food enthusiasts and fellow sellers</li>
+                <li>Reduce food waste by sharing your delicious creations</li>
+                <li>Gain valuable feedback and improve your recipes</li>
+            </ul>
+        </div>
+
+        <!-- Start Selling Text -->
+        <h2 class="startSellingYourLunchboxesHere">Start selling your lunchboxes here!</h2>
+        
+        <!-- Sell Button -->
+        <button id="sellBtn" class="btn btn-primary">Sell Now</button>
+
+        <!-- Your existing form -->
+        <form id="sellForm">
+            <!-- Instructional text added here -->
+            <h3 style="text-align: center;">Please fill in the details of the lunchbox you wish to sell below:</h3>
+            <div class="form-group">
+                <label for="lunchboxTitle">Title:</label>
+                <input type="text" class="form-control" id="lunchboxTitle" name="lunchboxTitle" required>
+            </div>
+            <div class="form-group">
+                <label for="lunchboxDescription">Description:</label>
+                <textarea class="form-control" id="lunchboxDescription" name="lunchboxDescription" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="lunchboxMadeDate">Made Date:</label>
+                <input type="date" class="form-control" id="lunchboxMadeDate" name="lunchboxMadeDate" required>
+            </div>
+            <div class="form-group">
+                <label for="lunchboxAllergens">Allergens:</label>
+                <input type="text" class="form-control" id="lunchboxAllergens" name="lunchboxAllergens">
+            </div>
+            <div class="form-group">
+                <label for="lunchboxImage">Upload Image:</label>
+                <input type="file" class="form-control-file" id="lunchboxImage" name="lunchboxImage">
+            </div>
+            <button type="submit" class="btn btn-primary">Create Ad</button>
+        </form>
+    </div>
+</body>
 </html>
