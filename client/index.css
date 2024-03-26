@@ -10,6 +10,7 @@
 }
 
 .container{
+    min-height: calc(60vh);
     padding-bottom: 10px;
 }
 
@@ -17,5 +18,14 @@
 .card {
     width: 30%; 
     margin-bottom: 20px;
+}
+
+#footer {
+    width: 100%;
+    background-color: #263a4e; 
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    left: 0;
 }
 
