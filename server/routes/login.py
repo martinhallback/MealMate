@@ -1,6 +1,7 @@
 from flask import jsonify
 from flask import request
 from flask import Blueprint
+from flask_jwt_extended import create_access_token
 
 from main import db
 
@@ -26,12 +27,12 @@ def login():
         return jsonify({'error': "no user with this email", 'errorCode' : 1}), 401
     query = dict(cursor)
     print(query)
-    pw_hash = query['PW_hash']
+    pw_hash = query['pwHash']
     #Checking pw_hash
     usr = user.User(query['_id'], email=email, pwHash=pw_hash)
     if (usr.check_password(data['password'])):
-        auth['token'] = usr.create_access_token(identity=email)
+        auth['token'] = create_access_token(identity=email)
         auth['user'] = usr.serialize()
-        return jsonify({'authentification': auth}), 200
+        return jsonify(auth), 200
     else:
         return jsonify({'error' : "Incorrect password", 'errorCode' : 2}), 401

@@ -2,10 +2,11 @@ from main import bcrypt
 
 class User(object):
 
-    def __init__(self, objID, email=None, pwHash=None, phoneNumber=None, fullName=None, 
+    def __init__(self, objID=None, email=None, pwHash=None, phoneNumber=None, fullName=None, 
                  PNumber=None, isVerified=None, uni=None, studentID=None, homeAddress=None, 
                  sellLocation=None, isAdmin=None):
         self.id = objID
+        self.email = email
         self.password_hash = pwHash
         self.name = fullName
         self.phone_number = phoneNumber
@@ -25,9 +26,18 @@ class User(object):
 
     def __repr__(self):
         return '<user {}: {}, email: {}, is_admin: {}>'.format(self.id, self.name, self.email, self.is_admin)
-   
+    
+    def serialise_existing(self):
+        full_serialised = self.serialize()
+        retDict = {}
+        for key in full_serialised:
+            if full_serialised[key] is not None:
+                retDict[key] = full_serialised[key]
+        return retDict
+        
     def serialize(self):
-        return dict(id = self.id, pw_hash = self.pw_hash, name = self.name, 
-                    phone_number = self.phone_number, personal_number = self.personal_number, is_verified = self.is_verified, 
-                    university = self.university, student_id = self.student_id, address = self.address, location = self.location,
-                    is_admin = self.is_admin)
+        #OBS!!!! _id = self.id, is not included in the serialisation of the object
+        return dict(email=self.email, pwHash = self.password_hash, name = self.name, 
+                    phoneNumber = self.phone_number, personalNumber = self.personal_number, isVerified = self.is_verified, 
+                    university = self.university, studentID = self.student_id, address = self.address, location = self.location,
+                    isAdmin = self.is_admin)
