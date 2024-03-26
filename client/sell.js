@@ -1,6 +1,7 @@
 // sell.js
 
 function sellview() {
+    
     $('.container').empty();
     $('.container').append('<div class="sellcontainerjs">' + '</div>');
     $('.sellcontainerjs').append('<h2 class="startSelling">Start selling your lunchboxes here!</h2>');
