@@ -1,0 +1,66 @@
+/* contact.css */
+#contactContainer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.contactTitle {
+    color: white;
+    background-color: #df6b3f;
+    padding: 10px;
+    border-radius: 4px;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: bold;
+}
+
+#contact-info {
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+#contact-info th,
+#contact-info td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.contactFormTitle {
+    color: white;
+    background-color: #df6b3f;
+    padding: 10px;
+    border-radius: 4px;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.contactInput {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.contactButton {
+    background-color: #df6b3f;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.contactButton:hover {
+    background-color: #b64519;
+}
