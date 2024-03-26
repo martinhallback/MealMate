@@ -1,37 +1,23 @@
-from flask import Blueprint, current_app
-from flask import Flask
-from flask import abort
+from flask import Blueprint
 from flask import jsonify
 from flask import request
-from flask_sqlalchemy import SQLAlchemy
-from flask_bcrypt import Bcrypt
-from flask_jwt_extended import create_access_token 
-from flask_bcrypt import generate_password_hash
-from flask_jwt_extended import JWTManager
-from flask_jwt_extended import jwt_required
-from flask_jwt_extended import get_jwt_identity
-from flask import Blueprint, current_app
-from main import app, db
+
+from main import db
+
+#import relevant classes
+from classes import user
 
 bp = Blueprint('sign_up', __name__)
 
 
-@app.route('/sign-up', methods = ['POST'])
-def sign_up():
-    print(db.mealMate)
-
-    db.mealMate.insertOne({
-        "random" : "user",
-        "What" : "is up?"
-    })
-    data = request.get_json()
-
-    return jsonify({'error' : "Functionality not yet implemented"}), 401
-
-
-
 @bp.route('/sign-up', methods = ['POST'])
 def sign_up():
+    data = request.json()
+    if not all (key in data for key in['email', 'password', 'name', 'phonenumber', 'university', 'student_ID']):
+        return jsonify({'error': "Invalid sign-up information", 'errorCode' : 1}), 400
+
+    
+
     db.mealMate.insert({
         "random" : "user",
         "What" : "is up?"

@@ -1,15 +1,10 @@
 from flask import jsonify
 from flask import request
-from flask_jwt_extended import create_access_token 
+from flask import Blueprint
 
-from flask import Blueprint, current_app
-
-from main import bcrypt, db
+from main import db
 
 #import relevant classes
-"""import sys
-sys.path.append('../classes/')
-from user import User """
 from classes import user
 
 bp = Blueprint('login', __name__)
