@@ -16,8 +16,9 @@ $(document).ready(function () {
           //$(".footer").load("footer.html .container", function () {});
           break;
         case 'Sell':
-              
+          sellview();    
           break;
+
         case 'Contact':
           $('.container').empty();
           $(".container").load("contact.html .contactContainer", function () {});
