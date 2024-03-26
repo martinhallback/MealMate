@@ -1,27 +1,21 @@
-from main import db
 from main import bcrypt
-from main import app
-from flask import request
-from flask import jsonify
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
-
 
 class User(object):
 
     def __init__(self, objID, email=None, pwHash=None, phoneNumber=None, fullName=None, 
                  PNumber=None, isVerified=None, uni=None, studentID=None, homeAddress=None, 
                  sellLocation=None, isAdmin=None):
-        id = objID
-        pw_hash = pwHash
-        name = fullName
-        phone_number = phoneNumber
-        personal_number = PNumber
-        is_verified = isVerified
-        university = uni
-        student_id = studentID
-        address = homeAddress
-        location = sellLocation
-        is_admin = isAdmin
+        self.id = objID
+        self.password_hash = pwHash
+        self.name = fullName
+        self.phone_number = phoneNumber
+        self.personal_number = PNumber
+        self.is_verified = isVerified
+        self.university = uni
+        self.student_id = studentID
+        self.address = homeAddress
+        self.location = sellLocation
+        self.is_admin = isAdmin
 
     def set_password(self, password):
         self.password_hash = bcrypt.generate_password_hash(password).decode('utf8')
