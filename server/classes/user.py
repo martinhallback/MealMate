@@ -1,10 +1,4 @@
-from main import db
 from main import bcrypt
-from main import app
-from flask import request
-from flask import jsonify
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
-
 
 class User(object):
 
