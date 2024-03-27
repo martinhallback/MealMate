@@ -5,7 +5,6 @@ $(document).ready(function () {
   $(window).scrollTop(0); //ensuring start on the top of the page
   
 
-  //$('li.nav-item a.nav-link').click(function (e) {
   $('li.nav-item a.nav-link, .navbar-brand.larger-text').click(function (e) {
     e.preventDefault();
       var linkText = $(this).text();
@@ -13,7 +12,6 @@ $(document).ready(function () {
         case 'MealMate':
           console.log('Hemknapp');
           homeview();
-          //$(".footer").load("footer.html .container", function () {});
           break;
         case 'Sell':
           sellview();    
@@ -22,7 +20,6 @@ $(document).ready(function () {
         case 'Contact':
           $('.container').empty();
           $(".container").load("contact.html .contactContainer", function () {});
-          //$(".footer").load("footer.html .container", function () {});
             break;
             
         case 'Sign up':
