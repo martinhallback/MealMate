@@ -59,7 +59,6 @@ if __name__ == "__main__":
     protein.insert_one(validation_rule)
     protein.insert_one({"type" : "bacon", "class" : "pork"})"""
 
-
     # Advertisement
     ad = db["advertisement"]
     validation_rule = {
@@ -99,3 +98,8 @@ if __name__ == "__main__":
         }
     }
     ad.insert_one(validation_rule)
+
+    # User
+    user = db["user"]
+
+

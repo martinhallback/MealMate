@@ -38,6 +38,7 @@ function homeview(){
           reviews: '1'
         }
       },
+      
     ];
     
     $.each(cardData, function(index, card) {
