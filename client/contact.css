@@ -1,21 +1,57 @@
 /* contact.css */
-#contactContainer {
+.contactContainer {
     text-align: center;
     margin-top: 20px;
+    color: white;
+    font-family: 'Titillium Web', sans-serif;
+    background-color: #67bac0;
+    font-weight: normal;
 }
 
+.about-us {
+    font-size: 20px;
+    padding: 20px;
+    font-style: italic;
+    font-weight: 100;
+}
+
+.about-us img {
+    max-width: 100%;
+    /* Set the maximum width to 100% to ensure responsiveness */
+    width: 100%;
+    /* Set the width to 100% to ensure the image fills its container */
+    height: auto;
+    /* Maintain aspect ratio */
+    display: block;
+    /* Ensure image behaves as a block element */
+    margin: 0 auto;
+    /* Center the image horizontally */
+    margin-bottom: 20px;
+    /* Adjust as needed */
+
+}
+
+.AboutUs,
 .contactTitle {
-    color: white;
     background-color: #df6b3f;
-    padding: 10px;
-    border-radius: 4px;
-    font-family: 'Titillium Web', sans-serif;
+    max-width: 300px;
     font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+    /* Center align the text */
+    border-radius: 8px;
+    /* Add rounded corners */
+}
+
+.AboutUsText {
+    font-weight: 200;
+    font-style: normal;
 }
 
 #contact-info {
     margin: 20px auto;
     border-collapse: collapse;
+    font-size: 20px;
 }
 
 #contact-info th,
@@ -25,19 +61,25 @@
 }
 
 .contactFormTitle {
-    color: white;
     background-color: #df6b3f;
     padding: 10px;
     border-radius: 4px;
-    font-family: 'Titillium Web', sans-serif;
 }
 
-.form-group {
-    margin-bottom: 20px;
-}
-
-label {
-    font-weight: bold;
+#contactForm {
+    text-align: left;
+    max-width: 700px;
+    /* Limit the maximum width of the form */
+    margin: 0 auto;
+    /* Center the form horizontally */
+    padding: 20px;
+    /* Add some padding for better appearance */
+    background-color: #df6b3f;
+    /* Set background color */
+    border-radius: 8px;
+    /* Add rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Add shadow for depth */
 }
 
 .contactInput {
@@ -48,17 +90,33 @@ label {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    font-family: 'Titillium Web', sans-serif;
+    height: 100px;
+    /* Adjust height to match other input fields */
+}
+
+#input-name,
+#input-email,
+#input-subject,
+#input-inquiry {
+    height: auto;
+    /* Adjust height to match other input fields */
 }
 
 .contactButton {
     background-color: #df6b3f;
-    color: white;
     padding: 14px 20px;
+    width: 200px;
+    /* Adjust the width as needed */
+    display: block;
+    /* Ensure the button behaves as a block element */
+    margin: 0 auto;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-family: 'Titillium Web', sans-serif;
+    color: white;
+    box-shadow: 0px 0px 0px 2px #ffffff;
+    /* Add a box-shadow to create a border-like effect */
+
 }
 
 .contactButton:hover {

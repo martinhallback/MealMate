@@ -1,88 +1,72 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="contact.css">
+</head>
+
 <body>
-<div class="contactContainer">
+  <div class="contactContainer">
+    <div class="about-us">
+      <img src="Images/aboutus.jpg" alt="About Us Image">
+      <p>"We wish to revolutionise student dining by creating a community where every meal is an opportunity for
+        affordable indulgence, culinary exploration, and shared sustainability."</p>
+      <h2 class="AboutUs">About us</h2>
+      <p> </p>
+      <div class="AboutUsText"><p>Students are looking for both affordable and nutritious food that is quick to prepare. With our offering,
+        students have the opportunity to choose from different dishes at low prices that can be acquired swiftly.
+        This promotes both students who feel they cook a little too much food for themselves, seeking an extra source
+        of income and those who think they do not have time to cook their own. The vision for this idea is to increase
+        the living standards of the student by making their daily life more efficient.</p></div>
+    </div>
     <h2 class="contactTitle">Contact Info</h2>
     <table id="contact-info">
       <tr>
-        <th>MealMate</th>
+        <th colspan="2">
+          <h3>MealMate</h3>
+        </th>
       </tr>
-      
       <tr>
         <td>E-mail:</td>
         <td>MealMate@gmail.se</td>
       </tr>
-
       <tr>
         <td>Phone number:</td>
         <td>070-90 00 000</td>
       </tr>
-
       <tr>
         <td>Address:</td>
         <td>Diplomatgatan 1 Linköping</td>
       </tr>
     </table>
 
-    <h4 class="contactFormTitle">Contact Us</h4>
-
     <form id="contactForm">
       <div class="form-group">
-          <label for="input-name">Name:</label>
-          <input type="text" class="contactInput" id="input-name" name="name" required>
+        <h2 class="contactTitle">Contact Us</h2>
+        <label for="input-name">Name:</label>
+        <input type="text" class="contactInput" id="input-name" name="name" required>
       </div>
-
       <div class="form-group">
-          <label for="input-email">E-mail:</label>
-          <input type="email" class="contactInput" id="input-email" name="email" required>
+        <label for="input-email">E-mail:</label>
+        <input type="email" class="contactInput" id="input-email" name="email" required>
       </div>
-
       <div class="form-group">
-          <label for="input-message">Message:</label>
-          <textarea class="contactInput" id="input-message" name="message" rows="10" required></textarea>
+        <label for="input-inquiry">Inquiry Type:</label>
+        <select id="input-inquiry" class="contactInput" name="inquiry">
+          <option value="general">General Question</option>
+          <option value="feedback">Feedback</option>
+          <option value="support">Support Request</option>
+        </select>
       </div>
-
+      <div class="form-group">
+        <label for="input-message">Message:</label>
+        <textarea class="contactInput" id="input-message" name="message" rows="10" required></textarea>
+      </div>
       <button type="submit" class="contactButton">Send</button>
-
-    <!-- <form id="contact-form">
-      <div class="form-group">
-        <label for="input-name">Name</label>
-        <input type="text" class="contactInput" id="input-name">
-      </div>
-      
-      <div class="form-group">
-        <label for="input-email">E-mail</label>
-        <input type="email" class="contactInput" id="input-email">
-      </div>
-
-      <div class="form-group">
-        <label for="input-message">Message</label>
-        <textarea class="contactInput" id="input-message" rows="10"></textarea>
-      </div>
     </form>
-
-    <button id="send-form" class="contactButton">Send</button>
-  -->
-   <!-- <form>
-      <div class="form-group">
-        <label for="input-name">Name</label>
-        <input type="text" class="form-control" id="input-name">
-      </div>
-      
-      <div class="form-group">
-        <label for="input-email">E-mail</label>
-        <input type="email" class="form-control" id="input-email">
-      </div>
-
-      <div class="form-group">
-        <label for="input-message">Message</label>
-        <textarea class="form-control" id="input-message" rows="10"></textarea>
-      </div>
-    </form>
-
-    <button id="send-form" onclick="alertUser()">Send</button>
-  -->
   </div>
 </body>
+
 </html>
