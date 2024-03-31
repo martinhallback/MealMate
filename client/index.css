@@ -28,3 +28,62 @@
     bottom: 0;
     left: 0;
 }
+
+.navbar-brand {
+    margin-right: 30px; /* Adjusting margin to increase space between brand and link words */
+    padding: 10px 10px; /* Adjusting padding to increase space around the brand text */
+    border-radius: 30px;
+    letter-spacing: 0.2em;
+}
+
+.navbar-nav .nav-item .nav-link{
+    transition: box-shadow 0.3s ease; /* Adding transition for smooth effect */
+    border-radius: 30px; /* Adding border-radius for rounded corners */
+    letter-spacing: 0.15em;
+}
+
+.navbar-nav .nav-item {
+    margin-right: 20px; /* Adjusting margin to increase space between link words */
+}
+
+.navbar-nav .nav-item:last-child {
+    margin-right: 0; /* Ensuring last item has no margin to prevent extra space */
+}
+
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-brand:hover
+{
+    box-shadow: 0 0 2px 2px #fff; /* Adjusting spread radius to make the circle wider */
+}
+
+.navbar-basket-button:focus,
+.navbar-profile-button:focus {
+    outline: none; 
+    border: none;
+}
+
+.navbar-basket img,
+.navbar-profile img {
+    width: 50px;
+    height: 50px;
+    padding: 1px 1px;
+    margin-right: 15px;
+    margin-top: 10px;
+    padding: 1px;
+}
+.navbar-basket:hover img,
+.navbar-profile:hover img,
+.navbar-brand:hover {
+    box-shadow: 0 0 2px 2px #fff;
+
+}
+.navbar-basket img,
+.navbar-profile img {
+    border-radius: 30px; /* Making the container circular */
+    overflow: hidden;
+    
+}
+
+
+
+  
