@@ -1,3 +1,8 @@
+body{
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
 .foodNearMe{
     text-align: center;
 }
@@ -10,6 +15,7 @@
 }
 
 .container{
+    min-height: calc(60vh);
     padding-bottom: 10px;
 }
 
@@ -19,10 +25,9 @@
     margin-bottom: 20px;
 }
 
-.footer {
+#footer {
     width: 100%;
     background-color: #263a4e; 
-    padding: 20px 0;
     text-align: center;
     position: relative;
     bottom: 0;

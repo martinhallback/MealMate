@@ -1,4 +1,5 @@
 function homeview(){
+  console.log("homeview")
     $('.container').empty();
     $('.container').append('<h2 class="foodNearMe">Food near me</h2>');
     $('.container').append('<div class="adcontainer">' + '</div>');
@@ -37,6 +38,7 @@ function homeview(){
           reviews: '1'
         }
       },
+      
     ];
     
     $.each(cardData, function(index, card) {
@@ -99,8 +101,4 @@ function foodAdModal(card, index){
         '</div>';
     
     return modalHtml;
-}
-
-function showModal(modal){
-    //show the modal when button is pressed
 }

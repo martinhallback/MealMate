@@ -24,9 +24,11 @@ $(document).ready(function () {
           homeview();
           break;
         case 'Sell':
-              
+          sellview();    
           break;
+
         case 'Contact':
+          $('.container').empty();
           $(".container").load("contact.html .contactContainer", function () {});
             break;
             
@@ -43,6 +45,7 @@ $(document).ready(function () {
         default:
               
       }
+  
     });
     
 });

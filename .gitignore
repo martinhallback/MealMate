@@ -8,7 +8,7 @@ venv/
 server/database.db
 
 # serverauth
-server/serverAuth.Py
+server/serverAuth.py
 
 #DS_Store
 .DS_Store
