@@ -1,7 +1,7 @@
 $(document).ready(function () {
-  $(".footer").load("footer.html");
+  $("#footer").load("footer.html .footer");
   homeview();
-  //$('.footer').fadeIn();
+ 
   $(window).scrollTop(0);
 
   $(".navbar-basket").click(function (e) {
