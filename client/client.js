@@ -1,12 +1,22 @@
 $(document).ready(function () {
+  $(".footer").load("footer.html");
   homeview();
-  $("#footer").load("footer.html .footer", function () {});
-  
-  $(window).scrollTop(0); //ensuring start on the top of the page
+  //$('.footer').fadeIn();
+  $(window).scrollTop(0);
+
+  $(".navbar-basket").click(function (e) {
+    console.log('Basket');
+    
+  });
+  $(".navbar-profile").click(function (e) {
+    console.log('Profile');
+    
+  });
   
 
-  $('li.nav-item a.nav-link, .navbar-brand.larger-text').click(function (e) {
-    e.preventDefault();
+  //$('li.nav-item a.nav-link').click(function (e) {
+    $('li.nav-item a.nav-link, .navbar-brand.larger-text, .navbar-basket.ml-auto').click(function (e) {
+      e.preventDefault();
       var linkText = $(this).text();
       switch (linkText) {
         case 'MealMate':
@@ -29,7 +39,9 @@ $(document).ready(function () {
         case 'Log in':
           loadLogInContent();
           break;
-
+        
+        case 'navbar-basket-button':
+        console.log('Basket1');
         default:
               
       }
