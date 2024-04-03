@@ -5,7 +5,7 @@ from flask import Blueprint
 from main import db
 
 #import relevant classes
-from classes import user
+from classes import location
 
 bp = Blueprint('locations', __name__)
 
