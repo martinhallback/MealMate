@@ -26,7 +26,6 @@ def login():
     if cursor is None:
         return jsonify({'error': "no user with this email", 'errorCode' : 1}), 401
     query = dict(cursor)
-    print(query)
     pw_hash = query['pwHash']
     #Checking pw_hash
     usr = user.User(query['_id'], email=email, pwHash=pw_hash)
