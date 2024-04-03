@@ -1,7 +1,7 @@
 from flask import jsonify
 from flask import request
 from flask import Blueprint
-from flask_jwt_extended import create_access_token
+
 
 from main import db
 

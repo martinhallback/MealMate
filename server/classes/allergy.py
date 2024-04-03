@@ -20,4 +20,4 @@ class Allergy(object):
         
     def serialize(self):
         #OBS!!!! _id = self.id, is not included in the serialisation of the object
-        return dict(id = self.id,type=self.type)
+        return dict(type=self.type)
