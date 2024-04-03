@@ -12,6 +12,14 @@ class Advertisement(object):
         self.image_path = imagePath
         self.seller_id = sellerID
     
+    def serialise_existing(self):
+        full_serialised = self.serialize()
+        retDict = {}
+        for key in full_serialised:
+            if full_serialised[key] is not None:
+                retDict[key] = full_serialised[key]
+        return retDict
+    
     def serialize(self):
         #Currently does not include IDs, wait until DB sprint to implement
         return dict(dishName=self.dish_name, description=self.dish_name, cookDate=self.cook_date,
