@@ -11,13 +11,30 @@ from classes import allergy
 bp = Blueprint('allergies', __name__)
 
 
-
-@bp.route('/allergies' , methods=['GET'])
+@bp.route('/allergies', methods = ['GET'])
 def allergies():
-    allergies_collection = db["allergy"]
-    allergies = allergies_collection.find({},{ "_id": 0})
-    allergies_list = list(allergies)[1:] #remove the first element of the list, which is the validation rule
-    return jsonify(allergies_list), 200
+    # data = request.get_json() #For other requests than get
+    allergies_collection = db['allergy']
+    cursor = allergies_collection.find({})
+    if cursor is None:
+        return jsonify({'error': "Database collection could not be accessed ", 'errorCode' : 31}), 503
+    query = list(cursor)
+    allergies = []
+    for item in query:
+        alg = dict(item)
+        try:
+            allergies.append(allergy.Allergy(
+                objID=alg['_id'], type=alg['type']
+                ))
+        except Exception as e:
+            print(e) 
+    json_allergies = [item.serialise_client() for item in allergies]
+
+    return jsonify(json_allergies), 200
+
+
+
+    return  jsonify({'error' : "functionality not yet implemented", 'errorCode' : 0}), 401
 
 
 

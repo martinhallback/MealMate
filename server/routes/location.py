@@ -11,9 +11,8 @@ from classes import location
 bp = Blueprint('location', __name__)
 
 
-
 @bp.route('/location/<string:id>', methods=['GET'])
-def location(id):
+def specific_location(id):
     location_collection = db["location"]
     try:
         # Convert the string ID to an ObjectId
@@ -21,8 +20,16 @@ def location(id):
     except:
         return jsonify({"error": "Invalid ID format"}), 400
     # Use the ObjectId to query the database
-    location = location_collection.find_one({"_id": oid}, {"_id": 0})
-    if location:
-        return jsonify(location), 200
-    else:
-        return jsonify({"error": "Location not found"}), 404
+    cursor = location_collection.find_one({"_id": oid})
+    if cursor is None:
+        return jsonify({'error': "No object with the given ID exists."}), 404
+    query = dict(cursor)
+    loc = location.Location(objID=query['_id'], area=query['area'], city=query['city'])
+    json_location = loc.serialise_client()
+    
+    return jsonify(json_location), 200
+
+
+
+    return  jsonify({'error' : "functionality not yet implemented", 'errorCode' : 0}), 401
+    

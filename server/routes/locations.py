@@ -10,9 +10,27 @@ from classes import location
 bp = Blueprint('locations', __name__)
 
 
-@bp.route('/locations' , methods=['GET'])
+@bp.route('/locations', methods = ['GET'])
 def locations():
-    locations_collection = db["location"]
-    locations = locations_collection.find({},{ "_id": 0})
-    locations_list = list(locations)[1:] #remove the first element of the list, which is the validation rule
-    return jsonify(locations_list), 200
+    # data = request.get_json() #For other requests than get
+    locations_collection = db['location']
+    cursor = locations_collection.find({})
+    if cursor is None:
+        return jsonify({'error': "Database collection could not be accessed ", 'errorCode' : 31}), 503
+    query = list(cursor)
+    locations = []
+    for item in query:
+        loc = dict(item)
+        try:
+            locations.append(location.Location(
+                objID=loc['_id'], area=loc['area'], city=loc['city']
+                ))
+        except Exception as e:
+            print(e) 
+    json_locations = [item.serialise_client() for item in locations]
+
+    return jsonify(json_locations), 200
+
+
+
+    return  jsonify({'error' : "functionality not yet implemented", 'errorCode' : 0}), 401

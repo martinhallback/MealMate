@@ -35,38 +35,38 @@ collection.insert_one({"city" : "Linköping", "area" : "Other"})"""
 #Populating the Protein collection
 collection = db["protein"]
 
-"""collection.insert_one({"type" : "Beef", "class" : "Meat"})
-collection.insert_one({"type" : "Pork", "class" : "Meat"})
-collection.insert_one({"type" : "Lamb", "class" : "Meat"})
-collection.insert_one({"type" : "Venison", "class" : "Meat"})
-collection.insert_one({"type" : "Other", "class" : "Meat"})"""
+"""collection.insert_one({"type" : "Beef", "source" : "Meat"})
+collection.insert_one({"type" : "Pork", "source" : "Meat"})
+collection.insert_one({"type" : "Lamb", "source" : "Meat"})
+collection.insert_one({"type" : "Venison", "source" : "Meat"})
+collection.insert_one({"type" : "Other", "source" : "Meat"})"""
 
-"""collection.insert_one({"type" : "Chicken", "class" : "Poultry"})
-collection.insert_one({"type" : "Turkey", "class" : "Poultry"})
-collection.insert_one({"type" : "Duck", "class" : "Poultry"})
-collection.insert_one({"type" : "Other", "class" : "Poultry"})"""
+"""collection.insert_one({"type" : "Chicken", "source" : "Poultry"})
+collection.insert_one({"type" : "Turkey", "source" : "Poultry"})
+collection.insert_one({"type" : "Duck", "source" : "Poultry"})
+collection.insert_one({"type" : "Other", "source" : "Poultry"})"""
 
-"""collection.insert_one({"type" : "Salmon", "class" : "Fish"})
-collection.insert_one({"type" : "Tuna", "class" : "Fish"})
-collection.insert_one({"type" : "Cod", "class" : "Fish"})
-collection.insert_one({"type" : "Herring", "class" : "Fish"})
-collection.insert_one({"type" : "Other", "class" : "Fish"})"""
+"""collection.insert_one({"type" : "Salmon", "source" : "Fish"})
+collection.insert_one({"type" : "Tuna", "source" : "Fish"})
+collection.insert_one({"type" : "Cod", "source" : "Fish"})
+collection.insert_one({"type" : "Herring", "source" : "Fish"})
+collection.insert_one({"type" : "Other", "source" : "Fish"})"""
 
-"""collection.insert_one({"type" : "Shrimp", "class" : "Seafood"})
-collection.insert_one({"type" : "Crab", "class" : "Seafood"})
-collection.insert_one({"type" : "Other", "class" : "Seafood"})"""
+"""collection.insert_one({"type" : "Shrimp", "source" : "Seafood"})
+collection.insert_one({"type" : "Crab", "source" : "Seafood"})
+collection.insert_one({"type" : "Other", "source" : "Seafood"})"""
 
-"""collection.insert_one({"type" : "Cheese", "class" : "Vegetarian"})
-collection.insert_one({"type" : "Cottage cheese", "class" : "Vegetarian"})
-collection.insert_one({"type" : "Quark", "class" : "Vegetarian"})
-collection.insert_one({"type" : "Eggs", "class" : "Vegetarian"})
-collection.insert_one({"type" : "Other", "class" : "Vegetarian"})"""
+"""collection.insert_one({"type" : "Cheese", "source" : "Vegetarian"})
+collection.insert_one({"type" : "Cottage cheese", "source" : "Vegetarian"})
+collection.insert_one({"type" : "Quark", "source" : "Vegetarian"})
+collection.insert_one({"type" : "Eggs", "source" : "Vegetarian"})
+collection.insert_one({"type" : "Other", "source" : "Vegetarian"})"""
 
-"""collection.insert_one({"type" : "Beans", "class" : "Vegan"})
-collection.insert_one({"type" : "Tofu", "class" : "Vegan"})
-collection.insert_one({"type" : "Lentils", "class" : "Vegan"})
-collection.insert_one({"type" : "Chickpeas", "class" : "Vegan"})
-collection.insert_one({"type" : "Other", "class" : "Vegan"})"""
+"""collection.insert_one({"type" : "Beans", "source" : "Vegan"})
+collection.insert_one({"type" : "Tofu", "source" : "Vegan"})
+collection.insert_one({"type" : "Lentils", "source" : "Vegan"})
+collection.insert_one({"type" : "Chickpeas", "source" : "Vegan"})
+collection.insert_one({"type" : "Other", "source" : "Vegan"})"""
 
 #Populating the Allergy collection
 collection = db["allergy"]
