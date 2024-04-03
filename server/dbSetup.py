@@ -41,23 +41,23 @@ protein = db["protein"]
 validation_rule = {
     "$jsonSchema" : {
         "bsonType" : "object",
-        "required" : ["type", "class"],
+        "required" : ["type", "source"],
         "properties" : {
             "type" : {
                 "bsonType" : "string",
-                "description" : "The specific source of protein, for example pork, beef, salmon etc."
+                "description" : "The specific type of protein, for example pork, beef, salmon etc."
             },
-            "class" : {
+            "source" : {
                 "bsonType" : "string",
-                "description" : "The class of protein, for example meat, fish, vegan etc."
+                "description" : "The source of protein, for example meat, fish, vegan etc."
             } 
         }
     }
 }
 #initialiser object
 
-#protein.create_index([("type", ASCENDING), ("class", ASCENDING)], unique=True)
-#protein.insert_one(validation_rule)
+"""protein.create_index([("type", ASCENDING), ("source", ASCENDING)], unique=True)
+protein.insert_one(validation_rule)"""
 
 #Location collection
 location = db["location"]
@@ -115,7 +115,7 @@ validation_rule = {
         }
     }
 }
-user.insert_one(validation_rule)
+#user.insert_one(validation_rule)
 
 
 
