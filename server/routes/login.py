@@ -19,16 +19,18 @@ def login():
         return jsonify({'error': "Must enter both email and password"}), 400
     auth = {}
     email = data['email']
-    
+
     #getting the correct user
     users = db["user"]
     cursor = users.find_one({'email' : email})
     if cursor is None:
         return jsonify({'error': "no user with this email", 'errorCode' : 1}), 401
     query = dict(cursor)
-    pw_hash = query['pwHash']
+    
     #Checking pw_hash
-    usr = user.User(query['_id'], email=email, pwHash=pw_hash)
+    pw_hash = query['pwHash']
+    authenticate = dict(_id = query['_id'], email=email, pwHash=pw_hash)
+    usr = user.User(authenticate)
     if (usr.check_password(data['password'])):
         auth['token'] = create_access_token(identity=email)
         auth['user'] = usr.serialise_client()

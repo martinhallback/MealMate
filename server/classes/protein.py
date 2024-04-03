@@ -1,10 +1,7 @@
-from main import bcrypt
-
 class Protein(object):
-    def __init__(self, objID=None, type=None, source=None):
-        self._id = objID
-        self.type = type
-        self.source = source
+    _id = None
+    type = None
+    source = None
 
     def __init__(self, inDict):
         for k,v in inDict.items():
@@ -34,15 +31,3 @@ class Protein(object):
             if inDict[key] is not None:
                 retDict[key] = inDict[key]
         return retDict
-    """
-    def serialise_existing(self):
-        full_serialised = self.serialize()
-        retDict = {}
-        for key in full_serialised:
-            if full_serialised[key] is not None:
-                retDict[key] = full_serialised[key]
-        return retDict
-        
-    def serialize(self):
-        #OBS!!!! _id = self.id, is not included in the serialisation of the object
-        return dict(type=self.type, class_=self.source)"""

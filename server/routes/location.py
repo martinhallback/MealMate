@@ -13,23 +13,20 @@ bp = Blueprint('location', __name__)
 
 @bp.route('/location/<string:id>', methods=['GET'])
 def specific_location(id):
-    location_collection = db["location"]
-    try:
-        # Convert the string ID to an ObjectId
-        oid = ObjectId(id)
-    except:
-        return jsonify({"error": "Invalid ID format"}), 400
-    # Use the ObjectId to query the database
-    cursor = location_collection.find_one({"_id": oid})
-    if cursor is None:
-        return jsonify({'error': "No object with the given ID exists."}), 404
-    query = dict(cursor)
-    loc = location.Location(objID=query['_id'], area=query['area'], city=query['city'])
-    json_location = loc.serialise_client()
-    
-    return jsonify(json_location), 200
-
-
-
+    if request.method == 'GET':
+        location_collection = db["location"]
+        try:
+            # Convert the string ID to an ObjectId
+            oid = ObjectId(id)
+        except:
+            return jsonify({"error": "Invalid ID format"}), 400
+        # Use the ObjectId to query the database
+        cursor = location_collection.find_one({"_id": oid})
+        if cursor is None:
+            return jsonify({'error': "No object with the given ID exists."}), 404
+        query = dict(cursor)
+        loc = location.Location(query)
+        json_location = loc.serialise_client()
+        return jsonify(json_location), 200
     return  jsonify({'error' : "functionality not yet implemented", 'errorCode' : 0}), 401
     
