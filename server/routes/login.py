@@ -31,7 +31,7 @@ def login():
     usr = user.User(query['_id'], email=email, pwHash=pw_hash)
     if (usr.check_password(data['password'])):
         auth['token'] = create_access_token(identity=email)
-        auth['user'] = usr.serialize()
+        auth['user'] = usr.serialise_client()
         return jsonify(auth), 200
     else:
         return jsonify({'error' : "Incorrect password", 'errorCode' : 2}), 401
