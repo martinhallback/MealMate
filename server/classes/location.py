@@ -2,10 +2,9 @@ from main import bcrypt
 
 class Location(object):
     
-    def __init__(self, objID=None, area=None, city=None):
-        self._id = objID
-        self.area = area
-        self.city = city
+    _id = None
+    area = None
+    city = None
 
     def __init__(self, inDict):
         for k,v in inDict.items():

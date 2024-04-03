@@ -1,5 +1,3 @@
-from bson import ObjectId
-
 class Allergy(object):
 
     _id = None
