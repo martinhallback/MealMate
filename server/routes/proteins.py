@@ -7,7 +7,7 @@ from main import db
 #import relevant classes
 from classes import protein
 
-bp = Blueprint('protein', __name__)
+bp = Blueprint('proteins', __name__)
 
 
 
