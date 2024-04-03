@@ -5,7 +5,7 @@ from flask import request
 from main import db
 
 #import relevant classes
-from classes import ad
+from classes import advertisement
 
 bp = Blueprint('ads', __name__)
 
