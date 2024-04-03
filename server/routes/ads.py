@@ -30,7 +30,7 @@ def ads():
                 ))
         except Exception as e:
             print(e) 
-    json_ads = [advert.serialise_existing() for advert in advertisements]
+    json_ads = [advert.serialise_client() for advert in advertisements]
     
     return jsonify(json_ads), 200
 
