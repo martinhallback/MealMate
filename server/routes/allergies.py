@@ -8,7 +8,7 @@ from main import db
 #import relevant classes
 from classes import user
 
-bp = Blueprint('allergy', __name__)
+bp = Blueprint('allergies', __name__)
 
 
 
@@ -20,13 +20,7 @@ def allergies():
     return jsonify(allergies_list), 200
 
 
-""""@bp.route('/allergies', methods=['POST'])
-def add_allergy():
-    allergies_collection = db["allergy"]
-    data = request.get_json()
-    allergy = {"type" : data["type"]}
-    allergies_collection.insert_one(allergy)
-    return jsonify({"message" : "Allergy added"}), 200"""""
+
 
 
     
