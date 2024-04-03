@@ -18,6 +18,11 @@ class User(object):
         self.location = sellLocation
         self.isAdmin = isAdmin
 
+    def __init__(self, inDict):
+        for k,v in inDict.items():
+            self.__setattr__(k,v)
+
+
     def set_password(self, password):
         self.pwHash = bcrypt.generate_password_hash(password).decode('utf8')
 

@@ -6,9 +6,13 @@ class Protein(object):
         self.type = type
         self.source = source
 
+    def __init__(self, inDict):
+        for k,v in inDict.items():
+            self.__setattr__(k,v)
+
+
     def __repr__(self):
-        return '<protein {}: {}>'.format(self.source, self.type)
-    
+        return '<protein {}: {}>'.format(self.source, self.type)    
 
     def serialise_client(self):
         obj = self.__dict__

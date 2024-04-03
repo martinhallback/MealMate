@@ -1,10 +1,15 @@
 from main import bcrypt
 
 class Location(object):
+    
     def __init__(self, objID=None, area=None, city=None):
         self._id = objID
         self.area = area
         self.city = city
+
+    def __init__(self, inDict):
+        for k,v in inDict.items():
+            self.__setattr__(k,v)
 
     def __repr__(self):
         return '<location {}: {}>'.format(self.id, self.area, self.city)
@@ -30,18 +35,3 @@ class Location(object):
             if inDict[key] is not None:
                 retDict[key] = inDict[key]
         return retDict
-
-
-
-
-    """def serialise_existing(self):
-        full_serialised = self.serialize()
-        retDict = {}
-        for key in full_serialised:
-            if full_serialised[key] is not None:
-                retDict[key] = full_serialised[key]
-        return retDict
-        
-    def serialize(self):
-        #OBS!!!! _id = self.id, is not included in the serialisation of the object
-        return dict(area=self.area, city=self.city)"""

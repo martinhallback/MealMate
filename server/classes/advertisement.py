@@ -11,6 +11,11 @@ class Advertisement(object):
         self.portionPrice = portionPrice
         self.imagePath = imagePath
         self.sellerID = sellerID
+
+    def __init__(self, inDict):
+        for k,v in inDict.items():
+            self.__setattr__(k,v)
+            
     
     def serialise_client(self):
         obj = self.__dict__
