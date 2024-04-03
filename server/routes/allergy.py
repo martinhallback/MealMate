@@ -24,7 +24,9 @@ def specific_allergy(id):
     if cursor is None:
         return jsonify({'error': "No object with the given ID exists."}), 404
     query = dict(cursor)
-    alg = allergy.Allergy(objID=query['_id'], type=query['type'])
+    print(query)
+    alg = allergy.Allergy(query)
+    #alg = allergy.Allergy(objID=query['_id'], type=query['type'])
     json_allergy = alg.serialise_client()
     
     return jsonify(json_allergy), 200
