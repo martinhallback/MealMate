@@ -1,8 +1,8 @@
 from main import bcrypt
 
 class Protein(object):
-    def __init__(self, _id=None, type=None, source=None):
-        self._id = _id
+    def __init__(self, objID=None, type=None, source=None):
+        self._id = objID
         self.type = type
         self.source = source
 
