@@ -10,10 +10,27 @@ from classes import protein
 bp = Blueprint('proteins', __name__)
 
 
-
-@bp.route('/proteins' , methods=['GET'])
+@bp.route('/proteins', methods = ['GET'])
 def proteins():
-    proteins_collection = db["protein"]
-    proteins = proteins_collection.find({},{ "_id": 0})
-    proteins_list = list(proteins)[1:] #remove the first element of the list, which is the validation rule
-    return jsonify(proteins_list), 200
+    # data = request.get_json() #For other requests than get
+    proteins_collection = db['protein']
+    cursor = proteins_collection.find({})
+    if cursor is None:
+        return jsonify({'error': "Database collection could not be accessed ", 'errorCode' : 31}), 503
+    query = list(cursor)
+    proteins = []
+    for item in query:
+        prot = dict(item)
+        try:
+            proteins.append(protein.Protein(
+                objID=prot['_id'], type=prot['type'], source=prot['source']
+                ))
+        except Exception as e:
+            print(e) 
+    json_proteins = [item.serialise_client() for item in proteins]
+
+    return jsonify(json_proteins), 200
+
+
+
+    return  jsonify({'error' : "functionality not yet implemented", 'errorCode' : 0}), 401
