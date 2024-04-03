@@ -23,7 +23,7 @@ class Protein(object):
         return self.__dict__()
     
     #Helper functions
-    def remove_nulls(inDict):
+    def remove_nulls(self, inDict):
         #Removes nullvalues from inarg
         retDict = {}
         for key in inDict:

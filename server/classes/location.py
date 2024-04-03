@@ -23,7 +23,7 @@ class Location(object):
         return self.__dict__()
     
 
-    def remove_nulls(inDict):
+    def remove_nulls(self, inDict):
         #Removes nullvalues from inarg
         retDict = {}
         for key in inDict:
