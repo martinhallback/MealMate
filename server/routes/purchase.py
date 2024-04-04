@@ -10,7 +10,7 @@ from classes import Purchase
 bp = Blueprint('purchase', __name__)
 
 @bp.route('/purchase', methods = ['GET'])
-def purchases():
+def purchase():
     # data = request.get_json() #For other requests than get
     if request.method == 'GET':
         purchases_collection = db['purchase']
