@@ -26,6 +26,8 @@ class Purchase(object):
     def serialise_client(self):
         obj = self.__dict__
         obj['_id'] = str(self._id)
+        obj['buyer'] = str(self.buyer)
+        obj['seller'] = str(self.seller)
         return self.remove_nulls(obj)
         
     def serialise_db(self):
