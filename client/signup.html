@@ -14,24 +14,46 @@
                     <form id="Signupform">
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="text" class="form-control" id="email" name="email">
+                            <input type="text" class="form-control" id="email" name="email" required>
+                            <p id="emailError" style="color: red; display: none;">Email must contain '@'</p>
+                    
                         </div>
                         <div class="form-group">
-                            <label for="name">Name:</label>
-                            <input type="text" class="form-control" id="name" name="name">
+                            <label for="name">Full Name:</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
                         </div>
                         <div class="form-group">
                             <label for="password">Password:</label>
-                            <input type="text" class="form-control" id="password" name="password">
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pnum">Phone Number:</label>
+                            <input type="text" class="form-control" id="pnum" name="pnum" required>
+                            <p id="phoneError" style="color: red; display: none;">Phone number may only contain one '+'' and/or numbers</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="university">University:</label>
+                            <select class="form-control" id="university" name="university" required>
+                                <option value="">Please select a university</option>
+                                <option value="university1">Linköpings Universitet</option>
+                                <option value="university2">Lunds Universitet</option>
+                                <option value="university3">Kungliga Tekniska Högskolan</option>
+                           </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentid">Student ID:</label>
+                            <input type="text" class="form-control" id="studentid" name="studentid" required>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="signUpBtn">Sign up</button>
+                    <button type="button" class="btn btn-primary" onclick="validateAndSubmit()" id="signUpBtn" style="background-color: #263a4e; color: white; border-color: transparent;" disabled>Sign up</button>
+                    
                 </div>
             </div>
         </div>
       </div>
+
 </body>
 </html>

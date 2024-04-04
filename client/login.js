@@ -1,21 +1,6 @@
-function loadSignUpContent() {
-    console.log('Load Sign Up Content');
-    $("#signUpContainer").load("signup.html #signup-modal", function () {
-      showSignUpModal();
-    });
-}
-  
-function showSignUpModal(){
-    $('#signup-modal').modal('show');
-    $("#signUpBtn").off().on('click', function (e) {
-      console.log('Signup klickat');
-      postNewUser();
-    });
-}
-  
 function loadLogInContent() {
     console.log('Load Log in Content');
-    $("#logInContainer").load("login.html #login-modal", function () {
+    $("#loginContainer").load("login.html #login-modal", function () {
       showLogInModal();
     });
 }
@@ -27,29 +12,6 @@ function showLogInModal(){
       console.log('Login');
       logInUser();
     });
-}
-  
-function postNewUser() {
-   // e.preventDefault();
-    var host = window.location.protocol + '//' + location.host
-    newUserEmail = document.getElementById('email').value;
-    newUserName = document.getElementById('name').value;
-    newUserPassword = document.getElementById('password').value;
-    $.ajax({
-      url: host + '/sign-up',
-      type: 'POST',
-      contentType: 'application/json',
-     // headers: {"Authorization": "Bearer " + JSON.parse(sessionStorage.getItem('auth')).token},
-      data: JSON.stringify({
-          email: newUserEmail,
-          name : newUserName,
-          password : newUserPassword,
-      }),
-      success: function() {
-        console.log('signed up');
-       $('#signup-modal').modal('hide');
-    }
-  });
 }
   
 function logInUser(){
@@ -69,6 +31,56 @@ function logInUser(){
             console.log('login succesful');
             sessionStorage.setItem('auth', JSON.stringify(response))
             $('#login-modal').modal('hide');
+            $('#logInLink').toggleClass('d-none', true);
+            $('#signUpLink').toggleClass('d-none', true);
+            $('#logOutLink').toggleClass('d-none', false);
+        }, 
+        error: function(JQxhr, status, error) {
+            if (JQxhr.status === 401) {
+                $('#passwordError').text('Incorrect email adress or password. Please try again.');
+            } else {
+                console.error('Error:', error);
+            }
         }
     });
+}
+
+function logOutUser(){
+    $("#loginContainer").load("login.html #logout-modal", function () {
+    $('#logout-modal').modal('show');
+    $("#logoutBtn").off().on('click', function (e) {
+            sessionStorage.removeItem('auth');
+            $('#logInLink').toggleClass('d-none', false);
+            $('#signUpLink').toggleClass('d-none', false);
+            $('#logOutLink').toggleClass('d-none', true);
+            $('#logout-modal').modal('hide');
+        });
+    });
+
+}
+
+function validateAndSubmit() {
+    var email = document.getElementById('email').value;
+    var phoneNumber = document.getElementById('pnum').value;
+    if (email.indexOf('@') === -1) {
+        document.getElementById('emailError').style.display = 'block';
+    } else {
+        document.getElementById('emailError').style.display = 'none';
+    }
+
+    var plusCount = 0;
+    for (i = 0; i < phoneNumber.length; i++) {
+        if (phoneNumber[i] === '+') {
+            plusCount++;
+        } else if (isNaN(parseInt(phoneNumber[i]))) {
+            document.getElementById('phoneError').style.display = 'block';
+            return;
+        }
+    }
+
+    if (plusCount > 1) {
+        document.getElementById('phoneError').style.display = 'block';
+    } else {
+        document.getElementById('phoneError').style.display = 'none';
+    }
 }

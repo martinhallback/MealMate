@@ -94,11 +94,26 @@ function foodAdModal(card, index){
         '</div>' +
         '<div class="modal-footer">' +
         '<button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>' +
-        '<button type="button" class="btn btn-primary add-to-cart-btn">Add to Shopping Cart</button>' +
+        '<button type="button" class="btn btn-primary add-to-cart-btn" onclick="addtocart('+ index +')">Add to Shopping Cart</button>' +
         '</div>' +
         '</div>' +
         '</div>' +
         '</div>';
     
     return modalHtml;
+}
+
+function addtocart(index){
+  console.log("add to cart")
+
+  //ajax call for specific add?
+  var cartItems = JSON.parse(sessionStorage.getItem('cart')) || [];
+
+  var isCardInCart = cartItems.some(item => item === index);
+  if(!isCardInCart){
+    cartItems.push(index);
+    sessionStorage.setItem('cart', JSON.stringify(cartItems)); 
+  }
+ 
+  $('#myModal_' + index).modal('hide');
 }

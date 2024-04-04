@@ -1,19 +1,26 @@
 $(document).ready(function () {
+  $("#footer").load("footer.html .footer");
   homeview();
-  $("#footer").load("footer.html .footer", function () {});
-  
-  $(window).scrollTop(0); //ensuring start on the top of the page
-  
+ 
+  $(window).scrollTop(0);
 
-  //$('li.nav-item a.nav-link').click(function (e) {
-  $('li.nav-item a.nav-link, .navbar-brand.larger-text').click(function (e) {
-    e.preventDefault();
+  $(".navbar-basket").click(function (e) {
+    console.log('Basket');
+    $('.container').load('shoppingcart.html .shoppingCartCont', function(){});
+    
+  });
+  $(".navbar-profile").click(function (e) {
+    console.log('Profile');
+    
+  });
+  
+    $('li.nav-item a.nav-link, .navbar-brand.larger-text, .navbar-basket.ml-auto').click(function (e) {
+      e.preventDefault();
       var linkText = $(this).text();
       switch (linkText) {
         case 'MealMate':
           console.log('Hemknapp');
           homeview();
-          //$(".footer").load("footer.html .container", function () {});
           break;
         case 'Sell':
           sellview();    
@@ -22,7 +29,6 @@ $(document).ready(function () {
         case 'Contact':
           $('.container').empty();
           $(".container").load("contact.html .contactContainer", function () {});
-          //$(".footer").load("footer.html .container", function () {});
             break;
             
         case 'Sign up':
@@ -38,6 +44,9 @@ $(document).ready(function () {
           $(".container").load("profile.html .profileContainer", function () {});
         default:
               
+        case 'Log out':
+          logOutUser();
+          break;
       }
   
     });

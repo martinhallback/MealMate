@@ -1,34 +1,16 @@
-from main import bcrypt
-
-class User(object):
-
+class Protein(object):
     _id = None
-    email = None
-    pwHash = None
-    fullName = None
-    phone_number = None
-    PNumber = None
-    isVerified = None
-    university = None
-    studentID = None
-    address = None
-    location = None
-    isAdmin = None
+    type = None
+    source = None
 
     def __init__(self, inDict):
         for k,v in inDict.items():
             self.__setattr__(k,v)
 
 
-    def set_password(self, password):
-        self.pwHash = bcrypt.generate_password_hash(password).decode('utf8')
-
-    def check_password(self, password):
-        return bcrypt.check_password_hash(self.pwHash, password)
-
     def __repr__(self):
-        return '<user {}: {}, email: {}, is_admin: {}>'.format(str(self._id), self.fullName, self.email, self.isAdmin)
-    
+        return '<protein {}: {}>'.format(self.source, self.type)    
+
     def serialise_client(self):
         obj = self.__dict__
         obj['_id'] = str(self._id)
