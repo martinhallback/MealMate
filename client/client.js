@@ -6,6 +6,7 @@ $(document).ready(function () {
 
   $(".navbar-basket").click(function (e) {
     console.log('Basket');
+    $('.container').load('shoppingcart.html .shoppingCartCont', function(){});
     
   });
   $(".navbar-profile").click(function (e) {
@@ -13,8 +14,6 @@ $(document).ready(function () {
     
   });
   
-
-  //$('li.nav-item a.nav-link').click(function (e) {
     $('li.nav-item a.nav-link, .navbar-brand.larger-text, .navbar-basket.ml-auto').click(function (e) {
       e.preventDefault();
       var linkText = $(this).text();
@@ -39,11 +38,9 @@ $(document).ready(function () {
         case 'Log in':
           loadLogInContent();
           break;
-        
-        case 'navbar-basket-button':
-        console.log('Basket1');
-        default:
-              
+        case 'Log out':
+          logOutUser();
+          break;
       }
   
     });
