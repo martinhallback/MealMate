@@ -1,3 +1,5 @@
+
+
 class Purchase(object):
     _id = None
     sellerRating = None
@@ -5,7 +7,10 @@ class Purchase(object):
     date = None
     quantity = None
     totalPrice = None
-    status = None
+    advertisement = None
+    buyer = None
+    seller = None
+
 
     def __init__(self, inDict):
         for k,v in inDict.items():
@@ -13,7 +18,10 @@ class Purchase(object):
 
 
     def __repr__(self):
-        return '<purchase {}: {}>'.format(self.user_id, self.ad_id)    
+        return '<purchase {}: {}>'.format(self._id, self.advertisement, 
+                                          self.buyer, self.seller, self.date, 
+                                          self.quantity, self.totalPrice, 
+                                          self.sellerRating, self.reviewText)   
 
     def serialise_client(self):
         obj = self.__dict__

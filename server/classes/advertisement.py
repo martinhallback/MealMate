@@ -1,7 +1,7 @@
 class Advertisement(object):
     
     _id = None
-    dish_ndishNameame = None
+    dishName = None
     description = None
     cookDate = None
     quantity = None
