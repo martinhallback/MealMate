@@ -5,12 +5,12 @@ from flask import Blueprint
 
 from main import db
 
-from classes import Purchase
+from classes import purchase
 
-bp = Blueprint('purchase', __name__)
+bp = Blueprint('purchases', __name__)
 
-@bp.route('/purchase', methods = ['GET'])
-def purchase():
+@bp.route('/purchases', methods = ['GET'])
+def purchases():
     # data = request.get_json() #For other requests than get
     if request.method == 'GET':
         purchases_collection = db['purchase']
