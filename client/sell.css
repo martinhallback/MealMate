@@ -7,28 +7,30 @@
     margin-right: auto; /* Center the container horizontally */
     flex-direction: column;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
+    background-color: #67bac0;
+    color: white; /* Set text color to white */
+    font-family: 'Titillium Web', sans-serif; /* Apply Titillium Web for titles */
+    font-weight: normal; /* Set normal weight for labels */
 }
 
 .startSelling {
-    color: white; /* Set text color to white */
     background-color: #df6b3f; /* Set background color to orange */
     padding: 10px; /* Add padding for better appearance */
     border-radius: 4px; /* Add rounded corners for better appearance */
-    font-family: 'Titillium Web', sans-serif; /* Apply Titillium Web for titles */
     font-weight: bold; /* Make titles bold */
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 20px; /* Add margin below the button */
 }
 
 .benefitsText {
-    color: white; /* Set text color to white */
-    background-color: #df6b3f; /* Set background color to orange */
     padding: 10px; /* Add padding for better appearance */
-    font-size: 18px; /* Increase the font size */
+    font-size: 20px; /* Increase the font size */
     border-radius: 4px; /* Add rounded corners for better appearance */
     display: inline; /* Make the background size adjust to the content width */
-    font-family: 'Titillium Web', sans-serif; /* Apply Titillium Web for labels in the form */
-    font-weight: normal; /* Set normal weight for labels */
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .sellImage {
@@ -43,17 +45,16 @@
 #sellBtn {
     background-color: #df6b3f; /* Orange background */
     width: 200px; /* Adjust the width as needed */
-    color: white;
     padding: 14px 20px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
+    margin-bottom: 20px; /* Add margin below the button */
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 18px;
     box-shadow: 0px 0px 0px 2px #ffffff; /* Add a box-shadow to create a border-like effect */
-    font-family: 'Titillium Web', sans-serif; /* Apply Titillium Web for titles */
     font-weight: bold; /* Make titles bold */
 }
 
@@ -68,20 +69,18 @@
     background-color: #df6b3f; /* Set background color */
     border-radius: 8px; /* Add rounded corners */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
-    color: white; /* Set text color to white */
+    margin-top: 20px; /* Add margin above the button */
+    margin-bottom: 20px; /* Add margin below the button */
 }
 
 #sellForm .form-group {
     margin-bottom: 20px; /* Add some spacing between form groups */
     text-align: left; /* Align text to the left within form groups */
-    font-family: 'Titillium Web', sans-serif; /* Apply Titillium Web for titles */
     font-weight: bold; /* Make titles bold */
 }
 
 #sellForm label {
     font-weight: bold; /* Make labels bold */
-    font-family: 'Titillium Web', sans-serif; /* Apply Titillium Web for titles */
-    font-weight: normal; /* Make titles bold */
 }
 
 
@@ -95,19 +94,17 @@ input[class="sellinput"], textarea[class="sellinput"] {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    font-family: 'Titillium Web', sans-serif; /* Apply Titillium Web for titles */
-    font-weight: normal; /* Make titles bold */
 }
 
 button[id="submitCreateAd"] {
     background-color: #df6b3f;
-    color: white;
     padding: 14px 20px;
     width: 200px; /* Adjust the width as needed */
     margin: 8px 0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-weight: bold; /* Make labels bold */
     box-shadow: 0px 0px 0px 2px #ffffff; /* Add a box-shadow to create a border-like effect */
 }
 
