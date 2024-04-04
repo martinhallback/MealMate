@@ -28,6 +28,7 @@ class Purchase(object):
         obj['_id'] = str(self._id)
         obj['buyer'] = str(self.buyer)
         obj['seller'] = str(self.seller)
+        obj['advertisement'] = str(self.advertisement)
         return self.remove_nulls(obj)
         
     def serialise_db(self):
