@@ -1,6 +1,7 @@
 from flask import Blueprint
 from flask import jsonify
 from flask import request
+from werkzeug.exceptions import BadRequest
 
 
 from main import db
@@ -14,8 +15,10 @@ bp = Blueprint('ads', __name__)
 def ads():
     # data = request.get_json() #For other requests than get
     if request.method == 'GET':
-        #data = request.get_json()
-        data = None
+        try:
+            data = request.get_json()
+        except BadRequest as e: 
+            data = None
         ads = db['advertisement']
         if data is not None:
             if data['portionPrice'] is not None:
