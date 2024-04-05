@@ -8,6 +8,9 @@ class Advertisement(object):
     portionPrice = None
     imagePath = None
     sellerID = None
+    protein = None
+    allergy = None
+    
 
     def __init__(self, inDict):
         for k,v in inDict.items():
@@ -18,6 +21,10 @@ class Advertisement(object):
         obj = self.__dict__
         obj['_id'] = str(self._id)
         obj['sellerID'] = str(self.sellerID)
+        for prot in obj['protein']:
+            prot = str(prot)
+        for aller in obj['allergy']:
+            aller = str(aller)
         return self.remove_nulls(obj)
         
     def serialise_db(self):
