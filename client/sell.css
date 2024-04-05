@@ -2,20 +2,20 @@
 
 .sellcontainerjs {
     text-align: center;
-    margin-top: 20px; /* Adds space above the text as needed */
-    margin-left: auto; /* Center the container horizontally */
-    margin-right: auto; /* Center the container horizontally */
+    /*margin-top: 20px; /* Adds space above the text as needed */
+    /*margin-left: auto; /* Center the container horizontally */
+    /*margin-right: auto; /* Center the container horizontally */
     flex-direction: column;
     display: flex;
     justify-content: space-around;
-    background-color: #67bac0;
-    color: white; /* Set text color to white */
-    font-family: 'Titillium Web', sans-serif; /* Apply Titillium Web for titles */
+    background-color: #FBF9EF;
+    color: #006267; /* Set text color */
+    font-family: 'Brandon Grotesque Bold', 'helvetica', sans-serif;
     font-weight: normal; /* Set normal weight for labels */
 }
 
 .startSelling {
-    background-color: #df6b3f; /* Set background color to orange */
+    font-family: 'Clearface heavy', serif;
     padding: 10px; /* Add padding for better appearance */
     border-radius: 4px; /* Add rounded corners for better appearance */
     font-weight: bold; /* Make titles bold */
@@ -38,12 +38,12 @@
     height: auto; /* Maintain aspect ratio */
     display: block; /* Ensure image behaves as a block element */
     margin: 0 auto; /* Center the image horizontally */
-    margin-top: 5px; /* Add some top margin */
+    /*margin-top: 5px; /* Add some top margin */
 }
 
 /* Styling the Sell Button */
 #sellBtn {
-    background-color: #df6b3f; /* Orange background */
+    background-color: #ffffff; /* Orange background */
     width: 200px; /* Adjust the width as needed */
     padding: 14px 20px;
     margin-left: auto;
@@ -51,23 +51,25 @@
     margin-top: 20px;
     margin-bottom: 20px; /* Add margin below the button */
     border: none;
-    border-radius: 4px;
+    border-radius: 20px;
     cursor: pointer;
     font-size: 18px;
     box-shadow: 0px 0px 0px 2px #ffffff; /* Add a box-shadow to create a border-like effect */
     font-weight: bold; /* Make titles bold */
+    font-weight: 600px;
+    color: #006267; /* Set text color */
 }
 
 #sellBtn:hover {
-    background-color: #b64519; /* Darker shade of color on hover */
+    background-color: #d8d8d8; /* Darker shade of color on hover */
 }
 
 #sellForm {
     max-width: 600px; /* Limit the maximum width of the form */
     margin: 0 auto; /* Center the form horizontally */
     padding: 20px; /* Add some padding for better appearance */
-    background-color: #df6b3f; /* Set background color */
-    border-radius: 8px; /* Add rounded corners */
+    background-color: #ffffff; /* Set background color */
+    border-radius: 20px; /* Add rounded corners */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
     margin-top: 20px; /* Add margin above the button */
     margin-bottom: 20px; /* Add margin below the button */
@@ -80,7 +82,7 @@
 }
 
 #sellForm label {
-    font-weight: bold; /* Make labels bold */
+    font-weight: 600px; /* Make labels bold */
 }
 
 
@@ -92,22 +94,22 @@ input[class="sellinput"], textarea[class="sellinput"] {
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 20px;
     box-sizing: border-box;
 }
 
 button[id="submitCreateAd"] {
-    background-color: #df6b3f;
+    background-color: #c6d7cd;
     padding: 14px 20px;
     width: 200px; /* Adjust the width as needed */
     margin: 8px 0;
     border: none;
-    border-radius: 4px;
+    border-radius: 20px;
     cursor: pointer;
     font-weight: bold; /* Make labels bold */
     box-shadow: 0px 0px 0px 2px #ffffff; /* Add a box-shadow to create a border-like effect */
 }
 
 button[id="submitCreateAd"]:hover {
-    background-color: #b64519;
+    background-color: #adbdb3;
 }

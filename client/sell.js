@@ -4,6 +4,8 @@ function sellview() {
     
     $('.container').empty();
     $('.container').append('<div class="sellcontainerjs">' + '</div>');
+    var imageUrl = 'Images/lunchboxsellview.jpg'; //  image URL with your image
+    $('.sellcontainerjs').append('<img src="' + imageUrl + '" alt="Lunchbox" class="sellImage">');
     $('.sellcontainerjs').append('<h2 class="startSelling">Start selling your lunchboxes here!</h2>');
     $('.sellcontainerjs').append('<p class="benefitsText">Earn extra income by selling your homemade lunchboxes to hungry customers. <br> Share your culinary skills and delight others with your delicious creations!</p>');
     var imageUrl = 'Images/lunchboxsellview.jpg'; 
