@@ -1,9 +1,11 @@
 //contact.js
-$(document).ready(function(){
-    $('.faqQuestion').click(function(){
-        console.log($(this).text());  // Log the text of the clicked question
-        console.log($(this).find('.answer'));  // Log the selected answer element
-        $(this).find('.answer').slideToggle();  // Toggle the answer
-    });
-  });
-  
+function toggleAnswer(question) {
+    var answer = question.nextElementSibling;
+    if (answer.style.display === "block") {
+      answer.style.display = "none";
+      question.classList.remove("opened");
+    } else {
+      answer.style.display = "block";
+      question.classList.add("opened");
+    }
+  }

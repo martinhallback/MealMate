@@ -2,7 +2,17 @@
 <html lang="en">
   <head>
     <title>Test FAQ</title>
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>  <script src="contact.js"></script>  </head>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>  <script src="contact.js"></script>  <script>
+      const faqQuestions = document.querySelectorAll(".faqQuestion h3");
+      const faqAnswers = document.querySelectorAll(".faqQuestion .answer");
+  
+      faqQuestions.forEach((question, index) => {
+        question.addEventListener("click", () => {
+          faqAnswers[index].classList.toggle("show-answer"); // Toggles 'show-answer' class
+        });
+      });
+    </script>  
+  </head>
 <body>
   <div class="contactContainer">
     <div class="about-us">
@@ -44,32 +54,42 @@
       <div class="faqContent">
         <!-- FAQ Question and Answer -->
         <div class="faqQuestion">
-          <h3>How does pricing work?</h3>
-          <p class="answer">Pricing for our lunchboxes is based on the selected options and any additional
+          <h3 onclick="toggleAnswer(this)">How does pricing work?
+            <span class="arrow">▼</span>
+          </h3>
+          <p class="answer" style="display:none;">Pricing for our lunchboxes is based on the selected options and any additional
             customizations. Our menu offers a variety of options at different price points to suit your budget.</p>
         </div>
         <div class="faqQuestion">
-          <h3>How does pick-up work?</h3>
-          <p class="answer">Pick-up for our lunchboxes is flexible and convenient. Once you place your order, you can
-            select a preferred pick-up time from our available slots. Simply visit our location at your chosen time to
+          <h3 onclick="toggleAnswer(this)">How does pick-up work?
+            <span class="arrow">▼</span>
+          </h3>
+          <p class="answer" style="display:none;">Pick-up for our lunchboxes is flexible and convenient. Once you place your order, you can
+            select a preferred pick-up time from our available slots. Simply visit the given location at your chosen time to
             collect your freshly prepared meal.</p>
         </div>
         <div class="faqQuestion">
-          <h3>Are your lunchboxes safe for individuals with allergies?</h3>
-          <p class="answer">We take food safety seriously and strive to accommodate various dietary needs. Our
+          <h3 onclick="toggleAnswer(this)">Are your lunchboxes safe for individuals with allergies?
+            <span class="arrow">▼</span>
+          </h3>
+          <p class="answer" style="display:none;">We take food safety seriously and strive to accommodate various dietary needs. Our
             lunchboxes are prepared in a controlled environment, and we take measures to prevent cross-contamination.
             However, please inform us of any allergies or dietary restrictions when placing your order so we can take
             appropriate precautions.</p>
         </div>
         <div class="faqQuestion">
-          <h3>What measures do you take to ensure food safety?</h3>
-          <p class="answer">Food safety is our top priority. Our users follows strict hygiene practices, including
+          <h3 onclick="toggleAnswer(this)">What measures do you take to ensure food safety?
+            <span class="arrow">▼</span>
+          </h3>
+          <p class="answer" style="display:none;">Food safety is our top priority. Our users follows strict hygiene practices, including
             regular handwashing and sanitization of cooking surfaces and utensils. We also monitor food temperatures to
             ensure proper storage and minimize the risk of foodborne illnesses.</p>
         </div>
         <div class="faqQuestion">
-          <h3>Can I customize my lunchbox to suit my dietary preferences?</h3>
-          <p class="answer">Yes, we offer customization options to accommodate various dietary preferences and
+          <h3 onclick="toggleAnswer(this)">Can I customize my lunchbox to suit my dietary preferences?
+            <span class="arrow">▼</span>
+          </h3>
+          <p class="answer" style="display:none;">Yes, we offer customization options to accommodate various dietary preferences and
             restrictions. Whether you're vegetarian, vegan, gluten-free, or have other dietary needs, we can tailor your
             lunchbox to meet your requirements. Simply inform us of your preferences when placing your order.</p>
         </div>

@@ -33,6 +33,43 @@
 
 }
 
+/* Styles for the new features section */
+.features {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    /* Adjust margin as needed */
+}
+
+/* Styles for individual feature */
+.feature {
+    flex: 1;
+    padding: 20px;
+    background-color: #67bac0;
+    /* Background color same as contactContainer */
+    border-radius: 8px;
+    margin-right: 20px;
+    /* Adjust margin between features */
+}
+
+/* Ensure last feature doesn't have right margin */
+.feature:last-child {
+    margin-right: 0;
+}
+
+.feature h3 {
+    font-size: 20px;
+    color: white;
+    /* Font color */
+    margin-bottom: 10px;
+}
+
+.feature p {
+    font-size: 16px;
+    color: white;
+    /* Font color */
+}
+
 .AboutUs,
 .contactTitle {
     background-color: #df6b3f;
@@ -46,13 +83,15 @@
 }
 
 .AboutUsText {
-    font-weight: 200;
-    font-style: normal;
+    /*font-weight: 200;*/
+    /*font-style: normal;*/
+    font-size: 20px;
 }
 
 /*FAQ*/
 /* FAQ Container */
 .faqContainer {
+    position: relative; /* Add relative positioning to the container */
     max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
@@ -82,7 +121,7 @@
 /* FAQ Content */
 
 .faqContent {
-    border-top: 1px solid #ccc;
+    /*border-top: 1px solid #ccc;*/
     margin-left: 100px; 
     /* Adjust the value for desired positioning */
 }
@@ -90,7 +129,7 @@
 /* FAQ Question */
 .faqQuestion {
     padding: 10px;
-    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
     cursor: pointer;
     font-size: 30px;
 }
@@ -101,16 +140,25 @@
     /* Match the button color */
 }
 
+.arrow {
+    display: inline-block;
+    margin-left: 5px; /* Adjust as needed */
+    transition: transform 0.3s; /* Add transition for smooth animation */
+  }
+  
+  .opened .arrow {
+    transform: rotate(180deg); /* Rotate the arrow when the question is opened */
+  }
+
 /* Answer initially hidden */
 .answer {
-    display: none;
-}
-
-/* Answer shown on click */
-.showAnswer {
-    display: block;
-    color: #555;
-    font-size: 30px;
+    display: none; /* Initially hide the answer */
+    color: #ffffff;
+    font-size: 20px; /* Adjust the font size */
+    font-weight: normal; /* Adjust the font weight */
+    line-height: 1.5; /* Adjust the line height */
+    margin-top: 10px; /* Add some spacing above the answer */
+    margin-bottom: 10px; /* Add some spacing below the answer */
 }
 
 /*END OF FAQ*/
@@ -213,41 +261,4 @@
 
 .contactButton:hover {
     background-color: #b64519;
-}
-
-/* Styles for the new features section */
-.features {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 40px;
-    /* Adjust margin as needed */
-}
-
-/* Styles for individual feature */
-.feature {
-    flex: 1;
-    padding: 20px;
-    background-color: #67bac0;
-    /* Background color same as contactContainer */
-    border-radius: 8px;
-    margin-right: 20px;
-    /* Adjust margin between features */
-}
-
-/* Ensure last feature doesn't have right margin */
-.feature:last-child {
-    margin-right: 0;
-}
-
-.feature h3 {
-    font-size: 20px;
-    color: white;
-    /* Font color */
-    margin-bottom: 10px;
-}
-
-.feature p {
-    font-size: 16px;
-    color: white;
-    /* Font color */
 }
