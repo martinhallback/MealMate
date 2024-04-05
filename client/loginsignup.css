@@ -1,4 +1,4 @@
-/*login.css*/
+/*loginsignup.css*/
 .loginContainer {
     font-family: 'Brandon Grotesque Bold', 'Helvetica', sans-serif;
 }
@@ -8,7 +8,9 @@
     font-weight: 600;
 }
 
-.form-group label {
+.loginform-group label,
+.passwordform-group label,
+.signupform-group label {
     font-weight: bold;
 }
 
