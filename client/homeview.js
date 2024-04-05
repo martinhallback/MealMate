@@ -6,7 +6,6 @@ function homeview(){
     $('.container').append('<div class="adcontainer">' + '</div>');
     
     getAds(function(cardData){
-      console.log(cardData);
       if(cardData){
         $.each(cardData, function(index, card) {
           var cardHtml = createCard(index, card);
@@ -35,12 +34,13 @@ function createCard(index, card){
   var cardHtml = '<div class="card">' +
                           '<div class="card-body">' +
                               //'<img src="' + card.imgPath + '" class="card-img-top" alt="...">' +
-                              '<h5 class="card-title">' + card.title + '</h5>' +
+                              '<h5 class="card-title">' + card.dishName + '</h5>' +
                               '<p class="card-text">' + card.description + '</p>' +
-                              '<p>Price: ' + card.portionPrice + '</p>' +
+                              '<p>Price: ' + card.portionPrice + ' kr/pc</p>' +
                               '<button type="button" class="btn btn-primary buy-btn" data-toggle="modal" data-target="#myModal_' + index + '">Buy</button>' +
                           '</div>' +
                       '</div>';
+  return cardHtml;
 }
 function foodAdModal(card, index){
   var modalHtml = '<div class="modal fade" id="myModal_' + index + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
@@ -55,12 +55,12 @@ function foodAdModal(card, index){
       '<p>' + card.description + '</p>' +
       '<p>Cook Date: ' + card.cookDate + '</p>' +
       '<p>Quantity: ' + card.quantity + '</p>' +
-      '<p>Price: ' + card.portionPrice + '</p>' +
+      '<p>Price: ' + card.portionPrice + ' kr/pc</p>' +
       '<p>Seller: ' + card.sellerID + '</p>' +
       '</div>' +
       '<div class="modal-footer">' +
       '<button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>' +
-      '<button type="button" class="btn btn-primary add-to-cart-btn" onclick="addtocart('+ index +')">Add to Shopping Cart</button>' +
+      '<button type="button" class="btn btn-primary add-to-cart-btn" onclick="addtocart(\'' + card._id + '\', ' + index + ')">Add to Shopping Cart</button>' +
       '</div>' +
       '</div>' +
       '</div>' +
@@ -69,23 +69,40 @@ function foodAdModal(card, index){
   return modalHtml;
 }
 
-function addtocart(index){
+function addtocart(id, index){
   console.log("add to cart")
 
-  //ajax call for specific add?
-  var cartItems = JSON.parse(sessionStorage.getItem('cart')) || [];
-
-  var isCardInCart = cartItems.some(item => item === index);
-  if(!isCardInCart){
-    cartItems.push(index);
-    sessionStorage.setItem('cart', JSON.stringify(cartItems)); 
-  }
- 
+  getAd(id, function(ad){
+    if(ad){
+      var cartItems = JSON.parse(sessionStorage.getItem('cart')) || [];
+      var isCardInCart = cartItems.some(item => item._id === ad._id);
+      if(!isCardInCart){
+        cartItems.push(ad);
+        sessionStorage.setItem('cart', JSON.stringify(cartItems)); 
+      }
+    }
+  });
   $('#myModal_' + index).modal('hide');
 }
 
+host = window.location.protocol + '//' + location.host
+function getAd(id, callback){
+  $.ajax({
+    url: host + '/ad/' + id,
+    type: 'GET',
+    contentType: 'application/json',
+    success: function(response){
+      console.log("fetched a single ad");
+      callback(response)
+    },
+    error: function(JQxhr, status, error){
+      console.log(error);
+      callback(null)
+    }
+  });
+}
+
 function getAds(callback){
-  var host = window.location.protocol + '//' + location.host
   $.ajax({
     url: host + '/ads',
     type: 'GET',
