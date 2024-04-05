@@ -10,8 +10,8 @@ $(document).ready(function () {
     
   });
   $(".navbar-profile").click(function (e) {
-    console.log('Profile');
-    
+    $('.container').empty();
+    $(".container").load("profile.html .profileContainer", function () {});
   });
   
     $('li.nav-item a.nav-link, .navbar-brand.larger-text, .navbar-basket.ml-auto').click(function (e) {
@@ -39,9 +39,6 @@ $(document).ready(function () {
           loadLogInContent();
           break;
 
-        case 'My profile':
-          $('.container').empty();
-          $(".container").load("profile.html .profileContainer", function () {});
         default:
               
         case 'Log out':
