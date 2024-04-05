@@ -38,6 +38,12 @@ $(document).ready(function () {
         case 'Log in':
           loadLogInContent();
           break;
+
+        case 'My profile':
+          $('.container').empty();
+          $(".container").load("profile.html .profileContainer", function () {});
+        default:
+              
         case 'Log out':
           logOutUser();
           break;

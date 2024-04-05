@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="profile.css">
+</head>
+
+<body>
+    <div class="profileContainer">
+        <h1 style="text-align: center;">My Profile</h1>
+    
+    <nav class="profile-navbar">
+        <li><th>User rating: </th></li>
+        <li> <a href="">Ratingholder</a></li>
+    </nav>
+    
+    <nav class="profile-navbar">
+        <li><th>Address: </th></li>
+        <li> <a href="">AddressHolder</a></li>
+    </nav>
+
+    <h3 style="text-align: center;">Settings</h3>
+     <!-- Profile info-->
+
+     <nav class="profile-navbar">
+        <li><th>Name: </th></li>
+        <li> <a href="">Nameholder</a></li>
+    </nav>
+
+     <nav class="profile-navbar">
+        <li><th>Email:</th></li>
+        <li> <a href="">email@mealmate.com</a></li>
+     </nav>
+     
+     <nav class="profile-navbar">
+        <li><th>Password:</th></li>
+        <li> <a href="">PasswordHolder</a></li>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePassword-modal">
+            Change Password
+        </button>
+     </nav>
+
+     <nav class="profile-navbar">
+        <li><th>Phone number:</th></li>
+        <li> <a href="">PhoneNumberHolder</a></li>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changePhoneNumber-modal">
+            Change number
+        </button>
+     </nav>
+
+     <!-- Change password form -->
+     <div class="modal fade" id="changePassword-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Change your password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="logInform">
+                        <div class="form-group">
+                            <label for="password">New password:</label>
+                            <input type="password" class="form-control" id="newPassword" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Confirm password:</label>
+                            <input type="password" class="form-control" id="confirmPassword" name="password">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="logInBtn">Confirm</button>
+                </div>
+            </div>
+        </div>
+      </div> 
+     
+      <!-- Change phone number form -->
+      <div class="modal fade" id="changePhoneNumber-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Change your phonenumber</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="logInform">
+                        <div class="form-group">
+                            <label for="password">New Phonenumber</label>
+                            <input type="text" class="form-control" id="newEmail" name="email">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="logInBtn">Confirm</button>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
