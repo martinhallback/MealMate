@@ -21,10 +21,13 @@ class Advertisement(object):
         obj = self.__dict__
         obj['_id'] = str(self._id)
         obj['sellerID'] = str(self.sellerID)
-        for prot in obj['protein']:
-            prot = str(prot)
-        for aller in obj['allergy']:
-            aller = str(aller)
+        if 'protein' in obj:
+            for i in range(0,len(obj['protein'])):
+                obj['protein'][i] = str(obj['protein'][i])
+        if 'allergy' in obj:
+            for i in range(0,len(obj['allergy'])):
+                obj['allergy'][i] = str(obj['allergy'][i])
+        print("Done with serialisations of: ", obj['dishName'])
         return self.remove_nulls(obj)
         
     def serialise_db(self):
