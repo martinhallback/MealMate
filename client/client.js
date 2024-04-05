@@ -14,11 +14,11 @@ $(document).ready(function () {
     $(".container").load("profile.html .profileContainer", function () {});
   });
   
-    $('li.nav-item a.nav-link, .navbar-brand.larger-text, .navbar-basket.ml-auto').click(function (e) {
+    $('li.nav-item a.nav-link, .navbar-brand.larger-text, .navbar-basket.ml-auto, .links').click(function (e) {
       e.preventDefault();
       var linkText = $(this).text();
       switch (linkText) {
-        case 'MealMate':
+        case 'MealMate'	|| 'Lunchboxes':
           console.log('Hemknapp');
           homeview();
           break;
