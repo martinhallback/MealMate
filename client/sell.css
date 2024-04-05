@@ -122,12 +122,6 @@
     /* Make titles bold */
 }
 
-#sellForm label {
-    font-weight: 600px;
-    /* Make labels bold */
-}
-
-
 /* Adjusting inputs and the submit button to match */
 input[class="sellinput"],
 textarea[class="sellinput"] {
@@ -202,24 +196,29 @@ button[id="submitCreateAd"]:hover {
 }
 
 .allergens-list {
-    display: none; /* Initially hide the allergens list */
-    position: absolute; /* Position the list relative to the input field */
+    /*display: flex;*/
+    flex-wrap: wrap;
+    /*position: absolute; /* Position the list relative to the input field */
     background-color: #fff; /* Background color */
-    border: 1px solid #ccc; /* Border */
+    /*border: 1px solid #ccc; /* Border */
     border-radius: 4px; /* Rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
     z-index: 1; /* Ensure the list appears above other elements */
-    width: 100%; /* Make the width equal to the input field width minus padding and border */
+    /*width: 100%; /* Make the width equal to the input field width minus padding and border */
     max-height: 200px; /* Limit the maximum height of the list */
-    overflow-y: auto; /* Enable vertical scrolling if needed */
+    /*overflow-y: auto; /* Enable vertical scrolling if needed */
     margin-top: 8px; /* Adjust the top margin to position it below the input field */
+    margin-bottom: 8px;
+    max-height: min-content;
+    font-weight:200;
 }
 
 .allergen-item {
     padding: 8px 12px; /* Padding for each allergen item */
     cursor: pointer; /* Show pointer cursor on hover */
-    width: 100%; /* Make the allergen item occupy full width */
-    box-sizing: border-box; /* Include padding and border in the element's total width */
+    /*width: 100%; /* Make the allergen item occupy full width */
+    /*box-sizing: border-box; /* Include padding and border in the element's total width */
+    font-weight:200;
 }
 
 .allergen-item:hover {
@@ -234,3 +233,49 @@ button[id="submitCreateAd"]:hover {
     width: calc(100% - 24px); /* Make the width equal to the input field width minus padding and border */
     box-sizing: border-box; /* Include padding and border in the element's total width */
 }
+  
+  /* Customize the label for the checkbox */
+  label.checkbox {
+    position: relative;
+    padding-left: 30px; /* Add space for the custom checkmark */
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 20px; /* Add some spacing between checkboxes */
+  }
+  
+  /* Create the custom checkmark */
+  label.checkbox::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 4px;
+  }
+  
+  /* Change the background color of the checkmark when checked */
+  input[type="checkbox"]:checked + label.checkbox::before {
+    background-color: #006267; /* Funkar ej */
+  }
+  
+  /* Create the checkmark inside the custom checkbox */
+  label.checkbox::after {
+    content: '\2713'; /* Unicode checkmark character */
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    color: #fff; /* Text color */
+    display: none;
+  }
+  
+  /* Show the checkmark when the checkbox is checked */
+  input[type="checkbox"]:checked + label.checkbox::after {
+    display: block;
+  }
+
+  .AllergenContainer {
+    font-weight: 200;
+  }

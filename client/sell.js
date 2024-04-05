@@ -43,58 +43,6 @@ $(document).on('click', '#faqBtn', function() {
     $(".container").load("contact.html .contactContainer", function () {});
 });
 
-//function showAllergensList() {
-    //var allergens = ["Gluten", "Dairy", "Nuts", "Soy", "Shellfish"];
-    //var list = document.getElementById("allergensList");
-    //list.innerHTML = ""; // Clear previous list
-
-    // Create list items for each allergen
-    //allergens.forEach(function(allergen) {
-        //var listItem = document.createElement("div");
-        //listItem.textContent = allergen;
-        //listItem.classList.add("allergen-item");
-        //listItem.onclick = function() {
-            //addAllergen(allergen);
-        //};
-        //list.appendChild(listItem);
-    //});
-
-    // Show the allergens list
-    //list.style.display = "block";
-//}
-
-// Function to show the allergens list when the input field is clicked
-function showAllergensList() {
-    var allergens = ["Gluten", "Dairy", "Nuts", "Soy", "Shellfish", "Fish", "Peanuts"];
-    var inputWidth = $('#lunchboxAllergens').outerWidth(); // Get the width of the input field
-    $('.allergens-list').css('width', inputWidth + 'px'); // Set the width of the allergens list equal to the input field width
-    $('.allergens-list').empty(); // Clear previous list
-    // Append allergens to the list
-    allergens.forEach(function(allergen) {
-        $('.allergens-list').append('<div class="allergen-item">' + allergen + '</div>');
-    });
-    $('.allergens-list').show(); // Show the allergens list
-}
-
-// Function to add an allergen when clicked and remove it from the list
-$(document).on('click', '.allergen-item', function() {
-    var allergen = $(this).text(); // Get the text of the clicked allergen
-    $('#selectedAllergens').append('<div class="selected-allergen">' + allergen + '</div>'); // Add the allergen below the allergen title
-    $(this).remove(); // Remove the clicked allergen from the list
-});
-
-// Hide the allergens list when clicking outside of it
-$(document).on('click', function(event) {
-    if (!$(event.target).closest('.sellinput').length && !$(event.target).closest('.allergens-list').length) {
-        hideAllergensList();
-    }
-});
-
-function hideAllergensList() {
-    $('.allergens-list').hide();
-}
-
-
 document.addEventListener('DOMContentLoaded', function () {
     // Execute code when the document is fully loaded
     // Additional logic can be added here if needed
