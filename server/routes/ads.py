@@ -14,8 +14,10 @@ bp = Blueprint('ads', __name__)
 def ads():
     # data = request.get_json() #For other requests than get
     if request.method == 'GET':
+        data = request.get_json()
+        maxPrice = data.get('portionPrice')
         ads = db['advertisement']
-        cursor = ads.find({})
+        cursor = ads.find({"portionPrice": {"$lte": maxPrice}})
         if cursor is None:
             return jsonify({'error': "Database collection could not be accessed ", 'errorCode' : 31}), 503
         query = list(cursor)
