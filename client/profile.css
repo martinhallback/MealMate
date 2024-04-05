@@ -1,0 +1,26 @@
+/* profile.css */
+
+.profile-navbar {
+    margin-right: 200px;
+    margin-left: 200px;
+    overflow: hidden; 
+    display: flex; 
+    align-items: center; 
+    padding-left: 0px;
+}
+
+.profile-navbar li{
+   list-style-type: none;
+   margin-bottom: 30px;
+   margin-right: 10px;
+   float: left;
+}
+
+.profile-navbar th {
+    float: left;
+}
+
+.profile-navbar button {
+    margin-left: auto; 
+    margin-bottom: 30px;
+}
