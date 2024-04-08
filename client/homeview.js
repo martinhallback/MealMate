@@ -4,9 +4,9 @@ function homeview(){
     $('.container').empty();
     $('.container').append('<h2 class="foodNearMe">Food near me</h2>');
     $('.container').append('<div class="adcontainer">' + '</div>');
-
-    $('#content-container').append('<h2 class="foodNearMe">Food near me</h2>');
-    $('#content-container').append('<div class="adcontainer"></div>');
+    
+    $('.container').append('<div id="filter-container" class="filter-container"></div>'); 
+    $('.container').append('<div id="content-container" class="content-container"></div>');
 
     // Load the filter HTML into #filter-container
    $('#filter-container').load('filter.html', function() {
