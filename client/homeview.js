@@ -1,8 +1,23 @@
 function homeview(){
   console.log("homeview")
+   // $('.container').empty();
+  //  $('.container').append('<h2 class="foodNearMe">Food near me</h2>');
+  //  $('.container').append('<div class="adcontainer">' + '</div>');
+
+    console.log("homeview");
     $('.container').empty();
-    $('.container').append('<h2 class="foodNearMe">Food near me</h2>');
-    $('.container').append('<div class="adcontainer">' + '</div>');
+    $('.container').append('<div id="filter-container" class="filter-container"></div>'); 
+    $('.container').append('<div id="content-container" class="content-container"></div>');
+
+    $('#content-container').append('<h2 class="foodNearMe">Food near me</h2>');
+    $('#content-container').append('<div class="adcontainer"></div>');
+
+    // Load the filter HTML into #filter-container
+   $('#filter-container').load('filter.html', function() {
+       console.log('Filter content loaded successfully.');
+        // Optionally, initialize any JavaScript needed for the filter after it's loaded
+    });
+
   
     var cardData = [ // remove when list from backend is finished
       { 
@@ -38,9 +53,41 @@ function homeview(){
           reviews: '1'
         }
       },
+      { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'last card',
+        text: 'Some quick example text for last card',
+        extraInfo: 'Some extra info for last card',
+        seller: {
+          name: 'Seller 2',
+          rating: '3',
+          reviews: '1'
+        }
+      },
+      { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'last card',
+        text: 'Some quick example text for last card',
+        extraInfo: 'Some extra info for last card',
+        seller: {
+          name: 'Seller 1',
+          rating: '4',
+          reviews: '1'
+        }
+      },
+      { 
+        imgSrc: 'Images/TestFoodImage.jpg',
+        title: 'last card',
+        text: 'Some quick example text for last card',
+        extraInfo: 'Some extra info for last card',
+        seller: {
+          name: 'Seller 1',
+          rating: '5',
+          reviews: '2'
+        }
+      },
       
     ];
-    
     $.each(cardData, function(index, card) {
       var cardHtml = '<div class="card">' +
                           '<div class="card-body">' +
@@ -56,6 +103,7 @@ function homeview(){
       $('.container').append(modal);
         
     });
+
     $('.container').on('click', '.buy-btn', function() {
         var modalIndex = $(this).data('target').split('_')[1];
         $('#myModal_' + modalIndex).modal('show');
