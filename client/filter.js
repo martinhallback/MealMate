@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
     $('#RectangularFilterContainer').hide();
     $('#PillFilterContainer').hide();
     var isRectangularVisible = false;
