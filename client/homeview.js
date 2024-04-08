@@ -8,7 +8,6 @@ function homeview(){
     $('.container').append('<div id="filter-container" class="filter-container"></div>'); 
     $('.container').append('<div id="content-container" class="content-container"></div>');
 
-    // Load the filter HTML into #filter-container
    $('#filter-container').load('filter.html', function() {
        console.log('Filter content loaded successfully.');
         // Optionally, initialize any JavaScript needed for the filter after it's loaded

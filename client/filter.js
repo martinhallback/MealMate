@@ -1,10 +1,25 @@
 $(document).ready(function(){
+
     $('#RectangularFilterContainer').hide();
     $('#PillFilterContainer').hide();
     var isRectangularVisible = false;
     var isAnimating = false;
    // var isDropdownVisible = false;
-    
+
+    $.ajax({
+        url: '/allergies', // Adjust the URL based on your application's routing
+        type: 'GET',
+        success: function(allergies) {
+            allergies.forEach(function(allergy) {
+                // Assuming 'type' is the property that holds the name of the allergy
+                var checkbox = $('<label><input type="checkbox" name="' + allergy._id  + '" value="' + allergy.type  + '" data-type="allergyType"> ' + allergy.type + '</label><br>');
+                $('#optionsForm').append(checkbox);
+            });
+        },
+        error: function(error) {
+            console.error("Error fetching allergies: ", error);
+        }
+    });
     
     $('#CicularFilterContainer').mouseenter(function() {
         if (isAnimating) return; 
@@ -91,16 +106,6 @@ $('#closeX').click(function() {
     });
 });
 
-
-
-
-//function toggleDropdown() {
-//    var dropdown = document.getElementById("dropdown");
-//    dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
- // }
-  
-
-
 priceRange.addEventListener('input', function() {
     const value = this.value;
     if (value < 100) {
@@ -110,3 +115,32 @@ priceRange.addEventListener('input', function() {
     }
     
 });
+
+function applyFilters() {
+    const selectedOptions = {
+        dietaryPreferences: [],
+        allergies: [], // Assuming you'll later populate this dynamically
+        maxPrice: document.getElementById('priceRange').value // Get the value of the price range
+    };
+
+    // Get all checkbox inputs
+    const dietPref_checkboxes = document.querySelectorAll('input[type="checkbox"][data-type="dietPref"]');
+    const allergyType_checkboxes = document.querySelectorAll('input[type="checkbox"][data-type="allergyType"]');
+
+    // Iterate over each checkbox to see if it's checked
+    dietPref_checkboxes.forEach(dietPref_checkbox => {
+        if (dietPref_checkbox.checked) {
+            selectedOptions.dietaryPreferences.push(checkbox.name); // Add the name of the checkbox to the array
+        }
+    });
+
+    allergyType_checkboxes.forEach(allergyType_checkbox => {
+        if (allergyType_checkbox.checked) {
+            selectedOptions.allergies.push(checkbox.name); // Add the name of the checkbox to the array
+        }
+    });
+
+    // Log the selected options to the console
+    console.log(selectedOptions);
+    alert(selectedOptions);
+}

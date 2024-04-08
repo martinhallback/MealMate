@@ -29,11 +29,11 @@
 
         <div id="FilterOptions" class="filter-options">
             <label class="DietPref"> Dietery preference </label>
-            <label><input type="checkbox" name="filter1"> Pescitarian</label>
+            <label><input type="checkbox" name="Pescitarian" data-type="dietPref"> Pescitarian</label>
             <br>
-            <label><input type="checkbox" name="filter2"> Vegetarian </label>
+            <label><input type="checkbox" name="Vegetarian" data-type="dietPref"> Vegetarian </label>
             <br>
-            <label><input type="checkbox" name="filter3"> Vegan</label>
+            <label><input type="checkbox" name="Vegan" data-type="dietPref"> Vegan</label>
             <br>
             <div class="dropdown" id="allergiedropdown">
                 <div class="select-box", id="select-box"> ↓ Select allergies  </div>
@@ -41,19 +41,7 @@
                   <!--<span class="close-btn", id="closeX">X</span> -->
                   <div class="scrollable-content">
                     <form id="optionsForm">
-                    <label><input type="checkbox" name="option" value="Gluten"> Gluten</label>
-                    <br>
-                    <label><input type="checkbox" name="option" value="Peanuts"> Peanuts</label>
-                    <br>
-                    <label><input type="checkbox" name="option" value="Pork"> Pork</label>
-                    <br>
-                    <label><input type="checkbox" name="option" value="Mustard"> Mustard</label>
-                    <br>
-                    <label><input type="checkbox" name="option" value="Lactose"> Lactose</label>
-                    <br>
-                    <label><input type="checkbox" name="option" value="Potatoes"> Potatoes</label>
-                    <br>
-                    <label><input type="checkbox" name="option" value="Apples"> Apples</label>
+                   <!-- This is filled dynamic -->
                   </form>
                 </div>
                 <span class="close-btn", id="closeX">X</span>
@@ -62,9 +50,9 @@
             <label for="priceRange", class="priceRangeTitle" >Max price:  <span id="priceValue">50 kr</span></label>
             <input type="range" id="priceRange" class="priceRange" name="priceRange" min="0" max="100" value="50">
             <br>
-            <button class="apply-button">Apply</button>
+            <button class="apply-button" onclick="applyFilters()">Apply</button>
         </div>
-    </div>
+    </div> 
 
      <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
