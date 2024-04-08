@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $("#footer").load("footer.html .footer");
+  loadFooter();
   homeview();
  
   $(window).scrollTop(0);
@@ -10,42 +10,63 @@ $(document).ready(function () {
     
   });
   $(".navbar-profile").click(function (e) {
-    $('.container').empty();
-    $(".container").load("profile.html .profileContainer", function () {});
+    loadMyProfile();
   });
   
-    $('li.nav-item a.nav-link, .navbar-brand.larger-text, .navbar-basket.ml-auto, .links').click(function (e) {
+    $('li.nav-item a.nav-link, .navbar-brand.larger-text, .navbar-basket.ml-auto').click(function (e) {
       e.preventDefault();
       var linkText = $(this).text();
-      switch (linkText) {
-        case 'MealMate'	|| 'Lunchboxes':
-          console.log('Hemknapp');
-          homeview();
-          break;
-        case 'Sell':
-          sellview();    
-          break;
-
-        case 'Contact':
-          $('.container').empty();
-          $(".container").load("contact.html .contactContainer", function () {});
-            break;
-            
-        case 'Sign up':
-            loadSignUpContent();
-            break;
-
-        case 'Log in':
-          loadLogInContent();
-          break;
-
-        default:
-              
-        case 'Log out':
-          logOutUser();
-          break;
-      }
-  
-    });
-    
+      handleNavigationLinks(linkText);
+    });    
 });
+
+function loadFooter(){
+  $("#footer").load("footer.html .footer", function(){
+    $('#footer').on('click', 'a', function (e) {
+      e.preventDefault();
+      var linkText = $(this).text();
+      handleNavigationLinks(linkText);
+    });
+  }); 
+
+}
+
+function handleNavigationLinks(linkText){
+  switch (linkText) {
+    case 'MealMate':
+    case 'Lunchboxes':
+      console.log('Hemknapp');
+      homeview();
+      break;
+    case 'Sell':
+    case 'Sell Lunchboxes':
+      sellview();    
+      break;
+
+    case 'About Us':
+      $('.container').empty();
+      $(".container").load("contact.html .contactContainer", function () {});
+        break;
+        
+    case 'Sign up':
+        loadSignUpContent();
+        break;
+
+    case 'Log in':
+      loadLogInContent();
+      break;
+          
+    case 'Log out':
+      logOutUser();
+      break;
+    case 'My Profile':
+      loadMyProfile();
+      break;
+  }
+
+}
+
+function loadMyProfile(){
+  $('.container').empty();
+  $(".container").load("profile.html .profileContainer", function () {});
+}
