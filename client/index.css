@@ -20,9 +20,10 @@ body{
 }
 
 
-.card {
+.cardAD {
     width: 30%; 
     margin-bottom: 20px;
+    border: 1px solid black;
 }
 
 #footer {

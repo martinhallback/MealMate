@@ -33,7 +33,7 @@ getAds(function(cardData){
 function handleclicks(){
   $('.container').on('click', '.buy-btn', function() {
     var modalIndex = $(this).data('target').split('_')[1];
-    $('#myModal_' + modalIndex).modal('show');
+    $('#foodadmodal_' + modalIndex).modal('show');
   });
   $('.container').on('click', '.close-btn', function() {
     $(this).closest('.modal').modal('hide');
@@ -44,11 +44,11 @@ function handleclicks(){
 }
 
 function createCard(index, card){
-var cardHtml = '<div class="card">' +
+var cardHtml = '<div class="cardAD">' +
                         '<div class="card-body">' +
                             //'<img src="' + card.imgPath + '" class="card-img-top" alt="...">' +
-                            '<h5 class="card-title">' + card.dishName + '</h5>' +
-                            '<p class="card-text">' + card.description + '</p>' +
+                            '<h5 class="ADcard-title">' + card.dishName + '</h5>' +
+                            '<p class="ADcard-text">' + card.description + '</p>' +
                             '<p>Price: ' + card.portionPrice + ' kr/pc</p>' +
                             '<button type="button" class="btn btn-primary buy-btn" data-toggle="modal" data-target="#myModal_' + index + '">Buy</button>' +
                         '</div>' +
@@ -56,12 +56,12 @@ var cardHtml = '<div class="card">' +
 return cardHtml;
 }
 function foodAdModal(card, index, seller){
-  var modalHtml = '<div class="modal fade" id="myModal_' + index + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
+  var modalHtml = '<div class="modal fade" id="foodadmodal_' + index + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
       '<div class="modal-dialog">' +
       '<div class="modal-content">' +
       '<div class="modal-header">' +
       '<h5 class="modal-title" id="exampleModalLabel">' + card.dishName + '</h5>' +
-      '<button type="button" class="close-btn" data-bs-dismiss="modal" aria-label="Close"></button>' +
+      '<button type="adbutton" class="close-btn" data-bs-dismiss="modal" aria-label="Close"></button>' +
       '</div>' +
       '<div class="modal-body">' +
       //'<img src="' + card.imagePath + '" class="modal-img" alt="Food Image">' +
@@ -72,8 +72,8 @@ function foodAdModal(card, index, seller){
       '<p>Seller: ' + seller.name + '</p>' +
       '</div>' +
       '<div class="modal-footer">' +
-      '<button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>' +
-      '<button type="button" class="btn btn-primary add-to-cart-btn" onclick="addtocart(\'' + card._id + '\', ' + index + ')">Add to Shopping Cart</button>' +
+      '<button type="adbutton" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>' +
+      '<button type="adbutton" class="btn btn-primary add-to-cart-btn" onclick="addtocart(\'' + card._id + '\', ' + index + ')">Add to Shopping Cart</button>' +
       '</div>' +
       '</div>' +
       '</div>' +
@@ -83,19 +83,19 @@ function foodAdModal(card, index, seller){
 }
 
 function addtocart(id, index){
-console.log("add to cart")
+  console.log("add to cart")
 
-getAd(id, function(ad){
-  if(ad){
-    var cartItems = JSON.parse(sessionStorage.getItem('cart')) || [];
-    var isCardInCart = cartItems.some(item => item._id === ad._id);
-    if(!isCardInCart){
-      cartItems.push(ad);
-      sessionStorage.setItem('cart', JSON.stringify(cartItems)); 
+  getAd(id, function(ad){
+    if(ad){
+      var cartItems = JSON.parse(sessionStorage.getItem('cart')) || [];
+      var isCardInCart = cartItems.some(item => item._id === ad._id);
+      if(!isCardInCart){
+        cartItems.push(ad);
+        sessionStorage.setItem('cart', JSON.stringify(cartItems)); 
+      }
     }
-  }
-});
-$('#myModal_' + index).modal('hide');
+  });
+  $('#foodadmodal_' + index).modal('hide');
 }
 
 
