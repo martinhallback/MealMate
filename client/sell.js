@@ -30,8 +30,3 @@ function showSellForm() {
         }
     });
 }
-    
-    document.addEventListener('DOMContentLoaded', function () {
-        // Execute code when the document is fully loaded
-        // Additional logic can be added here if needed
-    });
