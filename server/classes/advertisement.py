@@ -1,4 +1,5 @@
 from bson import ObjectId
+from datetime import datetime
 
 class Advertisement(object):
     
@@ -30,9 +31,10 @@ class Advertisement(object):
             for i in range(0,len(obj['allergy'])):
                 obj['allergy'][i] = str(obj['allergy'][i])
         print("Done with serialisations of: ", obj['dishName'])
+
         return self.remove_nulls(obj)
 
-    def set_seller_info(self, seller_id):
+    def set_seller_id(self, seller_id):
         self.sellerID = seller_id
 
     def unserialise_from_client(self):
@@ -43,6 +45,7 @@ class Advertisement(object):
             self.protein[i] = ObjectId(self.protein[i])
         for i in range(len(self.allergy)):
             self.allergy[i] = ObjectId(self.allergy[i])
+        self.cookDate=datetime.fromisoformat(self.cookDate)
 
     def serialise_db(self):
         obj = self.__dict__

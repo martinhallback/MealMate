@@ -52,9 +52,9 @@ def post_ads():
             return jsonify({'error' : "advert is invalid"}), 401
         #Rework ad object.
         advert.unserialise_from_client()
-        advert.set_seller_info(usr)    
+        advert.set_seller_id(usr._id)    
 
         ads = db['advertisement']
-        ads.insertOne(advert.serialise_db())
+        ads.insert_one(advert.serialise_db())
         return jsonify({'success' : "Your advertisement has been published"}), 200
     return jsonify({'error' : "functionality not yet implemented", 'errorCode' : 0}), 401
