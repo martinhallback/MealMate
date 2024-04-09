@@ -1,12 +1,13 @@
 from main import bcrypt
+from bson import ObjectId
 
 class User(object):
 
     _id = None
     email = None
     pwHash = None
-    fullName = None
-    phone_number = None
+    name = None
+    phoneNumber = None
     PNumber = None
     isVerified = None
     university = None
@@ -19,6 +20,16 @@ class User(object):
         for k,v in inDict.items():
             self.__setattr__(k,v)
 
+    def set_all_attributes(self, inDict):
+        attributes_to_remove = ['_id', 'email', 'pwHash', 'isVerified', 'isAdmin']
+        for item in inDict:
+            if item in attributes_to_remove:
+                inDict.pop(item)
+        if 'password' in inDict:
+            self.set_password((inDict['password']))
+            inDict.pop('password')
+        for k,v in inDict.items():
+            self.__setattr__(k,v)
 
     def set_password(self, password):
         self.pwHash = bcrypt.generate_password_hash(password).decode('utf8')
@@ -32,7 +43,14 @@ class User(object):
     def serialise_client(self):
         obj = self.__dict__
         obj['_id'] = str(self._id)
+        if self.location is not None:
+            obj['location'] = str(self.location)
         return self.remove_nulls(obj)
+    
+    def unserialise_from_client(self):
+        self._id = ObjectId(self._id)
+        if self.location is not None:
+            self.location = ObjectId(self.location)
         
     def serialise_db(self):
         obj = self.__dict__
