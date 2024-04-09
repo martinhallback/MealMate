@@ -36,8 +36,6 @@ function getAds(callback){
 
 //GET a single user based on userID
 function getUser(userID, callback){
-  console.log("get seller: " + userID)
-  console.log(host+ "/user/" + userID )
   $.ajax({
     url: host + '/user/' + userID,
     type: 'GET',
@@ -97,7 +95,7 @@ function postSignUp(email, name, password, phoneNumber, university, studentID, c
     url: host + '/sign-up',
     type: 'POST',
     contentType: 'application/json',
-       data: JSON.stringify({
+    data: JSON.stringify({
         email: email,
         name : name,
         password : password,
@@ -114,4 +112,42 @@ function postSignUp(email, name, password, phoneNumber, university, studentID, c
       callback(false)
     },
   });
+}
+
+function postAd(userID, dishName, cookDate, imagePath, description, quantity, portionPrice, protein, allergy, callback){
+  getUser(userID, function(user){
+    if(user){
+      $.ajax({
+        url: host + '/ad',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            user: {
+              _id : user._id,
+              email : user.email,
+              isVerified : user.isVerified
+            },
+            ad : {
+              dishName: dishName,
+              cookDate: cookDate,
+              imagePath: imagePath, //image ej implementerat än?
+              description: description,
+              quantity: quantity,
+              portionPrice: portionPrice,
+              protein: protein,
+              allergy: allergy
+            },
+        }),
+        success: function() {
+          console.log('sucessfully posted an ad');
+          callback(true)
+        },
+        error: function(JQxhr, status, error){
+          console.log('Error when posting ad: ' + error)
+          callback(false)
+        },
+      });
+    }
+  });
+  
 }
