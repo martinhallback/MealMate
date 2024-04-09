@@ -6,7 +6,9 @@
     font-family: 'Titillium Web', sans-serif;
     background-color: #67bac0;
     font-weight: normal;
-    padding-bottom: 20px; 
+    padding-bottom: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
     /* Ensure there's space below the container */
 }
 
@@ -28,8 +30,6 @@
     /* Ensure image behaves as a block element */
     margin: 0 auto;
     /* Center the image horizontally */
-    margin-bottom: 20px;
-    /* Adjust as needed */
 
 }
 
@@ -50,27 +50,114 @@
     font-style: normal;
 }
 
+/*FAQ*/
+/* FAQ Container */
+.faqContainer {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    /* Vertically center items */
+    text-align: center;
+    /* Added property for horizontal centering */
+    margin-bottom: 20px;
+}
+
+/* FAQ Header */
+.faqHeader h2 {
+    text-align: center;
+    font-size: 120px;
+    color: #df6b3f;
+    /* Match the button color */
+    font-weight: bold;
+    align-items: center;
+    /* Vertically center items */
+    justify-content: center;
+    /* Horizontally center items */
+    margin-bottom: 20px;
+    /* Increase spacing between FAQ text and FAQs */
+}
+
+/* FAQ Content */
+
+.faqContent {
+    border-top: 1px solid #ccc;
+    margin-left: 100px; 
+    /* Adjust the value for desired positioning */
+}
+
+/* FAQ Question */
+.faqQuestion {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.faqQuestion h3 {
+    margin-bottom: 10px;
+    color: #ffffff;
+    /* Match the button color */
+}
+
+/* Answer initially hidden */
+.answer {
+    display: none;
+}
+
+/* Answer shown on click */
+.showAnswer {
+    display: block;
+    color: #555;
+    font-size: 30px;
+}
+
+/*END OF FAQ*/
+
+.ContactUs {
+    background-color: #df6b3f;
+    max-width: 400px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+    /* Center align the text */
+    border-radius: 8px;
+    /* Add rounded corners */
+    margin-bottom: 30px;
+}
+
+.contact-form-container {
+    display: flex;
+    /*justify-content: flex-start;*/
+    margin-top: 5px;
+}
+
 #contact-info {
-    margin: 20px auto;
+    margin: 10px auto;
     border-collapse: collapse;
     font-size: 20px;
+    max-width: 500px;
+    /* Adjust width as needed */
 }
 
 #contact-info th,
 #contact-info td {
-    padding: 10px;
+    padding: 2px;
     border-bottom: 1px solid #ccc;
+    text-align: center;
+    /* Align text left */
 }
 
-.contactFormTitle {
+/*.contactFormTitle {
     background-color: #df6b3f;
     padding: 10px;
     border-radius: 4px;
-}
+}*/
 
 #contactForm {
     text-align: left;
-    max-width: 700px;
+    max-width: 500px;
     /* Limit the maximum width of the form */
     margin: 0 auto;
     /* Center the form horizontally */
@@ -82,8 +169,10 @@
     /* Add rounded corners */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     /* Add shadow for depth */
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
     /* Add bottom margin to create space below the form */
+    margin-right: 20px;
+    /* Add space between contact form and contact info */
 }
 
 .contactInput {
@@ -124,4 +213,41 @@
 
 .contactButton:hover {
     background-color: #b64519;
+}
+
+/* Styles for the new features section */
+.features {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    /* Adjust margin as needed */
+}
+
+/* Styles for individual feature */
+.feature {
+    flex: 1;
+    padding: 20px;
+    background-color: #67bac0;
+    /* Background color same as contactContainer */
+    border-radius: 8px;
+    margin-right: 20px;
+    /* Adjust margin between features */
+}
+
+/* Ensure last feature doesn't have right margin */
+.feature:last-child {
+    margin-right: 0;
+}
+
+.feature h3 {
+    font-size: 20px;
+    color: white;
+    /* Font color */
+    margin-bottom: 10px;
+}
+
+.feature p {
+    font-size: 16px;
+    color: white;
+    /* Font color */
 }

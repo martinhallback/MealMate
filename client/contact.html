@@ -1,66 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-
+  <head>
+    <title>Test FAQ</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>  <script src="contact.js"></script>  </head>
 <body>
   <div class="contactContainer">
     <div class="about-us">
       <img src="Images/aboutus.jpg" alt="About Us Image">
-      <p>"We wish to revolutionise student dining by creating a community where every meal is an opportunity for
-        affordable indulgence, culinary exploration, and shared sustainability."</p>
+      <div class="features">
+        <div class="feature">
+          <h3>Lunchboxes with Varied Cuisine and Cooking</h3>
+          <p>Explore diverse cuisines and cooking styles with our lunchboxes. From traditional dishes to fusion flavors,
+            we offer a wide range of options to satisfy your palate and culinary curiosity.</p>
+        </div>
+        <div class="feature">
+          <h3>Flexible Pick-Up Times</h3>
+          <p>Choose from flexible pick-up times that fit your schedule. Whether you need your lunchboxes ready in the
+            morning, afternoon, or evening, we're here to accommodate your needs.</p>
+        </div>
+        <div class="feature">
+          <h3>Expert Customer Support</h3>
+          <p>Our dedicated customer support team is here to assist you every step of the way. Have questions about menu
+            customization, delivery logistics, or special requests? We're just a call or message away.</p>
+        </div>
+      </div>
       <h2 class="AboutUs">About us</h2>
       <p> </p>
-      <div class="AboutUsText"><p>Students are looking for both affordable and nutritious food that is quick to prepare. With our offering,
-        students have the opportunity to choose from different dishes at low prices that can be acquired swiftly.
-        This promotes both students who feel they cook a little too much food for themselves, seeking an extra source
-        of income and those who think they do not have time to cook their own. The vision for this idea is to increase
-        the living standards of the student by making their daily life more efficient.</p></div>
+      <div class="AboutUsText">
+        <p>Students are looking for both affordable and nutritious food that is quick to prepare. With our offering,
+          students have the opportunity to choose from different dishes at low prices that can be acquired swiftly.
+          This promotes both students who feel they cook a little too much food for themselves, seeking an extra source
+          of income and those who think they do not have time to cook their own. The vision for this idea is to increase
+          the living standards of the student by making their daily life more efficient.</p>
+      </div>
     </div>
-    <h2 class="contactTitle">Contact Info</h2>
-    <table id="contact-info">
-      <tr>
-        <th colspan="2">
-          <h3>MealMate</h3>
-        </th>
-      </tr>
-      <tr>
-        <td>E-mail:</td>
-        <td>MealMate@gmail.se</td>
-      </tr>
-      <tr>
-        <td>Phone number:</td>
-        <td>070-90 00 000</td>
-      </tr>
-      <tr>
-        <td>Address:</td>
-        <td>Diplomatgatan 1 Linköping</td>
-      </tr>
-    </table>
+    <!-- FAQ Container -->
+    <div class="faqContainer">
+      <!-- FAQ Header -->
+      <div class="faqHeader">
+        <h2>FAQ</h2>
+      </div>
+      <!-- FAQ Content -->
+      <div class="faqContent">
+        <!-- FAQ Question and Answer -->
+        <div class="faqQuestion">
+          <h3>How does pricing work?</h3>
+          <p class="answer">Pricing for our lunchboxes is based on the selected options and any additional
+            customizations. Our menu offers a variety of options at different price points to suit your budget.</p>
+        </div>
+        <div class="faqQuestion">
+          <h3>How does pick-up work?</h3>
+          <p class="answer">Pick-up for our lunchboxes is flexible and convenient. Once you place your order, you can
+            select a preferred pick-up time from our available slots. Simply visit our location at your chosen time to
+            collect your freshly prepared meal.</p>
+        </div>
+        <div class="faqQuestion">
+          <h3>Are your lunchboxes safe for individuals with allergies?</h3>
+          <p class="answer">We take food safety seriously and strive to accommodate various dietary needs. Our
+            lunchboxes are prepared in a controlled environment, and we take measures to prevent cross-contamination.
+            However, please inform us of any allergies or dietary restrictions when placing your order so we can take
+            appropriate precautions.</p>
+        </div>
+        <div class="faqQuestion">
+          <h3>What measures do you take to ensure food safety?</h3>
+          <p class="answer">Food safety is our top priority. Our users follows strict hygiene practices, including
+            regular handwashing and sanitization of cooking surfaces and utensils. We also monitor food temperatures to
+            ensure proper storage and minimize the risk of foodborne illnesses.</p>
+        </div>
+        <div class="faqQuestion">
+          <h3>Can I customize my lunchbox to suit my dietary preferences?</h3>
+          <p class="answer">Yes, we offer customization options to accommodate various dietary preferences and
+            restrictions. Whether you're vegetarian, vegan, gluten-free, or have other dietary needs, we can tailor your
+            lunchbox to meet your requirements. Simply inform us of your preferences when placing your order.</p>
+        </div>
+      </div>
+    </div>
+    <h2 class="ContactUs">Still have questions?</h2>
+    <div class="contact-form-container">
+      <!-- Contact form -->
+      <form id="contactForm">
+        <!--<h2 class="contactTitle">Contact Us</h2>-->
+        <div class="form-group">
+          <label for="input-name">Name:</label>
+          <input type="text" class="contactInput" id="input-name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="input-email">E-mail:</label>
+          <input type="email" class="contactInput" id="input-email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="input-inquiry">Inquiry Type:</label>
+          <select id="input-inquiry" class="contactInput" name="inquiry">
+            <option value="general">General Question</option>
+            <option value="feedback">Feedback</option>
+            <option value="support">Support Request</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="input-message">Message:</label>
+          <textarea class="contactInput" id="input-message" name="message" rows="10" required></textarea>
+        </div>
+        <button type="submit" class="contactButton">Send</button>
+      </form>
 
-    <form id="contactForm">
-      <div class="form-group">
-        <h2 class="contactTitle">Contact Us</h2>
-        <label for="input-name">Name:</label>
-        <input type="text" class="contactInput" id="input-name" name="name" required>
-      </div>
-      <div class="form-group">
-        <label for="input-email">E-mail:</label>
-        <input type="email" class="contactInput" id="input-email" name="email" required>
-      </div>
-      <div class="form-group">
-        <label for="input-inquiry">Inquiry Type:</label>
-        <select id="input-inquiry" class="contactInput" name="inquiry">
-          <option value="general">General Question</option>
-          <option value="feedback">Feedback</option>
-          <option value="support">Support Request</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="input-message">Message:</label>
-        <textarea class="contactInput" id="input-message" name="message" rows="10" required></textarea>
-      </div>
-      <button type="submit" class="contactButton">Send</button>
-    </form>
+      <!-- Contact info -->
+      <table id="contact-info">
+        <tr>
+          <th colspan="2">
+            <h3>MealMate</h3>
+          </th>
+        </tr>
+        <tr>
+          <td>E-mail:</td>
+          <td>MealMate@gmail.se</td>
+        </tr>
+        <tr>
+          <td>Phone number:</td>
+          <td>070-90 00 000</td>
+        </tr>
+        <tr>
+          <td>Address:</td>
+          <td>Diplomatgatan 1 Linköping</td>
+        </tr>
+      </table>
+    </div>
   </div>
+  <!--<script src="contact.js"></script>-->
 </body>
 
 </html>
