@@ -1,5 +1,4 @@
 function homeview(){
-  
   console.log("homeview")
     $('.container').empty();
     $('.container').append('<h2 class="foodNearMe">Food near me</h2>');
@@ -10,26 +9,32 @@ function homeview(){
         $.each(cardData, function(index, card) {
           var cardHtml = createCard(index, card);
           $('.adcontainer').append(cardHtml);
-          var modal = foodAdModal(card, index);
-          $('.container').append(modal);
+          getUser(card.sellerID, function(seller){
+            console.log(seller);
+            var modal = foodAdModal(card, index, seller);
+            $('.container').append(modal);
+          });
         });
       }else{
         console.log("no ads exist")
       }
-      
     });
-
-    $('.container').on('click', '.buy-btn', function() {
-        var modalIndex = $(this).data('target').split('_')[1];
-        $('#myModal_' + modalIndex).modal('show');
-    });
-    $('.container').on('click', '.close-btn', function() {
-        $(this).closest('.modal').modal('hide');
-    });
-    $('.container').on('click', '.btn btn-secondary close-btn', function() {
-        $(this).closest('.modal').modal('hide');
-    });
+    handleclicks();
 }
+
+function handleclicks(){
+  $('.container').on('click', '.buy-btn', function() {
+    var modalIndex = $(this).data('target').split('_')[1];
+    $('#myModal_' + modalIndex).modal('show');
+  });
+  $('.container').on('click', '.close-btn', function() {
+    $(this).closest('.modal').modal('hide');
+  });
+  $('.container').on('click', '.btn btn-secondary close-btn', function() {
+    $(this).closest('.modal').modal('hide');
+  });
+}
+
 function createCard(index, card){
   var cardHtml = '<div class="card">' +
                           '<div class="card-body">' +
@@ -42,7 +47,7 @@ function createCard(index, card){
                       '</div>';
   return cardHtml;
 }
-function foodAdModal(card, index){
+function foodAdModal(card, index, seller){
   var modalHtml = '<div class="modal fade" id="myModal_' + index + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
       '<div class="modal-dialog">' +
       '<div class="modal-content">' +
@@ -56,7 +61,7 @@ function foodAdModal(card, index){
       '<p>Cook Date: ' + card.cookDate + '</p>' +
       '<p>Quantity: ' + card.quantity + '</p>' +
       '<p>Price: ' + card.portionPrice + ' kr/pc</p>' +
-      '<p>Seller: ' + card.sellerID + '</p>' +
+      '<p>Seller: ' + seller.name + '</p>' +
       '</div>' +
       '<div class="modal-footer">' +
       '<button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>' +
@@ -84,6 +89,7 @@ function addtocart(id, index){
   });
   $('#myModal_' + index).modal('hide');
 }
+
 
 host = window.location.protocol + '//' + location.host
 function getAd(id, callback){
@@ -113,6 +119,24 @@ function getAds(callback){
     },
     error: function(JQxhr, status, error){
       console.log(error);
+      callback(null);
+    }
+  });
+}
+
+function getUser(sellerID, callback){
+  console.log("get seller: " + sellerID)
+  console.log(host+ "/user/" + sellerID )
+  $.ajax({
+    url: host + '/user/' + sellerID,
+    type: 'GET',
+    contentType: 'application/json',
+    success: function(response){
+      console.log("fetched user");
+      callback(response);
+    },
+    error: function(JQxhr, status, error){
+      console.log("Error fetching user: " + error);
       callback(null);
     }
   });
