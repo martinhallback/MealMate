@@ -31,9 +31,9 @@ function logInUser(){
         if(response){
             sessionStorage.setItem('auth', JSON.stringify(response))
             $('#login-modal').modal('hide');
-            $('#logInLink').toggleClass('d-none', true);
-            $('#signUpLink').toggleClass('d-none', true);
-            $('#logOutLink').toggleClass('d-none', false);
+            $('#loginLink').toggleClass('d-none', true);
+            $('#signupLink').toggleClass('d-none', true);
+            $('#logoutLink').toggleClass('d-none', false);
         }else if(error){           
             $('#passwordError').text(error);
         }
@@ -45,9 +45,9 @@ function logOutUser(){
     $('#logout-modal').modal('show');
     $("#logoutBtn").off().on('click', function (e) {
             sessionStorage.removeItem('auth');
-            $('#logInLink').toggleClass('d-none', false);
-            $('#signUpLink').toggleClass('d-none', false);
-            $('#logOutLink').toggleClass('d-none', true);
+            $('#loginLink').toggleClass('d-none', false);
+            $('#signupLink').toggleClass('d-none', false);
+            $('#logoutLink').toggleClass('d-none', true);
             $('#logout-modal').modal('hide');
         });
     });
