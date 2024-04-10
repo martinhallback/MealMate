@@ -48,9 +48,12 @@ def ad(obj_id):
             print("Contact backend!!!\n", e)
             return jsonify({'error' : "Your user is invalid"}), 401
         
-        delete_result = ads.delete_one({'_id' : objID})
+        delete_result = ads.delete_one({'_id' : objID, 'sellerID' : usr._id})
         print(delete_result)
-        return jsonify({'success' : "Your advertisement has been deleted"}), 200
+        if delete_result.get_deleted_count() > 0:
+            return jsonify({'success' : "Your advertisement has been deleted"}), 200
+        else:
+            return jsonify({'error' : "The given ad was not yours"}), 403
         
 
 
