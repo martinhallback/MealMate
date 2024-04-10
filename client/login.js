@@ -18,29 +18,15 @@ function logInUser(){
     var host = window.location.protocol + '//' + location.host
     var email = $("#email").val();
     var password = $("#password").val();
-  
-    $.ajax({
-        url: host + '/login',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify({
-            email,
-            password,
-        }),
-        success: function(response) {
-            console.log('login succesful');
+    postLogin(email, password, function(response, error){
+        if(response){
             sessionStorage.setItem('auth', JSON.stringify(response))
             $('#login-modal').modal('hide');
             $('#logInLink').toggleClass('d-none', true);
             $('#signUpLink').toggleClass('d-none', true);
             $('#logOutLink').toggleClass('d-none', false);
-        }, 
-        error: function(JQxhr, status, error) {
-            if (JQxhr.status === 401) {
-                $('#passwordError').text('Incorrect email adress or password. Please try again.');
-            } else {
-                console.error('Error:', error);
-            }
+        }else if(error){           
+            $('#passwordError').text(error);
         }
     });
 }

@@ -1,3 +1,6 @@
+from bson import ObjectId
+from datetime import datetime
+
 class Advertisement(object):
     
     _id = None
@@ -28,8 +31,22 @@ class Advertisement(object):
             for i in range(0,len(obj['allergy'])):
                 obj['allergy'][i] = str(obj['allergy'][i])
         print("Done with serialisations of: ", obj['dishName'])
+
         return self.remove_nulls(obj)
-        
+
+    def set_seller_id(self, seller_id):
+        self.sellerID = seller_id
+
+    def unserialise_from_client(self):
+        self._id = ObjectId(self._id)
+        if self.sellerID is not None:
+            self.sellerID = ObjectId(self.sellerID)
+        for i in range(len(self.protein)):
+            self.protein[i] = ObjectId(self.protein[i])
+        for i in range(len(self.allergy)):
+            self.allergy[i] = ObjectId(self.allergy[i])
+        self.cookDate=datetime.fromisoformat(self.cookDate)
+
     def serialise_db(self):
         obj = self.__dict__
         return self.remove_nulls(obj)

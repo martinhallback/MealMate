@@ -25,15 +25,13 @@ function sellview() {
     });
 }
 
-// Function to show the sell form
 function showSellForm() {
-    //$(".container").empty(""); // Clear the container
+    
     $(".sellcontainerjs").empty();
     $(".sellcontainerjs").load("sell.html #sellForm", function () {
-        if (status == "error") {
-            var msg = "Sorry but there was an error: ";
-            console.log(msg + xhr.status + " " + xhr.statusText);
-        }
+        
+        //nedanför anrop finns i ajax.js, "function(response){}" för att se om det var lyckat
+        //postAd(userID, dishName, cookDate, imagePath, description, quantity, portionPrice, protein, allergy, function(response){});
     });
     $("#SellQuestionsContainer").hide();
 }
