@@ -16,6 +16,14 @@ function showSignUpModal(){
       console.log('Signup klickat');
       postNewUser();
     });
+    // Add event listener to the "Already have an account?" link
+    $('#loginLink').on('click', function (event) {
+      event.preventDefault(); // Prevent the default action of the link
+      // Hide the signup modal
+      $('#signup-modal').modal('hide');
+      // Load and show the login modal
+      loadLogInContent();
+    });
 }
 
 function checkFormValidity(){
