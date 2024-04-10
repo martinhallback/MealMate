@@ -2,9 +2,9 @@ $(document).ready(function () {
 
   var token = sessionStorage.getItem('auth');
   var signedIn = token !== null && token !== undefined;
-    $('.nav-link#loginLink').toggleClass('d-none', signedIn);
-    $('.nav-link#signupLink').toggleClass('d-none', signedIn);
-    $('.nav-link#logoutLink').toggleClass('d-none', !signedIn);
+  $('.nav-link#loginLink').toggleClass('d-none', signedIn);
+  $('.nav-link#signupLink').toggleClass('d-none', signedIn);
+  $('.nav-link#logoutLink').toggleClass('d-none', !signedIn);
    
 
 

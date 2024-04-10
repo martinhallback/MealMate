@@ -67,30 +67,18 @@
         console.log(totPrice);
     }
 
-        function checkoutView() {
-
-            var authData = JSON.parse(sessionStorage.getItem('auth'));
-
-            if (authData && authData.token != null) {
-                console.log("inloggad och går till checkout");
-            } else {
-                loadLogInContent();
-            }
-        }
-
-
 function loadRightCont(totPrice, totQuantity) {
     var rightCardHTML = '';
 
     rightCardHTML += `
         <div class="shoppingcartR">
             <h1> Summary </h1>
-            <p class = "paymentText">Payment Method:</p>
-            <p class = "totalPrice">Total Price: ${totPrice} kr</p>
-            <p class = totalQuantity>Number of dishes: ${totQuantity}</p>
-                <div class = "checkoutBtn" type = button onclick="checkoutView()">Checkout</div>
-            </div>
-        </div>`;
+            <p class="paymentText">Payment Method:</p>
+            <p class="totalPrice">Total Price: ${totPrice} kr</p>
+            <p class="totalQuantity">Number of dishes: ${totQuantity}</p>
+            <div class="checkoutBtn" type="button" onclick="checkoutView('${totPrice}', '${totQuantity}')">Checkout</div>
+        </div>
+    </div>`;
         $('.shoppingcartRight').html(rightCardHTML);
 
 }
