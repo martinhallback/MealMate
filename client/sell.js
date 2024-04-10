@@ -25,17 +25,66 @@ function sellview() {
     });
 }
 
-function showSellForm() {
-    
-    $(".sellcontainerjs").empty();
-    $(".sellcontainerjs").load("sell.html #sellForm", function () {
-            //nedanför anrop finns i ajax.js, "function(response){}" för att se om det var lyckat
-        //postAd(userID, dishName, cookDate, imagePath, description, quantity, portionPrice, protein, allergy, function(response){});
-});
-    $("#SellQuestionsContainer").hide();
-}
-
 $(document).on('click', '#faqBtn', function() {
     $('.container').empty();
     $(".container").load("contact.html .contactContainer", function () {});
 });
+
+function showSellForm() {
+    
+    $(".sellcontainerjs").empty();
+    $(".sellcontainerjs").load("sell.html #sellForm", function () {
+        handleAllergies();
+        handleProteins();
+        //nedanför anrop finns i ajax.js, "function(response){}" för att se om det var lyckat
+        //postAd(userID, dishName, cookDate, imagePath, description, quantity, portionPrice, protein, allergy, function(response){});
+});
+    
+    $("#SellQuestionsContainer").hide();
+}
+function handleProteins(){
+    getProteins(function(proteins){
+        if(proteins){
+            console.log(proteins)
+            $.each(proteins, function(index, protein){
+                var proteinHTML = createProteinHtml(protein);
+                $("#allergensList").append(proteinHTML);
+            })
+        }else{
+            $("#proteinList").append("<h1>Ops, something went wrong please try again</h1>");
+        }
+    })
+}
+
+function createProteinHtml(protein){
+    var html = '<label class="proteinContainer">' + protein.type +
+    '<input type="checkbox" id="' + protein.type.toLowerCase() +
+    '" name="protein" value="' + protein.type + '">' +
+    '<span class="checkmark"></span>' +
+    '</label>';
+return html;
+}
+
+function handleAllergies(){
+    getAllergies(function(allergies){
+        if(allergies){
+            console.log(allergies);
+            $.each(allergies, function(index, allergy){
+                var allergyHTML = createAllergyHtml(allergy);
+                $("#allergensList").append(allergyHTML);
+            })
+        }else{
+            $("#allergensList").append("<h1>Ops, something went wrong please try again</h1>");
+        }
+    })
+}
+function createAllergyHtml(allergy){
+    var html = '<label class="AllergenContainer">' + allergy.type +
+               '<input type="checkbox" id="' + allergy.type.toLowerCase() +
+               '" name="allergen" value="' + allergy.type + '">' +
+               '<span class="checkmark"></span>' +
+               '</label>';
+    return html;
+}
+
+
