@@ -3,7 +3,7 @@ function loadLogInContent() {
     $("#loginContainer").load("login.html #login-modal", function () {
       showLogInModal();
       // Add event listener to the "Don't have an account?" link
-     $('#signupLink').on('click', function(event) {
+     $('#redirectSignup').on('click', function(event) {
         event.preventDefault(); // Prevent the default action of the link
         // Hide the login modal
         $('#login-modal').modal('hide');
