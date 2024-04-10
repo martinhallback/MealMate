@@ -29,7 +29,9 @@ function showSellForm() {
     
     $(".sellcontainerjs").empty();
     $(".sellcontainerjs").load("sell.html #sellForm", function () {
-    });
+            //nedanför anrop finns i ajax.js, "function(response){}" för att se om det var lyckat
+        //postAd(userID, dishName, cookDate, imagePath, description, quantity, portionPrice, protein, allergy, function(response){});
+});
     $("#SellQuestionsContainer").hide();
 }
 
