@@ -1,0 +1,184 @@
+.rectangularfilter-container {
+    position: fixed;
+    padding-top: 35px; /* Adjust padding as needed */
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    left: 15px;
+    top: 127px;
+    background-color: #263a4e91; /* Example background color, adjust as needed */
+    color: white; /* Text color */
+    font-size: 20px; /* Adjust font size as needed */
+    text-align: left; /* Center the header text */
+    width: 150px;
+    /*height: 350px;*/
+    border-radius: 0 0 30px 30px; /* top-left, top-right, bottom-right, bottom-left */
+    /*border-radius: 30px; /* Rounded edges. Adjust the value as needed */ 
+}
+
+.filter-options label {
+    font-size: 14px; /* Adjust the font size as needed */
+}
+
+.apply-button {
+    position: absolute;
+    bottom: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    background-color: #263a4e;
+    color: white;
+    border-radius: 20px; /* Rounded edges */
+    padding: 4px 8px;
+    cursor: pointer; /* Change cursor to pointer on hover */
+    font-size: 14px;
+    border: none;
+}
+
+.apply-button:hover {
+    box-shadow: 0 0 2px 2px #fff;
+    background-color: #0e5091;
+}
+
+
+.cicularfilter-container {
+    position: fixed; /* This positions the container relative to its nearest positioned ancestor */
+    top: 105px; /* Adjust this value as needed to move the circle up */
+    left: 15px; /* Adjust this value as needed to move the circle to the left */
+   /* position: relative; /* Establishes a positioning context for the overlay */
+    width: 50px; /* Diameter of the circular background */
+    height: 50px;
+    cursor: pointer;
+    display: flex; /* Ensures content is centered */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    border-radius: 50%; /* Ensures the container is circular */
+    z-index: 3;
+}
+
+
+.cicularfilter-container:hover {
+    box-shadow: 0 0 2px 2px #fff;
+    background-color: #0e5091da;
+  
+}
+
+.circle-background {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; /* Makes it circular */
+    background-color: #263a4e; /* Example color */
+    position: absolute; /* Ensures it's behind the image */
+    z-index: 1; /* Lower stacking context than the image */
+}
+
+
+.cicularfilter-container img {
+    z-index: 2; /* Ensures the image is above the circular background */
+    width: 55%; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+    /* If you need to ensure the image is always a circle or specific shape, you can add: */
+    /* border-radius: 50%; */
+}
+
+
+.pillfilter-container {
+    position: fixed; /* This positions the container relative to its nearest positioned ancestor */
+    top: 105px; /* Adjust this value as needed to move the circle up */
+    left: 15px; /* Adjust this value as needed to move the circle to the left */
+   /* position: relative; /* Establishes a positioning context for the overlay */
+    width: 150px; /* Diameter of the circular background */
+    height: 50px;
+    cursor: pointer;
+    display: flex; /* Ensures content is centered */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    border-radius: 25px; 
+    z-index: 3;
+    background-color: #263a4e; /* Adjust color as needed */
+}
+
+.pill-background {
+    width: 100%;
+    height: 100%;
+    border-radius: 25px; /* Makes it circular */
+    background-color: #263a4e; /* Example color */
+    position: absolute; /* Ensures it's behind the image */
+    z-index: 1; /* Lower stacking context than the image */
+}
+
+.pillfilter-container img {
+    z-index: 2; /* Ensures the image is above the pill background */
+    width: 18%; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+    /* If you need to ensure the image is always a circle or specific shape, you can add: */
+    /* border-radius: 50%; */
+}  
+
+.pill-background:hover {
+    box-shadow: 0 0 2px 2px #fff;
+    background-color: #0e5091;
+
+}
+
+.DietPref{
+    font-weight: bold;
+    color: #263a4e;
+    text-shadow: 0 0 1px #fff;
+    margin-bottom: 1px;
+    margin-top: 5px;
+}
+
+.select-box {
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 130px;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #263a4edd;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+
+  .select-box:hover {
+    box-shadow: 0 0 1px 1px #fff;
+    background-color: #0e5091;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #263a4ea2;
+    width: 130px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1000;
+    padding: 5px; /* Padding moved here from .scrollable-content */
+    padding-bottom: 30px; /* Space for the close-btn */
+    max-height: 125px; /* Adjusted for total dropdown height including close-btn */
+    overflow: hidden; /* Ensures only .scrollable-content scrolls */
+}
+
+.scrollable-content {
+    max-height: 95px; /* Adjust height to allow space for close-btn */
+    overflow-y: auto;
+}
+
+.close {
+    position: absolute;
+    bottom: 5px; /* Ensure this positions the button correctly */
+    right: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+  .close:hover {
+    font-weight: bold;
+    text-shadow: 0 0 5px #263a4e;
+  }
+
+  .priceRange {
+    z-index: 0;
+    margin-bottom: 50px;
+  }
+  .priceRangeTitle{
+    margin-top: 20px;
+  }
+

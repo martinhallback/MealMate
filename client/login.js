@@ -2,7 +2,16 @@ function loadLogInContent() {
     console.log('Load Log in Content');
     $("#loginContainer").load("login.html #login-modal", function () {
       showLogInModal();
+      // Add event listener to the "Don't have an account?" link
+     $('#signupLink').on('click', function(event) {
+        event.preventDefault(); // Prevent the default action of the link
+        // Hide the login modal
+        $('#login-modal').modal('hide');
+        // Load and show the signup modal
+        loadSignUpContent();
     });
+    });
+    
 }
   
 function showLogInModal(){
@@ -18,29 +27,15 @@ function logInUser(){
     var host = window.location.protocol + '//' + location.host
     var email = $("#email").val();
     var password = $("#password").val();
-  
-    $.ajax({
-        url: host + '/login',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify({
-            email,
-            password,
-        }),
-        success: function(response) {
-            console.log('login succesful');
+    postLogin(email, password, function(response, error){
+        if(response){
             sessionStorage.setItem('auth', JSON.stringify(response))
             $('#login-modal').modal('hide');
             $('#loginLink').toggleClass('d-none', true);
             $('#signupLink').toggleClass('d-none', true);
             $('#logoutLink').toggleClass('d-none', false);
-        }, 
-        error: function(JQxhr, status, error) {
-            if (JQxhr.status === 401) {
-                $('#passwordError').text('Incorrect email adress or password. Please try again.');
-            } else {
-                console.error('Error:', error);
-            }
+        }else if(error){           
+            $('#passwordError').text(error);
         }
     });
 }

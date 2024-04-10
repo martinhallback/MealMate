@@ -74,6 +74,7 @@ collection = db["allergy"]
 """collection.insert_one({"type" : "Peanuts"})
 collection.insert_one({"type" : "Tree nuts"})
 collection.insert_one({"type" : "Milk"})
+collection.insert_one({"type" : "Lactose"})
 collection.insert_one({"type" : "Eggs"})
 collection.insert_one({"type" : "Wheat"})
 collection.insert_one({"type" : "Gluten"})
@@ -81,6 +82,4 @@ collection.insert_one({"type" : "Soy"})
 collection.insert_one({"type" : "Fish"})
 collection.insert_one({"type" : "Shellfish"})
 collection.insert_one({"type" : "Sesame seeds"})
-collection.insert_one({"type" : "Mustard"})
-collection.insert_one({"type" : "Other"})"""
-# For the "Other" option there should be a text right beside it that instructs the seller to include in the description all allergies that are not shown in the given list.
+collection.insert_one({"type" : "Mustard"})"""
