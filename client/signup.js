@@ -16,6 +16,14 @@ function showSignUpModal(){
       console.log('Signup klickat');
       postNewUser();
     });
+    // Add event listener to the "Already have an account?" link
+    $('#redirectLogin').on('click', function (event) {
+      event.preventDefault(); // Prevent the default action of the link
+      // Hide the signup modal
+      $('#signup-modal').modal('hide');
+      // Load and show the login modal
+      loadLogInContent();
+    });
 }
 
 function checkFormValidity(){
@@ -28,31 +36,16 @@ function checkFormValidity(){
 }
 
 function postNewUser() {
-    // e.preventDefault();
-     var host = window.location.protocol + '//' + location.host
-     newUserEmail = document.getElementById('email').value;
-     newUserName = document.getElementById('name').value;
-     newUserPassword = document.getElementById('password').value;
-     newUserPhone = document.getElementById('pnum').value;
-     newUserUni = document.getElementById('university').value;
-     newUserSID = document.getElementById('studentid').value;
- 
-     $.ajax({
-       url: host + '/sign-up',
-       type: 'POST',
-       contentType: 'application/json',
-      // headers: {"Authorization": "Bearer " + JSON.parse(sessionStorage.getItem('auth')).token},
-       data: JSON.stringify({
-           email: newUserEmail,
-           name : newUserName,
-           password : newUserPassword,
-           phoneNumber : newUserPhone,
-           university : newUserUni,
-           studentID : newUserSID,
-       }),
-       success: function() {
-         console.log('signed up');
-        $('#signup-modal').modal('hide');
-     }
-   });
+  newUserEmail = document.getElementById('email').value;
+  newUserName = document.getElementById('name').value;
+  newUserPassword = document.getElementById('password').value;
+  newUserPhone = document.getElementById('pnum').value;
+  newUserUni = document.getElementById('university').value;
+  newUserSID = document.getElementById('studentid').value;
+  
+  postSignUp(newUserEmail, newUserName, newUserPassword, newUserPhone, newUserUni, newUserSID, function(response){
+    if(response){
+      $('#signup-modal').modal('hide');
+    }
+  }); 
  }

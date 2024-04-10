@@ -1,1 +1,133 @@
 
+.shoppingCartCont {
+    display: flex; 
+    justify-content: center;
+}
+
+.shoppingcartCards {
+    display: flex;
+    flex-direction: column;
+    align-items: left; 
+}
+#shoppingcartCard {
+    width: 100%; 
+    width: 1000px; 
+    margin-bottom: 20px;
+    overflow: hidden; 
+    border: 1px solid black;
+    border-radius: 50px;
+}
+.shoppingcartCard img {
+    width: 100%; 
+    height: auto;
+    border-radius: 5px 0 0 5px;
+}
+
+.shoppingcartCard-body {
+    padding: 20px;
+}
+
+.shoppingcartCard-title {
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+.shoppingcartCards h1 {
+    text-align: center;
+    margin-bottom: 25px;
+  }
+
+.shoppingcartCard-text {
+    margin-bottom: 0;
+}
+.shoppingcartLeftWrap {
+    background-color: rgb(242, 241, 241); 
+    padding: 20px; 
+    border-top-left-radius: 50px; 
+    border-bottom-left-radius: 50px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1); 
+    max-width: 2000px; 
+}
+
+.continue-shopping{
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    border: none;
+}
+
+.continue-shopping:hover{
+    font-weight: bold; 
+    background-color: black;
+    color: white;
+}
+
+.shoppingcartR{
+    background-color: black; 
+    padding: 20px; 
+    border-top-right-radius: 50px; 
+    border-bottom-right-radius: 50px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+    width: 250px;   
+}
+
+.shoppingcartR h1{
+color: white;
+
+}
+
+.cartEmptyText{
+    font-weight: bold;
+}
+
+.paymentText, .totalPrice, .totalQuantity{
+    color:white;
+}
+
+.paymentText, .totalPrice{
+    margin-top:75px;
+}
+
+.totalQuantity{
+    margin-top: 25px;
+}
+
+.checkoutBtn {
+    margin-top: 150px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    height: 50px;
+    width: 200px;
+    border-radius: 20px;
+    font-size: 18px; 
+    line-height: 50px; 
+}
+
+.checkoutBtn:hover{
+    font-weight: bold;
+}
+
+#cartCardImg {
+    margin-left: 20px;
+    margin-right: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 75px;
+    height: 75px;
+    border-radius: 20px;
+    border: 2px solid black;
+
+}
+
+.removeItemBtn{
+    background-color: black;
+    color: white;
+    width: 120px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.removeItemBtn:hover{
+    font-weight: bold;
+}
