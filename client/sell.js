@@ -16,13 +16,8 @@ function sellview() {
         '<p class="ifQuestionsText">If you have any questions, click the button below to see frequently asked questions or contact us directly.</p>' +
         '<button id="faqBtn">FAQs</button>' +
         '</div>');
-<<<<<<< HEAD
 
 
-=======
-
-
->>>>>>> f83e16dbfe8d931c72167dc2315b93f6e5fcf0d6
     // Attach a click event to the "Sell" button
     $("#sellBtn").off().on('click', function (e) {
         console.log('Sell button clicked');
