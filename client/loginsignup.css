@@ -1,0 +1,31 @@
+/*loginsignup.css*/
+.loginContainer {
+    font-family: 'Brandon Grotesque Bold', 'Helvetica', sans-serif;
+}
+
+.modal-title {
+    color: #006267; /* Change this to the color you desire */
+    font-weight: 600;
+}
+
+.loginform-group label,
+.passwordform-group label,
+.signupform-group label {
+    font-weight: bold;
+}
+
+.btn-secondary,
+.close {
+    color: #FFFFFF; /* Change this to the color you desire */
+    background-color: #adbdb3; /* Change this to the background color you desire */
+    border: none; /* Optionally remove the border */
+}
+
+/* Style for the Log in button */
+#logoutBtn,
+#signUpBtn,
+#logInBtn {
+    background-color: #006267; /* Change this to the color you desire */
+    color: white; /* Change this to the text color you prefer */
+    border-color: transparent; /* Optionally remove button border */
+}
