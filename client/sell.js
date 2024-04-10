@@ -29,10 +29,6 @@ function showSellForm() {
     
     $(".sellcontainerjs").empty();
     $(".sellcontainerjs").load("sell.html #sellForm", function () {
-        if (status == "error") {
-            var msg = "Sorry but there was an error: ";
-            console.log(msg + xhr.status + " " + xhr.statusText);
-        }
     });
     $("#SellQuestionsContainer").hide();
 }
@@ -40,9 +36,4 @@ function showSellForm() {
 $(document).on('click', '#faqBtn', function() {
     $('.container').empty();
     $(".container").load("contact.html .contactContainer", function () {});
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    // Execute code when the document is fully loaded
-    // Additional logic can be added here if needed
 });
