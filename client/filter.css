@@ -161,7 +161,7 @@
     overflow-y: auto;
 }
 
-.close {
+.closeFilter {
     position: absolute;
     bottom: 5px; /* Ensure this positions the button correctly */
     right: 5px;
@@ -169,7 +169,7 @@
     font-size: 14px;
 }
 
-  .close:hover {
+  .closeFilter:hover {
     font-weight: bold;
     text-shadow: 0 0 5px #263a4e;
   }

@@ -15,10 +15,11 @@
  }
  
  .btn-secondary,
- .close {
+ .closeLogin, .closeSignup {
     color: #FFFFFF; /* Change this to the color you desire */
     background-color: #adbdb3; /* Change this to the background color you desire */
     border: none; /* Optionally remove the border */
+    border-radius: 4px;
  }
  
  /* Style for the Log in button */
