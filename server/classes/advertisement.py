@@ -29,6 +29,7 @@ class Advertisement(object):
             for i in range(len(self.protein)):
                 protein_obj = dict(self.protein[i])
                 new_list.append(protein_obj["_id"])
+                print(protein_obj['source'])
             self.protein = new_list
         else:
             return False
