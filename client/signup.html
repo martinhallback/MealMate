@@ -6,32 +6,32 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Welcome, please sign up below</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="closeSignup" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <form id="Signupform">
-                        <div class="form-group">
+                        <div class="signupform-group">
                             <label for="email">Email:</label>
                             <input type="text" class="form-control" id="email" name="email" required>
                             <p id="emailError" style="color: red; display: none;">Email must contain '@'</p>
                     
                         </div>
-                        <div class="form-group">
+                        <div class="signupform-group">
                             <label for="name">Full Name:</label>
                             <input type="text" class="form-control" id="name" name="name" required>
                         </div>
-                        <div class="form-group">
+                        <div class="signupform-group">
                             <label for="password">Password:</label>
                             <input type="password" class="form-control" id="password" name="password" required>
                         </div>
-                        <div class="form-group">
+                        <div class="signupform-group">
                             <label for="pnum">Phone Number:</label>
                             <input type="text" class="form-control" id="pnum" name="pnum" required>
                             <p id="phoneError" style="color: red; display: none;">Phone number may only contain one '+'' and/or numbers</p>
                         </div>
-                        <div class="form-group">
+                        <div class="signupform-group">
                             <label for="university">University:</label>
                             <select class="form-control" id="university" name="university" required>
                                 <option value="">Please select a university</option>
@@ -40,15 +40,18 @@
                                 <option value="university3">Kungliga Tekniska Högskolan</option>
                            </select>
                         </div>
-                        <div class="form-group">
+                        <div class="signupform-group">
                             <label for="studentid">Student ID:</label>
                             <input type="text" class="form-control" id="studentid" name="studentid" required>
                         </div>
                     </form>
+                    <div style="text-align: center; margin-top: 10px;">
+                        <a href="#" id="redirectLogin">Already have an account? Click here to login</a>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="validateAndSubmit()" id="signUpBtn" style="background-color: #263a4e; color: white; border-color: transparent;" disabled>Sign up</button>
+                    <button type="button" class="btn btn-primary" onclick="validateAndSubmit()" id="signUpBtn" disabled>Sign up</button>
                     
                 </div>
             </div>

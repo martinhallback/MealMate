@@ -4,20 +4,11 @@ $(document).ready(function(){
     var isRectangularVisible = false;
     var isAnimating = false;
    // var isDropdownVisible = false;
-
-    $.ajax({
-        url: '/allergies', // Adjust the URL based on your application's routing
-        type: 'GET',
-        success: function(allergies) {
-            allergies.forEach(function(allergy) {
-                // Assuming 'type' is the property that holds the name of the allergy
-                var checkbox = $('<label><input type="checkbox" name="' + allergy._id  + '" value="' + allergy.type  + '" data-type="allergyType"> ' + allergy.type + '</label><br>');
-                $('#optionsForm').append(checkbox);
-            });
-        },
-        error: function(error) {
-            console.error("Error fetching allergies: ", error);
-        }
+   getAllergies(function(allergies){
+    allergies.forEach(function(allergy) {
+        // Assuming 'type' is the property that holds the name of the allergy
+        var checkbox = $('<label><input type="checkbox" name="' + allergy._id  + '" value="' + allergy.type  + '" data-type="allergyType"> ' + allergy.type + '</label><br>');
+        $('#optionsForm').append(checkbox);
     });
 
     $.ajax({

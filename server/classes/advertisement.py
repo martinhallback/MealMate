@@ -1,3 +1,6 @@
+from bson import ObjectId
+from datetime import datetime
+
 class Advertisement(object):
     
     _id = None
@@ -16,7 +19,31 @@ class Advertisement(object):
         for k,v in inDict.items():
             self.__setattr__(k,v)
             
-    
+
+    def set_seller_id(self, seller_id):
+        self.sellerID = seller_id
+
+    def decode_object_list_from_aggregate(self, protein_docs=True):
+        new_list=[]
+        if protein_docs:
+            for i in range(len(self.protein)):
+                protein_obj = dict(self.protein[i])
+                new_list.append(protein_obj["_id"])
+                print(protein_obj['source'])
+            self.protein = new_list
+        else:
+            return False
+
+    def unserialise_from_client(self):
+        self._id = ObjectId(self._id)
+        if self.sellerID is not None:
+            self.sellerID = ObjectId(self.sellerID)
+        for i in range(len(self.protein)):
+            self.protein[i] = ObjectId(self.protein[i])
+        for i in range(len(self.allergy)):
+            self.allergy[i] = ObjectId(self.allergy[i])
+        self.cookDate=datetime.fromisoformat(self.cookDate)
+
     def serialise_client(self):
         obj = self.__dict__
         obj['_id'] = str(self._id)
@@ -27,9 +54,8 @@ class Advertisement(object):
         if 'allergy' in obj:
             for i in range(0,len(obj['allergy'])):
                 obj['allergy'][i] = str(obj['allergy'][i])
-        print("Done with serialisations of: ", obj['dishName'])
-        return self.remove_nulls(obj)
-        
+        return self.remove_nulls(obj)    
+
     def serialise_db(self):
         obj = self.__dict__
         return self.remove_nulls(obj)

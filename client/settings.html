@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="profile.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Form</title>
+</head>
+
+<body>
+
+    <div class="profileContainer">
+        <h1 style="text-align: center;">Settings</h1>
+    
+    <nav class="profile-menu">
+        <u>
+            <li> <a id="accountbutton" href="#">Account details</a></li>
+            <li> <a id="purchaseHistoryBtn" href="#">Purchase history</a></li>
+            <li> <a id="soldProductsbutton" href="#">Sold products</a></li>
+            <li> <a id="settingsbutton" href="#">Settings</a></li>
+        </u>
+    </nav>
+
+    <form id="settingsForm">
+        <div class="form-group">
+            <label for="name">Password:</label>
+            <input type="password" class="form-control" id="settingPassword" name="password" value="123">
+        </div>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="settingName" name="name">
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" class="form-control" id="settingPhoneNumber" name="phoneNumber">
+      </div>
+      <div class="form-group">
+        <label for="PNumber">PNumber:</label>
+        <input type="text" class="form-control" id="settingPNumber" name="PNumber">
+      </div>
+      <div class="form-group">
+        <label for="university">University:</label>
+            <select class="form-control" id="settingUniversity" name="university" required>
+                <option value="">Please select a university</option>
+                <option value="university1">Linköpings Universitet</option>
+                <option value="university2">Lunds Universitet</option>
+                <option value="university3">Kungliga Tekniska Högskolan</option>
+         </select>
+      </div>
+      <div class="form-group">
+        <label for="studentID">Student ID:</label>
+        <input type="text" class="form-control" id="settingStudentID" name="studentID">
+      </div>
+      <div class="form-group">
+        <label for="address">Address:</label>
+        <input type="text" class="form-control" id="settingAddress" name="address">
+      </div>
+      <div class="form-group">
+        <label for="location">Location:</label>
+        <input type="text" class="form-control" id="settingLocation" name="location">
+      </div>
+      <button type="submit" class="btn btn-primary" onclick="saveSettings()">Submit</button>
+    </form>
+    </div>
+</body>
+</html>

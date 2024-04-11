@@ -1,4 +1,5 @@
-
+from bson import ObjectId
+from datetime import datetime
 
 class Purchase(object):
     _id = None
@@ -30,6 +31,13 @@ class Purchase(object):
         obj['seller'] = str(self.seller)
         obj['advertisement'] = str(self.advertisement)
         return self.remove_nulls(obj)
+    
+    def unserialise_from_client(self):
+        self._id = ObjectId(self._id)
+        self.advertisement = ObjectId(self.advertisement)
+        self.buyer = ObjectId(self.buyer)
+        self.seller = ObjectId(self.seller)
+        self.date=datetime.fromisoformat(self.date)
         
     def serialise_db(self):
         obj = self.__dict__

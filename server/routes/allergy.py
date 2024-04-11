@@ -10,6 +10,20 @@ from classes import allergy
 
 bp = Blueprint('allergy', __name__)
 
+def get_allergy(string_id):
+    allergy_collection = db["allergy"]
+    try:
+        # Convert the string ID to an ObjectId
+        oid = ObjectId(id)
+    except:
+        print("Invalid oid")
+        return False
+    cursor = allergy_collection.find_one({"_id": oid})
+    if cursor is None:
+        return None
+    query = dict(cursor)
+    return allergy.Allergy(query)
+
 
 @bp.route('/allergy/<string:id>', methods=['GET'])
 def specific_allergy(id):

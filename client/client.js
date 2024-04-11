@@ -1,12 +1,22 @@
 $(document).ready(function () {
+
+  var token = sessionStorage.getItem('auth');
+  var signedIn = token !== null && token !== undefined;
+    $('.nav-link#loginLink').toggleClass('d-none', signedIn);
+    $('.nav-link#signupLink').toggleClass('d-none', signedIn);
+    $('.nav-link#logoutLink').toggleClass('d-none', !signedIn);
+   
+
+
   loadFooter();
+
   homeview();
  
   $(window).scrollTop(0);
 
   $(".navbar-basket").click(function (e) {
     console.log('Basket');
-    $('.container').load('shoppingcart.html .shoppingCartCont', function(){});
+    shoppingcartView();
     
   });
   $(".navbar-profile").click(function (e) {
@@ -66,7 +76,3 @@ function handleNavigationLinks(linkText){
 
 }
 
-function loadMyProfile(){
-  $('.container').empty();
-  $(".container").load("profile.html .profileContainer", function () {});
-}

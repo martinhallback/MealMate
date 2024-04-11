@@ -10,6 +10,17 @@ from classes import allergy
 
 bp = Blueprint('allergies', __name__)
 
+def query_to_allergies(query):
+    allergies = []
+    for item in query:
+        alg = dict(item)
+        try:
+            allergies.append(allergy.Allergy(alg))
+        except Exception as e:
+            print(e)
+    return allergies
+            
+
 
 @bp.route('/allergies', methods = ['GET'])
 def allergies():
@@ -19,14 +30,8 @@ def allergies():
         cursor = allergies_collection.find({})
         if cursor is None:
             return jsonify({'error': "Database collection could not be accessed ", 'errorCode' : 31}), 503
-        query = list(cursor)
-        allergies = []
-        for item in query:
-            alg = dict(item)
-            try:
-                allergies.append(allergy.Allergy(alg))
-            except Exception as e:
-                print(e) 
+        allergies = query_to_allergies(list(cursor))
+
         json_allergies = [item.serialise_client() for item in allergies]
         return jsonify(json_allergies), 200
     return  jsonify({'error' : "functionality not yet implemented", 'errorCode' : 0}), 401

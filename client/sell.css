@@ -2,112 +2,278 @@
 
 .sellcontainerjs {
     text-align: center;
-    margin-top: 20px; /* Adds space above the text as needed */
-    margin-left: auto; /* Center the container horizontally */
-    margin-right: auto; /* Center the container horizontally */
+    /*margin-top: 20px; /* Adds space above the text as needed */
+    /*margin-left: auto; /* Center the container horizontally */
+    /*margin-right: auto; /* Center the container horizontally */
     flex-direction: column;
     display: flex;
     justify-content: space-around;
-    background-color: #67bac0;
-    color: white; /* Set text color to white */
-    font-family: 'Titillium Web', sans-serif; /* Apply Titillium Web for titles */
-    font-weight: normal; /* Set normal weight for labels */
-}
-
-.startSelling {
-    background-color: #df6b3f; /* Set background color to orange */
-    padding: 10px; /* Add padding for better appearance */
-    border-radius: 4px; /* Add rounded corners for better appearance */
-    font-weight: bold; /* Make titles bold */
-    max-width: 800px;
-    margin: 0 auto;
-    margin-top: 20px; /* Add margin below the button */
-}
-
-.benefitsText {
-    padding: 10px; /* Add padding for better appearance */
-    font-size: 20px; /* Increase the font size */
-    border-radius: 4px; /* Add rounded corners for better appearance */
-    display: inline; /* Make the background size adjust to the content width */
-    max-width: 1000px;
-    margin: 0 auto;
+    background-color: #FBF9EF;
+    color: #006267;
+    /* Set text color */
+    font-family: 'Brandon Grotesque Bold', 'helvetica', sans-serif;
+    font-weight: normal;
+    /* Set normal weight for labels */
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    /* Include padding and border in the element's total width and height */
 }
 
 .sellImage {
-    max-width: 100%; /* Limit the maximum width of the image */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Ensure image behaves as a block element */
-    margin: 0 auto; /* Center the image horizontally */
-    margin-top: 5px; /* Add some top margin */
+    width: 100%;
+    max-width: 100%;
+    /* Limit the maximum width of the image */
+    height: auto;
+    /* Maintain aspect ratio */
+    display: block;
+    /* Ensure image behaves as a block element */
+    margin: 0 auto;
+    /* Center the image horizontally */
+    /*margin-top: 5px; /* Add some top margin */
 }
 
-/* Styling the Sell Button */
+.startSelling {
+    font-family: 'Clearface heavy', serif;
+    padding: 10px;
+    /* Add padding for better appearance */
+    border-radius: 4px;
+    /* Add rounded corners for better appearance */
+    font-weight: bold;
+    /* Make titles bold */
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 50px;
+    /* Add margin below the button */
+}
+
+.benefitsText {
+    padding: 10px;
+    /* Add padding for better appearance */
+    font-size: 20px;
+    /* Increase the font size */
+    border-radius: 4px;
+    /* Add rounded corners for better appearance */
+    display: inline;
+    /* Make the background size adjust to the content width */
+    max-width: 1000px;
+    margin: 0 auto;
+    color: #000000;
+    /* Set text color */
+}
+
+/* Styling the Sell Button and others*/
+#faqBtn,
 #sellBtn {
-    background-color: #df6b3f; /* Orange background */
-    width: 200px; /* Adjust the width as needed */
+    background-color: #ffffff;
+    /* Orange background */
+    width: 200px;
+    /* Adjust the width as needed */
     padding: 14px 20px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
-    margin-bottom: 20px; /* Add margin below the button */
+    margin-bottom: 60px;
+    /* Add margin below the button */
     border: none;
-    border-radius: 4px;
+    border-radius: 20px;
     cursor: pointer;
     font-size: 18px;
-    box-shadow: 0px 0px 0px 2px #ffffff; /* Add a box-shadow to create a border-like effect */
-    font-weight: bold; /* Make titles bold */
+    box-shadow: 0px 0px 0px 2px #ffffff;
+    /* Add a box-shadow to create a border-like effect */
+    font-weight: bold;
+    /* Make titles bold */
+    font-weight: 600px;
+    color: #006267;
+    /* Set text color */
 }
 
+#faqBtn:hover,
 #sellBtn:hover {
-    background-color: #b64519; /* Darker shade of color on hover */
+    background-color: #d8d8d8;
+    /* Darker shade of color on hover */
 }
 
 #sellForm {
-    max-width: 600px; /* Limit the maximum width of the form */
-    margin: 0 auto; /* Center the form horizontally */
-    padding: 20px; /* Add some padding for better appearance */
-    background-color: #df6b3f; /* Set background color */
-    border-radius: 8px; /* Add rounded corners */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
-    margin-top: 20px; /* Add margin above the button */
-    margin-bottom: 20px; /* Add margin below the button */
+    max-width: 600px;
+    /* Limit the maximum width of the form */
+    margin: 0 auto;
+    /* Center the form horizontally */
+    padding: 20px;
+    /* Add some padding for better appearance */
+    background-color: #ffffff;
+    /* Set background color */
+    border-radius: 20px;
+    /* Add rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Add shadow for depth */
+    margin-top: 20px;
+    /* Add margin above the button */
+    margin-bottom: 20px;
+    /* Add margin below the button */
 }
 
 #sellForm .form-group {
-    margin-bottom: 20px; /* Add some spacing between form groups */
-    text-align: left; /* Align text to the left within form groups */
-    font-weight: bold; /* Make titles bold */
+    margin-bottom: 20px;
+    /* Add some spacing between form groups */
+    text-align: left;
+    /* Align text to the left within form groups */
+    font-weight: bold;
+    /* Make titles bold */
 }
-
-#sellForm label {
-    font-weight: bold; /* Make labels bold */
-}
-
 
 /* Adjusting inputs and the submit button to match */
-input[class="sellinput"], textarea[class="sellinput"] {
+input[class="sellinput"],
+textarea[class="sellinput"] {
     text-align: center;
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 20px;
     box-sizing: border-box;
 }
 
 button[id="submitCreateAd"] {
-    background-color: #df6b3f;
+    background-color: #c6d7cd;
     padding: 14px 20px;
-    width: 200px; /* Adjust the width as needed */
+    width: 200px;
+    /* Adjust the width as needed */
     margin: 8px 0;
     border: none;
-    border-radius: 4px;
+    border-radius: 20px;
     cursor: pointer;
-    font-weight: bold; /* Make labels bold */
-    box-shadow: 0px 0px 0px 2px #ffffff; /* Add a box-shadow to create a border-like effect */
+    font-weight: bold;
+    /* Make labels bold */
+    box-shadow: 0px 0px 0px 2px #ffffff;
+    /* Add a box-shadow to create a border-like effect */
 }
 
 button[id="submitCreateAd"]:hover {
-    background-color: #b64519;
+    background-color: #adbdb3;
 }
+
+#SellQuestionsContainer {
+    text-align: center;
+    /*margin-top: 20px; /* Adds space above the text as needed */
+    /*margin-left: auto; /* Center the container horizontally */
+    /*margin-right: auto; /* Center the container horizontally */
+    flex-direction: column;
+    display: flex;
+    justify-content: space-around;
+    background-color: #C6D7CD;
+    color: #006267;
+    /* Set text color */
+    font-family: 'Brandon Grotesque Bold', 'helvetica', sans-serif;
+    font-weight: normal;
+    /* Set normal weight for labels */
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    /* Include padding and border in the element's total width and height */
+}
+
+.ifQuestionsTitle {
+    color: #006267;
+    /* Set text color */
+    text-align: center;
+    padding: 10px;
+    /* Add padding for better appearance */
+    border-radius: 4px;
+    /* Add rounded corners for better appearance */
+    font-weight: bold;
+    /* Make titles bold */
+    margin-top: 50px;
+}
+
+.ifQuestionsText {
+    color: #006267;
+    /* Set text color */
+    text-align: center;
+    font-size: 20px;
+    /* Increase the font size */
+}
+
+.allergens-list {
+    /*display: flex;*/
+    flex-wrap: wrap;
+    /*position: absolute; /* Position the list relative to the input field */
+    background-color: #fff; /* Background color */
+    /*border: 1px solid #ccc; /* Border */
+    border-radius: 4px; /* Rounded corners */
+    /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+    z-index: 1; /* Ensure the list appears above other elements */
+    /*width: 100%; /* Make the width equal to the input field width minus padding and border */
+    max-height: 200px; /* Limit the maximum height of the list */
+    /*overflow-y: auto; /* Enable vertical scrolling if needed */
+    margin-top: 8px; /* Adjust the top margin to position it below the input field */
+    margin-bottom: 8px;
+    max-height: min-content;
+    font-weight:200;
+}
+
+.allergen-item {
+    padding: 8px 12px; /* Padding for each allergen item */
+    cursor: pointer; 
+    font-weight:200;
+}
+
+.allergen-item:hover {
+    background-color: #f0f0f0; /* Background color on hover */
+}
+
+.selected-allergen {
+    padding: 8px 12px; /* Padding for each selected allergen */
+    background-color: #f0f0f0; /* Background color for selected allergens */
+    border-radius: 4px; /* Rounded corners */
+    margin-top: 8px; /* Adjust the top margin to separate each selected allergen */
+    width: calc(100% - 24px); /* Make the width equal to the input field width minus padding and border */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+}
+  
+  /* Customize the label for the checkbox */
+  label.checkbox {
+    position: relative;
+    padding-left: 30px; /* Add space for the custom checkmark */
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 20px; /* Add some spacing between checkboxes */
+  }
+  
+  /* Create the custom checkmark */
+  label.checkbox::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 4px;
+  }
+  
+  /* Change the background color of the checkmark when checked */
+  input[type="checkbox"]:checked + label.checkbox::before {
+    background-color: #006267; /* Funkar ej */
+  }
+  
+  /* Create the checkmark inside the custom checkbox */
+  label.checkbox::after {
+    content: '\2713'; /* Unicode checkmark character */
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    color: #fff; /* Text color */
+    display: none;
+  }
+  
+  /* Show the checkmark when the checkbox is checked */
+  input[type="checkbox"]:checked + label.checkbox::after {
+    display: block;
+  }
+
+  .AllergenContainer {
+    font-weight: 200;
+  }
