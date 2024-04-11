@@ -195,7 +195,7 @@ $('#select-protein-box').click(function() {
      (function() {
      });
  });
-
+});
 
 priceRange.addEventListener('input', function() {
     const value = this.value;
@@ -234,3 +234,4 @@ function applyFilters() {
 
     console.log(allergy, proteinType, proteinSource, portionPrice);
 }
+
