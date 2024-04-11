@@ -40,15 +40,15 @@ function showSellForm() {
             var authData = JSON.parse(sessionStorage.getItem('auth'));
             if (authData && authData.token != null) {
                 //fetch userID from sessionstorage
-                    var userID = authData.user._id;
+                    var userID = authData.user;
 
                     //fetch all input and check 
                     var dishName = $("#lunchboxTitle").val();
                     var cookDate = $("#lunchboxMadeDate").val();
                     var imagePath = '/' //image not implemented yet?!
                     var description = $("#lunchboxDescription").val();    
-                    var quantity = $("#lunchboxQuantity").val();
-                    var portionPrice = $("#lunchboxPrice").val();
+                    var quantity = parseInt($("#lunchboxQuantity").val());
+                    var portionPrice = parseFloat($("#lunchboxPrice").val());
 
                     var proteins = [];
                     $("input[name='protein']:checked").each(function () {

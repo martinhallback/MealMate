@@ -24,7 +24,7 @@ def specific_user(id):
     if request.method == 'GET':
         # Should only be allowed for GET
         # Use the ObjectId to query the database
-        cursor = user_collection.find_one({"_id": oid}, {'pwHash': 0, 'phoneNumber': 0, 'PNumber': 0, 'isVerified': 0, 'address': 0, 'isAdmin': 0})
+        cursor = user_collection.find_one({"_id": oid}, {'pwHash': 0, 'phoneNumber': 0, 'PNumber': 0, 'address': 0, 'isAdmin': 0})
         if cursor is None:
             return jsonify({'error': "No object with the given ID exists."}), 404
         query = dict(cursor)
