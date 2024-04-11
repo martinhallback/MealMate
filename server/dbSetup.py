@@ -314,18 +314,12 @@ validation_rule = {
     }
 }
 
-<<<<<<< HEAD
 #ad.insert_one(validation_rule)
 #ad.insert_one({"dishName" : "Köttbullar", "description" : "Bra mat", "cookDate" : datetime.datetime(2021,5,1), "quantity" : 5, "portionPrice" : 20.0, "imagePath" : "image.jpg", "sellerID" : ObjectId("60f0b1b3c589dfa2b4c4bf2f")})
 
 
 
 # Ad_contains_protein collection
-=======
-ad.insert_one(validation_rule)
-ad.insert_one({"dishName" : "Köttbullar", "description" : "Bra mat", "cookDate" : datetime.datetime(2021,5,1), "quantity" : 5, "portionPrice" : 20.0, "imagePath" : "image.jpg", "sellerID" : ObjectId("60f0b1b3c589dfa2b4c4bf2f")})
-
->>>>>>> a2a2d8b51bb9fd4f0e07c03d56e3b25dbe61d03f
 ad_contains_protein = db["ad_contains_protein"]
 validation_rule = {
     "$jsonSchema" : {
@@ -343,19 +337,13 @@ validation_rule = {
         }
     }
 }
-<<<<<<< HEAD
 
 #ad_contains_protein.create_index([("advertisement", ASCENDING), ("protein", ASCENDING)], unique=True)
-=======
->>>>>>> a2a2d8b51bb9fd4f0e07c03d56e3b25dbe61d03f
 #ad_contains_protein.insert_one(validation_rule)
 """ad_contains_protein.insert_one({"advertisement" : ObjectId("660153bed6271ac7cda390aa"), "protein" : ObjectId("65f58feaa5d9518927339597")})"""""
 
 
-<<<<<<< HEAD
 # Ad_contains_allergy collection
-=======
->>>>>>> a2a2d8b51bb9fd4f0e07c03d56e3b25dbe61d03f
 ad_contains_allergy= db["ad_contains_allergy"]
 validation_rule = {
     "$jsonSchema" : {
@@ -374,19 +362,12 @@ validation_rule = {
     }
 }
 
-<<<<<<< HEAD
 #ad_contains_allergy.create_index([("advertisement", ASCENDING), ("allergy", ASCENDING)], unique=True)
-=======
->>>>>>> a2a2d8b51bb9fd4f0e07c03d56e3b25dbe61d03f
 #ad_contains_allergy.insert_one(validation_rule)
 #ad_contains_allergy.insert_one({"advertisement" : ObjectId("660153bed6271ac7cda390aa"), "allergy" : ObjectId("65f58b8a760b3ad4e3459265")})
 
 
-<<<<<<< HEAD
 # Purchase collection
-=======
-# Advertisement
->>>>>>> a2a2d8b51bb9fd4f0e07c03d56e3b25dbe61d03f
 purchase = db["purchase"]
 validation_rule = {
     "$jsonSchema" : {
@@ -428,22 +409,13 @@ validation_rule = {
         }
     }
 }
-<<<<<<< HEAD
 #purchase.insert_one(validation_rule)
 """purchase.insert_one({"date" : datetime.datetime(2021,5,1) ,
-=======
-purchase.insert_one(validation_rule)
-purchase.insert_one({"date" : datetime.datetime(2021,5,1) ,
->>>>>>> a2a2d8b51bb9fd4f0e07c03d56e3b25dbe61d03f
                     "totalPrice" : 20.0, 
                     "quantity" : 5, 
                     "sellerRating" : 4.5, 
                     "reviewText" : "Bra mat", 
                     "buyer" : ObjectId("6601539871f145239905fc1a"), 
                     "seller" : ObjectId("6601539871f145239905fc1a"),
-<<<<<<< HEAD
                     "advertisement" : ObjectId("660153bed6271ac7cda390aa")})"""
-=======
-                    "advertisement" : ObjectId("660153bed6271ac7cda390aa")})
->>>>>>> a2a2d8b51bb9fd4f0e07c03d56e3b25dbe61d03f
 
