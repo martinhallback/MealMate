@@ -2,7 +2,6 @@ from flask import Blueprint
 from flask import jsonify
 from flask import request
 from flask_jwt_extended import jwt_required
-from flask_cors import CORS
 
 import configuration
 
@@ -25,6 +24,7 @@ def checkout():
         try:
             price = str(data['price'])
             name = "test"
+            quantity = data['quantity']
             checkout_session = stripe.checkout.Session.create(
             line_items=[
                 {
@@ -35,7 +35,7 @@ def checkout():
                             'name': name
                         }
                     },
-                    'quantity': 1,
+                    'quantity': quantity,
                 },
             ],
             mode='payment',
@@ -43,7 +43,7 @@ def checkout():
             cancel_url= domain
             )#Both redirects are to the home page now, change when thank you screen exists
         except Exception as e:
-            return str(e)
+            return e
 
         return redirect(checkout_session.url, code=303)
         #return True, 303
