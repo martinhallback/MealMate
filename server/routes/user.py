@@ -32,8 +32,38 @@ def specific_user(id):
         return jsonify(us.serialise_client()), 200
     
     elif request.method == 'PUT':
-        return  jsonify({'error' : "functionality not yet implemented", 'errorCode' : 0}), 401
+        data = request.get_json()
+        try:
+            # Convert the string ID to an ObjectId
+            oid = ObjectId(id)
+        except:
+            return jsonify({"error": "Invalid ID format"}), 400
+        
+        result = user_collection.update_one({'_id': oid}, {'$set': data})
+        
+        # Print the result
+        print(result.modified_count)  # This will print the number of documents modified (should be 1 if successful)
+        return '', 200
+        
 
+
+@bp.route('/user/<string:id>/full', methods=['GET'])
+def full_user(id):
+    try:
+        # Convert the string ID to an ObjectId
+        oid = ObjectId(id)
+    except:
+        return jsonify({"error": "Invalid ID format"}), 400
+
+    if request.method == 'GET':
+        # Should only be allowed for GET
+        # Use the ObjectId to query the database
+        cursor = user_collection.find_one({"_id": oid})
+        if cursor is None:
+            return jsonify({'error': "No object with the given ID exists."}), 404
+        query = dict(cursor)
+        us = user.User(query)
+        return jsonify(us.serialise_client()), 200
 
 
 @bp.route('/user', methods=['PUT'])

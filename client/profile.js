@@ -42,17 +42,28 @@ $(document).ready(function () {
       $('.container').empty();
   
       $(".container").load("settings.html .profileContainer", function () { 
-          var settingsform = document.getElementById("settingsForm");
-          var user = JSON.parse(sessionStorage.getItem('auth')).user
-          settingsform.elements["settingName"].value = user.name;
-          settingsform.elements["settingPhoneNumber"].value = user.phoneNumber;
-          settingsform.elements["settingPNumber"].value = user.PNumber;
-          //settingsform.elements["settingUniversity"].value = user.university;
-          settingsform.elements["settingStudentID"].value = user.studentID;
-          settingsform.elements["settingAddress"].value = user.address;
+          var user = JSON.parse(sessionStorage.getItem('auth')).user;
+          loadUser(user);
       });
     });
 });
+}
+
+function loadUser(id) {
+    $.ajax({
+        url: host + '/user/' + id + '/full', 
+        type: 'GET',
+        contentType:"application/json",
+        success: function(user) {
+            var settingsform = document.getElementById("settingsForm");
+            settingsform.elements["settingName"].value = user.name;
+            settingsform.elements["settingPhoneNumber"].value = user.phoneNumber;
+            settingsform.elements["settingPNumber"].value = user.PNumber;
+            //settingsform.elements["settingUniversity"].value = user.university;
+            settingsform.elements["settingStudentID"].value = user.studentID;
+            settingsform.elements["settingAddress"].value = user.address;
+        }
+    })
 }
   
 
@@ -69,36 +80,20 @@ function saveSettings() {
 }
 
 function updateSettings(name, phoneNumber, PNumber, university, studentID, address) {
-    var user = JSON.parse(sessionStorage.getItem('auth')).user
+    var id = JSON.parse(sessionStorage.getItem('auth')).user
 
     var settingsData = {
-        'user': {
-            '_id': user._id,
-            'email': user.email,
-            'pwHash': user.pwHash,
-            'name': user.name,
-            'phoneNumber': user.phoneNumber,
-            'PNumber': user.PNumber,
-            'isVerified': user.isVerified,
-            'university': user.university,
-            'studentID': user.studentID,
-            'address': user.address,
-            'location': user.location,
-            'isAdmin': user.isAdmin
-        },
-        'attributes': {
-            'name': name,
-            'phoneNumber': phoneNumber,
-            'PNumber': PNumber,
-            'university': university,
-            'studentID': studentID,
-            'address': address
-            //password
-        }
+        'name': name,
+        'phoneNumber': phoneNumber,
+        'PNumber': PNumber,
+        'university': university,
+        'studentID': studentID,
+        'address': address
+        //password
     }
 
     $.ajax({
-        url: host + '/user', 
+        url: host + '/user/' + id, 
         type: 'PUT',
         contentType:"application/json",
         data: JSON.stringify(settingsData),
