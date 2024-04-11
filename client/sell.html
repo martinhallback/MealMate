@@ -12,6 +12,14 @@
                 <input type="text" class="sellinput" id="lunchboxTitle" name="lunchboxTitle" required>
             </div>
             <div class="form-group">
+                <label for="lunchboxPrice">Price per luncbox:</label>
+                <input type="text" class="sellinput" id="lunchboxPrice" name="lunchboxPrice" required>
+            </div>
+            <div class="form-group">
+                <label for="lunchboxQuantity">Quantity:</label>
+                <input type="text" class="sellinput" id="lunchboxQuantity" name="lunchboxQuantity" required>
+            </div>
+            <div class="form-group">
                 <label for="lunchboxDescription">Description:</label>
                 <textarea class="sellinput" id="lunchboxDescription" name="lunchboxDescription" rows="4"
                     required></textarea>
@@ -24,21 +32,19 @@
                 <label for="lunchboxAllergens">Allergens:</label>
                     <div id="allergensList" class="allergens-list">
                     <!-- Checkboxes for each allergen -->
-
                     </div>
             </div>
             <div class="form-group">
               <label for="lunchboxProteins">Proteins:</label>
                   <div id="proteinList" class="proteins-list">
                   <!-- Checkboxes for each protein -->
-
                   </div>
           </div>
             <div class="form-group">
                 <label for="lunchboxImage">Upload Image:</label>
                 <input type="file" class="sellinput-file" id="lunchboxImage" name="lunchboxImage" required>
             </div>
-            <button type="submit" class="btn btn-primary" id="submitCreateAd">Create Ad</button>
+            <button type="button" class="btn btn-primary" id="submitCreateAd">Create Ad</button>
         </form>
     </div>
 </body>

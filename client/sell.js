@@ -8,7 +8,6 @@ function sellview() {
     $('.sellcontainerjs').append('<img src="' + imageUrl + '" alt="Lunchbox" class="sellImage">');
     $('.sellcontainerjs').append('<h2 class="startSelling">Start selling your lunchboxes here!</h2>');
     $('.sellcontainerjs').append('<p class="benefitsText">Earn extra income by selling your homemade lunchboxes to hungry customers. <br> Share your culinary skills and delight others with your delicious creations!</p>');
-    console.log('Load Sell Content');
 
     $('.sellcontainerjs').append('<button id="sellBtn" class="btn btn-primary">Sell</button>');
     $('.container').append('<div id="SellQuestionsContainer">' +
@@ -34,30 +33,47 @@ function showSellForm() {
     $(".sellcontainerjs").load("sell.html #sellForm", function () {
         handleAllergies();
         handleProteins();
-
-        //nedanför ajax anrop finns i ajax.js, "function(response){}" för att se om det var lyckat
-        //postAd(userID, dishName, cookDate, imagePath, description, quantity, portionPrice, protein, allergy, function(response){});
-        
         
         $("#submitCreateAd").on('click', function (e) {
-            console.log("create ad button pressed")
 
             //check if logged in 
             var authData = JSON.parse(sessionStorage.getItem('auth'));
             if (authData && authData.token != null) {
                 //fetch userID from sessionstorage
-                if(authData.user){
                     var userID = authData.user._id;
 
                     //fetch all input and check 
                     var dishName = $("#lunchboxTitle").val();
                     var cookDate = $("#lunchboxMadeDate").val();
+                    var imagePath = '/' //image not implemented yet?!
+                    var description = $("#lunchboxDescription").val();    
+                    var quantity = $("#lunchboxQuantity").val();
+                    var portionPrice = $("#lunchboxPrice").val();
+
+                    var proteins = [];
+                    $("input[name='protein']:checked").each(function () {
+                        var proteinId = $(this).data('id');
+                        proteins.push(proteinId);
+                    });
+
+                    var allergies = [];
+                    $("input[name='allergen']:checked").each(function () {
+                        var allergyId = $(this).data('id');
+                        allergies.push(allergyId);
+                    });
 
                     //call the postAd() in ajax.js
-                    //redirict or show the user somehow they have sucessfully posted an ad
-                }else{
-
-                }
+                    postAd(userID, dishName, cookDate, imagePath, description, quantity, portionPrice, proteins, allergies, function(response){
+                        //redirict or show the user somehow they have sucessfully posted an ad
+                        if(response){
+                            alert("You have sucessfully posted a ad")
+                            
+                        }else{
+                            alert("unfortunately the ad wasnt posted, please contact staff")
+                        }
+                        sellview()                
+                    });
+        
             }else{
                 loadLogInContent();
             }
@@ -69,7 +85,6 @@ function showSellForm() {
 function handleProteins(){
     getProteins(function(proteins){
         if(proteins){
-            console.log(proteins)
             $.each(proteins, function(index, protein){
                 var proteinHTML = createProteinHtml(protein);
                 $("#proteinList").append(proteinHTML);
@@ -86,7 +101,7 @@ function createProteinHtml(protein) {
 
     return `
         <label class="proteinContainer">${protein.type}${protein.type === 'Other' ? ` ${protein.source}` : ''}
-            <input type="checkbox" id="${id}" name="protein" value="${value}">
+            <input type="checkbox" id="${id}" name="protein" value="${value}" data-id="${protein._id}">
             <span class="checkmark"></span>
         </label>`;
 }
@@ -94,7 +109,6 @@ function createProteinHtml(protein) {
 function handleAllergies(){
     getAllergies(function(allergies){
         if(allergies){
-            console.log(allergies);
             $.each(allergies, function(index, allergy){
                 var allergyHTML = createAllergyHtml(allergy);
                 $("#allergensList").append(allergyHTML);
@@ -104,12 +118,13 @@ function handleAllergies(){
         }
     })
 }
-function createAllergyHtml(allergy){
-    var html = '<label class="AllergenContainer">' + allergy.type +
-               '<input type="checkbox" id="' + allergy.type.toLowerCase() +
-               '" name="allergen" value="' + allergy.type + '">' +
-               '<span class="checkmark"></span>' +
-               '</label>';
+
+function createAllergyHtml(allergy) {
+    var html = `
+        <label class="AllergenContainer">${allergy.type}
+            <input type="checkbox" id="${allergy.type.toLowerCase()}" name="allergen" value="${allergy.type}" data-id="${allergy._id}">
+            <span class="checkmark"></span>
+        </label>`;
     return html;
 }
 
