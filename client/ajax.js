@@ -66,6 +66,21 @@ function getAllergies(callback){
     });
 }
 
+function getProteins(callback){
+  $.ajax({
+      url: host + '/proteins',
+      type: 'GET',
+      success: function(allergies) {
+        console.log("fetched proteins");
+        callback(allergies);
+      },
+      error: function(error) {
+        console.error("Error fetching proteins: ", error);
+        callback(null);
+      }
+  });
+}
+
 function postLogin(email, password, callback){
     $.ajax({
         url: host + '/login',
