@@ -62,7 +62,7 @@
     color: white;
 }
 
-.shoppingcartR{
+.shoppingcartRight{
     background-color: black; 
     padding: 20px; 
     border-top-right-radius: 50px; 
@@ -93,7 +93,7 @@ color: white;
 }
 
 .checkoutBtn {
-    margin-top: 150px;
+    margin-top: 50px;
     background-color: white;
     color: black;
     text-align: center;
@@ -102,6 +102,9 @@ color: white;
     border-radius: 20px;
     font-size: 18px; 
     line-height: 50px; 
+    position: flex;
+    bottom: 20px;
+    
 }
 
 .checkoutBtn:hover{
@@ -120,14 +123,44 @@ color: white;
 
 }
 
-.removeItemBtn{
-    background-color: black;
-    color: white;
-    width: 120px;
-    border-radius: 20px;
-    text-align: center;
+.quantity-price-container {
+    display: flex;
+    flex-direction: column;
 }
 
-.removeItemBtn:hover{
+
+.changeQuantityBtns {
+    display: flex;
+    align-items: center;
+}
+
+.removeItemBtn,
+.addItemBtn {
+    background-color: black;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+
+.quantity-label, .quantity-number {
+    margin-right: 10px;
     font-weight: bold;
+}
+
+.price-label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+#quantityError {
+    display: none; /* Initially hide the error message */
+    color: black; /* Set the text color to red */
+    font-size: 14px; /* Adjust the font size as needed */
+    margin-top: 5px; /* Add some top margin for spacing */
 }
