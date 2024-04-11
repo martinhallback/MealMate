@@ -5,15 +5,19 @@
     padding-right: 10px;
     padding-bottom: 10px;
     left: 15px;
-    top: 127px;
-    background-color: #263a4e91; /* Example background color, adjust as needed */
-    color: white; /* Text color */
+    top: 112px;
+    background-color: #C6D7CD; /* Example background color, adjust as needed */
+    color: black; /* Text color */
     font-size: 20px; /* Adjust font size as needed */
     text-align: left; /* Center the header text */
     width: 150px;
-    /*height: 350px;*/
+    height: 565px;
     border-radius: 0 0 30px 30px; /* top-left, top-right, bottom-right, bottom-left */
-    /*border-radius: 30px; /* Rounded edges. Adjust the value as needed */ 
+    overflow-y: auto;
+}
+.filter-scrollable-content{
+    max-height: 540px; /* Adjust height to allow space for close-btn */
+    overflow-y: auto;
 }
 
 .filter-options label {
@@ -21,10 +25,12 @@
 }
 
 .apply-button {
-    position: absolute;
-    bottom: 10px; /* Adjust as needed */
+    /*position: absolute;
+    bottom: 10px; /* Adjust as needed 
     right: 10px; /* Adjust as needed */
-    background-color: #263a4e;
+    margin-top: 5px;
+    margin-left: 75px;
+    background-color: #006267;
     color: white;
     border-radius: 20px; /* Rounded edges */
     padding: 4px 8px;
@@ -35,13 +41,13 @@
 
 .apply-button:hover {
     box-shadow: 0 0 2px 2px #fff;
-    background-color: #0e5091;
+    background-color: #00494d;
 }
 
 
 .cicularfilter-container {
     position: fixed; /* This positions the container relative to its nearest positioned ancestor */
-    top: 105px; /* Adjust this value as needed to move the circle up */
+    top: 90px; /* Adjust this value as needed to move the circle up */
     left: 15px; /* Adjust this value as needed to move the circle to the left */
    /* position: relative; /* Establishes a positioning context for the overlay */
     width: 50px; /* Diameter of the circular background */
@@ -57,7 +63,7 @@
 
 .cicularfilter-container:hover {
     box-shadow: 0 0 2px 2px #fff;
-    background-color: #0e5091da;
+    background-color: #00494d;
   
 }
 
@@ -65,7 +71,7 @@
     width: 100%;
     height: 100%;
     border-radius: 50%; /* Makes it circular */
-    background-color: #263a4e; /* Example color */
+    background-color: #006267; /* Example color */
     position: absolute; /* Ensures it's behind the image */
     z-index: 1; /* Lower stacking context than the image */
 }
@@ -82,7 +88,7 @@
 
 .pillfilter-container {
     position: fixed; /* This positions the container relative to its nearest positioned ancestor */
-    top: 105px; /* Adjust this value as needed to move the circle up */
+    top: 90px; /* Adjust this value as needed to move the circle up */
     left: 15px; /* Adjust this value as needed to move the circle to the left */
    /* position: relative; /* Establishes a positioning context for the overlay */
     width: 150px; /* Diameter of the circular background */
@@ -93,14 +99,14 @@
     align-items: center; /* Center vertically */
     border-radius: 25px; 
     z-index: 3;
-    background-color: #263a4e; /* Adjust color as needed */
+    background-color: #006267; /* Adjust color as needed */
 }
 
 .pill-background {
     width: 100%;
     height: 100%;
     border-radius: 25px; /* Makes it circular */
-    background-color: #263a4e; /* Example color */
+    background-color: #006267; /* Example color */
     position: absolute; /* Ensures it's behind the image */
     z-index: 1; /* Lower stacking context than the image */
 }
@@ -115,17 +121,211 @@
 
 .pill-background:hover {
     box-shadow: 0 0 2px 2px #fff;
-    background-color: #0e5091;
+    background-color: #00494d;
 
 }
 
 .DietPref{
     font-weight: bold;
-    color: #263a4e;
+    color: #006267;
     text-shadow: 0 0 1px #fff;
     margin-bottom: 1px;
     margin-top: 5px;
 }
+
+.ProteinPref{
+    font-weight: bold;
+    color: #006267;
+    text-shadow: 0 0 1px #fff;
+    margin-bottom: 1px;
+    margin-top: 5px;
+}
+
+.select-protein-container {
+    display: flex;
+    flex-wrap: wrap; 
+   /* gap: 1px; /* Adjusts the space between items */
+}
+
+
+.select-meat-box{
+    border-radius: 25px; /* Makes it circular */
+    background-color: #9fd7b6; /* Example color */
+    border-color: #006267;
+    border-width: 1px;
+    border-style: solid;
+    width: 55px;
+    height: 22px;
+    padding-left: 3px;
+    margin: 1px;
+    cursor: pointer;
+}
+
+.select-meat-box:not(.active-click):hover{
+    background-color: #d52a3897; /* Hover color */
+    border-color: #9a000d;
+}
+
+
+.select-fish-box{
+    border-radius: 25px; /* Makes it circular */
+    background-color: #9fd7b6; /* Example color */
+    border-color: #006267;
+    border-width: 1px;
+    border-style: solid;
+    width: 49px;
+    height: 22px;
+    padding-left: 3px;
+    margin: 1px;
+    cursor: pointer;
+}
+
+.select-fish-box:not(.active-click):hover{
+    background-color: #d52a3897; /* Hover color */
+    border-color: #9a000d;
+}
+
+.select-poultry-box{
+    border-radius: 25px; /* Makes it circular */
+    background-color: #9fd7b6; /* Example color */
+    border-color: #006267;
+    border-width: 1px;
+    border-style: solid;
+    width: 69px;
+    height: 22px;
+    padding-left: 3px;
+    margin: 1px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.select-poultry-box:not(.active-click):hover{
+    background-color: #d52a3897; /* Hover color */
+    border-color: #9a000d;
+}
+
+.select-dairy-box{
+    border-radius: 25px; /* Makes it circular */
+    background-color: #9fd7b6; /* Example color */
+    border-color: #006267;
+    border-width: 1px;
+    border-style: solid;
+    width: 106px;
+    height: 22px;
+    padding-left: 3px;
+    margin: 1px;
+    cursor: pointer;
+}
+
+.select-dairy-box:not(.active-click):hover{
+    background-color: #d52a3897; /* Hover color */
+    border-color: #9a000d;
+}
+
+.select-plantbased-box{
+    border-radius: 25px; /* Makes it circular */
+    background-color: #9fd7b6; /* Example color */
+    border-color: #006267;
+    border-width: 1px;
+    border-style: solid;
+    width: 94px;
+    height: 22px;
+    padding-left: 3px;
+    margin: 1px;
+    cursor: pointer;
+}
+
+.select-plantbased-box:not(.active-click):hover{
+    background-color: #d52a3897; /* Hover color */
+    border-color: #9a000d;
+}
+
+.select-shellfish-box{
+    border-radius: 25px; /* Makes it circular */
+    background-color: #9fd7b6; /* Example color */
+    border-color: #006267;
+    border-width: 1px;
+    border-style: solid;
+    width: 78px;
+    height: 22px;
+    padding-left: 3px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    margin-left: 1px;
+    cursor: pointer;
+}
+
+.select-shellfish-box:not(.active-click):hover{
+    background-color: #d52a3897; /* Hover color */
+    border-color: #9a000d;
+}
+
+.active-click {
+    background-color: #d52a3897; /* Clicked color */
+    border-color: #9a000d;
+}
+
+.select-protein-box {
+    border: 1px solid #ccc;
+    padding: 1px;
+    padding-left: 5px;
+    width: 130px;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #d52a3897;
+    border-color: #9a000d;
+    border-width: 1px;
+    border-style: solid;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+
+  .select-protein-box:hover {
+    box-shadow: 0 0 1px 1px #fff;
+    background-color: #a51f2ab7;
+   /* #C6D7CD; */
+  }
+
+  .protein-dropdown-content {
+    display: none;
+    position: relative;
+    background-color: #FBF9EF;
+    width: 130px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1000;
+    padding: 5px; /* Padding moved here from .scrollable-content */
+    padding-bottom: 30px; /* Space for the close-btn */
+    max-height: 125px; /* Adjusted for total dropdown height including close-btn */
+    overflow: hidden; /* Ensures only .scrollable-content scrolls */
+}
+
+.protein-scrollable-content {
+    max-height: 95px; /* Adjust height to allow space for close-btn */
+    overflow-y: auto;
+}
+
+.protein-close-btn {
+    position: absolute;
+    bottom: 5px; /* Ensure this positions the button correctly */
+    right: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+  .protein-close-btn:hover {
+    font-weight: bold;
+    text-shadow: 0 0 5px #006267;
+  }
+
+
+  .AllergiePref {
+    font-weight: bold;
+    font-size: 14px;
+    color: #006267;
+    text-shadow: 0 0 1px #fff;
+    margin-bottom: 1px;
+    margin-top: 18px;
+  }
 
 .select-box {
     border: 1px solid #ccc;
@@ -133,20 +333,21 @@
     width: 130px;
     border-radius: 5px;
     font-size: 14px;
-    background-color: #263a4edd;
+    background-color: #006267;
     cursor: pointer;
     margin-top: 8px;
   }
 
   .select-box:hover {
     box-shadow: 0 0 1px 1px #fff;
-    background-color: #0e5091;
+    background-color: #00494d;
   }
 
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #263a4ea2;
+    background-color: #FBF9EF;
+    font-size: 14px;
     width: 130px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1000;
@@ -161,7 +362,7 @@
     overflow-y: auto;
 }
 
-.close-btn {
+.allergy-close-btn {
     position: absolute;
     bottom: 5px; /* Ensure this positions the button correctly */
     right: 5px;
@@ -169,16 +370,29 @@
     font-size: 14px;
 }
 
-  .close-btn:hover {
+  .allergy-close-btn:hover {
     font-weight: bold;
-    text-shadow: 0 0 5px #263a4e;
+    text-shadow: 0 0 5px #006267;
+  }
+
+  .PricePref{
+    font-weight: bold;
+    font-size: 14px;
+    color: #006267;
+    text-shadow: 0 0 1px #fff;
+    margin-bottom: 1px;
+    margin-top: 20px;
   }
 
   .priceRange {
     z-index: 0;
-    margin-bottom: 50px;
+    margin-bottom: 15px;
   }
   .priceRangeTitle{
-    margin-top: 20px;
+    margin-top: 1px;
+    font-size: 14px;
   }
+
+ 
+  
 

@@ -19,6 +19,23 @@ $(document).ready(function(){
             console.error("Error fetching allergies: ", error);
         }
     });
+
+    $.ajax({
+        url: '/proteins', // Adjust the URL based on your application's routing
+        type: 'GET',
+        success: function(proteins) {
+            proteins.forEach(function(protein) {  
+                if (protein.type !== "Other") {
+                // Assuming 'type' is the property that holds the name of the allergy
+                var checkbox = $('<div class="' + protein.source + '"><label><input type="checkbox" name="' + protein._id  + '" value="' + protein.type  + '" id="' + protein.source + '" data-type"proteinSort")> ' + protein.type + '</label></div>');
+                $('#proteinForm').append(checkbox);
+                }
+            });
+        },
+        error: function(error) {
+            console.error("Error fetching proteins: ", error);
+        }
+    });
     
     $('#CicularFilterContainer').mouseenter(function() {
         if (isAnimating) return; 
@@ -74,12 +91,73 @@ $(document).ready(function(){
     });
 });
 
+$('#PescitarianSelected').click(function() {
+    if ($(this).prop('checked')) {
+        $('#select-poultry-box, #select-meat-box').addClass('active-click');
+        $('#proteinForm .Meat, .Poultry').hide();
+    } else {
+        $('#select-poultry-box, #select-meat-box').removeClass('active-click');
+        $('#proteinForm .Meat, .Poultry').show();
+    }
+});
+
+$('#VegetarianSelected').click(function() {
+    if ($(this).prop('checked')) {
+        $('#select-poultry-box, #select-meat-box, #select-fish-box, #select-shellfish-box').addClass('active-click');
+        $('#proteinForm .Meat, .Poultry, .Fish, .Seafood').hide();
+    } else {
+        $('#select-poultry-box, #select-meat-box, #select-fish-box, #select-shellfish-box').removeClass('active-click');
+        $('#proteinForm .Meat, .Poultry, .Fish, .Seafood').show();
+    }
+});
+
+$('#VeganSelected').click(function() {
+    if ($(this).prop('checked')) {
+        $('#select-poultry-box, #select-meat-box, #select-fish-box, #select-shellfish-box, #select-dairy-box').addClass('active-click');
+        $('#proteinForm .Meat, .Poultry, .Fish, .Seafood, .Vegetarian').hide();
+    } else {
+        $('#select-poultry-box, #select-meat-box, #select-fish-box, #select-shellfish-box, #select-dairy-box').removeClass('active-click');
+        $('#proteinForm .Meat, .Poultry, .Fish, .Seafood, .Vegetarian').show();
+    }
+});
+$('#proteinForm .Meat, .Poultry').hide();
+
+$('#select-poultry-box').click(function() {
+    $(this).toggleClass('active-click'); 
+    $('#proteinForm .Poultry').toggle();
+});
+
+$('#select-meat-box').click(function() {
+    $(this).toggleClass('active-click'); 
+    $('#proteinForm .Meat').toggle();
+});
+
+$('#select-fish-box').click(function() {
+    $(this).toggleClass('active-click'); 
+    $('#proteinForm .Fish').toggle();
+});
+
+$('#select-shellfish-box').click(function() {
+    $(this).toggleClass('active-click'); 
+    $('#proteinForm .Seafood').toggle();
+});
+
+$('#select-plantbased-box').click(function() {
+    $(this).toggleClass('active-click'); 
+    $('#proteinForm .Vegan').toggle();
+});
+
+$('#select-dairy-box').click(function() {
+    $(this).toggleClass('active-click'); 
+    $('#proteinForm .Vegetarian').toggle();
+});
+
 $('#select-box').click(function() {
    $('#dropdown').slideToggle(function() {
     if ($('#dropdown').is(':visible')) {
-        $('.priceRangeTitle').css('margin-top', '145px');
+        $('.PricePref').css('margin-top', '145px');
     } else {
-        $('.priceRangeTitle').css('margin-top', '20px');
+        $('.PricePref').css('margin-top', '20px');
     }
 });
     document.getElementById('optionsForm').addEventListener('change', function() {
@@ -95,15 +173,38 @@ $('#select-box').click(function() {
          });
 });
 
-$('#closeX').click(function() {
+$('#allergy-closeX').click(function() {
     $('#dropdown').slideToggle(function() {
         if ($('#dropdown').is(':visible')) {
-            $('.priceRangeTitle').css('margin-top', '145px');
+            $('.PricePref').css('margin-top', '145px');
         } else {
-            $('.priceRangeTitle').css('margin-top', '20px');
+            $('.PricePref').css('margin-top', '20px');
         }
     });
 });
+
+$('#select-protein-box').click(function() {
+    $('#protein-dropdown').slideToggle(function() {
+ });
+     document.getElementById('protein-dropdown').addEventListener('change', function() {
+            let selected = [];
+            document.querySelectorAll('#protein-dropdown input[type="checkbox"]:checked').forEach(item => {
+              selected.push(item.value);
+            });
+            if (selected.length > 0) {
+              document.querySelector('.select-protein-box').textContent = selected.join(', ');
+              } else {
+               document.querySelector('.select-protein-box').textContent = "↓ Exclude specific proteins";
+              }
+          });
+ });
+ 
+ $('#protein-closeX').click(function() {
+     $('#protein-dropdown').slideToggle
+     (function() {
+     });
+ });
+
 
 priceRange.addEventListener('input', function() {
     const value = this.value;
@@ -116,30 +217,29 @@ priceRange.addEventListener('input', function() {
 });
 
 function applyFilters() {
-    const selectedOptions = {
-        dietaryPreferences: [],
-        allergies: [], // Assuming you'll later populate this dynamically
-        maxPrice: document.getElementById('priceRange').value // Get the value of the price range
-    };
+   // const dietaryPreferences = [];
+    const allergiesToAdd = [];
 
-    // Get all checkbox inputs
-    const dietPref_checkboxes = document.querySelectorAll('input[type="checkbox"][data-type="dietPref"]');
+    const allergy = [];
+    const portionPrice = document.getElementById('priceRange').value;
+    const proteinType = [];
+    const proteinSource = [];
+
     const allergyType_checkboxes = document.querySelectorAll('input[type="checkbox"][data-type="allergyType"]');
-
-    // Iterate over each checkbox to see if it's checked
-    dietPref_checkboxes.forEach(dietPref_checkbox => {
-        if (dietPref_checkbox.checked) {
-            selectedOptions.dietaryPreferences.push(checkbox.name); // Add the name of the checkbox to the array
-        }
-    });
+    const proteinType_checkboxes = document.querySelectorAll('input[type="checkbox"][data-type="proteinSort"]');
+    
 
     allergyType_checkboxes.forEach(allergyType_checkbox => {
-        if (allergyType_checkbox.checked) {
-            selectedOptions.allergies.push(checkbox.name); // Add the name of the checkbox to the array
+        if (allergyType_checkbox.checked && !allergy.includes(allergyType_checkbox.name)) {
+            allergy.push(allergyType_checkbox.name); 
         }
     });
 
-    // Log the selected options to the console
-    console.log(selectedOptions);
-    alert(selectedOptions);
+    proteinType_checkboxes.forEach(proteinType_checkbox => {
+        if (proteinType_checkbox.checked && !proteinType.includes(proteinType_checkbox.name)) {
+            proteinType.push(proteinType_checkbox.name); 
+        }
+    });
+
+    console.log(allergy, proteinType, proteinSource, portionPrice);
 }
