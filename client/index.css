@@ -16,7 +16,7 @@ body{
 }
 
 .container{
-    min-height: calc(60vh);
+    min-height: calc(85vh);
     padding-bottom: 10px;
 
     width: 100%; /* Ensure the container stretches across the entire width */
