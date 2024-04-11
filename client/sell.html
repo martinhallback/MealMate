@@ -12,6 +12,14 @@
                 <input type="text" class="sellinput" id="lunchboxTitle" name="lunchboxTitle" required>
             </div>
             <div class="form-group">
+                <label for="lunchboxPrice">Price per luncbox:</label>
+                <input type="text" class="sellinput" id="lunchboxPrice" name="lunchboxPrice" required>
+            </div>
+            <div class="form-group">
+                <label for="lunchboxQuantity">Quantity:</label>
+                <input type="text" class="sellinput" id="lunchboxQuantity" name="lunchboxQuantity" required>
+            </div>
+            <div class="form-group">
                 <label for="lunchboxDescription">Description:</label>
                 <textarea class="sellinput" id="lunchboxDescription" name="lunchboxDescription" rows="4"
                     required></textarea>
@@ -24,86 +32,19 @@
                 <label for="lunchboxAllergens">Allergens:</label>
                     <div id="allergensList" class="allergens-list">
                     <!-- Checkboxes for each allergen -->
-                    <label class="AllergenContainer">Gluten
-                        <input type="checkbox" id="gluten" name="allergen" value="Gluten">
-                        <span class="checkmark"></span>
-                    </label>
-                <label class="AllergenContainer">Dairy
-                    <input type="checkbox" id="dairy" name="allergen" value="Dairy">
-                    <span class="checkmark"></span>
-                  </label>
-                  
-                  <label class="AllergenContainer">Nuts
-                    <input type="checkbox" id="nuts" name="allergen" value="Nuts">
-                    <span class="checkmark"></span>
-                  </label>
-                  
-                  <label class="AllergenContainer">Soy
-                    <input type="checkbox" id="soy" name="allergen" value="Soy">
-                    <span class="checkmark"></span>
-                  </label>
-                  
-                  <label class="AllergenContainer">Shellfish
-                    <input type="checkbox" id="shellfish" name="allergen" value="Shellfish">
-                    <span class="checkmark"></span>
-                  </label>
-                  
-                  <label class="AllergenContainer">Fish
-                    <input type="checkbox" id="fish" name="allergen" value="Fish">
-                    <span class="checkmark"></span>
-                  </label>
-                  
-                  <label class="AllergenContainer">Peanuts
-                    <input type="checkbox" id="peanuts" name="allergen" value="Peanuts">
-                    <span class="checkmark"></span>
-                  </label>
-                  
-                  <label class="AllergenContainer">Eggs
-                    <input type="checkbox" id="eggs" name="allergen" value="Eggs">
-                    <span class="checkmark"></span>
-                  </label>
-                  
-                  <label class="AllergenContainer">Lupin
-                    <input type="checkbox" id="lupin" name="allergen" value="Lupin">
-                    <span class="checkmark"></span>
-                  </label>
-                  
-                  <label class="AllergenContainer">Celery
-                    <input type="checkbox" id="celery" name="allergen" value="Celery">
-                    <span class="checkmark"></span>
-                  </label>
-                  
-                  <label class="AllergenContainer">Mustard
-                    <input type="checkbox" id="mustard" name="allergen" value="Mustard">
-                    <span class="checkmark"></span>
-                  </label>
-                  
-                  <label class="AllergenContainer">Sesame
-                    <input type="checkbox" id="sesame" name="allergen" value="Sesame">
-                    <span class="checkmark"></span>
-                  </label>
-                  
-                  <label class="AllergenContainer">Sulfites
-                    <input type="checkbox" id="sulfites" name="allergen" value="Sulfites">
-                    <span class="checkmark"></span>
-                  </label>
-                  
-                  <label class="AllergenContainer">Peas
-                    <input type="checkbox" id="peas" name="allergen" value="Peas">
-                    <span class="checkmark"></span>
-                  </label>
-                  
-                  <label class="AllergenContainer">Seeds
-                    <input type="checkbox" id="seeds" name="allergen" value="Seeds">
-                    <span class="checkmark"></span>
-                  </label>
                     </div>
             </div>
+            <div class="form-group">
+              <label for="lunchboxProteins">Proteins:</label>
+                  <div id="proteinList" class="proteins-list">
+                  <!-- Checkboxes for each protein -->
+                  </div>
+          </div>
             <div class="form-group">
                 <label for="lunchboxImage">Upload Image:</label>
                 <input type="file" class="sellinput-file" id="lunchboxImage" name="lunchboxImage" required>
             </div>
-            <button type="submit" class="btn btn-primary" id="submitCreateAd">Create Ad</button>
+            <button type="button" class="btn btn-primary" id="submitCreateAd">Create Ad</button>
         </form>
     </div>
 </body>

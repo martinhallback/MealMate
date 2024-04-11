@@ -215,9 +215,7 @@ button[id="submitCreateAd"]:hover {
 
 .allergen-item {
     padding: 8px 12px; /* Padding for each allergen item */
-    cursor: pointer; /* Show pointer cursor on hover */
-    /*width: 100%; /* Make the allergen item occupy full width */
-    /*box-sizing: border-box; /* Include padding and border in the element's total width */
+    cursor: pointer; 
     font-weight:200;
 }
 
