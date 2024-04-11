@@ -1,42 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Test FAQ</title>
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>  <script src="contact.js"></script>  <script>
-      const faqQuestions = document.querySelectorAll(".faqQuestion h3");
-      const faqAnswers = document.querySelectorAll(".faqQuestion .answer");
-  
-      faqQuestions.forEach((question, index) => {
-        question.addEventListener("click", () => {
-          faqAnswers[index].classList.toggle("show-answer"); // Toggles 'show-answer' class
-        });
+
+<head>
+  <title>FAQ</title>
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+  <script src="contact.js"></script>
+  <script>
+    const faqQuestions = document.querySelectorAll(".faqQuestion h3");
+    const faqAnswers = document.querySelectorAll(".faqQuestion .answer");
+
+    faqQuestions.forEach((question, index) => {
+      question.addEventListener("click", () => {
+        faqAnswers[index].classList.toggle("show-answer"); // Toggles 'show-answer' class
       });
-    </script>  
-  </head>
+    });
+  </script>
+</head>
+
 <body>
   <div class="contactContainer">
     <div class="about-us">
-      <img src="Images/aboutus.jpg" alt="About Us Image">
-      <div class="features">
-        <div class="feature">
-          <h3>Lunchboxes with Varied Cuisine and Cooking</h3>
-          <p>Explore diverse cuisines and cooking styles with our lunchboxes. From traditional dishes to fusion flavors,
-            we offer a wide range of options to satisfy your palate and culinary curiosity.</p>
-        </div>
-        <div class="feature">
-          <h3>Flexible Pick-Up Times</h3>
-          <p>Choose from flexible pick-up times that fit your schedule. Whether you need your lunchboxes ready in the
-            morning, afternoon, or evening, we're here to accommodate your needs.</p>
-        </div>
-        <div class="feature">
-          <h3>Expert Customer Support</h3>
-          <p>Our dedicated customer support team is here to assist you every step of the way. Have questions about menu
-            customization, delivery logistics, or special requests? We're just a call or message away.</p>
-        </div>
-      </div>
-      <h2 class="AboutUs">About us</h2>
+      <img src="Images/AboutUsImage.jpg" alt="About Us Image">
+      <h2 class="OurPhilosophyTitle">OUR PHILOSOPHY</h2>
       <p> </p>
-      <div class="AboutUsText">
+      <div class="OurPhilosophyText">
         <p>Students are looking for both affordable and nutritious food that is quick to prepare. With our offering,
           students have the opportunity to choose from different dishes at low prices that can be acquired swiftly.
           This promotes both students who feel they cook a little too much food for themselves, seeking an extra source
@@ -55,51 +42,101 @@
         <!-- FAQ Question and Answer -->
         <div class="faqQuestion">
           <h3 onclick="toggleAnswer(this)">How does pricing work?
-            <span class="arrow">▼</span>
+            <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+              style="display: inline-block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 4px; overflow: visible;"
+              aria-hidden="true" role="presentation" focusable="false">
+              <path fill="none" d="M28 12 16.7 23.3a1 1 0 0 1-1.4 0L4 12"></path>
+            </svg>
           </h3>
-          <p class="answer" style="display:none;">Pricing for our lunchboxes is based on the selected options and any additional
+          <p class="answer" style="display:none;">Pricing for our lunchboxes is based on the selected options and any
+            additional
             customizations. Our menu offers a variety of options at different price points to suit your budget.</p>
         </div>
+
         <div class="faqQuestion">
           <h3 onclick="toggleAnswer(this)">How does pick-up work?
-            <span class="arrow">▼</span>
+            <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+              style="display: inline-block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 4px; overflow: visible;"
+              aria-hidden="true" role="presentation" focusable="false">
+              <path fill="none" d="M28 12 16.7 23.3a1 1 0 0 1-1.4 0L4 12"></path>
+            </svg>
           </h3>
-          <p class="answer" style="display:none;">Pick-up for our lunchboxes is flexible and convenient. Once you place your order, you can
-            select a preferred pick-up time from our available slots. Simply visit the given location at your chosen time to
+          <p class="answer" style="display:none;">Pick-up for our lunchboxes is flexible and convenient. Once you place
+            your order, you can
+            select a preferred pick-up time from our available slots. Simply visit the given location at your chosen
+            time to
             collect your freshly prepared meal.</p>
         </div>
         <div class="faqQuestion">
           <h3 onclick="toggleAnswer(this)">Are your lunchboxes safe for individuals with allergies?
-            <span class="arrow">▼</span>
+            <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+              style="display: inline-block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 4px; overflow: visible;"
+              aria-hidden="true" role="presentation" focusable="false">
+              <path fill="none" d="M28 12 16.7 23.3a1 1 0 0 1-1.4 0L4 12"></path>
+            </svg>
           </h3>
-          <p class="answer" style="display:none;">We take food safety seriously and strive to accommodate various dietary needs. Our
+          <p class="answer" style="display:none;">We take food safety seriously and strive to accommodate various
+            dietary needs. Our
             lunchboxes are prepared in a controlled environment, and we take measures to prevent cross-contamination.
             However, please inform us of any allergies or dietary restrictions when placing your order so we can take
             appropriate precautions.</p>
         </div>
         <div class="faqQuestion">
           <h3 onclick="toggleAnswer(this)">What measures do you take to ensure food safety?
-            <span class="arrow">▼</span>
+            <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+              style="display: inline-block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 4px; overflow: visible;"
+              aria-hidden="true" role="presentation" focusable="false">
+              <path fill="none" d="M28 12 16.7 23.3a1 1 0 0 1-1.4 0L4 12"></path>
+            </svg>
           </h3>
-          <p class="answer" style="display:none;">Food safety is our top priority. Our users follows strict hygiene practices, including
+          <p class="answer" style="display:none;">Food safety is our top priority. Our users follows strict hygiene
+            practices, including
             regular handwashing and sanitization of cooking surfaces and utensils. We also monitor food temperatures to
             ensure proper storage and minimize the risk of foodborne illnesses.</p>
         </div>
         <div class="faqQuestion">
           <h3 onclick="toggleAnswer(this)">Can I customize my lunchbox to suit my dietary preferences?
-            <span class="arrow">▼</span>
+            <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+              style="display: inline-block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 4px; overflow: visible;"
+              aria-hidden="true" role="presentation" focusable="false">
+              <path fill="none" d="M28 12 16.7 23.3a1 1 0 0 1-1.4 0L4 12"></path>
+            </svg>
           </h3>
-          <p class="answer" style="display:none;">Yes, we offer customization options to accommodate various dietary preferences and
+          <p class="answer" style="display:none;">Yes, we offer customization options to accommodate various dietary
+            preferences and
             restrictions. Whether you're vegetarian, vegan, gluten-free, or have other dietary needs, we can tailor your
             lunchbox to meet your requirements. Simply inform us of your preferences when placing your order.</p>
         </div>
       </div>
     </div>
-    <h2 class="ContactUs">Still have questions?</h2>
-    <div class="contact-form-container">
+    <div class="StillHaveQuestionsContainer">
+      <div class="ContactInfoContainer">
+        <h2 class="StillHaveQuestionsTitle">STILL HAVE QUESTIONS OR FEEDBACK?</h2>
+
+        <!-- Contact info -->
+        <table id="contact-info">
+          <tr>
+            <th colspan="2">
+              <h3 style="font-weight: bold;">MealMate</h3>
+            </th>
+          </tr>
+          <tr>
+            <td>E-mail:</td>
+            <td>MealMate@gmail.se</td>
+          </tr>
+          <tr>
+            <td>Phone number:</td>
+            <td>070-90 00 000</td>
+          </tr>
+          <tr>
+            <td>Address:</td>
+            <td>Diplomatgatan 1 Linköping</td>
+          </tr>
+        </table>
+      </div>
       <!-- Contact form -->
+      <div class="ContactFormContainer">
       <form id="contactForm">
-        <!--<h2 class="contactTitle">Contact Us</h2>-->
         <div class="form-group">
           <label for="input-name">Name:</label>
           <input type="text" class="contactInput" id="input-name" name="name" required>
@@ -122,27 +159,24 @@
         </div>
         <button type="submit" class="contactButton">Send</button>
       </form>
-
-      <!-- Contact info -->
-      <table id="contact-info">
-        <tr>
-          <th colspan="2">
-            <h3>MealMate</h3>
-          </th>
-        </tr>
-        <tr>
-          <td>E-mail:</td>
-          <td>MealMate@gmail.se</td>
-        </tr>
-        <tr>
-          <td>Phone number:</td>
-          <td>070-90 00 000</td>
-        </tr>
-        <tr>
-          <td>Address:</td>
-          <td>Diplomatgatan 1 Linköping</td>
-        </tr>
-      </table>
+    </div>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <h3>LUNCHBOXES WITH VARIED CUISINE AND COOKING</h3>
+        <p>Explore diverse cuisines and cooking styles with our lunchboxes. From traditional dishes to fusion flavors,
+          we offer a wide range of options to satisfy your palate and culinary curiosity.</p>
+      </div>
+      <div class="feature">
+        <h3>FLEXIBLE PICK-UP TIMES</h3>
+        <p>Choose from flexible pick-up times that fit your schedule. Whether you need your lunchboxes ready in the
+          morning, afternoon, or evening, we're here to accommodate your needs.</p>
+      </div>
+      <div class="feature">
+        <h3>EXPERT CUSTOMER SUPPORT</h3>
+        <p>Our dedicated customer support team is here to assist you every step of the way. Have questions about menu
+          customization, delivery logistics, or special requests? We're just a call or message away.</p>
+      </div>
     </div>
   </div>
   <!--<script src="contact.js"></script>-->
