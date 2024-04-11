@@ -232,7 +232,7 @@ advert_validation = {
 purchase_validation = {
     "$jsonSchema" : {
         "bsonType" : "object",
-        "required" : ["date", "totalPrice", "quantity", "sellerRating", "reviewText", "buyer", "seller", "advertisement"],
+        "required" : ["totalPrice", "quantity", "buyer", "seller", "advertisement"],
         "properties" : {
             "date" : {
                 "bsonType" : "date",
@@ -269,6 +269,6 @@ purchase_validation = {
         }
     }
 }
-#if __name__ == "__main__":
-    #db.command("collMod", "purchase",  validator=purchase_validation)
+if __name__ == "__main__":
+    db.command("collMod", "purchase",  validator=purchase_validation)
 
