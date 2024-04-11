@@ -13,15 +13,17 @@ function startCheckout(totalPrice, totalQuantity){
     console.log(totalPrice, totalQuantity);
 
     $.ajax({
-        url: host + '/create-checkout-session',// + totalPrice + '/' + totalQuantity,
+        url: host + '/create-checkout-session',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
             price: totalPrice,
             quantity: totalQuantity,
         }),
-        success: function() {
+        success: function(response) {
           console.log("checkout finished")
+          console.log(response)
+          window.location.href = response.url;
         },
         error: function(JQxhr, status, error){
           console.log('Error when paying: ' + error)

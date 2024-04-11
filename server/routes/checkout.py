@@ -2,6 +2,8 @@ from flask import Blueprint
 from flask import jsonify
 from flask import request
 from flask_jwt_extended import jwt_required
+from flask_cors import CORS
+
 import configuration
 
 from bson import ObjectId
@@ -16,18 +18,24 @@ stripe.api_key = 'sk_test_51P3jTUJ3D9d5Vz3Fm0K2btxJFKZp5k9bH0xa6AOvvR3xXiMixVyrR
 domain = 'http://localhost:' + str(configuration.portNumber)
 
 bp = Blueprint('checkout', __name__)
-
 @bp.route('/create-checkout-session', methods = ['POST'])
 def checkout():
     if request.method == 'POST':
         data = request.get_json()
         try:
+            price = str(data['price'])
+            name = "test"
             checkout_session = stripe.checkout.Session.create(
             line_items=[
                 {
-                    # Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                    'price': data['price'],
-                    'quantity': data['quantity'],
+                    'price_data': {
+                        'currency' : 'sek',
+                        'unit_amount': price,
+                        'product_data':{
+                            'name': name
+                        }
+                    },
+                    'quantity': 1,
                 },
             ],
             mode='payment',
