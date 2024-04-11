@@ -56,8 +56,84 @@ validation_rule = {
 }
 #initialiser object
 
-"""protein.create_index([("type", ASCENDING), ("source", ASCENDING)], unique=True)
-protein.insert_one(validation_rule)"""
+#Location
+location = db["location"]
+validation_rule = {
+    "$jsonSchema" : {
+        "bsonType" : "object",
+        "required" : ["city", "area"],
+        "properties" : {
+            "city" : {
+                "bsonType" : "string",
+                "description" : "Name of city"
+            },
+            "area" : {
+                "bsonType" : "string",
+                "description" : "Name of area"
+            } 
+        }
+    }
+}
+
+"""location.insert_one(validation_rule)
+location.insert_one({"city" : "Linköping", "area" : "Ryd"})"""""
+
+#Location
+user = db["user"]
+validation_rule = {
+    "$jsonSchema" : {
+        "bsonType" : "object",
+        "required" : ["email", "PW_hash", "phoneNumber", "name", "PN", "isVerified", "university", "student_ID", "address", "location"],
+        "properties" : {
+            "email" : {
+                "bsonType" : "string",
+                "description" : "Email of user"
+            },
+            "PW_hash" : {
+                "bsonType" : "string",
+                "description" : "Hashed password"
+            },
+             "phoneNumber" : {
+                "bsonType" : "string",
+                "description" : "Phone number of user"
+            },
+            "name" : {
+                "bsonType" : "string",
+                "description" : "Name of user"
+            },
+            "PN" : {
+                "bsonType" : "string",
+                "description" : "Personal number of user"
+            },
+             "isVerified" : {
+                "bsonType" : "bool",
+                "description" : "If user is verified"
+            },
+             "university" : {
+                "bsonType" : "string",
+                "description" : "University of user"
+            },
+             "student_ID" : {
+                "bsonType" : "string",
+                "description" : "Student ID of user"
+            },
+             "address" : {
+                "bsonType" : "string",
+                "description" : "Address of user"
+            },
+             "location" : {
+                "bsonType" : "objectId",
+                "description" : "Location of user"
+            },
+        }
+    }
+}
+"""user.create_index([("email", ASCENDING)], unique=True)
+#user.create_index([("PW_hash", ASCENDING)], unique=True)
+user.insert_one(validation_rule)"""""
+#user.insert_one({"email" : "johan.loven@gmail.com", "PW_hash" : "1234", "phoneNumber" : "0701234567", "name" : "Johan Loven", "PN" : "19990101-1234", "isVerified" : True, "university" : "Linköping University", "student_ID" : "abc123", "address" : "Storgatan 1", "location" : ObjectId("6601494cc589dfa2b4c4bf30")})
+
+
 
 #Location collection
 location = db["location"]
