@@ -17,7 +17,7 @@ domain = 'http://localhost:' + str(configuration.portNumber)
 
 bp = Blueprint('checkout', __name__)
 
-@bp.route('/create-checkout-session/', methods = ['POST'])
+@bp.route('/create-checkout-session', methods = ['POST'])
 def checkout():
     if request.method == 'POST':
         data = request.get_json()

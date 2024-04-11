@@ -13,7 +13,7 @@ function startCheckout(totalPrice, totalQuantity){
     console.log(totalPrice, totalQuantity);
 
     $.ajax({
-        url: host + '/create-checkout-session/' + totalPrice + '/' + totalQuantity,
+        url: host + '/create-checkout-session',// + totalPrice + '/' + totalQuantity,
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
