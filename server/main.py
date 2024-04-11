@@ -25,6 +25,7 @@ jwt = JWTManager(app)
 bcrypt = Bcrypt(app)
 
 #DB connection
+
 uri = "mongodb+srv://{}:{}@tddd83.cs9janp.mongodb.net/?retryWrites=true&w=majority&appName={}".format(credentialConfig["username"],credentialConfig["password"], credentialConfig["app_name"])
 databaseClient = MongoClient(uri,  tlsCAFile=ca)
 db = databaseClient["mealMate"]
