@@ -44,6 +44,7 @@ $(document).ready(function () {
       $(".container").load("settings.html .profileContainer", function () { 
           var user = JSON.parse(sessionStorage.getItem('auth')).user;
           loadUser(user);
+          loadUniversities();
       });
     });
 });
@@ -59,9 +60,26 @@ function loadUser(id) {
             settingsform.elements["settingName"].value = user.name;
             settingsform.elements["settingPhoneNumber"].value = user.phoneNumber;
             settingsform.elements["settingPNumber"].value = user.PNumber;
-            //settingsform.elements["settingUniversity"].value = user.university;
+            settingsform.elements["settingUniversity"].value = user.university;
             settingsform.elements["settingStudentID"].value = user.studentID;
             settingsform.elements["settingAddress"].value = user.address;
+        }
+    })
+}
+
+function loadUniversities() {
+    $.ajax({
+        url: host + '/universities', 
+        type: 'GET',
+        contentType:"application/json",
+        success: function(unis) {
+            var uniDropdown = document.getElementById("settingUniversity");
+
+            unis.forEach(function(uni) {
+                var option = document.createElement("option");
+                option.text = uni.name;
+                uniDropdown.add(option);
+            });
         }
     })
 }
@@ -90,7 +108,7 @@ function updateSettings(name, phoneNumber, PNumber, university, studentID, addre
         'studentID': studentID,
         'address': address
         //password
-    }
+    } 
 
     $.ajax({
         url: host + '/user/' + id, 
