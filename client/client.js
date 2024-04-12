@@ -73,7 +73,3 @@ function handleNavigationLinks(linkText){
 
 }
 
-function loadMyProfile(){
-  $('.container').empty();
-  $(".container").load("profile.html .profileContainer", function () {});
-}

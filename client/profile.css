@@ -1,6 +1,48 @@
 /* profile.css */
 
+h1{
+    background-color: #2f5d8b;
+    color: white;
+    align-items: left;
+}
+body{
+    background-color: #263a4e;
+}
 .profile-navbar {
+    margin-right: 0%;
+    margin-left: 20%;
+    overflow: hidden; 
+    display: flex; 
+    align-items: center; 
+    padding-left: 0px;
+    background-color: #24517e;
+    color: white; 
+}
+
+.profile-navbar li{
+    list-style-type: none;
+    margin-bottom: 30px;
+    margin-right: 10px;
+    float: left;
+ }
+ 
+ .profile-navbar th {
+     float: left;
+ }
+ 
+ .profile-navbar button {
+     margin-left: auto; 
+     margin-bottom: 30px;
+ }
+
+ .profile-menu {
+    overflow: hidden; 
+    width: 20%;
+    float: left; 
+}
+
+/*
+.profile-menu {
     margin-right: 200px;
     margin-left: 200px;
     overflow: hidden; 
@@ -9,18 +51,35 @@
     padding-left: 0px;
 }
 
-.profile-navbar li{
-   list-style-type: none;
-   margin-bottom: 30px;
-   margin-right: 10px;
-   float: left;
-}
-
-.profile-navbar th {
+*/
+.profile-menu u{
+    list-style-type: none;
+    background-color: #263a4e;
+    padding: 0px;
+    margin: 0px; 
+    overflow: hidden;
     float: left;
+    margin-left: 0px;
 }
 
-.profile-navbar button {
-    margin-left: auto; 
-    margin-bottom: 30px;
+.profile-menu a{
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    display: block; 
+    text-align: center; 
 }
+
+.profile-menu a:hover{
+    background-color: #1a2834;
+}
+
+form {
+    margin-left: 20%;
+}
+
+/*
+.profile-menu li{
+    float:  
+}
+*/

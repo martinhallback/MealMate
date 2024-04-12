@@ -26,32 +26,59 @@
         <div id="FilterHeader" class="filter-header">
             
         </div>
-
+     <div class="filter-scrollable-content">
         <div id="FilterOptions" class="filter-options">
-            <label class="DietPref"> Dietery preference </label>
-            <label><input type="checkbox" name="Pescitarian" data-type="dietPref"> Pescitarian</label>
+            <label class="DietPref"> Dietary preference </label>
+            <label><input type="checkbox" name="Pescitarian" data-type="dietPref" id="PescitarianSelected"> Pescitarian</label>
             <br>
-            <label><input type="checkbox" name="Vegetarian" data-type="dietPref"> Vegetarian </label>
+            <label><input type="checkbox" name="Vegetarian" data-type="dietPref" id="VegetarianSelected"> Vegetarian</label>
             <br>
-            <label><input type="checkbox" name="Vegan" data-type="dietPref"> Vegan</label>
+            <label><input type="checkbox" name="Vegan" data-type="dietPref" id="VeganSelected"> Vegan</label>
             <br>
+            <label class="ProteinPref"> Protein source </label>
+           <!-- <div id="proteinTagsContainer"></div>-->
+           <div class="select-protein-container">
+            <div class="select-poultry-box", id="select-poultry-box" style="color: white; font-size: 14px;"> ⊗Poultry  </div>
+            <div class="select-meat-box", id="select-meat-box" style="color: white; font-size: 14px;"> ⊗Meat  </div>
+            <div class="select-fish-box", id="select-fish-box" style="color: white; font-size: 14px;"> ⊗Fish  </div>
+            <div class="select-shellfish-box", id="select-shellfish-box" style="color: white; font-size: 14px;"> ⊗Shellfish </div>
+            <div class="select-dairy-box", id="select-dairy-box" style="color: white; font-size: 14px;"> ⊗Dairy & eggs </div>
+            <div class="select-plantbased-box", id="select-plantbased-box" style="color: white; font-size: 14px;"> ⊗Plantbased  </div>
+          </div>
+
+        <div class="protein-dropdown" id="proteindropdown">
+            <div class="select-protein-box", id="select-protein-box" style="color: white; font-size: 8.5px;">  ↓ Exclude specific proteins  </div>
+            <div id="protein-dropdown" class="protein-dropdown-content">
+              <div class="protein-scrollable-content">
+                <form id="proteinForm">
+               <!-- This is filled dynamic -->
+              </form>
+            </div>
+            <span class="protein-close-btn", id="protein-closeX">X</span>
+            </div>
+          </div>
+          
+          <label class="AllergiePref"> Exclude allergies </label>
             <div class="dropdown" id="allergiedropdown">
-                <div class="select-box", id="select-box"> ↓ Select allergies  </div>
+                <div class="select-box", id="select-box" style="color: white"> ↓ Select allergies  </div>
                 <div id="dropdown" class="dropdown-content">
-                  <!--<span class="close-btn", id="closeX">X</span> -->
                   <div class="scrollable-content">
                     <form id="optionsForm">
                    <!-- This is filled dynamic -->
                   </form>
                 </div>
-                <span class="closeFilter", id="closeX">X</span>
+                <span class="allergy-close-btn", id="allergy-closeX">X</span>
                 </div>
               </div>
+
+
+            <label class="PricePref"> Select price </label>
             <label for="priceRange", class="priceRangeTitle" >Max price:  <span id="priceValue">50 kr</span></label>
             <input type="range" id="priceRange" class="priceRange" name="priceRange" min="0" max="100" value="50">
             <br>
             <button class="apply-button" onclick="applyFilters()">Apply</button>
         </div>
+      </div>
     </div> 
 
      <!-- Optional JavaScript -->
