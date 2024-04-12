@@ -8,6 +8,7 @@ from flask_jwt_extended import JWTManager
 from pymongo import MongoClient
 from serverAuth import credentialConfig
 from datetime import timedelta
+from configuration import portNumber
 
 import certifi
 ca = certifi.where()
@@ -48,4 +49,4 @@ for route in route_files:
             app.register_blueprint(module.bp)
 
 if __name__ == "__main__":
-   app.run(port=5002, debug=True) # På MacOS, byt till 5001 eller dylikt
+   app.run(port=portNumber, debug=True) # På MacOS, byt till 5001 eller dylikt

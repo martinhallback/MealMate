@@ -1,15 +1,6 @@
     function shoppingcartView(){
     $('.container').load('shoppingcart.html .shoppingCartCont', function(){
-        console.log('inne i cart');
-            var cartData = JSON.parse(sessionStorage.getItem('cart'));
-
-            cartData.forEach(function(item) {
-                if (item._id) {
-                    console.log('ID:', item._id);
-                } else {
-                    console.log('Item does not have an _id property');
-                }
-            });
+        var cartData = JSON.parse(sessionStorage.getItem('cart'));
     createCartCards(cartData);
     });
         
@@ -84,20 +75,7 @@
     }
         $('.shoppingcartCards').html(cartCardHTML);
         loadRightCont(totPrice, totQuantity);
-        console.log(totPrice);
     }
-
-        function checkoutView() {
-
-            var authData = JSON.parse(sessionStorage.getItem('auth'));
-
-            if (authData && authData.token != null) {
-                console.log("inloggad och går till checkout");
-            } else {
-                loadLogInContent();
-            }
-        }
-
 
 function loadRightCont(totPrice, totQuantity) {
     var rightCardHTML = '';
@@ -105,39 +83,33 @@ function loadRightCont(totPrice, totQuantity) {
     rightCardHTML += `
         <div class="shoppingcartR">
             <h1> Summary </h1>
-            <p class = "paymentText">Payment Method:</p>
-            <p class = "totalPrice">Total Price: ${totPrice} kr</p>
-            <p class = totalQuantity>Number of dishes: ${totQuantity}</p>
-                <div class = "checkoutBtn" type = button onclick="checkoutView()">Checkout</div>
-            </div>
-        </div>`;
+            <p class="paymentText">Payment Method:</p>
+            <p class="totalPrice">Total Price: ${totPrice} kr</p>
+            <p class="totalQuantity">Number of dishes: ${totQuantity}</p>
+            <div class="checkoutBtn" type="button" onclick="checkoutView('${totPrice}', '${totQuantity}')">Checkout</div>
+        </div>
+    </div>`;
         $('.shoppingcartRight').html(rightCardHTML);
 
 }
 
 function editCartQuantity(itemId, action) {
-    console.log('1');
     getAd(itemId, function(ad) {
-        console.log(ad);
         var maxItemQuant = ad.quantity;
-        console.log('maxItemQuant:', maxItemQuant);
 
         var cartData = JSON.parse(sessionStorage.getItem('cart'));
         var index = cartData.findIndex(function(item) {
             return item._id === itemId;
         });
 
-        console.log(action);
         if (index !== -1) {
             var item = cartData[index];
             if (action === 'remove') {
-                console.log('2');
                 item.quantity--;
                 if (item.quantity <= 0) {
                     cartData.splice(index, 1);
                 }
             } else if (action === 'add' && item.quantity < maxItemQuant) {
-                console.log('3');
                 item.quantity++;
             }
             sessionStorage.setItem('cart', JSON.stringify(cartData));
