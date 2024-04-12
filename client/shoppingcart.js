@@ -83,7 +83,7 @@
         });
     }
         $('.shoppingcartCards').html(cartCardHTML);
-        loadRightCont(totPrice, totQuantity);
+        loadRightCont(totPrice, totQuantity,cartData);
         console.log(totPrice);
     }
 
@@ -99,16 +99,20 @@
         }
 
 
-function loadRightCont(totPrice, totQuantity) {
+function loadRightCont(totPrice, totQuantity, cartData) {
     var rightCardHTML = '';
 
     rightCardHTML += `
         <div class="shoppingcartR">
             <h1> Summary </h1>
-            <p class = "paymentText">Payment Method:</p>
+            <p class = "paymentText">Payment Methods:</p>
+            <img src="Images/Visa.png" id="cartPaymentImg" class="img-fluid rounded-start">
+            <img src="Images/MasterCard.png" id="cartPaymentImg" class="img-fluid rounded-start">
+            <img src="Images/AmEx.png" id="cartPaymentImg" class="img-fluid rounded-start">
+            <img src="Images/Link.png" id="cartPaymentImg" class="img-fluid rounded-start">
             <p class = "totalPrice">Total Price: ${totPrice} kr</p>
             <p class = totalQuantity>Number of dishes: ${totQuantity}</p>
-                <div class = "checkoutBtn" type = button onclick="checkoutView()">Checkout</div>
+            <button class="checkoutBtn" onclick="checkoutView()" ${cartData.length === 0 ? 'disabled' : ''}>Checkout</button>
             </div>
         </div>`;
         $('.shoppingcartRight').html(rightCardHTML);

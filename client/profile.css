@@ -1,13 +1,12 @@
 /* profile.css */
 
-h1{
+#profileHeader{
     background-color: #2f5d8b;
     color: white;
     align-items: left;
 }
-body{
-    background-color: #263a4e;
-}
+
+
 .profile-navbar {
     margin-right: 0%;
     margin-left: 20%;
@@ -74,7 +73,7 @@ body{
     background-color: #1a2834;
 }
 
-form {
+#newPasswordForm, #changePhonenumberForm {
     margin-left: 20%;
 }
 
