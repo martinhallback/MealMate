@@ -158,3 +158,57 @@ function postAd(userID, dishName, cookDate, imagePath, description, quantity, po
   });
   
 }
+
+function postPurchase(totalPrice, quantity, buyerID, sellerID, ad, callback){
+  $.ajax({
+    url: host + '/purchase',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify({
+        totalPrice:  totalPrice,
+        quantity: quantity,
+        buyer: buyerID,
+        seller: sellerID,
+        advertisment: ad,
+    }),
+    success: function() {
+        callback(true);
+    }, 
+    error: function(JQxhr, status, error) {
+        console.error('Error: ' + error);
+        callback(false);
+    }
+  });
+}
+
+function deleteAd(id){
+  $.ajax({
+    url: host + '/ad/' + id,
+    type: 'DELETE',
+    contentType: 'application/json',
+    success: function() {
+    }, 
+    error: function(JQxhr, status, error) {
+        console.error('Error: ' + error);
+    }
+  });
+}
+
+function putAd(id, quantity){
+  $.ajax({
+    url: host + '/ad/' + id,
+    type: 'PUT',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      quantity: quantity,
+  }),
+    success: function() {
+        
+    }, 
+    error: function(JQxhr, status, error) {
+        console.error('Error: ' + error);
+    }
+  });
+}
+
+
