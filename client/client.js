@@ -15,9 +15,7 @@ $(document).ready(function () {
   $(window).scrollTop(0);
 
   $(".navbar-basket").click(function (e) {
-    console.log('Basket');
     shoppingcartView();
-    
   });
   $(".navbar-profile").click(function (e) {
     loadMyProfile();
@@ -45,7 +43,6 @@ function handleNavigationLinks(linkText){
   switch (linkText) {
     case 'MealMate':
     case 'Lunchboxes':
-      console.log('Hemknapp');
       homeview();
       break;
     case 'Sell':

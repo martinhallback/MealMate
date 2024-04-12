@@ -30,7 +30,7 @@ def checkout():
                 {
                     'price_data': {
                         'currency' : 'sek',
-                        'unit_amount': price,
+                        'unit_amount': price * 100,
                         'product_data':{
                             'name': name
                         }
@@ -39,11 +39,13 @@ def checkout():
                 },
             ],
             mode='payment',
-            success_url= domain,
-            cancel_url= domain
-            )#Both redirects are to the home page now, change when thank you screen exists
+            success_url= domain + '/success.html',
+            cancel_url= domain + '/cancel.html'
+            )
+            return jsonify({'url': checkout_session.url})
+        
         except Exception as e:
-            return e
+            return jsonify({'error': str(e)}), 500
 
-        return redirect(checkout_session.url, code=303)
+        #return redirect(checkout_session.url, code=303)
         #return True, 303
