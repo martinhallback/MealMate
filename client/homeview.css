@@ -117,15 +117,11 @@
 }
 
 /*CardAdModal*/
-.modal-content {
-    background-color: #FBF9EF;
-    color: #006267;
-}
 
+/*
 .modal-title {
     font-family: 'Brandon Grotesque Bold';
     text-align: center;
-    /* Center-align the text */
 }
 
 .modal-body {
@@ -139,6 +135,86 @@
 
 .modal-footer .btn-primary {
     background-color: #006267;
+    color: white;
+    border-color: transparent;
+    font-family: 'Brandon Grotesque Bold';
+}
+
+.modal-footer .btn-secondary {
+    font-family: 'Brandon Grotesque Bold';
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #00494d;
+}*/
+
+/* Modal title */
+/*
+.modal-dish-name {
+    font-family: 'Brandon Grotesque Bold';
+    text-align: center;
+}
+
+.modal-description {
+    font-family: 'Brandon Grotesque Regular';
+    color: #000; 
+}
+
+.modal-cook-date {
+    font-family: 'Brandon Grotesque Regular';
+    color: #666;
+}
+
+.modal-quantity {
+    font-family: 'Brandon Grotesque Regular';
+    color: #000; 
+}
+
+.modal-price {
+    font-family: 'Brandon Grotesque Regular';
+    color: #666; 
+}
+
+.modal-seller {
+    font-family: 'Brandon Grotesque Regular';
+    color: #000; 
+}
+
+.modal-label {
+    font-family: 'Brandon Grotesque Bold';
+}
+*/
+/*homeview.css*/
+/* Other styles remain unchanged */
+
+/* Specific styles for the homeview modal */
+.homeview-modal {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Modal title */
+.homeview-modal .modal-title {
+    font-family: 'Brandon Grotesque Bold';
+    text-align: center; /* Center the text */
+}
+
+/* Modal body */
+.homeview-modal .modal-body {
+    font-family: 'Brandon Grotesque Regular';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Modal footer */
+.homeview-modal .modal-footer .btn-primary {
+    background-color: #006267;
     /* Set background color for primary button */
     color: white;
     /* Set text color for primary button */
@@ -148,52 +224,41 @@
     /* Set font family for primary button */
 }
 
-.modal-footer .btn-secondary {
+.homeview-modal .modal-footer .btn-secondary {
     font-family: 'Brandon Grotesque Bold';
     /* Set font family for secondary button */
 }
 
-.modal-footer .btn-primary:hover {
+.homeview-modal .modal-footer .btn-primary:hover {
     background-color: #00494d;
 }
 
-/* Modal title */
-.modal-dish-name {
-    font-family: 'Brandon Grotesque Bold';
-    text-align: center; /* Center the text */
-}
-
 /* Modal description */
-.modal-description {
+.homeview-modal .modal-description {
     font-family: 'Brandon Grotesque Regular';
     color: #000; /* Black color */
 }
 
-/* Modal cook date */
-.modal-cook-date {
-    font-family: 'Brandon Grotesque Regular';
-    color: #666; /* Grey color */
-}
-
 /* Modal quantity */
-.modal-quantity {
+.homeview-modal .modal-quantity {
     font-family: 'Brandon Grotesque Regular';
     color: #000; /* Black color */
 }
 
 /* Modal price */
-.modal-price {
+.homeview-modal .modal-price {
     font-family: 'Brandon Grotesque Regular';
     color: #666; /* Grey color */
 }
 
 /* Modal seller */
-.modal-seller {
+.homeview-modal .modal-seller {
     font-family: 'Brandon Grotesque Regular';
     color: #000; /* Black color */
 }
 
-.modal-label {
+/* Modal label */
+.homeview-modal .modal-label {
     font-family: 'Brandon Grotesque Bold';
 }
 

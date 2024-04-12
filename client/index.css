@@ -26,15 +26,13 @@ body {
 .git  {
     min-height: calc(60vh);
     padding-bottom: 10px;
-    min-width: fit-content;
+    /*min-width: fit-content;*/
     width: 100%;
     /* Ensure the container stretches across the entire width */
     max-width: none;
     /* Allow the container to exceed its maximum width */
     padding: 0;
-    /* Remove any padding */
     margin: 0;
-    /* Remove any margin */
     font-family: 'Brandon Grotesque Bold', 'helvetica', sans-serif;
 }
 
