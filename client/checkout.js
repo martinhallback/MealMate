@@ -9,21 +9,17 @@ function checkoutView(totalPrice, totalQuantity) {
 }
 
 function startCheckout(totalPrice, totalQuantity){
-    
-    console.log("calling stripe ajax")
+    var avg_price = totalPrice/totalQuantity;
     $.ajax({
         url: host + '/create-checkout-session',
         type: 'POST',
-        async: true,
         contentType: 'application/json',
         data: JSON.stringify({
-            price: totalPrice,
+            price: avg_price,
             quantity: totalQuantity,
         }),
         success: function(response) {
-          console.log("checkout finished")
-          console.log(response)
-          window.open(response.url, '_blank');
+            window.location.href = response.url;
         },
         error: function(JQxhr, status, error){
           console.log('Error when paying: ' + error)

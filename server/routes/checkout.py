@@ -22,15 +22,15 @@ def checkout():
     if request.method == 'POST':
         data = request.get_json()
         try:
-            price = str(data['price'])
-            name = "test"
             quantity = data['quantity']
+            price = str(data['price'] * 100)
+            name = "MealMate Luncbox"
             checkout_session = stripe.checkout.Session.create(
             line_items=[
                 {
                     'price_data': {
                         'currency' : 'sek',
-                        'unit_amount': price * 100,
+                        'unit_amount': price,
                         'product_data':{
                             'name': name
                         }
