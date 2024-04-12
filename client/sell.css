@@ -121,6 +121,8 @@
     /* Align text to the left within form groups */
     font-weight: bold;
     /* Make titles bold */
+    color: #000000;
+
 }
 
 /* Adjusting inputs and the submit button to match */
@@ -214,6 +216,8 @@ button[id="submitCreateAd"]:hover {
     margin-bottom: 8px;
     max-height: min-content;
     font-weight:200;
+    color: #006267;
+
 }
 
 .allergen-item {

@@ -57,16 +57,16 @@ function handleclicks() {
 function createCard(index, card) {
   var cardHtml = '<div class="cardAD">' +
     '<div class="card-body">' +
-    //'<img src="' + card.imgPath + '" class="card-img-top" alt="...">' +
+    '<img src="Images/TestFoodImage.jpg" class="card-img-top" alt="...">' +
     '<h5 class="ADcard-title">' + card.dishName + '</h5>' +
     '<p class="ADcard-text">' + card.description + '</p>' +
-    '<p>Price: ' + card.portionPrice + ' kr/pc</p>' +
-    '<button type="button" class="btn btn-primary buy-btn" data-toggle="modal" data-target="#myModal_' + index + '">Buy</button>' +
+    '<p class="ADcard-price">Price: ' + card.portionPrice + ' kr/pc</p>' +
+    '<button type="button" class="btn btn-primary buy-btn" data-toggle="modal" data-target="#myModal_' + index + '">View</button>' +
     '</div>' +
     '</div>';
   return cardHtml;
 }
-function foodAdModal(card, index, seller) {
+/*function foodAdModal(card, index, seller) {
   var modalHtml = '<div class="modal fade" id="foodadmodal_' + index + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
     '<div class="modal-dialog">' +
     '<div class="modal-content">' +
@@ -75,7 +75,7 @@ function foodAdModal(card, index, seller) {
     '<button type="adbutton" class="close-btn" data-bs-dismiss="modal" aria-label="Close"></button>' +
     '</div>' +
     '<div class="modal-body">' +
-    //'<img src="' + card.imagePath + '" class="modal-img" alt="Food Image">' +
+    '<img src="Images/TestFoodImage.jpg" class="modal-img" alt="Food Image">' +
     '<p>' + card.description + '</p>' +
     '<p>Cook Date: ' + card.cookDate + '</p>' +
     '<p>Quantity: ' + card.quantity + '</p>' +
@@ -91,7 +91,34 @@ function foodAdModal(card, index, seller) {
     '</div>';
 
   return modalHtml;
+}*/
+/*EDITED CODE TO FIT CSS */
+function foodAdModal(card, index, seller) {
+  var modalHtml = '<div class="modal fade" id="foodadmodal_' + index + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
+    '<div class="modal-dialog">' +
+    '<div class="modal-content">' +
+    '<div class="modal-header">' +
+    '<h5 class="modal-title" id="exampleModalLabel">' + card.dishName + '</h5>' +
+    '<button type="adbutton" class="close-btn" data-bs-dismiss="modal" aria-label="Close"></button>' +
+    '</div>' +
+    '<div class="modal-body">' +
+    '<img src="Images/TestFoodImage.jpg" class="modal-img" alt="Food Image">' +
+    '<p>' + card.description + '</p>' +
+    '<p><span class="modal-label">Quantity:</span> ' + card.quantity + '</p>' +
+    '<p><span class="modal-label">Price:</span> ' + card.portionPrice + ' kr/pc</p>' +
+    '<p><span class="modal-label">Seller:</span> ' + seller.name + '</p>' +
+    '</div>' +
+    '<div class="modal-footer">' +
+    '<button type="adbutton" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>' +
+    '<button type="adbutton" class="btn btn-primary add-to-cart-btn" onclick="addtocart(\'' + card._id + '\', ' + index + ')">Add to Shopping Cart</button>' +
+    '</div>' +
+    '</div>' +
+    '</div>' +
+    '</div>';
+
+  return modalHtml;
 }
+
 
 function addtocart(id, index) {
   getAd(id, function (ad) {

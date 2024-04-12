@@ -1,39 +1,41 @@
 /*loginsignup.css*/
 .loginContainer {
    font-family: 'Brandon Grotesque Regular';
- }
- 
- .modal-title {
-   color: #006267; /* Change this to the color you desire */
+}
+
+.modal-title {
+   color: #006267;
    font-weight: 600;
    font-family: 'Brandon Grotesque Bold', 'Helvetica', sans-serif;
- }
- 
- .loginform-group label,
- .passwordform-group label,
- .signupform-group label {
+}
+
+.loginform-group label,
+.passwordform-group label,
+.signupform-group label {
    font-family: 'Brandon Grotesque Bold', 'Helvetica', sans-serif;
- }
- 
- .btn-secondary,
- .closeLogin, .closeSignup {
-    color: #FFFFFF; /* Change this to the color you desire */
-    background-color: #adbdb3; /* Change this to the background color you desire */
-    border: none; /* Optionally remove the border */
-    border-radius: 4px;
-    font-family: 'Brandon Grotesque Bold';
- }
- 
- /* Style for the Log in button */
- #logoutBtn,
- #signUpBtn,
- #logInBtn {
-    background-color: #006267; /* Change this to the color you desire */
-    color: white; /* Change this to the text color you prefer */
-    border-color: transparent; /* Optionally remove button border */
-    font-family: 'Brandon Grotesque Bold';
- }
- 
- /*button[id="submitCreateAd"]:hover {
+}
+
+.btn-secondary,
+.closeLogin,
+.closeSignup {
+   color: #FFFFFF;
+   background-color: #adbdb3;
+   border: none;
+   border-radius: 4px;
+   font-family: 'Brandon Grotesque Bold';
+}
+
+/* Style for the Log in button */
+#logoutBtn,
+#signUpBtn,
+#logInBtn {
+   background-color: #006267;
+   color: white;
+   border-color: transparent;
+   /* Optionally remove button border */
+   font-family: 'Brandon Grotesque Bold';
+}
+
+/*button[id="submitCreateAd"]:hover {
     background-color: #adbdb3;
  }*/

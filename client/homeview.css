@@ -6,7 +6,8 @@
     background-color: #FBF9EF;
     color: #006267;
     padding-bottom: 80px;
-    box-sizing: border-box; /* Include padding in width calculation */
+    box-sizing: border-box;
+    /* Include padding in width calculation */
     min-width: fit-content;
 }
 
@@ -22,17 +23,18 @@
     /*text-align: center;*/
     text-transform: uppercase;
     margin-top: 100px;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     max-width: 100%;
     text-align: left;
     padding-left: 10%;
     font-family: 'Brandon Grotesque Bold';
-    font-size:400%;
+    font-size: 400%;
 }
 
 .google-map {
-    width: 100%; /* Set your desired width */
-  }
+    width: 100%;
+    /* Set your desired width */
+}
 
 .adContainer {
     text-align: center;
@@ -44,7 +46,7 @@
 
 .cardAD,
 .foodadmodal_ {
-    width: 30%;
+    width: 20%;
     margin-bottom: 3%;
     padding: 16px;
     background-color: #ffffff;
@@ -62,4 +64,136 @@
 .ADcard-title {
     color: #006267;
     font-family: 'Brandon Grotesque Bold';
+    font-size: x-large;
 }
+
+.ADcard-text {
+    color: grey;
+    font-family: 'Brandon Grotesque regular';
+}
+
+.ADcard-price {
+    color: black;
+    font-family: 'Brandon Grotesque Bold';
+}
+
+.card-img-top {
+    max-width: 100%;
+    /* Ensure the image doesn't exceed its container */
+    height: auto;
+    /* Maintain aspect ratio */
+    display: block;
+    /* Ensure proper spacing */
+    margin: 0 auto;
+    /* Center the image horizontally */
+}
+
+
+.cardAD .btn.btn-primary.buy-btn {
+    background-color: transparent;
+    color: #006267;
+    border-color: transparent;
+    font-family: 'Brandon Grotesque Bold';
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 8px 16px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: large;
+}
+
+.cardAD .btn.btn-primary.buy-btn:hover {
+    background-color: #006267;
+    /* Set hover background color */
+    color: white;
+    /* Set hover text color */
+}
+
+.cardAD .btn.btn-primary.buy-btn:active {
+    background-color: transparent;
+    /* Set active background color */
+    color: #006267;
+    /* Set active text color */
+}
+
+/*CardAdModal*/
+.modal-content {
+    background-color: #FBF9EF;
+    color: #006267;
+}
+
+.modal-title {
+    font-family: 'Brandon Grotesque Bold';
+    text-align: center;
+    /* Center-align the text */
+}
+
+.modal-body {
+    font-family: 'Brandon Grotesque Regular';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.modal-footer .btn-primary {
+    background-color: #006267;
+    /* Set background color for primary button */
+    color: white;
+    /* Set text color for primary button */
+    border-color: transparent;
+    /* Set border color for primary button */
+    font-family: 'Brandon Grotesque Bold';
+    /* Set font family for primary button */
+}
+
+.modal-footer .btn-secondary {
+    font-family: 'Brandon Grotesque Bold';
+    /* Set font family for secondary button */
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #00494d;
+}
+
+/* Modal title */
+.modal-dish-name {
+    font-family: 'Brandon Grotesque Bold';
+    text-align: center; /* Center the text */
+}
+
+/* Modal description */
+.modal-description {
+    font-family: 'Brandon Grotesque Regular';
+    color: #000; /* Black color */
+}
+
+/* Modal cook date */
+.modal-cook-date {
+    font-family: 'Brandon Grotesque Regular';
+    color: #666; /* Grey color */
+}
+
+/* Modal quantity */
+.modal-quantity {
+    font-family: 'Brandon Grotesque Regular';
+    color: #000; /* Black color */
+}
+
+/* Modal price */
+.modal-price {
+    font-family: 'Brandon Grotesque Regular';
+    color: #666; /* Grey color */
+}
+
+/* Modal seller */
+.modal-seller {
+    font-family: 'Brandon Grotesque Regular';
+    color: #000; /* Black color */
+}
+
+.modal-label {
+    font-family: 'Brandon Grotesque Bold';
+}
+
