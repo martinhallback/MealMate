@@ -40,7 +40,7 @@ def checkout():
             ],
             mode='payment',
             success_url= domain + '/success.html',
-            cancel_url= domain + '/cancel.html'
+            cancel_url= domain
             )
             return jsonify({'url': checkout_session.url})
         
