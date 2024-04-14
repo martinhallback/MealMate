@@ -102,7 +102,7 @@ def adverts():
         forbidden_proteins = [ObjectId(obj['_id']) for obj in cursor]
         
         if 'protein' in query_parameters:
-            query_parameters['$nin'].append(forbidden_proteins)
+            query_parameters['protein']['$nin'].append(forbidden_proteins)
         else:
             query_parameters["protein"] = {"$nin" : forbidden_proteins}
 
