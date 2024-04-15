@@ -41,15 +41,16 @@ def ad(obj_id):
             advert = advertisement.Advertisement(query)
             advert.unserialise_from_client()
         except Exception as e:
+            print(e)
             return jsonify({'error' : "All provided parameters are not part of an advertisement"}), 401
         
         updateResult = ads.update_one({'_id' : objID}, {'$set' : advert.serialise_db()})
         if updateResult.modified_count == 1:
-            return jsonify({'success' : "The user was updated successfully"}), 200
+            return jsonify({'success' : "The advertisement was updated successfully"}), 200
         elif updateResult.modified_count > 1:
-            return jsonify({'success' : "The user was updated", 'error' : "More than one user was modified, contact backend", 'errorCode' : 99}), 200
+            return jsonify({'success' : "The advertisement was updated", 'error' : "More than one user was modified, contact backend", 'errorCode' : 99}), 200
         else:
-            return jsonify({'error' : "User was not updated"})
+            return jsonify({'error' : "advertisement was not updated"})
 
     if request.method == 'DELETE':
         data = request.get_json()
