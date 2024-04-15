@@ -34,15 +34,17 @@ function startCheckout(totalPrice, totalQuantity){
 function handleSuccess(){
     console.log("handle success")
     var cartData =  sessionStorage.getItem('cart')
+    var buyerID = sessionStorage.getItem('auth').user
+
     cartData = JSON.parse(cartData);
     console.log(cartData)
-    addPurchaceHistory(cartData)
-    removeBoughtFromDb(cartData)
+    addPurchaceHistory(cartData, buyerID)
+    removeBoughtFromDb(cartData, buyerID)
     sessionStorage.removeItem('cart')
 }
 
-function addPurchaceHistory(cartData){
-    var buyerID = sessionStorage.getItem('auth').user
+function addPurchaceHistory(cartData, buyerID){
+    
     cartData.forEach(function(item){
         var totalPrice = item.portionPrice * item.quantity
         postPurchase(totalPrice, item.quantity, buyerID, item.sellerID, item._id, function(response){
@@ -53,11 +55,11 @@ function addPurchaceHistory(cartData){
     });
 }
 
-function removeBoughtFromDb(cartData){
+function removeBoughtFromDb(cartData, buyerID){
     cartData.forEach(function(item){
         getAd(item._id, function(response){
             if(item.quantity === response.quantity){
-                deleteAd(item._id);
+                deleteAd(item._id, buyerID);
             }else{
                 var changedQuan = response.quantity - item.quantity
                 putAd(item._id, changedQuan);

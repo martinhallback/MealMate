@@ -52,14 +52,17 @@ def ad(obj_id):
             return jsonify({'error' : "User was not updated"})
 
     if request.method == 'DELETE':
-        data = request.get_json()
+        """data = request.get_json(force = True)
         if data is None or 'user' not in data:
+            print(data)
+            print(data['user'])
             return jsonify({'error' : "user object from authentification must be included", 'errorCode' : 5}), 401
         usr = ObjectId(data['user'])
         
-        delete_result = ads.delete_one({'_id' : objID, 'sellerID' : usr})
+        delete_result = ads.delete_one({'_id' : objID, 'sellerID' : usr})"""
+        delete_result = ads.delete_one({'_id' : objID})
         print(delete_result)
-        if delete_result.get_deleted_count() > 0:
+        if delete_result.deleted_count > 0:
             return jsonify({'success' : "Your advertisement has been deleted"}), 200
         else:
             return jsonify({'error' : "The given ad was not yours"}), 403

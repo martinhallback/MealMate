@@ -182,11 +182,14 @@ function postPurchase(totalPrice, quantity, buyerID, sellerID, ad, callback){
   });
 }
 
-function deleteAd(id){
+function deleteAd(id, userID){
   $.ajax({
     url: host + '/ad/' + id,
     type: 'DELETE',
     contentType: 'application/json',
+    data: JSON.stringify({
+      user: userID,
+    }),
     success: function() {
     }, 
     error: function(JQxhr, status, error) {
@@ -209,6 +212,7 @@ function putAd(id, quantity){
     }, 
     error: function(JQxhr, status, error) {
         console.error('Error: ' + error);
+        console.log(JQxhr)
     }
   });
 }
