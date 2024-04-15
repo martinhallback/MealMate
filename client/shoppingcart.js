@@ -10,7 +10,7 @@ function createCartCards(cartData) {
     var totPrice = 0;
     var cartCardHTML = '';
 
-    if (cartData.length === 0) {
+    if (!cartData) {
         cartCardHTML += `
             <h1>Shopping Cart</h1>
             <div class="col-lg-7">
@@ -88,7 +88,7 @@ function loadRightCont(totPrice, totQuantity, cartData) {
             <img src="Images/Link.png" id="cartPaymentImg" class="img-fluid rounded-start">
             <p class="totalPrice">Total Price: ${totPrice} kr</p>
             <p class="totalQuantity">Number of dishes: ${totQuantity}</p>
-            <button class="checkoutBtn" onclick="checkoutView('${totPrice}', '${totQuantity}')" ${cartData.length === 0 ? 'disabled' : ''}>Checkout</button>
+            <button class="checkoutBtn" onclick="checkoutView('${totPrice}', '${totQuantity}')" ${!cartData ? 'disabled' : ''}>Checkout</button>
         </div>
     </div>`;
 

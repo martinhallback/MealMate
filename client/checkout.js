@@ -19,11 +19,8 @@ function startCheckout(totalPrice, totalQuantity){
             quantity: totalQuantity,
         }),
         success: function(response) {
-            
-            handleSuccess()
-            
-            window.open(response.url, '_blank')
-            //window.location.href = response.url;
+            //window.open(response.url, '_blank')
+            window.location.href = response.url;
         },
         error: function(JQxhr, status, error){
           console.log('Error when paying: ' + error)
@@ -37,6 +34,8 @@ function startCheckout(totalPrice, totalQuantity){
 function handleSuccess(){
     console.log("handle success")
     var cartData =  sessionStorage.getItem('cart')
+    cartData = JSON.parse(cartData);
+    console.log(cartData)
     addPurchaceHistory(cartData)
     removeBoughtFromDb(cartData)
     sessionStorage.removeItem('cart')
@@ -50,7 +49,6 @@ function addPurchaceHistory(cartData){
             if(!response){
                 console.error("Purchase history not stored correctely")
             }
-            console.log(response)
         });
     });
 }

@@ -176,6 +176,7 @@ function postPurchase(totalPrice, quantity, buyerID, sellerID, ad, callback){
     }, 
     error: function(JQxhr, status, error) {
         console.error('Error: ' + error);
+        console.log(JQxhr)
         callback(false);
     }
   });
@@ -190,6 +191,7 @@ function deleteAd(id){
     }, 
     error: function(JQxhr, status, error) {
         console.error('Error: ' + error);
+        console.log(JQxhr)
     }
   });
 }
