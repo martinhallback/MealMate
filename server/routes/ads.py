@@ -74,14 +74,27 @@ def ads():
 
 @bp.route('/ads/filter', methods=['GET'])
 def adverts():
+    data={}
     try:
-        data = request.get_json()
+        data['portionPrice'] = int(request.args.get('portionPrice'))
+        data['proteinType'] = request.args.getlist('proteinType')
+        data['allergy'] = request.args.getlist('allergy')
+        data['proteinSource'] = request.args.getlist('proteinSource')
     except BadRequest as e: 
         data = None
         return jsonify({'error': "Missing body for filter functionality",}), 404
     ads = db['advertisement']
-    query_pipeline = []
     query_parameters={}
+    def purge_false(dic):
+        ret = {}
+        for k in dic:
+            if dic[k]:
+                ret[k]=dic[k]
+        return ret
+    data = purge_false(data)
+
+    print(data)
+    
     if 'portionPrice' in data:
         #Exclude adverts who are more expensive than given portionPrice
         maxPrice = data['portionPrice']
@@ -105,13 +118,9 @@ def adverts():
             query_parameters['protein']['$nin'].append(forbidden_proteins)
         else:
             query_parameters["protein"] = {"$nin" : forbidden_proteins}
+    print(query_parameters)
 
-    if query_parameters and query_pipeline:
-        filtered_ads = query_to_adverts(ads.aggregate(query_pipeline))
-        for adverts in filtered_ads:
-            adverts.decode_object_list_from_aggregate()
-        return jsonify([ad.serialise_client() for ad in filtered_ads]), 200
-    elif query_parameters:
+    if query_parameters:
         filtered_ads = query_to_adverts(ads.find(query_parameters))
         return jsonify([ad.serialise_client() for ad in filtered_ads]), 200
     else:
