@@ -16,14 +16,14 @@ bp = Blueprint('ad', __name__)
 @bp.route('/ad/<string:obj_id>', methods = ['GET', 'PUT', 'DELETE'])
 def ad(obj_id):
     # data = request.get_json() #For other requests than get
-    if request.method == 'GET':
-        ads = db['advertisement']
-        objID = ObjectId(obj_id)
+    ads = db['advertisement']
+    objID = ObjectId(obj_id)
 
-        cursor = ads.find_one({'_id' : objID})
-        if cursor is None:
-            return jsonify({'error': "No advertisement with that id"}), 404
-        query = dict(cursor)
+    cursor = ads.find_one({'_id' : objID})
+    if cursor is None:
+        return jsonify({'error': "No advertisement with that id"}), 404
+    query = dict(cursor)
+    if request.method == 'GET':    
         try: 
             advert = advertisement.Advertisement(query)
             return jsonify(advert.serialise_client()), 200
@@ -31,24 +31,33 @@ def ad(obj_id):
             print(e) 
             return jsonify({'error': "Advert object in database was invalid", 'errorCode' : 41}), 503
     if request.method == 'PUT':
-        return jsonify({'error' : "functionality not yet implemented", 'errorCode' : 0}), 401
+        data = request.get_json()   
+        """ads.update_one({'_id' : objID}, {'$set' : data})
+        return jsonify({'success' : "The user was updated successfully"}), 200"""
+        
+        for key in data:
+            query[key] = data[key]
+        try:
+            advert = advertisement.Advertisement(query)
+            advert.unserialise_from_client()
+        except Exception as e:
+            return jsonify({'error' : "All provided parameters are not part of an advertisement"}), 401
+        
+        updateResult = ads.update_one({'_id' : objID}, {'$set' : advert.serialise_db()})
+        if updateResult.modified_count == 1:
+            return jsonify({'success' : "The user was updated successfully"}), 200
+        elif updateResult.modified_count > 1:
+            return jsonify({'success' : "The user was updated", 'error' : "More than one user was modified, contact backend", 'errorCode' : 99}), 200
+        else:
+            return jsonify({'error' : "User was not updated"})
+
     if request.method == 'DELETE':
-        ads = db['advertisement']
-        objID = ObjectId(obj_id)
-        cursor = ads.find_one({'_id' : objID})
-        if cursor is None:
-            return jsonify({'error': "No advertisement with that id"}), 404
-        query = dict(cursor)
         data = request.get_json()
         if data is None or 'user' not in data:
             return jsonify({'error' : "user object from authentification must be included", 'errorCode' : 5}), 401
-        try:
-            usr = user.User(data['user'])
-        except Exception as e:
-            print("Contact backend!!!\n", e)
-            return jsonify({'error' : "Your user is invalid"}), 401
+        usr = ObjectId(data['user'])
         
-        delete_result = ads.delete_one({'_id' : objID, 'sellerID' : usr._id})
+        delete_result = ads.delete_one({'_id' : objID, 'sellerID' : usr})
         print(delete_result)
         if delete_result.get_deleted_count() > 0:
             return jsonify({'success' : "Your advertisement has been deleted"}), 200
