@@ -102,20 +102,10 @@ def adverts():
         forbidden_proteins = [ObjectId(obj['_id']) for obj in cursor]
         
         if 'protein' in query_parameters:
-            query_parameters['$nin'].append(forbidden_proteins)
+            query_parameters['protein']['$nin'].append(forbidden_proteins)
         else:
             query_parameters["protein"] = {"$nin" : forbidden_proteins}
 
-        """lookup_param = {"from" : "protein",
-                        "localField" : "protein",
-                        "foreignField" : "_id",
-                        "as" : "protein"
-                        }
-        lookup = {"$lookup" : lookup_param}
-        query_parameters["protein"] = {"$nin" : protein_groups}
-        db_match = {"$match" : query_parameters}
-        query_pipeline.append(lookup)
-        query_pipeline.append(db_match)"""
     if query_parameters and query_pipeline:
         filtered_ads = query_to_adverts(ads.aggregate(query_pipeline))
         for adverts in filtered_ads:

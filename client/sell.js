@@ -1,11 +1,12 @@
 // sell.js
 
+// Load the sell view
 function sellview() {
 
     $('.container').empty();
     $('.container').append('<div class="sellcontainerjs">' + '</div>');
-    var imageUrl = 'Images/Sell_Image.jpg'; //  image URL with your image
-    $('.sellcontainerjs').append('<img src="' + imageUrl + '" alt="Lunchbox" class="sellImage">');
+    var image = 'Images/Sell_Image.jpg'; //  image URL with your image
+    $('.sellcontainerjs').append('<img src="' + image + '" alt="Lunchbox" class="sellImage">');
     $('.sellcontainerjs').append('<h2 class="startSelling">Start selling your lunchboxes here!</h2>');
     $('.sellcontainerjs').append('<p class="benefitsText">Earn extra income by selling your homemade lunchboxes to hungry customers. <br> Share your culinary skills and delight others with your delicious creations!</p>');
 
@@ -80,6 +81,16 @@ function showSellForm() {
         });
 });
     
+            //nedanför anrop finns i ajax.js, "function(response){}" för att se om det var lyckat
+        //postAd(userID, dishName, cookDate, imagePath, description, quantity, portionPrice, protein, allergy, function(response){});
+    //event listener for file upload
+    document.getElementById('lunchboxImage').addEventListener('change', function() {
+    convertImageToBase64(this, function(base64String) {
+    console.log(base64String);
+    });
+    })
+
+
     $("#SellQuestionsContainer").hide();
 }
 function handleProteins(){
@@ -129,3 +140,65 @@ function createAllergyHtml(allergy) {
 }
 
 
+
+
+
+
+// Function to convert image to base64
+async function convertImageToBase64(fileInput, callback) {
+    var file = fileInput.files[0];
+    var img = new Image();
+    img.src = URL.createObjectURL(file);
+    img.onload = async function() {
+        try {
+            const compressedFile = await compressImage(img, 0.1, 0.1);
+            var reader = new FileReader();
+
+            reader.onloadend = function() {
+                callback(reader.result); // this is the base64 string
+            }
+
+            reader.readAsDataURL(compressedFile); // this will trigger the onloadend event above
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+function compressImage(imgToCompress, resizingFactor, quality) {
+    return new Promise((resolve, reject) => {
+        // resizing the image
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+        
+        const originalWidth = imgToCompress.width;
+        const originalHeight = imgToCompress.height;
+        
+        const canvasWidth = originalWidth * resizingFactor;
+        const canvasHeight = originalHeight * resizingFactor;
+        
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+        
+        context.drawImage(
+        imgToCompress,
+        0,
+        0,
+        originalWidth * resizingFactor,
+        originalHeight * resizingFactor
+        );
+        
+        // reducing the quality of the image
+        canvas.toBlob(
+          (blob) => {
+            if (blob) {
+              resolve(blob);
+            } else {
+              reject('Compression failed');
+            }
+          },
+          "image/jpeg",
+          quality
+        );
+    });
+}
