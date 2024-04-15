@@ -1,28 +1,21 @@
 function loadLogInContent() {
-    console.log('Load Log in Content');
     $("#loginContainer").load("login.html #login-modal", function () {
-      showLogInModal();
-      // Add event listener to the "Don't have an account?" link
-     $('#redirectSignup').on('click', function(event) {
-        event.preventDefault(); // Prevent the default action of the link
-        // Hide the login modal
-        $('#login-modal').modal('hide');
-        // Load and show the signup modal
-        loadSignUpContent();
+        showLogInModal();
+        $('#redirectSignup').on('click', function(event) {
+            event.preventDefault(); 
+            $('#login-modal').modal('hide');
+            loadSignUpContent();
+        });
     });
-    });
-    
 }
-  
+
 function showLogInModal(){
-    console.log('showlogin');
     $('#login-modal').modal('show');
     $("#logInBtn").off().on('click', function (e) {
-      console.log('Login');
-      logInUser();
+        logInUser();
     });
 }
-  
+
 function logInUser(){
     var host = window.location.protocol + '//' + location.host
     var email = $("#email").val();
@@ -42,8 +35,8 @@ function logInUser(){
 
 function logOutUser(){
     $("#loginContainer").load("login.html #logout-modal", function () {
-    $('#logout-modal').modal('show');
-    $("#logoutBtn").off().on('click', function (e) {
+        $('#logout-modal').modal('show');
+        $("#logoutBtn").off().on('click', function (e) {
             sessionStorage.removeItem('auth');
             $('#loginLink').toggleClass('d-none', false);
             $('#signupLink').toggleClass('d-none', false);
@@ -51,7 +44,6 @@ function logOutUser(){
             $('#logout-modal').modal('hide');
         });
     });
-
 }
 
 function validateAndSubmit() {

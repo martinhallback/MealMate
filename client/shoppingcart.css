@@ -95,7 +95,7 @@ color: white;
 .checkoutBtn {
     margin-top: 50px;
     background-color: white;
-    color: black;
+    color: rgb(191, 188, 188);
     text-align: center;
     height: 50px;
     width: 200px;
@@ -104,10 +104,14 @@ color: white;
     line-height: 50px; 
     position: flex;
     bottom: 20px;
+    border:transparent;
     
 }
+.checkoutBtn:not([disabled]){
+    color: black;
+}
 
-.checkoutBtn:hover{
+.checkoutBtn:not([disabled]):hover {
     font-weight: bold;
 }
 
@@ -163,4 +167,10 @@ color: white;
     color: black; /* Set the text color to red */
     font-size: 14px; /* Adjust the font size as needed */
     margin-top: 5px; /* Add some top margin for spacing */
+}
+
+#cartPaymentImg{
+    width: 45px;
+    height: 30px;
+    border-radius: 10px;
 }
