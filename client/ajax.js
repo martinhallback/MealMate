@@ -32,6 +32,30 @@ function getAds(callback){
   });
 }
 
+//Filter ads
+function filteringAds(allergy, proteinType, proteinSource, portionPrice, callback){
+   $.ajax({
+    url: host + '/ads/filter',
+    type: 'GET',
+    contentType: 'application/json',
+    data : {
+      allergy : allergy,
+      proteinType : proteinType,
+      proteinSource : proteinSource,
+      portionPrice : portionPrice
+    },
+    success: function(response){
+      console.log("fetched all the ads");
+      //ladda om ads från hemsidan. 
+      callback(response)
+    },
+    error: function(JQxhr, status, error){
+      console.log(error);
+      callback(null)
+    }
+  });
+}
+
 //GET a single user based on userID
 function getUser(userID, callback){
   $.ajax({
