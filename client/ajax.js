@@ -91,11 +91,11 @@ function putUser(userID, settingsData, callback) {
     type: 'PUT',
     contentType:"application/json",
     data: JSON.stringify(settingsData),
-    success: function() {
-      callback(true);
+    success: function(response) {
+      callback(response);
     },
     error: function(){
-      callback(false)
+      callback(null)
     }
 })
 }
@@ -106,13 +106,13 @@ function putPassword(userID, passwordData, callback) {
     type: 'PUT',
     contentType:"application/json",
     data: JSON.stringify(passwordData),
-    success: function() {
-      callback(true, null);
+    success: function(response) {
+      callback(response, null);
     }, 
     error: function(JQxhr, error) {
       console.error('Error: ' + error);
       if (JQxhr.status === 401) {
-        callback(false, 'Incorrect current password. Please try again.');
+        callback(null, 'Incorrect current password. Please try again.');
       } else {
         callback(null, null);
       }

@@ -36,6 +36,6 @@ def change_password(id):
 
         # Print the result
         print(result.modified_count)  # This will print the number of documents modified (should be 1 if successful)
-        return 'Successful password change', 200
+        return jsonify({'success' : "Successful password change"}), 200
     else:
         return jsonify({'error' : "Incorrect current password", 'errorCode' : 2}), 401

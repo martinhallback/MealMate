@@ -57,7 +57,7 @@ def specific_user(id):
         
         # Print the result
         print(result.modified_count)  # This will print the number of documents modified (should be 1 if successful)
-        return '', 200
+        return jsonify({'success' : "Successfully updated the user"}), 200
         
 
 
