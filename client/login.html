@@ -2,29 +2,25 @@
 <html lang="en">
 <body>
     <div id="loginContainer">
-        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Welcome, please sign in below</h5>
-                        <button type="button" class="closeLogin" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="logInform">
-                            <div class="loginform-group">
-                                <label for="email">Email:</label>
-                                <input type="text" class="form-control" id="email" name="email">
-                            </div>
-                            <div class="passwordform-group">
-                                <label for="password">Password:</label>
-                                <input type="password" class="form-control" id="password" name="password">
-                                <small id="passwordError" class="text-danger"></small>
-                            </div>
-                        </form>
-                        <div style="text-align: center; margin-top: 10px;">
-                            <a href="#" id="redirectSignup">Don't have an account? Click here to create one</a>
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="login-modal-title" id="exampleModalLabel">Welcome, please sign in below</h5>
+                    <button type="button" class="closeLogin" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="logInform">
+                        <div class="loginform-group">
+                            <label for="email">Email:</label>
+                            <input type="text" class="form-control" id="email" name="email">
+                        </div>
+                        <div class="passwordform-group">
+                            <label for="password">Password:</label>
+                            <input type="password" class="form-control" id="password" name="password">
+                            <small id="passwordError" class="text-danger"></small>
                         </div>
                     </form>
                     <div style="text-align: center; margin-top: 10px;">

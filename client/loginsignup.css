@@ -3,7 +3,8 @@
    font-family: 'Brandon Grotesque Regular';
 }
 
-.modal-title {
+.login-modal-title,
+.signup-modal-title {
    color: #006267;
    font-weight: 600;
    font-family: 'Brandon Grotesque Bold', 'Helvetica', sans-serif;

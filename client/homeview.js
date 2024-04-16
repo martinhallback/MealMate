@@ -20,10 +20,10 @@ function homeview() {
 
   $('.homeviewContainer').append('<div id="filter-container" class="filter-container"></div>');
 
-  $('.homeviewContainer').append('<div id="content-container" class="content-container"></div>');
+  /*$('.homeviewContainer').append('<div id="content-container" class="content-container"></div>');*/
 
-  /*$('#filter-container').load('filter.html', function () {
-  });*/
+  $('#filter-container').load('filter.html', function () {
+  });
 
   /* änmdradwe namn*/
   getAds(function (cardData) {
@@ -33,7 +33,7 @@ function homeview() {
         $('.adContainer').append(cardHtml);
         getUser(card.sellerID, function (seller) {
           console.log(seller);
-          var modal = homeviewModal(card, index, seller);
+          var modal = foodAdModal(card, index, seller); /*homeViewModal */
           $('.homeviewContainer').append(modal);
         });
       });
@@ -42,12 +42,12 @@ function homeview() {
   });
   handleclicks();
 }
-  /* änmdradwe namn*/
+/* änmdradwe namn*/
 
 function handleclicks() {
   $('.homeviewContainer').on('click', '.buy-btn', function () {
     var modalIndex = $(this).data('target').split('_')[1];
-    $('#homeviewmodal_' + modalIndex).modal('show');
+    $('#foodadmodal_' + modalIndex).modal('show');
   });
   $('.homeviewContainer').on('click', '.close-btn', function () {
     $(this).closest('.modal').modal('hide');
@@ -69,77 +69,24 @@ function createCard(index, card) {
     '</div>';
   return cardHtml;
 }
-/*function foodAdModal(card, index, seller) {
+
+function foodAdModal(card, index, seller) {
   var modalHtml = '<div class="modal fade" id="foodadmodal_' + index + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
     '<div class="modal-dialog">' +
     '<div class="modal-content">' +
     '<div class="modal-header">' +
-    '<h5 class="modal-title" id="exampleModalLabel">' + card.dishName + '</h5>' +
-    '<button type="adbutton" class="close-btn" data-bs-dismiss="modal" aria-label="Close"></button>' +
+    '<h4 class="cardAd-modal-title" id="exampleModalLabel">' + card.dishName + '</h4>' +
     '</div>' +
-    '<div class="modal-body">' +
+    '<div class="cardAd-modal-body">' +
     '<img src="Images/TestFoodImage.jpg" class="modal-img" alt="Food Image">' +
-    '<p>' + card.description + '</p>' +
-    '<p>Cook Date: ' + card.cookDate + '</p>' +
-    '<p>Quantity: ' + card.quantity + '</p>' +
-    '<p>Price: ' + card.portionPrice + ' kr/pc</p>' +
-    '<p>Seller: ' + seller.name + '</p>' +
+    '<p class="cardAd-description-text">' + card.description + '</p>' +
+    '<p><span class="quantity-modal-label">Quantity:</span> ' + card.quantity + '</p>' +
+    '<p><span class="price-modal-label">Price:</span> ' + card.portionPrice + ' kr/pc</p>' +
+    '<p><span class="seller-modal-label">Seller:</span> ' + seller.name + '</p>' +
     '</div>' +
     '<div class="modal-footer">' +
     '<button type="adbutton" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>' +
     '<button type="adbutton" class="btn btn-primary add-to-cart-btn" onclick="addtocart(\'' + card._id + '\', ' + index + ')">Add to Shopping Cart</button>' +
-    '</div>' +
-    '</div>' +
-    '</div>' +
-    '</div>';
-
-  return modalHtml;
-}*/
-/*EDITED CODE TO FIT CSS */
-/*function foodAdModal(card, index, seller) {
-  var modalHtml = '<div class="modal fade" id="foodadmodal_' + index + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
-    '<div class="modal-dialog">' +
-    '<div class="modal-content">' +
-    '<div class="modal-header">' +
-    '<h5 class="modal-title" id="exampleModalLabel">' + card.dishName + '</h5>' +
-    '<button type="adbutton" class="close-btn" data-bs-dismiss="modal" aria-label="Close"></button>' +
-    '</div>' +
-    '<div class="modal-body">' +
-    '<img src="Images/TestFoodImage.jpg" class="modal-img" alt="Food Image">' +
-    '<p>' + card.description + '</p>' +
-    '<p><span class="modal-label">Quantity:</span> ' + card.quantity + '</p>' +
-    '<p><span class="modal-label">Price:</span> ' + card.portionPrice + ' kr/pc</p>' +
-    '<p><span class="modal-label">Seller:</span> ' + seller.name + '</p>' +
-    '</div>' +
-    '<div class="modal-footer">' +
-    '<button type="adbutton" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>' +
-    '<button type="adbutton" class="btn btn-primary add-to-cart-btn" onclick="addtocart(\'' + card._id + '\', ' + index + ')">Add to Shopping Cart</button>' +
-    '</div>' +
-    '</div>' +
-    '</div>' +
-    '</div>';
-
-  return modalHtml;
-}*/
-
-function homeviewModal(card, index, seller) {
-  var modalHtml = '<div class="modal fade" id="homeviewmodal_' + index + '" tabindex="-1" aria-labelledby="homeviewModalLabel" aria-hidden="true">' +
-    '<div class="modal-dialog">' +
-    '<div class="modal-content">' +
-    '<div class="modal-header">' +
-    '<h5 class="modal-title" id="homeviewModalLabel">' + card.dishName + '</h5>' +
-    '<button type="button" class="close close-btn" data-bs-dismiss="modal" aria-label="Close"></button>' +
-    '</div>' +
-    '<div class="modal-body">' +
-    '<img src="Images/TestFoodImage.jpg" class="modal-img" alt="Food Image">' +
-    '<p class="modal-description">' + card.description + '</p>' +
-    '<p><span class="modal-label">Quantity:</span> <span class="modal-quantity">' + card.quantity + '</span></p>' +
-    '<p><span class="modal-label">Price:</span> <span class="modal-price">' + card.portionPrice + ' kr/pc</span></p>' +
-    '<p><span class="modal-label">Seller:</span> <span class="modal-seller">' + seller.name + '</span></p>' +
-    '</div>' +
-    '<div class="modal-footer">' +
-    '<button type="button" class="btn btn-secondary close-btn" data-bs-dismiss="modal">Close</button>' +
-    '<button type="button" class="btn btn-primary add-to-cart-btn" onclick="addToCart(\'' + card._id + '\', ' + index + ')">Add to Shopping Cart</button>' +
     '</div>' +
     '</div>' +
     '</div>' +
@@ -147,8 +94,6 @@ function homeviewModal(card, index, seller) {
 
   return modalHtml;
 }
-
-
 
 function addtocart(id, index) {
   getAd(id, function (ad) {
