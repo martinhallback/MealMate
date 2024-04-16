@@ -32,6 +32,7 @@ function handleCardData(cardData){
       });
     });
   }else{
+    $('.adcontainer').append('<p> no ads exists :(</p>');
     console.log("no ads exist")
   }
 }
@@ -52,7 +53,7 @@ function handleclicks(){
 function createCard(index, card){
 var cardHtml = '<div class="cardAD">' +
                         '<div class="card-body">' +
-                            //'<img src="' + card.imagePath + '" class="card-img-top" alt="...">' +
+                        '<img src="data:image/png;base64,' + card.imagePath + '" class="card-img-top" alt="...">' +
                             '<h5 class="ADcard-title">' + card.dishName + '</h5>' +
                             '<p class="ADcard-text">' + card.description + '</p>' +
                             '<p>Price: ' + card.portionPrice + ' kr/pc</p>' +
@@ -70,7 +71,7 @@ function foodAdModal(card, index, seller){
       '<button type="adbutton" class="close-btn" data-bs-dismiss="modal" aria-label="Close"></button>' +
       '</div>' +
       '<div class="modal-body">' +
-      //'<img src="' + card.imagePath + '" class="modal-img" alt="Food Image">' +
+      '<img src="data:image/png;base64,' + card.imagePath + '" class="modal-img" alt="Food Image">' +
       '<p>' + card.description + '</p>' +
       '<p>Cook Date: ' + card.cookDate + '</p>' +
       '<p>Quantity: ' + card.quantity + '</p>' +
