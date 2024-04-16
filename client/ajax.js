@@ -162,7 +162,7 @@ function postAd(userID, dishName, cookDate, imagePath, description, quantity, po
             ad : {
               dishName: dishName,
               cookDate: cookDate,
-              imagePath: imagePath, //image ej implementerat än?
+              imagePath: imagePath,
               description: description,
               quantity: quantity,
               portionPrice: portionPrice,

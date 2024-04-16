@@ -35,7 +35,7 @@ function showSellForm() {
         handleAllergies();
         handleProteins();
         
-        $("#submitCreateAd").on('click', function (e) {
+        $("#submitCreateAd").on('click', async function (e) {
 
             //check if logged in 
             var authData = JSON.parse(sessionStorage.getItem('auth'));
@@ -46,7 +46,16 @@ function showSellForm() {
                     //fetch all input and check 
                     var dishName = $("#lunchboxTitle").val();
                     var cookDate = $("#lunchboxMadeDate").val();
-                    var imagePath = '/' //image not implemented yet?!
+                    var fileInput = $("#lunchboxImage")[0]; // Access the DOM element to get the file
+                    var imagePath = '';
+                    try {
+                        imagePath = await convertToBase64stringAsync(fileInput);
+                        console.log(imagePath); // Now imagePath has the correct value
+                        // Continue with the rest of your code that relies on imagePath
+                    } catch (error) {
+                        console.error('An error occurred:', error);
+                    }
+
                     var description = $("#lunchboxDescription").val();    
                     var quantity = parseInt($("#lunchboxQuantity").val());
                     var portionPrice = parseFloat($("#lunchboxPrice").val());
@@ -79,6 +88,12 @@ function showSellForm() {
             }
         });
 });
+    
+            //nedanför anrop finns i ajax.js, "function(response){}" för att se om det var lyckat
+        //postAd(userID, dishName, cookDate, imagePath, description, quantity, portionPrice, protein, allergy, function(response){});
+    //event listener for file upload
+   
+
 
     $("#SellQuestionsContainer").hide();
 }
@@ -128,10 +143,18 @@ function createAllergyHtml(allergy) {
     return html;
 }
 
+function convertToBase64stringAsync(file_input) {
+    return new Promise((resolve, reject) => {
+        convertImageToBase64(file_input, (base64String) => {
+            resolve(base64String);
+        });
+    });
+}
 
 
-
-
+function extractBase64(dataUrl) {
+    return dataUrl.split(',')[1]; // Splits the string at the comma and returns the second part (index 1)
+}
 
 // Function to convert image to base64
 async function convertImageToBase64(fileInput, callback) {
@@ -144,7 +167,9 @@ async function convertImageToBase64(fileInput, callback) {
             var reader = new FileReader();
 
             reader.onloadend = function() {
-                callback(reader.result); // this is the base64 string
+                var base64DataUrl = reader.result; // This is the complete data URL
+                var base64String = extractBase64(base64DataUrl); // Extracts only the base64 part
+                callback(base64String); // Now you're passing only the base64 string to the callback
             }
 
             reader.readAsDataURL(compressedFile); // this will trigger the onloadend event above
