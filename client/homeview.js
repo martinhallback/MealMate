@@ -27,7 +27,6 @@ function handleCardData(cardData){
       var cardHtml = createCard(index, card);
       $('.adcontainer').append(cardHtml);
       getUser(card.sellerID, function(seller){
-        console.log(seller);
         var modal = foodAdModal(card, index, seller);
         $('.container').append(modal);
       });
@@ -53,7 +52,7 @@ function handleclicks(){
 function createCard(index, card){
 var cardHtml = '<div class="cardAD">' +
                         '<div class="card-body">' +
-                            //'<img src="' + card.imgPath + '" class="card-img-top" alt="...">' +
+                            //'<img src="' + card.imagePath + '" class="card-img-top" alt="...">' +
                             '<h5 class="ADcard-title">' + card.dishName + '</h5>' +
                             '<p class="ADcard-text">' + card.description + '</p>' +
                             '<p>Price: ' + card.portionPrice + ' kr/pc</p>' +
