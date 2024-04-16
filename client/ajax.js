@@ -56,7 +56,7 @@ function filteringAds(allergy, proteinType, proteinSource, portionPrice, callbac
   });
 }
 
-//GET a single user based on userID
+//GET a single user based on userID, without sensitive information
 function getUser(userID, callback){
   $.ajax({
     url: host + '/user/' + userID,
@@ -70,6 +70,76 @@ function getUser(userID, callback){
       callback(null);
     }
   });
+}
+
+//GET for a single user, including all information
+function loadUser(userID, callback) {
+  $.ajax({
+    url: host + '/user/' + userID + '/full', 
+    type: 'GET',
+    contentType:"application/json",
+    success: function(user) {
+      callback(user);
+    }
+})
+}
+
+//PUT for a user
+function putUser(userID, settingsData, callback) {
+  $.ajax({
+    url: host + '/user/' + userID, 
+    type: 'PUT',
+    contentType:"application/json",
+    data: JSON.stringify(settingsData),
+    success: function(response) {
+      callback(response);
+    },
+    error: function(){
+      callback(null)
+    }
+})
+}
+
+function putPassword(userID, passwordData, callback) {
+  $.ajax({
+    url: host + '/change-password/' + userID, 
+    type: 'PUT',
+    contentType:"application/json",
+    data: JSON.stringify(passwordData),
+    success: function(response) {
+      callback(response, null);
+    }, 
+    error: function(JQxhr, error) {
+      console.error('Error: ' + error);
+      if (JQxhr.status === 401) {
+        callback(null, 'Incorrect current password. Please try again.');
+      } else {
+        callback(null, null);
+      }
+  }    
+})
+}
+
+function getUniversities(callback) {
+  $.ajax({
+    url: host + '/universities', 
+    type: 'GET',
+    contentType:"application/json",
+    success: function(unis) {
+      callback(unis);  
+    }
+})
+}
+
+function getLocations(callback) {
+  $.ajax({
+    url: host + '/locations', 
+    type: 'GET',
+    contentType:"application/json",
+    success: function(locations) {
+      callback(locations);  
+    }
+})
 }
 
 function getAllergies(callback){

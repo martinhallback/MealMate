@@ -115,6 +115,27 @@ if __name__ == "__main__":
 
 
 
+#University collection
+university = db["university"]
+validation_rule = {
+    "$jsonSchema" : {
+        "bsonType" : "object",
+        "required" : ["name"],
+        "properties" : {
+            "type" : {
+                "bsonType" : "string",
+                "description" : "University name"
+            } 
+        }
+    }
+}
+#initialising fields in collection
+
+"""university.create_index([("name", ASCENDING)], unique=True)
+university.insert_one(validation_rule)
+university.insert_one({"name" : "Linköpings universitet"})"""
+
+
 #Allergy collection
 allergy_validation = {
     "$jsonSchema" : {

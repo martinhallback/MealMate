@@ -43,12 +43,16 @@ class User(object):
     def serialise_client(self):
         obj = self.__dict__
         obj['_id'] = str(self._id)
+        if self.university is not None:
+            obj['university'] = str(self.university)
         if self.location is not None:
             obj['location'] = str(self.location)
         return self.remove_nulls(obj)
     
     def unserialise_from_client(self):
         self._id = ObjectId(self._id)
+        if self.university is not None:
+            self.university = ObjectId(self.university)
         if self.location is not None:
             self.location = ObjectId(self.location)
         

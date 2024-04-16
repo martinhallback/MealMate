@@ -83,3 +83,8 @@ collection.insert_one({"type" : "Fish"})
 collection.insert_one({"type" : "Shellfish"})
 collection.insert_one({"type" : "Sesame seeds"})
 collection.insert_one({"type" : "Mustard"})"""
+
+#Populating the University collection
+collection = db["university"]
+
+"""collection.insert_one({"name" : "Linköpings universitet"})"""
