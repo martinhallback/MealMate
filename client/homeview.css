@@ -1,0 +1,65 @@
+/*homeview.css*/
+.homeviewContainer {
+    max-width: none;
+    padding: 0;
+    width: 100%;
+    background-color: #FBF9EF;
+    color: #006267;
+    padding-bottom: 80px;
+    box-sizing: border-box; /* Include padding in width calculation */
+    min-width: fit-content;
+}
+
+.homeviewImage {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.foodNearMeTitle {
+    /*text-align: center;*/
+    text-transform: uppercase;
+    margin-top: 100px;
+    margin-bottom: 60px;
+    max-width: 100%;
+    text-align: left;
+    padding-left: 10%;
+    font-family: 'Brandon Grotesque Bold';
+    font-size:400%;
+}
+
+.google-map {
+    width: 100%; /* Set your desired width */
+  }
+
+.adContainer {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 100px;
+}
+
+.cardAD,
+.foodadmodal_ {
+    width: 30%;
+    margin-bottom: 3%;
+    padding: 16px;
+    background-color: #ffffff;
+    color: black;
+    border-radius: 20px;
+    /* Add rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Add shadow for depth */
+    font-family: 'Brandon Grotesque Regular';
+    align-content: space-around;
+    justify-content: space-around;
+
+}
+
+.ADcard-title {
+    color: #006267;
+    font-family: 'Brandon Grotesque Bold';
+}

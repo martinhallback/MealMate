@@ -1,17 +1,18 @@
 /*loginsignup.css*/
 .loginContainer {
-    font-family: 'Brandon Grotesque Bold', 'Helvetica', sans-serif;
+   font-family: 'Brandon Grotesque Regular';
  }
  
  .modal-title {
-    color: #006267; /* Change this to the color you desire */
-    font-weight: 600;
+   color: #006267; /* Change this to the color you desire */
+   font-weight: 600;
+   font-family: 'Brandon Grotesque Bold', 'Helvetica', sans-serif;
  }
  
  .loginform-group label,
  .passwordform-group label,
  .signupform-group label {
-    font-weight: bold;
+   font-family: 'Brandon Grotesque Bold', 'Helvetica', sans-serif;
  }
  
  .btn-secondary,
@@ -20,6 +21,7 @@
     background-color: #adbdb3; /* Change this to the background color you desire */
     border: none; /* Optionally remove the border */
     border-radius: 4px;
+    font-family: 'Brandon Grotesque Bold';
  }
  
  /* Style for the Log in button */
@@ -29,6 +31,7 @@
     background-color: #006267; /* Change this to the color you desire */
     color: white; /* Change this to the text color you prefer */
     border-color: transparent; /* Optionally remove button border */
+    font-family: 'Brandon Grotesque Bold';
  }
  
  /*button[id="submitCreateAd"]:hover {
