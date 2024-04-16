@@ -242,6 +242,16 @@ function applyFilters() {
                 proteinSource.push('Meat', 'Poultry','Fish', 'Seafood', 'Vegetarian');
             }
     });
+
+    if ($(this).hasClass('active-click')) {
+        proteinSource.push('Poultry');
+    } else {
+        const index = proteinSource.indexOf('Poultry');
+        if (index > -1) {
+            proteinSource.splice(index, 1);
+        }
+    }
+
     filteringAds(allergy, proteinType, proteinSource, portionPrice, function(ads){
         homeview(ads);
     });

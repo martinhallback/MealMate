@@ -60,26 +60,21 @@ def ads():
             return jsonify({'error': "Database collection could not be accessed ", 'errorCode' : 31}), 503
         query = list(cursor)
         return jsonify([advert.serialise_client() for advert in query_to_adverts(query)]), 200
-        
-        """advertisements = []
-        for advert in query:
-            ad = dict(advert)
-            try:
-                advertisements.append(advertisement.Advertisement(ad))
-            except Exception as e:
-                print(e) 
-        json_ads = [advert.serialise_client() for advert in advertisements]
-        return jsonify(json_ads), 200"""
     return jsonify({'error' : "functionality not yet implemented", 'errorCode' : 0}), 401
 
 @bp.route('/ads/filter', methods=['GET'])
 def adverts():
     data={}
+    print(request.args.getlist('proteinType'))
     try:
-        data['portionPrice'] = int(request.args.get('portionPrice'))
-        data['proteinType'] = request.args.getlist('proteinType')
-        data['allergy'] = request.args.getlist('allergy')
-        data['proteinSource'] = request.args.getlist('proteinSource')
+        if request.args.get('portionPrice') is not None:
+            data['portionPrice'] = int(request.args.get('portionPrice'))
+        if request.args.get('proteinType') is not None:
+            data['proteinType'] = request.args.get('proteinType').split(',')
+        if request.args.get('allergy') is not None:
+            data['allergy'] = request.args.get('allergy').split(',')
+        if request.args.get('proteinSource') is not None:    
+            data['proteinSource'] = request.args.get('proteinSource').split(',')
     except BadRequest as e: 
         data = None
         return jsonify({'error': "Missing body for filter functionality",}), 404
@@ -99,7 +94,7 @@ def adverts():
         #Exclude adverts who are more expensive than given portionPrice
         maxPrice = data['portionPrice']
         query_parameters["portionPrice"] = {"$lte": maxPrice}
-    if 'proteinType' in data:
+    if 'proteinType' in data:        
         #Exclude protein types
         protein_oid = [ObjectId(obj_id) for obj_id in data['proteinType']]
         query_parameters["protein"] = {"$nin" : protein_oid}
@@ -109,6 +104,8 @@ def adverts():
         allergies_oid = [ObjectId(obj_id) for obj_id in data['allergy']]
         query_parameters["allergy"] = {"$nin" : allergies_oid}
     if 'proteinSource' in data:
+        print("PROTEIN_______SOURCE", data['proteinSource'])
+
         #Exclude Protein sources/groups
         protein_groups = data['proteinSource']
         cursor = db['protein'].find({"source" : {"$in" : protein_groups}}, {'_id' : 1})
