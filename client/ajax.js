@@ -32,6 +32,30 @@ function getAds(callback){
   });
 }
 
+//Filter ads
+function filteringAds(allergy, proteinType, proteinSource, portionPrice, callback){
+   $.ajax({
+    url: host + '/ads/filter',
+    type: 'GET',
+    contentType: 'application/json',
+    data : {
+      allergy : allergy,
+      proteinType : proteinType,
+      proteinSource : proteinSource,
+      portionPrice : portionPrice
+    },
+    success: function(response){
+      console.log("fetched all the ads");
+      //ladda om ads från hemsidan. 
+      callback(response)
+    },
+    error: function(JQxhr, status, error){
+      console.log(error);
+      callback(null)
+    }
+  });
+}
+
 //GET a single user based on userID, without sensitive information
 function getUser(userID, callback){
   $.ajax({
@@ -228,3 +252,63 @@ function postAd(userID, dishName, cookDate, imagePath, description, quantity, po
   });
   
 }
+
+function postPurchase(totalPrice, quantity, buyerID, sellerID, ad, callback){
+  $.ajax({
+    url: host + '/purchase',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify({
+        totalPrice:  totalPrice,
+        quantity: quantity,
+        buyer: buyerID,
+        seller: sellerID,
+        advertisment: ad,
+    }),
+    success: function() {
+        callback(true);
+    }, 
+    error: function(JQxhr, status, error) {
+        console.error('Error: ' + error);
+        console.log(JQxhr)
+        callback(false);
+    }
+  });
+}
+
+function deleteAd(id, userID){
+  $.ajax({
+    url: host + '/ad/' + id,
+    type: 'DELETE',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      user: userID,
+    }),
+    success: function() {
+    }, 
+    error: function(JQxhr, status, error) {
+        console.error('Error: ' + error);
+        console.log(JQxhr)
+    }
+  });
+}
+
+function putAd(id, quantity){
+  $.ajax({
+    url: host + '/ad/' + id,
+    type: 'PUT',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      quantity: quantity,
+  }),
+    success: function() {
+        
+    }, 
+    error: function(JQxhr, status, error) {
+        console.error('Error: ' + error);
+        console.log(JQxhr)
+    }
+  });
+}
+
+

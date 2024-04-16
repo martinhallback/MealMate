@@ -28,7 +28,42 @@ function startCheckout(totalPrice, totalQuantity){
         },
     });
     
-    //ta bort från homeview om köpt
-    //ta bort från session storage
-    //spara köp information i user
 }
+
+function handleSuccess(){
+    console.log("handle success")
+    var cartData =  sessionStorage.getItem('cart')
+    var buyerID = sessionStorage.getItem('auth').user
+
+    cartData = JSON.parse(cartData);
+    console.log(cartData)
+    addPurchaceHistory(cartData, buyerID)
+    removeBoughtFromDb(cartData, buyerID)
+    sessionStorage.removeItem('cart')
+}
+
+function addPurchaceHistory(cartData, buyerID){
+    
+    cartData.forEach(function(item){
+        var totalPrice = item.portionPrice * item.quantity
+        postPurchase(totalPrice, item.quantity, buyerID, item.sellerID, item._id, function(response){
+            if(!response){
+                console.error("Purchase history not stored correctely")
+            }
+        });
+    });
+}
+
+function removeBoughtFromDb(cartData, buyerID){
+    cartData.forEach(function(item){
+        getAd(item._id, function(response){
+            if(item.quantity === response.quantity){
+                deleteAd(item._id, buyerID);
+            }else{
+                var changedQuan = response.quantity - item.quantity
+                putAd(item._id, changedQuan);
+            }
+        });
+    });
+}
+

@@ -4,28 +4,23 @@ $(document).ready(function(){
     var isRectangularVisible = false;
     var isAnimating = false;
    // var isDropdownVisible = false;
+
    getAllergies(function(allergies){
     allergies.forEach(function(allergy) {
         // Assuming 'type' is the property that holds the name of the allergy
         var checkbox = $('<label><input type="checkbox" name="' + allergy._id  + '" value="' + allergy.type  + '" data-type="allergyType"> ' + allergy.type + '</label><br>');
         $('#optionsForm').append(checkbox);
     });
+});
 
-    $.ajax({
-        url: '/proteins', // Adjust the URL based on your application's routing
-        type: 'GET',
-        success: function(proteins) {
-            proteins.forEach(function(protein) {  
-                if (protein.type !== "Other") {
-                // Assuming 'type' is the property that holds the name of the allergy
-                var checkbox = $('<div class="' + protein.source + '"><label><input type="checkbox" name="' + protein._id  + '" value="' + protein.type  + '" id="' + protein.source + '" data-type"proteinSort")> ' + protein.type + '</label></div>');
-                $('#proteinForm').append(checkbox);
-                }
-            });
-        },
-        error: function(error) {
-            console.error("Error fetching proteins: ", error);
-        }
+    getProteins(function(proteins){
+        proteins.forEach(function(protein) {
+            if (protein.type != 'Other') {
+            // Assuming 'type' is the property that holds the name of the allergy
+            var checkbox = $('<div class="' + protein.source + '"><label><input type="checkbox" name="' + protein._id  + '" value="' + protein.type  + '" id="' + protein.source + '" data-type="proteinSource"> ' + protein.type + '</label></div>');
+            $('#proteinForm').append(checkbox);
+            }
+        });
     });
     
     $('#CicularFilterContainer').mouseenter(function() {
@@ -80,7 +75,7 @@ $(document).ready(function(){
             });
         }
     });
-});
+//});
 
 $('#PescitarianSelected').click(function() {
     if ($(this).prop('checked')) {
@@ -111,7 +106,6 @@ $('#VeganSelected').click(function() {
         $('#proteinForm .Meat, .Poultry, .Fish, .Seafood, .Vegetarian').show();
     }
 });
-$('#proteinForm .Meat, .Poultry').hide();
 
 $('#select-poultry-box').click(function() {
     $(this).toggleClass('active-click'); 
@@ -208,16 +202,15 @@ priceRange.addEventListener('input', function() {
 });
 
 function applyFilters() {
-   // const dietaryPreferences = [];
-    const allergiesToAdd = [];
-
     const allergy = [];
     const portionPrice = document.getElementById('priceRange').value;
     const proteinType = [];
     const proteinSource = [];
 
     const allergyType_checkboxes = document.querySelectorAll('input[type="checkbox"][data-type="allergyType"]');
-    const proteinType_checkboxes = document.querySelectorAll('input[type="checkbox"][data-type="proteinSort"]');
+    const proteinType_checkboxes = document.querySelectorAll('input[type="checkbox"][data-type="proteinSource"]');
+    const dietPref_checkboxes = document.querySelectorAll('input[type="checkbox"][data-type="dietPref"]');
+
     
 
     allergyType_checkboxes.forEach(allergyType_checkbox => {
@@ -232,6 +225,27 @@ function applyFilters() {
         }
     });
 
+    dietPref_checkboxes.forEach(proteinSource_checkbox => {
+            if (proteinSource_checkbox.checked && proteinSource_checkbox.name === 'Pescitarian' && !proteinSource.includes('Meat', 'Poultry')) {
+                proteinSource.push('Meat', 'Poultry');
+            } 
+
+            if (proteinSource_checkbox.checked && proteinSource_checkbox.name === 'Vegetarian' && proteinSource.includes('Meat', 'Poultry')) {
+                proteinSource.push('Fish', 'Seafood');
+            } else if (proteinSource_checkbox.checked && proteinSource_checkbox.name === 'Vegetarian' && !proteinSource.includes('Meat', 'Poultry')){
+                proteinSource.push('Meat', 'Poultry','Fish', 'Seafood');
+            }
+
+            if (proteinSource_checkbox.checked && proteinSource_checkbox.name === 'Vegan' && proteinSource.includes('Meat', 'Poultry', 'Fish', 'Seafood')) {
+                proteinSource.push('Vegetarian');
+            } else if (proteinSource_checkbox.checked && proteinSource_checkbox.name === 'Vegan' && !proteinSource.includes('Meat', 'Poultry','Fish', 'Seafood')){
+                proteinSource.push('Meat', 'Poultry','Fish', 'Seafood', 'Vegetarian');
+            }
+    });
+    filteringAds(allergy, proteinType, proteinSource, portionPrice, function(ads){
+        homeview(ads);
+    });
     console.log(allergy, proteinType, proteinSource, portionPrice);
+
 }
 

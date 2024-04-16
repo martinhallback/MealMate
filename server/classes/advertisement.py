@@ -38,11 +38,18 @@ class Advertisement(object):
         self._id = ObjectId(self._id)
         if self.sellerID is not None:
             self.sellerID = ObjectId(self.sellerID)
-        for i in range(len(self.protein)):
-            self.protein[i] = ObjectId(self.protein[i])
-        for i in range(len(self.allergy)):
-            self.allergy[i] = ObjectId(self.allergy[i])
-        self.cookDate=datetime.fromisoformat(self.cookDate)
+        if self.protein is not None:
+            for i in range(len(self.protein)):
+                self.protein[i] = ObjectId(self.protein[i])
+        if self.allergy is not None:
+            for i in range(len(self.allergy)):
+                self.allergy[i] = ObjectId(self.allergy[i])
+        if self.cookDate is not None:
+            try:
+                self.cookDate=datetime.fromisoformat(self.cookDate)
+            except:
+                print("Date not updating")
+    
 
     def serialise_client(self):
         obj = self.__dict__
