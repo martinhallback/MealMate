@@ -88,12 +88,6 @@ function showSellForm() {
             }
         });
 });
-    
-            //nedanför anrop finns i ajax.js, "function(response){}" för att se om det var lyckat
-        //postAd(userID, dishName, cookDate, imagePath, description, quantity, portionPrice, protein, allergy, function(response){});
-    //event listener for file upload
-   
-
 
     $("#SellQuestionsContainer").hide();
 }
