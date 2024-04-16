@@ -1,4 +1,4 @@
-function homeview(){
+function homeview(ads){
   console.log("homeview")
     $('.container').empty();
     $('.container').append('<h2 class="foodNearMe">Food near me</h2>');
@@ -11,23 +11,31 @@ function homeview(){
        console.log('Filter content loaded successfully.');
         // Optionally, initialize any JavaScript needed for the filter after it's loaded
     });
-
-getAds(function(cardData){
-      if(cardData){
-        $.each(cardData, function(index, card) {
-          var cardHtml = createCard(index, card);
-          $('.adcontainer').append(cardHtml);
-          getUser(card.sellerID, function(seller){
-            console.log(seller);
-            var modal = foodAdModal(card, index, seller);
-            $('.container').append(modal);
-          });
-        });
-      }else{
-        console.log("no ads exist")
-      }
-    });
+    
+if(!ads){
+  getAds(function(cardData){
+    handleCardData(cardData)
+  });
+}else{
+  handleCardData(ads)
+}
     handleclicks();
+}
+
+function handleCardData(cardData){
+  if(cardData){
+    $.each(cardData, function(index, card) {
+      var cardHtml = createCard(index, card);
+      $('.adcontainer').append(cardHtml);
+      getUser(card.sellerID, function(seller){
+        console.log(seller);
+        var modal = foodAdModal(card, index, seller);
+        $('.container').append(modal);
+      });
+    });
+  }else{
+    console.log("no ads exist")
+  }
 }
 
 function handleclicks(){
