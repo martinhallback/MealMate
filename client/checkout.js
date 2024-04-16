@@ -19,7 +19,6 @@ function startCheckout(totalPrice, totalQuantity){
             quantity: totalQuantity,
         }),
         success: function(response) {
-            //window.open(response.url, '_blank')
             window.location.href = response.url;
         },
         error: function(JQxhr, status, error){
