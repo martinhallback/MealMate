@@ -19,22 +19,24 @@
             <li> <a id="accountbutton" href="#">Account details</a></li>
             <li> <a id="purchaseHistoryBtn" href="#">Purchase history</a></li>
             <li> <a id="soldProductsbutton" href="#">Sold products</a></li>
+            <li> <a id="currentOffersbutton" href="#">Your current offers</a></li>
             <li> <a id="settingsbutton" href="#">Settings</a></li>
         </u>
     </nav>
 
     <form id="settingsForm">
-        <div class="form-group">
-            <label for="name">Password:</label>
-            <input type="password" class="form-control" id="settingPassword" name="password" value="123">
-        </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <br />
+        <button type="button" class="btn btn-primary" onclick=changePassword()>Change password</button>
+      </div>
       <div class="form-group">
         <label for="name">Name:</label>
-        <input type="text" class="form-control" id="settingName" name="name">
+        <input type="text" class="form-control" id="settingName" name="name" required>
       </div>
       <div class="form-group">
         <label for="phoneNumber">Phone Number:</label>
-        <input type="tel" class="form-control" id="settingPhoneNumber" name="phoneNumber">
+        <input type="tel" class="form-control" id="settingPhoneNumber" name="phoneNumber" required>
       </div>
       <div class="form-group">
         <label for="PNumber">PNumber:</label>
@@ -43,7 +45,6 @@
       <div class="form-group">
         <label for="university">University:</label>
             <select class="form-control" id="settingUniversity" name="university" required>
-                <option selected>Please select a university</option>
          </select>
       </div>
       <div class="form-group">
@@ -55,11 +56,48 @@
         <input type="text" class="form-control" id="settingAddress" name="address">
       </div>
       <div class="form-group">
-        <label for="location">Location:</label>
-        <input type="text" class="form-control" id="settingLocation" name="location">
+        <label for="area">Area:</label>
+            <select class="form-control" id="settingArea" name="area">
+         </select>
       </div>
-      <button type="submit" class="btn btn-primary" onclick="saveSettings()">Submit</button>
+      <button type="button" class="btn btn-primary" onclick="saveSettings()">Submit</button>
     </form>
+
+    <!-- Change password modal -->
+    <div id="passwordModal" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="passwordModalTitle">Change password</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="currentPassword" >Current password:</label>
+                <input type="password" class="form-control" id="currentPassword">
+              </div>
+              <div class="form-group">
+                <label for="newPassword">New password:</label>
+                <input type="password" class="form-control" id="newPassword">
+                <small id="currentPasswordError" class="text-danger"></small>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button id="savePassword" type="button" class="btn btn-primary" onclick=savePassword()>Save</button>
+          </div>
+        </div>
+      </div>
     </div>
+
+    </div>
+
+    
+
+
 </body>
 </html>

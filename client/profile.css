@@ -6,7 +6,6 @@
     align-items: left;
 }
 
-
 .profile-navbar {
     margin-right: 0%;
     margin-left: 20%;
@@ -40,17 +39,6 @@
     float: left; 
 }
 
-/*
-.profile-menu {
-    margin-right: 200px;
-    margin-left: 200px;
-    overflow: hidden; 
-    display: flex; 
-    align-items: center; 
-    padding-left: 0px;
-}
-
-*/
 .profile-menu u{
     list-style-type: none;
     background-color: #263a4e;
@@ -73,12 +61,49 @@
     background-color: #1a2834;
 }
 
-#newPasswordForm, #changePhonenumberForm {
+#newPasswordForm, #changePhonenumberForm, #settingsForm {
     margin-left: 20%;
 }
 
-/*
-.profile-menu li{
-    float:  
+.purchasehistory-Navbar{
+    margin-right: 0%;
+    /* margin-left: 20%; */
+    overflow: hidden; 
+    display: flex; 
+    align-items: center; 
+    padding-left: 0px;
+    background-color: #24517e;
+    color: white;  
 }
-*/
+
+.purchasehistory-Navbar li{
+    list-style-type: none;
+    margin-left: 200px; 
+}
+
+#purchaseName {
+    margin-left: 0px;
+    width: 30%
+}
+
+#purchasePrice {
+    margin-left: 0px;
+}
+
+.purchaseTable {
+    margin-left: 20%;
+    margin-right: 20%;
+    width: 60%;
+    border-collapse: collapse;
+}
+.purchaseTable th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+.purchaseTable th {
+    background-color: #f2f2f2;
+}
+.purchaseTable tr:hover {
+    background-color: #f5f5f5;
+}
