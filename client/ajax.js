@@ -34,16 +34,33 @@ function getAds(callback){
 
 //Filter ads
 function filteringAds(allergy, proteinType, proteinSource, portionPrice, callback){
+  portionPrice >= 100 ? portionPrice = null : portionPrice = portionPrice;
+  proteinType.length > 0 ? proteinTypeString = proteinType.join(',') : proteinTypeString = null;
+  proteinSource.length > 0 ? proteinSourceString = proteinSource.join(',') : proteinSourceString = null;
+  allergy.length > 0 ? allergyString = allergy.join(',') : allergyString = null;
+
+  requestData = {
+    allergy : allergyString,
+    proteinType : proteinTypeString,
+    proteinSource : proteinSourceString,
+    portionPrice : portionPrice
+  };
+  console.log(requestData)
+  function removeNullKeys(obj) {
+    Object.keys(obj).forEach(key => {
+        if (obj[key] === null) {
+            delete obj[key];
+        }
+    });
+    return obj;
+  }  
+  var nullPurged = removeNullKeys(requestData);
+  console.log("No nulls", nullPurged)
    $.ajax({
     url: host + '/ads/filter',
     type: 'GET',
     contentType: 'application/json',
-    data : {
-      allergy : allergy,
-      proteinType : proteinType,
-      proteinSource : proteinSource,
-      portionPrice : portionPrice
-    },
+    data : nullPurged,
     success: function(response){
       console.log("fetched all the ads");
       //ladda om ads från hemsidan. 
