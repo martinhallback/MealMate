@@ -23,7 +23,7 @@ def checkout():
         data = request.get_json()
         try:
             quantity = data['quantity']
-            price = str(data['price'] * 100)
+            price = str(round(data['price']) * 100) 
             name = "MealMate Luncbox"
             checkout_session = stripe.checkout.Session.create(
             line_items=[

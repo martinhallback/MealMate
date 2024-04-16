@@ -36,7 +36,7 @@ def specific_purchase(id):
 def new_purchase():
     data = request.get_json()
     try:
-        pur = purchase.Purchase(data['purchase'])
+        pur = purchase.Purchase(data)
     except Exception as e:
         print("Contact backend!!!\n", e)
         return jsonify({'error' : "purchase is invalid"}), 401

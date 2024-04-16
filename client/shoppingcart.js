@@ -10,6 +10,7 @@ function createCartCards(cartData) {
     var totPrice = 0;
     var cartCardHTML = '';
 
+
     if (!cartData || cartData.length === 0) {
         cartCardHTML += `
             <h1>Shopping Cart</h1>
