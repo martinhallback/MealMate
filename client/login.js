@@ -27,6 +27,7 @@ function logInUser(){
             $('#loginLink').toggleClass('d-none', true);
             $('#signupLink').toggleClass('d-none', true);
             $('#logoutLink').toggleClass('d-none', false);
+            $('#profile').toggleClass('d-none', false);
         }else if(error){           
             $('#passwordError').text(error);
         }
@@ -41,6 +42,7 @@ function logOutUser(){
             $('#loginLink').toggleClass('d-none', false);
             $('#signupLink').toggleClass('d-none', false);
             $('#logoutLink').toggleClass('d-none', true);
+            $('#profile').toggleClass('d-none', true);
             $('#logout-modal').modal('hide');
         });
     });
