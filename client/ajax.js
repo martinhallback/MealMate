@@ -328,4 +328,22 @@ function putAd(id, quantity){
   });
 }
 
+function filterOnSellerID(sellerID, callback){
+  $.ajax({
+    url: host + '/ads/filter',
+    type: 'GET',
+    contentType: 'application/json',
+    data : JSON.stringify({
+      sellerID: sellerID,
+    }),
+    success: function(response){
+      callback(response)
+    },
+    error: function(JQxhr, status, error){
+      console.log(error);
+      callback(null)
+    }
+  });
+}
+
 

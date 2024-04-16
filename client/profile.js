@@ -48,7 +48,9 @@ $(document).ready(function () {
         e.preventDefault(); 
         console.log('Current offers button clicked');
         $('.container').empty();
-        $(".container").load("currentOffers.html .profileContainer", function () { });
+        $(".container").load("currentOffers.html .profileContainer", function () {
+            loadCurrentOffers();
+         });
     });
   
     $(".container").on('click', '#settingsbutton', function (e) {
@@ -207,6 +209,27 @@ function savePassword() {
             $('#passwordModal').modal('hide');
         } else if (error){           
             $('#currentPasswordError').text(error);
+        }
+    });
+}
+
+function loadCurrentOffers(){
+    var userID = JSON.parse(sessionStorage.getItem('auth')).user;
+    filterOnSellerID(userID, function(ads){
+        if(!ads){
+            $('#purchaseTable tbody').append('<p> you have no current ads listed </p>')
+        }else{
+            ads.forEach(function(ad){
+                var row = '<tr>' +
+                '<td>' + ad.dishName + '</td>' +
+                '<td>' + ad.cookDate + '</td>' +
+                '<td>' + ad.portionPrice * ad.quantity + '</td>' +
+                '<td>' + ad.quantity + '</td>' +
+                '<td><button class="btn btn-primary edit-btn">Edit</button></td>' +
+                '<td><button class="btn btn-danger remove-btn">Remove</button></td>' +
+                '</tr>';
+                $('#purchaseTable tbody').append(row)
+            });
         }
     });
 }
