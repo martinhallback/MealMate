@@ -5,7 +5,7 @@ function sellview() {
 
     $('.container').empty();
     $('.container').append('<div class="sellcontainerjs">' + '</div>');
-    var image = 'Images/Sell_Image.jpg'; //  image URL with your image
+    var image = 'Images/Sell_Image.jpg'; 
     $('.sellcontainerjs').append('<img src="' + image + '" alt="Lunchbox" class="sellImage">');
     $('.sellcontainerjs').append('<h2 class="startSelling">Start selling your lunchboxes here!</h2>');
     $('.sellcontainerjs').append('<p class="benefitsText">Earn extra income by selling your homemade lunchboxes to hungry customers. <br> Share your culinary skills and delight others with your delicious creations!</p>');
@@ -65,7 +65,6 @@ function showSellForm() {
 
                     //call the postAd() in ajax.js
                     postAd(userID, dishName, cookDate, imagePath, description, quantity, portionPrice, proteins, allergies, function(response){
-                        //redirict or show the user somehow they have sucessfully posted an ad
                         if(response){
                             alert("You have sucessfully posted a ad")
                             
@@ -80,16 +79,6 @@ function showSellForm() {
             }
         });
 });
-    
-            //nedanför anrop finns i ajax.js, "function(response){}" för att se om det var lyckat
-        //postAd(userID, dishName, cookDate, imagePath, description, quantity, portionPrice, protein, allergy, function(response){});
-    //event listener for file upload
-    document.getElementById('lunchboxImage').addEventListener('change', function() {
-    convertImageToBase64(this, function(base64String) {
-    console.log(base64String);
-    });
-    })
-
 
     $("#SellQuestionsContainer").hide();
 }
