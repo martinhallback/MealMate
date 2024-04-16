@@ -7,7 +7,6 @@ $.ajax({
   type: 'GET',
   contentType: 'application/json',
   success: function(response){
-    console.log("fetched a single ad");
     callback(response)
   },
   error: function(JQxhr, status, error){
@@ -24,7 +23,6 @@ function getAds(callback){
     type: 'GET',
     contentType: 'application/json',
     success: function(response){
-      console.log("fetched all the ads");
       callback(response);
     },
     error: function(JQxhr, status, error){
@@ -65,7 +63,6 @@ function getUser(userID, callback){
     type: 'GET',
     contentType: 'application/json',
     success: function(response){
-      console.log("fetched user");
       callback(response);
     },
     error: function(JQxhr, status, error){
@@ -80,7 +77,6 @@ function getAllergies(callback){
         url: host + '/allergies',
         type: 'GET',
         success: function(allergies) {
-          console.log("fetched allergies");
           callback(allergies);
         },
         error: function(error) {
@@ -95,7 +91,6 @@ function getProteins(callback){
       url: host + '/proteins',
       type: 'GET',
       success: function(allergies) {
-        console.log("fetched proteins");
         callback(allergies);
       },
       error: function(error) {
@@ -115,7 +110,6 @@ function postLogin(email, password, callback){
             password,
         }),
         success: function(response) {
-            console.log('login succesful');
             callback(response, null);
         }, 
         error: function(JQxhr, status, error) {
@@ -143,7 +137,6 @@ function postSignUp(email, name, password, phoneNumber, university, studentID, c
         studentID : studentID,
     }),
     success: function() {
-      console.log('signed up');
       callback(true)
     },
     error: function(JQxhr, status, error){
@@ -178,7 +171,6 @@ function postAd(userID, dishName, cookDate, imagePath, description, quantity, po
             },
         }),
         success: function() {
-          console.log('sucessfully posted an ad');
           callback(true)
         },
         error: function(JQxhr, status, error){
@@ -190,3 +182,63 @@ function postAd(userID, dishName, cookDate, imagePath, description, quantity, po
   });
   
 }
+
+function postPurchase(totalPrice, quantity, buyerID, sellerID, ad, callback){
+  $.ajax({
+    url: host + '/purchase',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify({
+        totalPrice:  totalPrice,
+        quantity: quantity,
+        buyer: buyerID,
+        seller: sellerID,
+        advertisment: ad,
+    }),
+    success: function() {
+        callback(true);
+    }, 
+    error: function(JQxhr, status, error) {
+        console.error('Error: ' + error);
+        console.log(JQxhr)
+        callback(false);
+    }
+  });
+}
+
+function deleteAd(id, userID){
+  $.ajax({
+    url: host + '/ad/' + id,
+    type: 'DELETE',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      user: userID,
+    }),
+    success: function() {
+    }, 
+    error: function(JQxhr, status, error) {
+        console.error('Error: ' + error);
+        console.log(JQxhr)
+    }
+  });
+}
+
+function putAd(id, quantity){
+  $.ajax({
+    url: host + '/ad/' + id,
+    type: 'PUT',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      quantity: quantity,
+  }),
+    success: function() {
+        
+    }, 
+    error: function(JQxhr, status, error) {
+        console.error('Error: ' + error);
+        console.log(JQxhr)
+    }
+  });
+}
+
+

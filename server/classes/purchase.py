@@ -37,7 +37,10 @@ class Purchase(object):
         self.advertisement = ObjectId(self.advertisement)
         self.buyer = ObjectId(self.buyer)
         self.seller = ObjectId(self.seller)
-        self.date=datetime.fromisoformat(self.date)
+        if(self.date is not None):
+            self.date=datetime.fromisoformat(self.date)
+        
+        
         
     def serialise_db(self):
         obj = self.__dict__

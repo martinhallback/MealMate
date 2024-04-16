@@ -1,5 +1,5 @@
+
 function homeview(ads){
-  console.log("homeview")
     $('.container').empty();
     $('.container').append('<h2 class="foodNearMe">Food near me</h2>');
     $('.container').append('<div class="adcontainer">' + '</div>');
@@ -8,7 +8,6 @@ function homeview(ads){
     $('.container').append('<div id="content-container" class="content-container"></div>');
 
    $('#filter-container').load('filter.html', function() {
-       console.log('Filter content loaded successfully.');
         // Optionally, initialize any JavaScript needed for the filter after it's loaded
     });
     
@@ -91,8 +90,6 @@ function foodAdModal(card, index, seller){
 }
 
 function addtocart(id, index){
-  console.log("add to cart")
-
   getAd(id, function(ad){
     if(ad){
       var cartItems = JSON.parse(sessionStorage.getItem('cart')) || [];
