@@ -11,7 +11,7 @@
     font-size: 20px; /* Adjust font size as needed */
     text-align: left; /* Center the header text */
     width: 150px;
-    height: 565px;
+    height: 545px;
     border-radius: 0 0 30px 30px; /* top-left, top-right, bottom-right, bottom-left */
     overflow-y: auto;
 }
