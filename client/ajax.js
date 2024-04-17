@@ -270,7 +270,9 @@ function postAd(userID, dishName, cookDate, imagePath, description, quantity, po
   
 }
 
-function postPurchase(totalPrice, quantity, buyerID, sellerID, ad, callback){
+function postPurchase(totalPrice, quantity, buyerID, sellerID, ad, dishName, callback){
+  var currentDate = new Date();
+  var date = currentDate.toISOString()
   $.ajax({
     url: host + '/purchase',
     type: 'POST',
@@ -280,7 +282,9 @@ function postPurchase(totalPrice, quantity, buyerID, sellerID, ad, callback){
         quantity: quantity,
         buyer: buyerID,
         seller: sellerID,
-        advertisment: ad,
+        advertisement: ad,
+        date: date,
+        dishName: dishName,
     }),
     success: function() {
         callback(true);
@@ -324,6 +328,22 @@ function putAd(id, quantity){
     error: function(JQxhr, status, error) {
         console.error('Error: ' + error);
         console.log(JQxhr)
+    }
+  });
+}
+
+function getPurchases(userID, role, callback){
+  $.ajax({
+    url: host + '/purchases/' + userID + '/' + role,
+    type: 'GET',
+    contentType: 'application/json',
+    success: function(pruchases) {
+        callback(pruchases);
+    }, 
+    error: function(JQxhr, status, error) {
+        console.error('Error: ' + error);
+        console.log(JQxhr)
+        callback(null)
     }
   });
 }
