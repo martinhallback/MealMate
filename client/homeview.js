@@ -64,7 +64,7 @@ function homeview(ads) {
 function createCard(index, card) {
   var cardHtml = '<div class="cardAD">' +
     '<div class="card-body">' +
-    //'<img src="Images/TestFoodImage.jpg" class="card-img-top" alt="...">' +
+    '<img src="data:image/png;base64,' + card.imagePath + '" class="card-img-top" alt="...">' +
     '<h5 class="ADcard-title">' + card.dishName + '</h5>' +
     '<p class="ADcard-text">' + card.description + '</p>' +
     '<p class="ADcard-price">Price: ' + card.portionPrice + ' kr/pc</p>' +
@@ -74,32 +74,6 @@ function createCard(index, card) {
   return cardHtml;
 }
 
-/*function foodAdModal(card, index, seller) {
-  var modalHtml = '<div class="modal fade" id="foodadmodal_' + index + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
-    '<div class="modal-dialog">' +
-    '<div class="modal-content">' +
-    '<div class="modal-header">' +
-    '<h4 class="cardAd-modal-title" id="exampleModalLabel">' + card.dishName + '</h4>' +
-    '</div>' +
-    '<div class="cardAd-modal-body">' +
-    //'<img src="Images/TestFoodImage.jpg" class="modal-img" alt="Food Image">' +
-    '<p class="cardAd-description-text">' + card.description + '</p>' +
-    '<p><span class="quantity-modal-label">Quantity:</span> ' + card.quantity + '</p>' +
-    '<p><span class="price-modal-label">Price:</span> ' + card.portionPrice + ' kr/pc</p>' +
-    '<p><span class="seller-modal-label">Seller:</span> ' + seller.name + '</p>' +
-    '</div>' +
-    '<div class="modal-footer">' +
-    '<button type="adbutton" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>' +
-    '<button type="adbutton" class="btn btn-primary add-to-cart-btn" onclick="addtocart(\'' + card._id + '\', ' + index + ')">Add to Shopping Cart</button>' +
-    '</div>' +
-    '</div>' +
-    '</div>' +
-    '</div>';
-
-  return modalHtml;
-}*/
-
-/*NY från backend grabbarna */
 function foodAdModal(card, index, seller){
   var modalHtml = '<div class="modal fade" id="foodadmodal_' + index + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
       '<div class="modal-dialog">' +
@@ -109,7 +83,7 @@ function foodAdModal(card, index, seller){
       '<button type="adbutton" class="close-btn" data-bs-dismiss="modal" aria-label="Close"></button>' +
       '</div>' +
       '<div class="cardAd-modal-body">' +
-      //'<img src="' + card.imagePath + '" class="modal-img" alt="Food Image">' +
+      '<img src="data:image/png;base64,' + card.imagePath + '" class="modal-img" alt="Food Image">' +
       '<p class="cardAd-description-text">' + card.description + '</p>' +
       '<p><span class="cookDate-modal-label">Cook Date:</span> ' + card.cookDate + '</p>' +
       '<p><span class="quantity-modal-label">Quantity:</span> ' + card.quantity + '</p>' +
