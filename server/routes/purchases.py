@@ -40,6 +40,7 @@ def purchases():
 
 
 @bp.route('/purchases/<string:id>/<string:role>', methods = ['GET'])
+@jwt_required()
 def user_purchases(id, role):
     try:
         # Convert the string ID to an ObjectId
