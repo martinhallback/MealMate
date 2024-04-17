@@ -9,9 +9,6 @@ from main import db
 # import relevant classes
 from classes import user
 
-from routes.admin import verify_admin
-
-
 bp = Blueprint('user', __name__)
 
 
@@ -19,8 +16,6 @@ bp = Blueprint('user', __name__)
 @jwt_required
 def specific_user():    
     current_user = get_jwt_identity()
-    if not verify_admin(current_user):
-        return jsonify({'error' : "You don't have the autority for this request"}), 403
     cursor = db['user'].find_one({'email' : current_user})
     
     if request.method == 'GET':
