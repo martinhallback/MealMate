@@ -267,7 +267,6 @@ function postAd(userID, dishName, cookDate, imagePath, description, quantity, po
       });
     }
   });
-  
 }
 
 function postPurchase(totalPrice, quantity, buyerID, sellerID, ad, dishName, callback){
