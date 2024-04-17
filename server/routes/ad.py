@@ -1,7 +1,7 @@
 from flask import Blueprint
 from flask import jsonify
 from flask import request
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import jwt_required, get_jwt_identity
 
 from bson import ObjectId
 
@@ -11,13 +11,21 @@ from main import db
 #import relevant classes
 from classes import advertisement, user
 
+from routes.admin import verify_admin
+
+
 bp = Blueprint('ad', __name__)
 
 @bp.route('/ad/<string:obj_id>', methods = ['GET', 'PUT', 'DELETE'])
+@jwt_required()
 def ad(obj_id):
+    current_user = get_jwt_identity()
+
     # data = request.get_json() #For other requests than get
     ads = db['advertisement']
     objID = ObjectId(obj_id)
+
+    #cursor = ads.find_one({'_id' : objID, sellerID : })
 
     cursor = ads.find_one({'_id' : objID})
     if cursor is None:
@@ -32,9 +40,6 @@ def ad(obj_id):
             return jsonify({'error': "Advert object in database was invalid", 'errorCode' : 41}), 503
     if request.method == 'PUT':
         data = request.get_json()   
-        """ads.update_one({'_id' : objID}, {'$set' : data})
-        return jsonify({'success' : "The user was updated successfully"}), 200"""
-        
         for key in data:
             query[key] = data[key]
         try:
