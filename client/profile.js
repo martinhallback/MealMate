@@ -239,20 +239,27 @@ function savePassword() {
 
 function loadCurrentOffers(){
     var userID = JSON.parse(sessionStorage.getItem('auth')).user;
+    console.log("current offers")
     filterOnSellerID(userID, function(ads){
-        if(!ads){
+        $('#purchaseTable tbody').empty();
+        if(!ads || ads.length == 0){
             $('#purchaseTable tbody').append('<p> you have no current ads listed </p>')
         }else{
             ads.forEach(function(ad){
-                var row = '<tr>' +
-                '<td>' + ad.dishName + '</td>' +
-                '<td>' + ad.cookDate + '</td>' +
-                '<td>' + ad.portionPrice * ad.quantity + '</td>' +
-                '<td>' + ad.quantity + '</td>' +
-                '<td><button class="btn btn-danger remove-btn">Remove</button></td>' +
-                '</tr>';
-                $('#purchaseTable tbody').append(row)
+                var row = `<tr>
+                    <td>${ad.dishName}</td>
+                    <td>${ad.cookDate}</td>
+                    <td>${ad.portionPrice * ad.quantity}</td>
+                    <td>${ad.quantity}</td>
+                    <td><button class="btn btn-danger remove-btn" onclick="removeCurrentAd('${ad._id}', '${userID}')">Remove</button></td>
+                    </tr>`;
+                $('#purchaseTable tbody').append(row);
             });
         }
     });
+}
+
+function removeCurrentAd(id, userID){
+    deleteAd(id, userID)
+    loadCurrentOffers()
 }
