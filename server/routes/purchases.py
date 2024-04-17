@@ -15,8 +15,6 @@ bp = Blueprint('purchases', __name__)
 purchases_collection = db['purchase']
 
 
-
-
 @bp.route('/purchases', methods = ['GET'])
 @jwt_required()
 def purchases():
@@ -39,25 +37,23 @@ def purchases():
 
 
 
-@bp.route('/purchases/<string:id>/<string:role>', methods = ['GET'])
+@bp.route('/purchases/<string:role>', methods = ['GET'])
 @jwt_required()
-def user_purchases(id, role):
-    try:
-        # Convert the string ID to an ObjectId
-        oid = ObjectId(id)
-    except:
-        return jsonify({"error": "Invalid ID format"}), 400
+def user_purchases(role):
+    current_user = get_jwt_identity()
+    if not verify_admin(current_user):
+        return jsonify({'error' : "You don't have the autority for this request"}), 403
+    oid = db['user'].find_one({'email' : current_user}, {'_id' : 1})
     
-    # data = request.get_json() #For other requests than get
     if request.method == 'GET':
         if role == 'buyer':
-            cursor = purchases_collection.find({"buyer": oid})
+            cursor = purchases_collection.find({"buyer": oid['_id']})
         elif role == 'seller':
-            cursor = purchases_collection.find({"seller": oid})
+            cursor = purchases_collection.find({"seller": oid['_id']})
         else:
             return jsonify({'error' : "Invalid URL"}), 404
         if cursor is None:
-            return jsonify({'error': "Database collection could not be accessed ", 'errorCode' : 31}), 503
+            return 204
         query = list(cursor)
         purchases = []
         for item in query:
