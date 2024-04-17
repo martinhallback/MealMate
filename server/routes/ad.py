@@ -11,34 +11,37 @@ from main import db
 #import relevant classes
 from classes import advertisement, user
 
-from routes.admin import verify_admin
-
-
 bp = Blueprint('ad', __name__)
 
 @bp.route('/ad/<string:obj_id>', methods = ['GET', 'PUT', 'DELETE'])
 @jwt_required()
 def ad(obj_id):
-    current_user = get_jwt_identity()
-
-    # data = request.get_json() #For other requests than get
     ads = db['advertisement']
-    objID = ObjectId(obj_id)
-
-    #cursor = ads.find_one({'_id' : objID, sellerID : })
-
-    cursor = ads.find_one({'_id' : objID})
-    if cursor is None:
-        return jsonify({'error': "No advertisement with that id"}), 404
-    query = dict(cursor)
-    if request.method == 'GET':    
+    try:
+        objID = ObjectId(obj_id)
+    except:
+        return jsonify({'error': "invalid id"}), 400
+    if request.method == 'GET':
+        cursor = ads.find_one({'_id' : objID})
+        if cursor is None:
+            return jsonify({'error': "No advertisement with that id"}), 404
+        query = dict(cursor)    
         try: 
             advert = advertisement.Advertisement(query)
             return jsonify(advert.serialise_client()), 200
         except Exception as e:
             print(e) 
             return jsonify({'error': "Advert object in database was invalid", 'errorCode' : 41}), 503
+
+    current_user = get_jwt_identity()
+    cursor = db['user'].find_one({"email" : current_user})
+    usr = user.User(dict(cursor))
     if request.method == 'PUT':
+        cursor = ads.find_one({'_id' : objID, 'sellerID' : usr._id})
+        if cursor is None:
+            return jsonify({'error': "None of your advertisements have that id"}), 404
+        query = dict(cursor)  
+
         data = request.get_json()   
         for key in data:
             query[key] = data[key]
@@ -49,7 +52,7 @@ def ad(obj_id):
             print(e)
             return jsonify({'error' : "All provided parameters are not part of an advertisement"}), 401
         
-        updateResult = ads.update_one({'_id' : objID}, {'$set' : advert.serialise_db()})
+        updateResult = ads.update_one({'_id' : objID, 'sellerID' : usr._id}, {'$set' : advert.serialise_db()})
         if updateResult.modified_count == 1:
             return jsonify({'success' : "The advertisement was updated successfully"}), 200
         elif updateResult.modified_count > 1:
@@ -58,20 +61,11 @@ def ad(obj_id):
             return jsonify({'error' : "advertisement was not updated"})
 
     if request.method == 'DELETE':
-        """data = request.get_json(force = True)
-        if data is None or 'user' not in data:
-            print(data)
-            print(data['user'])
-            return jsonify({'error' : "user object from authentification must be included", 'errorCode' : 5}), 401
-        usr = ObjectId(data['user'])
-        
-        delete_result = ads.delete_one({'_id' : objID, 'sellerID' : usr})"""
-        delete_result = ads.delete_one({'_id' : objID})
-        print(delete_result)
+        delete_result = ads.delete_one({'_id' : objID, 'sellerID' : usr._id})
         if delete_result.deleted_count > 0:
             return jsonify({'success' : "Your advertisement has been deleted"}), 200
         else:
-            return jsonify({'error' : "The given ad was not yours"}), 403
+            return jsonify({'error' : "The given ad was not yours or was already deleted"}), 403
         
 
 
