@@ -13,21 +13,47 @@ bp = Blueprint('purchase', __name__)
 
 purchase_collection = db["purchase"]
 
-@bp.route('/purchase/<string:id>', methods = ['GET'])
+@bp.route('/purchase/<string:id>', methods = ['GET', 'PUT'])
 def specific_purchase(id):
-    #Should only be allowed for GET
     try:
-        # Convert the string ID to an ObjectId
         oid = ObjectId(id)
     except:
         return jsonify({"error": "Invalid ID format"}), 400
-    # Use the ObjectId to query the database
-    cursor = purchase_collection.find_one({"_id": oid})
-    if cursor is None:
-        return jsonify({'error': "No object with the given ID exists."}), 404
-    query = dict(cursor)
-    pur = purchase.Purchase(query)
-    return jsonify(pur.serialise_client()), 200
+    if (request.method == 'GET'):       
+        cursor = purchase_collection.find_one({"_id": oid})
+        if cursor is None:
+            return jsonify({'error': "No object with the given ID exists."}), 404 
+        query = dict(cursor)
+        pur = purchase.Purchase(query)
+        return jsonify(pur.serialise_client()), 200
+    elif (request.method == 'PUT'):
+        data = request.get_json()
+        cursor = purchase_collection.find_one({"_id": oid}, {"date" : 0})
+        if cursor is None:
+            return jsonify({'error': "No object with the given ID exists."}), 404
+        query = dict(cursor)
+        for key in data:
+            query[key] = data[key]
+        try:
+            psch = purchase.Purchase(query)
+            psch.unserialise_from_client()
+        except:
+            return jsonify({'error': "Corrupted document"}), 400
+        
+        updateResult = purchase_collection.update_one({'_id' : oid}, {'$set' : psch.serialise_db()})
+        if updateResult.modified_count == 1:
+            return jsonify({'success' : "The advertisement was updated successfully"}), 200
+        elif updateResult.modified_count > 1:
+            return jsonify({'success' : "The advertisement was updated", 'error' : "More than one user was modified, contact backend", 'errorCode' : 99}), 200
+        else:
+            return jsonify({'error' : "advertisement was not updated"})
+
+        cursor = purchase_collection.find_one({"_id": oid})
+        try:
+            purchase.Purchase(cursor)
+        except:
+            return jsonify({'error': "Corrupted database document"}), 500
+        request
 
 
 
