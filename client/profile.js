@@ -117,10 +117,20 @@ function populateTable(purchases, isPurchaseHistory) {
 }
 
 function loadAccountdetails() {
-    var user = JSON.parse(sessionStorage.getItem('auth')).user
+    var userID = JSON.parse(sessionStorage.getItem('auth')).user;
+    var accountVerification = document.getElementById("accountVerification");
     var accountEmail = document.getElementById("accountEmail");
     var accountRating = document.getElementById("accountRating");
-    var accountVerification = document.getElementById("accountVerification");
+
+    console.log("Inuti loadAccount");
+    getUser(userID, function (usr) {
+        accountEmail.text = usr.email;
+        if (usr.isVerified)
+            accountVerification.text = "Yes";
+        else
+            accountVerification.text = "No";
+        
+    })
 }
 
 function setFieldValues(usr) {
