@@ -7,12 +7,8 @@ $(document).ready(function () {
         loadAccountdetails();
     });
 
-    $(".container").on("click", ".reviewBtn", function () {
-        console.log('Review button clicked');
-        $(".container").load("purchasehistory.html .profileContainer", function () {
-            console.log('Laddar från purchasehistory');
-            $('#reviewModal').modal('show');
-        });
+    $(".container").on("click", ".reviewBtn", function () { 
+        $('#reviewModal').modal('show');
     });
   
     $(".container").on('click', '#accountbutton', function (e) {
@@ -29,11 +25,16 @@ $(document).ready(function () {
         console.log('Purchase history button clicked');
         $('.container').empty();
         $(".container").load("purchasehistory.html .profileContainer", function () { 
-            const purchases = [
-                { productName: "Product 1", dateOfPurchase: "2024-04-01", price: "$10", quantity: "1"}, //Temporärt för att se hur tabellen ser ut
-                { productName: "Product 2", dateOfPurchase: "2024-04-05", price: "$20", quantity: "1"},
-            ];
-            populateTable(purchases);
+            var userID = JSON.parse(sessionStorage.getItem('auth')).user;
+            getPurchases(userID, 'buyer', function(purchases){
+                console.log(purchases)
+                if(!purchases || purchases.length == 0){
+                    $('#purchaseTable tbody').append("<p>You have no purchase history</p>")
+                }else{
+                    populateTable(purchases);
+                }
+                
+            }) 
         });
     });
   
@@ -86,11 +87,14 @@ function populateTable(purchases) {
     const tableBody = document.querySelector("#purchaseTable tbody");
 
     purchases.forEach((purchase, index) => {
+        //getAd(purchase.advertisement, function(ad){
+          //  console.log(ad);
+        //}) //för att få dishName på något sätt
         const row = document.createElement("tr");
         row.innerHTML = `
-            <td>${purchase.productName}</td>
-            <td>${purchase.dateOfPurchase}</td>
-            <td>${purchase.price}</td>
+            <td>${purchase.dishName}</td>
+            <td>${purchase.date}</td>
+            <td>${purchase.totalPrice}</td>
             <td>${purchase.quantity}</td>
             <td>
                 <button type="button" class="btn btn-primary reviewBtn" data-toggle="modal" data-target="#reviewModal" data-index="${index}">
