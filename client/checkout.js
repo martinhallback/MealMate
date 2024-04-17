@@ -33,20 +33,18 @@ function startCheckout(totalPrice, totalQuantity){
 function handleSuccess(){
     console.log("handle success")
     var cartData =  sessionStorage.getItem('cart')
-    var buyerID = sessionStorage.getItem('auth').user
-
+    var buyerID = JSON.parse(sessionStorage.getItem('auth')).user
     cartData = JSON.parse(cartData);
-    console.log(cartData)
+
     addPurchaceHistory(cartData, buyerID)
     removeBoughtFromDb(cartData, buyerID)
     sessionStorage.removeItem('cart')
 }
 
 function addPurchaceHistory(cartData, buyerID){
-    
     cartData.forEach(function(item){
         var totalPrice = item.portionPrice * item.quantity
-        postPurchase(totalPrice, item.quantity, buyerID, item.sellerID, item._id, function(response){
+        postPurchase(totalPrice, item.quantity, buyerID, item.sellerID, item._id, item.dishName, function(response){
             if(!response){
                 console.error("Purchase history not stored correctely")
             }

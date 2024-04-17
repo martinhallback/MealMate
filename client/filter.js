@@ -132,10 +132,10 @@ $('#select-plantbased-box').click(function() {
     $('#proteinForm .Vegan').toggle();
 });
 
-$('#select-dairy-box').click(function() {
-    $(this).toggleClass('active-click'); 
-    $('#proteinForm .Vegetarian').toggle();
-});
+//$('#select-dairy-box').click(function() {
+ //   $(this).toggleClass('active-click'); 
+  //  $('#proteinForm .Vegetarian').toggle();
+//});
 
 $('#select-box').click(function() {
    $('#dropdown').slideToggle(function() {
@@ -201,6 +201,19 @@ priceRange.addEventListener('input', function() {
     
 });
 
+function addSingleProtein(data){
+    if (!proteinSource.includes(data)){
+    proteinSource.push(data);
+    }
+}
+
+function removeSingleProtein(data){
+    const index = proteinSource.indexOf(data);
+    if (index > -1) {
+        proteinSource.splice(index, 1);
+    }
+}
+
 function applyFilters() {
     const allergy = [];
     const portionPrice = document.getElementById('priceRange').value;
@@ -211,7 +224,7 @@ function applyFilters() {
     const proteinType_checkboxes = document.querySelectorAll('input[type="checkbox"][data-type="proteinSource"]');
     const dietPref_checkboxes = document.querySelectorAll('input[type="checkbox"][data-type="dietPref"]');
 
-    
+   
 
     allergyType_checkboxes.forEach(allergyType_checkbox => {
         if (allergyType_checkbox.checked && !allergy.includes(allergyType_checkbox.name)) {
@@ -243,14 +256,24 @@ function applyFilters() {
             }
     });
 
-    if ($(this).hasClass('active-click')) {
-        proteinSource.push('Poultry');
-    } else {
-        const index = proteinSource.indexOf('Poultry');
-        if (index > -1) {
-            proteinSource.splice(index, 1);
-        }
+    if ($('#select-meat-box').hasClass('active-click')) {
+        proteinSource.push('Meat');
     }
+    if ($('#select-fish-box').hasClass('active-click')) {
+        proteinSource.push('Fish');
+    }
+    if ($('#select-poultry-box').hasClass('active-click')) {
+        proteinSource.push('Poultry');
+    }
+    if ($('#select-shellfish-box').hasClass('active-click')) {
+        proteinSource.push('Seafood');
+    }
+    if ($('#select-plantbased-box').hasClass('active-click')) {
+        proteinSource.push('Vegetarian', 'Vegan');
+    }
+    //if ($('#select-dairy-box').hasClass('active-click')) {
+   //     proteinSource.push('Vegan');
+   // }
 
     filteringAds(allergy, proteinType, proteinSource, portionPrice, function(ads){
         homeview(ads);

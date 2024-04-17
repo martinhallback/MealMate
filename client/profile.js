@@ -7,12 +7,8 @@ $(document).ready(function () {
         loadAccountdetails();
     });
 
-    $(".container").on("click", ".reviewBtn", function () {
-        console.log('Review button clicked');
-        $(".container").load("purchasehistory.html .profileContainer", function () {
-            console.log('Laddar från purchasehistory');
-            $('#reviewModal').modal('show');
-        });
+    $(".container").on("click", ".reviewBtn", function () { 
+        $('#reviewModal').modal('show');
     });
   
     $(".container").on('click', '#accountbutton', function (e) {
@@ -29,19 +25,34 @@ $(document).ready(function () {
         console.log('Purchase history button clicked');
         $('.container').empty();
         $(".container").load("purchasehistory.html .profileContainer", function () { 
-            const purchases = [
-                { productName: "Product 1", dateOfPurchase: "2024-04-01", price: "$10", quantity: "1"}, //Temporärt för att se hur tabellen ser ut
-                { productName: "Product 2", dateOfPurchase: "2024-04-05", price: "$20", quantity: "1"},
-            ];
-            populateTable(purchases);
+            var userID = JSON.parse(sessionStorage.getItem('auth')).user;
+            getPurchases(userID, 'buyer', function(purchases){
+                console.log(purchases)
+                if(!purchases || purchases.length == 0){
+                    $('#purchaseTable tbody').append("<p>You have no purchase history</p>")
+                }else{
+                    populateTable(purchases, true);
+                }
+                
+            }) 
         });
     });
   
     $(".container").on('click', '#soldProductsbutton', function (e) {
         e.preventDefault(); 
-        console.log('Sold products button clicked');
         $('.container').empty();
-        $(".container").load("soldProducts.html .profileContainer", function () { });
+        $(".container").load("soldProducts.html .profileContainer", function () {
+            var userID = JSON.parse(sessionStorage.getItem('auth')).user;
+            getPurchases(userID, 'seller', function(purchases){
+                console.log(purchases)
+                if(!purchases || purchases.length == 0){
+                    $('#purchaseTable tbody').append("<p>You have no sell history</p>")
+                }else{
+                    populateTable(purchases, false);
+                }
+                
+            }) 
+        });
     });
 
     $(".container").on('click', '#currentOffersbutton', function (e) {
@@ -54,7 +65,7 @@ $(document).ready(function () {
     });
   
     $(".container").on('click', '#settingsbutton', function (e) {
-      e.preventDefault(); // Prevent the default behavior of the anchor element
+      e.preventDefault(); 
       console.log('Setting button clicked');
       $('.container').empty();
   
@@ -84,31 +95,44 @@ $(document).ready(function () {
 });
 }
 
-function populateTable(purchases) {
+function populateTable(purchases, isPurchaseHistory) {
     const tableBody = document.querySelector("#purchaseTable tbody");
+    tableBody.innerHTML = ""; // Clear table body before populating
 
     purchases.forEach((purchase, index) => {
         const row = document.createElement("tr");
         row.innerHTML = `
-            <td>${purchase.productName}</td>
-            <td>${purchase.dateOfPurchase}</td>
-            <td>${purchase.price}</td>
+            <td>${purchase.dishName}</td>
+            <td>${purchase.date}</td>
+            <td>${purchase.totalPrice}</td>
             <td>${purchase.quantity}</td>
-            <td>
-                <button type="button" class="btn btn-primary reviewBtn" data-toggle="modal" data-target="#reviewModal" data-index="${index}">
-                    Give Review
-                </button>
-            </td>
+            ${isPurchaseHistory ? `
+                <td>
+                    <button type="button" class="btn btn-primary reviewBtn" data-toggle="modal" data-target="#reviewModal" data-index="${index}">
+                        Give Review
+                    </button>
+                </td>
+            ` : ''}
         `;
         tableBody.appendChild(row);
     });
 }
 
 function loadAccountdetails() {
-    var user = JSON.parse(sessionStorage.getItem('auth')).user
+    var userID = JSON.parse(sessionStorage.getItem('auth')).user;
+    var accountVerification = document.getElementById("accountVerification");
     var accountEmail = document.getElementById("accountEmail");
     var accountRating = document.getElementById("accountRating");
-    var accountVerification = document.getElementById("accountVerification");
+
+    console.log("Inuti loadAccount");
+    getUser(userID, function (usr) {
+        accountEmail.text = usr.email;
+        if (usr.isVerified)
+            accountVerification.text = "Yes";
+        else
+            accountVerification.text = "No";
+        
+    })
 }
 
 function setFieldValues(usr) {
