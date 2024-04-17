@@ -1,18 +1,26 @@
-body{
+/*FONTS*/
+@font-face {
+    font-family: 'Brandon Grotesque Bold';
+    src: url('Fonts/Brandon_Grotesque_bold.otf') format('opentype');
+    /* Add other font formats and their paths for cross-browser compatibility */
+}
+
+@font-face {
+    font-family: 'Brandon Grotesque Regular';
+    src: url('Fonts/Brandon_Grotesque_regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Brandon Grotesque Thin';
+    src: url('Fonts/Brandon_Grotesque_thin.otf') format('opentype');
+}
+/*END OF FONTS*/
+
+body {
     max-width: 100vw;
     overflow-x: hidden;
     font-family: 'Brandon Grotesque Bold', 'helvetica', sans-serif;
-}
-
-.foodNearMe{
-    text-align: center;
-}
-
-.adcontainer {
-    text-align: center;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    padding: 0;
 }
 
 .container{
@@ -26,43 +34,51 @@ body{
 }
 
 
-.cardAD {
-    width: 30%; 
-    margin-bottom: 20px;
-    border: 1px solid black;
+.git  {
+    min-height: calc(60vh);
+    padding-bottom: 10px;
+    /*min-width: fit-content;*/
+    width: 100%;
+    /* Ensure the container stretches across the entire width */
+    max-width: none;
+    /* Allow the container to exceed its maximum width */
+    padding: 0;
+    margin: 0;
+    font-family: 'Brandon Grotesque Bold', 'helvetica', sans-serif;
 }
 
 #footer {
     width: 100%;
-    background-color: #006267; 
+    background-color: #006267;
     text-align: center;
     position: relative;
     bottom: 0;
     left: 0;
+    font-family: 'Brandon Grotesque Bold', 'helvetica', sans-serif;
 }
 
 
 .navbar-brand {
     margin-right: 30px;
-    padding: 10px 10px; 
+    padding: 10px 10px;
     border-radius: 30px;
     letter-spacing: 0.15em;
 }
 
-.navbar-nav .nav-item .nav-link{
-    transition: box-shadow 0.3s ease; 
+.navbar-nav .nav-item .nav-link {
+    transition: box-shadow 0.3s ease;
     border-radius: 30px;
     letter-spacing: 0.15em;
     margin-right: 20px;
 }
 
 .navbar-nav .nav-item:last-child {
-    margin-right: 20px; 
+    margin-right: 20px;
 }
 
 .navbar-basket-button:focus,
 .navbar-profile-button:focus {
-    outline: none; 
+    outline: none;
     border: none;
 }
 
@@ -77,6 +93,7 @@ body{
     border-radius: 30px;
     overflow: hidden;
 }
+
 .navbar-nav .nav-item .nav-link:hover,
 .navbar-basket:hover img,
 .navbar-profile:hover img,
@@ -84,9 +101,3 @@ body{
     box-shadow: 0 0 2px 2px #fff;
 
 }
-
-
-
-
-
-  

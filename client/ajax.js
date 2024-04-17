@@ -331,6 +331,21 @@ function putAd(id, quantity){
   });
 }
 
+function filterOnSellerID(sellerID, callback){
+  $.ajax({
+    url: host + '/ads/' + sellerID,
+    type: 'GET',
+    contentType: 'application/json',
+    success: function(response){
+      callback(response)
+    },
+    error: function(JQxhr, status, error){
+      console.log(error);
+      callback(null)
+    }
+  });
+}
+
 function getPurchases(userID, role, callback){
   $.ajax({
     url: host + '/purchases/' + userID + '/' + role,

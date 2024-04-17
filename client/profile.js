@@ -59,7 +59,9 @@ $(document).ready(function () {
         e.preventDefault(); 
         console.log('Current offers button clicked');
         $('.container').empty();
-        $(".container").load("currentOffers.html .profileContainer", function () { });
+        $(".container").load("currentOffers.html .profileContainer", function () {
+            loadCurrentOffers();
+         });
     });
   
     $(".container").on('click', '#settingsbutton', function (e) {
@@ -233,4 +235,31 @@ function savePassword() {
             $('#currentPasswordError').text(error);
         }
     });
+}
+
+function loadCurrentOffers(){
+    var userID = JSON.parse(sessionStorage.getItem('auth')).user;
+    console.log("current offers")
+    filterOnSellerID(userID, function(ads){
+        $('#purchaseTable tbody').empty();
+        if(!ads || ads.length == 0){
+            $('#purchaseTable tbody').append('<p> you have no current ads listed </p>')
+        }else{
+            ads.forEach(function(ad){
+                var row = `<tr>
+                    <td>${ad.dishName}</td>
+                    <td>${ad.cookDate}</td>
+                    <td>${ad.portionPrice * ad.quantity}</td>
+                    <td>${ad.quantity}</td>
+                    <td><button class="btn btn-danger remove-btn" onclick="removeCurrentAd('${ad._id}', '${userID}')">Remove</button></td>
+                    </tr>`;
+                $('#purchaseTable tbody').append(row);
+            });
+        }
+    });
+}
+
+function removeCurrentAd(id, userID){
+    deleteAd(id, userID)
+    loadCurrentOffers()
 }

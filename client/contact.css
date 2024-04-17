@@ -35,6 +35,7 @@
     color: #000000;
     margin-bottom: 150px;
     text-align: left;
+    font-family: 'Brandon Grotesque Regular';
 }
 
 .faqContainer {
@@ -103,6 +104,7 @@
     text-align: center;
     max-width: 100%;
     display: none;
+    font-family: 'Brandon Grotesque Regular';
 }
 
 .StillHaveQuestionsContainer {
@@ -169,6 +171,7 @@
     border-radius: 4px;
     box-sizing: border-box;
     height: 100px;
+    font-family: 'Brandon Grotesque Regular';
 }
 
 #input-name,
@@ -179,6 +182,7 @@
     height: auto;
     background-color: #ffffff;
     border: 1px solid #C6D7CD;
+    font-size: 16px;
 }
 
 .contactButton {
@@ -230,4 +234,5 @@
 .feature p {
     font-size: 20px;
     color: #000000;
+    font-family: 'Brandon Grotesque Regular';
 }
