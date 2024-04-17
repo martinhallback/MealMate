@@ -23,6 +23,17 @@ body {
     padding: 0;
 }
 
+.container{
+    min-height: calc(95vh);
+    padding-bottom: 10px;
+
+    width: 100%; /* Ensure the container stretches across the entire width */
+    max-width: none; /* Allow the container to exceed its maximum width */
+    padding: 0; /* Remove any padding */
+    margin: 0; /* Remove any margin */
+}
+
+
 .git  {
     min-height: calc(60vh);
     padding-bottom: 10px;

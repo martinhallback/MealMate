@@ -1,4 +1,4 @@
-function homeview() {
+function homeview(ads) {
   $('.container').empty();
   $('.container').append('<div class="homeviewContainer">' + '</div>');
   var homeviewImageUrl = 'Images/homeviewImage.jpg'; //  image URL with your image
