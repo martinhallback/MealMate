@@ -18,8 +18,8 @@ function showLogInModal(){
 
 function logInUser(){
     var host = window.location.protocol + '//' + location.host
-    var email = $("#email").val();
-    var password = $("#password").val();
+    var email = $("#loginEmail").val();
+    var password = $("#loginPassword").val();
     postLogin(email, password, function(response, error){
         if(response){
             sessionStorage.setItem('auth', JSON.stringify(response))
@@ -49,7 +49,7 @@ function logOutUser(){
 }
 
 function validateAndSubmit() {
-    var email = document.getElementById('email').value;
+    var email = document.getElementById('loginEmail').value;
     var phoneNumber = document.getElementById('pnum').value;
     if (email.indexOf('@') === -1) {
         document.getElementById('emailError').style.display = 'block';

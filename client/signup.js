@@ -7,7 +7,7 @@ function loadSignUpContent() {
 function showSignUpModal(){
   $('#signup-modal').modal('show');
 
-  $('#email, #name, #password, #pnum, #university, #studentid').on('input', function() {
+  $('#signupEmail, #name, #signupPassword, #pnum, #university, #studentid').on('input', function() {
       checkFormValidity();
   });
 
@@ -31,9 +31,9 @@ function checkFormValidity(){
 }
 
 function postNewUser() {
-  newUserEmail = document.getElementById('email').value;
+  newUserEmail = document.getElementById('signupEmail').value;
   newUserName = document.getElementById('name').value;
-  newUserPassword = document.getElementById('password').value;
+  newUserPassword = document.getElementById('signupPassword').value;
   newUserPhone = document.getElementById('pnum').value;
   newUserUni = document.getElementById('university').value;
   newUserSID = document.getElementById('studentid').value;
