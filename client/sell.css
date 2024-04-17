@@ -59,6 +59,7 @@
     max-width: 1000px;
     margin: 0 auto;
     color: #000000;
+    font-family: 'Brandon Grotesque Regular';
     /* Set text color */
 }
 
@@ -120,6 +121,8 @@
     /* Align text to the left within form groups */
     font-weight: bold;
     /* Make titles bold */
+    color: #000000;
+
 }
 
 /* Adjusting inputs and the submit button to match */
@@ -133,6 +136,7 @@ textarea[class="sellinput"] {
     border: 1px solid #ccc;
     border-radius: 20px;
     box-sizing: border-box;
+    font-family: 'Brandon Grotesque Regular';
 }
 
 button[id="submitCreateAd"] {
@@ -192,6 +196,7 @@ button[id="submitCreateAd"]:hover {
     /* Set text color */
     text-align: center;
     font-size: 20px;
+    font-family: 'Brandon Grotesque Regular';
     /* Increase the font size */
 }
 
@@ -211,6 +216,8 @@ button[id="submitCreateAd"]:hover {
     margin-bottom: 8px;
     max-height: min-content;
     font-weight:200;
+    color: #006267;
+
 }
 
 .allergen-item {

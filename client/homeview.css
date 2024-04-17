@@ -1,0 +1,175 @@
+/*homeview.css*/
+.homeviewContainer {
+    max-width: none;
+    padding: 0;
+    width: 100%;
+    background-color: #FBF9EF;
+    color: #006267;
+    padding-bottom: 80px;
+    box-sizing: border-box;
+    min-width: fit-content;
+}
+
+.homeviewImage {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.foodNearMeTitle {
+    text-transform: uppercase;
+    margin-top: 100px;
+    margin-bottom: 30px;
+    max-width: 100%;
+    text-align: left;
+    padding-left: 10%;
+    font-family: 'Brandon Grotesque Bold';
+    font-size: 400%;
+}
+
+.google-map {
+    width: 100%;
+}
+
+.adContainer {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 100px;
+}
+
+.cardAD,
+.foodadmodal_ {
+    width: 20%;
+    margin-bottom: 3%;
+    background-color: #ffffff;
+    color: black;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Brandon Grotesque Regular';
+    align-content: space-around;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.ADcard-title {
+    color: #006267;
+    font-family: 'Brandon Grotesque Bold';
+    font-size: x-large;
+}
+
+.ADcard-text {
+    color: grey;
+    font-family: 'Brandon Grotesque regular';
+}
+
+.ADcard-price {
+    color: black;
+    font-family: 'Brandon Grotesque Bold';
+}
+
+.card-img-top {
+    max-width: 100%;
+    height: auto;
+    /* Maintain aspect ratio */
+    display: block;
+    /* Ensure proper spacing */
+    margin: 0 auto;
+    /* Center the image horizontally */
+}
+
+.cardAD .btn.btn-primary.buy-btn {
+    background-color: transparent;
+    color: #006267;
+    border-color: transparent;
+    font-family: 'Brandon Grotesque Bold';
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 8px 16px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: large;
+}
+
+.cardAD .btn.btn-primary.buy-btn:hover {
+    background-color: #006267;
+    color: white;
+}
+
+.cardAD .btn.btn-primary.buy-btn:active {
+    background-color: transparent;
+    color: #006267;
+}
+
+/*CardAdModal*/
+.modal-header .cardAd-modal-title {
+    font-family: 'Brandon Grotesque Bold';
+    text-align: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modal-footer .btn-secondary {
+    float: right;
+    border: none;
+    background-color: transparent;
+    color: #FFFFFF;
+    background-color: #c6d7cd;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Brandon Grotesque Bold';
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: #adbdb3;
+}
+
+.cardAd-modal-header {
+    display: flex;
+    /* Use flexbox for easier alignment */
+    align-items: center;
+    /* Vertically align items in the header */
+    justify-content: space-between;
+    /* Space between title and close button */
+}
+
+.cardAd-modal-body {
+    font-family: 'Brandon Grotesque Regular';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #000;
+}
+
+.modal-footer .btn-primary {
+    background-color: #006267;
+    color: white;
+    border-color: transparent;
+    font-family: 'Brandon Grotesque Bold';
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #00494d;
+}
+
+/* Modal title */
+.quantity-modal-label,
+.price-modal-label,
+.seller-modal-label,
+.cookDate-modal-label {
+    font-family: 'Brandon Grotesque Bold';
+    color: #000;
+}
+
+.cardAd-description-text {
+    color: grey;
+    padding-top: 15px;
+}
