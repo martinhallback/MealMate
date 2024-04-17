@@ -19,10 +19,6 @@
             <li> <a id="settingsbutton" href="#">Settings</a></li>
         </u>
     </nav>
-
-    <style>
-       
-    </style>
     
     <table class="purchaseTable" id="purchaseTable">
         <thead>
@@ -31,7 +27,6 @@
                 <th>Cook date</th>
                 <th>Price</th>
                 <th>Quantity</th>
-                <th>Edit</th>
                 <th>Remove</th>
             </tr>
         </thead>
@@ -40,46 +35,6 @@
         </tbody>
     </table>
 
-    <!-- Review Modal , ska bytas ut-->
-    <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="reviewModalLabel">Give Review</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <textarea id="reviewText" class="form-control" rows="3" placeholder="Write your review here..."></textarea>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="submitReview">Submit Review</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Den skrivna reveiwen i modal, ska bytas ut-->
-    <div class="modal fade" id="reviewTextModal" tabindex="-1" role="dialog" aria-labelledby="reviewTextModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="reviewTextModalLabel">Review Text</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" id="reviewTextContent">
-                    <!-- Här kommer reviewtexten vara -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 </body>
 

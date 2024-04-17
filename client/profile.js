@@ -225,7 +225,6 @@ function loadCurrentOffers(){
                 '<td>' + ad.cookDate + '</td>' +
                 '<td>' + ad.portionPrice * ad.quantity + '</td>' +
                 '<td>' + ad.quantity + '</td>' +
-                '<td><button class="btn btn-primary edit-btn">Edit</button></td>' +
                 '<td><button class="btn btn-danger remove-btn">Remove</button></td>' +
                 '</tr>';
                 $('#purchaseTable tbody').append(row)
