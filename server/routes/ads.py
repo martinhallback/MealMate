@@ -37,31 +37,57 @@ def query_to_protein_source(inDict):
     return None
 
 
-
-
+# GET for all ads
 @bp.route('/ads', methods = ['GET'])
 def ads():
     # data = request.get_json() #For other requests than get
     if request.method == 'GET':
-        try:
-            data = request.get_json()
-        except BadRequest as e: 
-            data = None
         ads = db['advertisement']
-        if data is not None:
-            if data['portionPrice'] is not None:
-                maxPrice = data.get('portionPrice')
-                cursor = ads.find({"portionPrice": {"$lte": maxPrice}})
-            else:
-                cursor = None
-        else:
-            cursor = ads.find({})
+        cursor = ads.find({})
         if cursor is None:
             return jsonify({'error': "Database collection could not be accessed ", 'errorCode' : 31}), 503
         query = list(cursor)
-        return jsonify([advert.serialise_client() for advert in query_to_adverts(query)]), 200
-    return jsonify({'error' : "functionality not yet implemented", 'errorCode' : 0}), 401
+        adverts = []
+        for item in query:
+            ad = dict(item)
+            try:
+                adverts.append(advertisement.Advertisement(ad))
+            except Exception as e:
+                print(e) 
+        json_ads = [item.serialise_client() for item in adverts]
+        return jsonify(json_ads), 200
+    return  jsonify({'error' : "functionality not yet implemented", 'errorCode' : 0}), 401
+    
 
+# GET all ads for a given sellerID
+@bp.route('/ads/<string:id>', methods = ['GET'])
+def sellerAds(id):
+    # data = request.get_json() #For other requests than get
+    if request.method == 'GET':
+        try:
+            # Convert the string ID to an ObjectId
+            oid = ObjectId(id)
+        except:
+            return jsonify({"error": "Invalid ID format"}), 400
+
+        ads = db['advertisement']
+        cursor = ads.find({"sellerID": oid})
+        if cursor is None:
+            return jsonify({'error': "Database collection could not be accessed ", 'errorCode' : 31}), 503
+        query = list(cursor)
+        adverts = []
+        for item in query:
+            ad = dict(item)
+            try:
+                adverts.append(advertisement.Advertisement(ad))
+            except Exception as e:
+                print(e) 
+        json_ads = [item.serialise_client() for item in adverts]
+        return jsonify(json_ads), 200
+    return  jsonify({'error' : "functionality not yet implemented", 'errorCode' : 0}), 401
+
+
+# GET all ads with filtering
 @bp.route('/ads/filter', methods=['GET'])
 def adverts():
     data={}
