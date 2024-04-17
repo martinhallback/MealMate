@@ -31,7 +31,7 @@ $(document).ready(function () {
                 if(!purchases || purchases.length == 0){
                     $('#purchaseTable tbody').append("<p>You have no purchase history</p>")
                 }else{
-                    populateTable(purchases);
+                    populateTable(purchases, true);
                 }
                 
             }) 
@@ -40,9 +40,19 @@ $(document).ready(function () {
   
     $(".container").on('click', '#soldProductsbutton', function (e) {
         e.preventDefault(); 
-        console.log('Sold products button clicked');
         $('.container').empty();
-        $(".container").load("soldProducts.html .profileContainer", function () { });
+        $(".container").load("soldProducts.html .profileContainer", function () {
+            var userID = JSON.parse(sessionStorage.getItem('auth')).user;
+            getPurchases(userID, 'seller', function(purchases){
+                console.log(purchases)
+                if(!purchases || purchases.length == 0){
+                    $('#purchaseTable tbody').append("<p>You have no sell history</p>")
+                }else{
+                    populateTable(purchases, false);
+                }
+                
+            }) 
+        });
     });
 
     $(".container").on('click', '#currentOffersbutton', function (e) {
@@ -53,7 +63,7 @@ $(document).ready(function () {
     });
   
     $(".container").on('click', '#settingsbutton', function (e) {
-      e.preventDefault(); // Prevent the default behavior of the anchor element
+      e.preventDefault(); 
       console.log('Setting button clicked');
       $('.container').empty();
   
@@ -83,24 +93,24 @@ $(document).ready(function () {
 });
 }
 
-function populateTable(purchases) {
+function populateTable(purchases, isPurchaseHistory) {
     const tableBody = document.querySelector("#purchaseTable tbody");
+    tableBody.innerHTML = ""; // Clear table body before populating
 
     purchases.forEach((purchase, index) => {
-        //getAd(purchase.advertisement, function(ad){
-          //  console.log(ad);
-        //}) //för att få dishName på något sätt
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>${purchase.dishName}</td>
             <td>${purchase.date}</td>
             <td>${purchase.totalPrice}</td>
             <td>${purchase.quantity}</td>
-            <td>
-                <button type="button" class="btn btn-primary reviewBtn" data-toggle="modal" data-target="#reviewModal" data-index="${index}">
-                    Give Review
-                </button>
-            </td>
+            ${isPurchaseHistory ? `
+                <td>
+                    <button type="button" class="btn btn-primary reviewBtn" data-toggle="modal" data-target="#reviewModal" data-index="${index}">
+                        Give Review
+                    </button>
+                </td>
+            ` : ''}
         `;
         tableBody.appendChild(row);
     });
