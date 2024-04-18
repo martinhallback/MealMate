@@ -17,11 +17,10 @@ function homeview(ads) {
   $('.homeviewContainer').append(mapIframe);
   /*End of Google Map */
   $('.homeviewContainer').append('<div class="adContainer">' + '</div>');
-  /*Filter content*/
-  $('.homeviewContainer').append('<div id="filter-container" class="filter-container"></div>');
-  $('.homeviewContainer').append('<div id="content-container" class="content-container"></div>');
-  $('#filter-container').load('filter.html', function () {
-  });
+    var filterContainer = $('<div id="filter-container" class="filter-container"></div>');
+    filterContainer.html(filterHtmlContent);
+    $('.adContainer').prepend(filterContainer);
+
 
   if(!ads){
     getAds(function(cardData){
@@ -32,6 +31,7 @@ function homeview(ads) {
   }
       handleclicks();
   }
+
   
   function handleCardData(cardData){
     if(cardData){
