@@ -47,10 +47,19 @@ def specific_user(id):
         if data['location'] == '':
             data.pop('location')
             removeData['location'] = ''
+
+        if data['PNumber'] == '':
+            data.pop('PNumber')
+            removeData['PNumber'] = ''
+
+        if data['address'] == '':
+            data.pop('address')
+            removeData['address'] = ''
         
         usr = user.User(data)
         usr.unserialise_from_client()
-        del usr._id
+        if usr._id:
+            del usr._id
 
         user_collection = db["user"]
         result = user_collection.update_one({'_id': oid}, {'$set': usr.serialise_db(), '$unset': removeData})

@@ -7,6 +7,21 @@ function loadSignUpContent() {
 function showSignUpModal(){
   $('#signup-modal').modal('show');
 
+  getUniversities(function (unis) {
+    var uniDropdown = document.getElementById("university");
+    uniDropdown.innerHTML = '';
+    var defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    uniDropdown.add(defaultOption);
+
+    unis.forEach(function(uni) {
+        var option = document.createElement("option");
+        option.text = uni.name;
+        option.value = uni._id
+        uniDropdown.add(option);
+    })
+});
+
   $('#signupEmail, #name, #signupPassword, #pnum, #university, #studentid').on('input', function() {
       checkFormValidity();
   });

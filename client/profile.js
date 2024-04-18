@@ -226,8 +226,14 @@ function setFieldValues(usr) {
     settingsform.elements["settingName"].value = usr.name;
     settingsform.elements["settingPhoneNumber"].value = usr.phoneNumber;
     settingsform.elements["settingPNumber"].value = usr.PNumber;
+    if (settingsform.elements["settingPNumber"].value == "undefined") {
+        settingsform.elements["settingPNumber"].value = "";
+    }
     settingsform.elements["settingStudentID"].value = usr.studentID;
     settingsform.elements["settingAddress"].value = usr.address;
+    if (settingsform.elements["settingAddress"].value == "undefined") {
+        settingsform.elements["settingAddress"].value = "";
+    }
 
     getUniversities(function (unis) {
         var uniDropdown = document.getElementById("settingUniversity");
