@@ -13,7 +13,7 @@ bp = Blueprint('user', __name__)
 
 
 @bp.route('/user', methods=['GET', 'PUT'])
-@jwt_required
+@jwt_required()
 def specific_user():    
     current_user = get_jwt_identity()
     cursor = db['user'].find_one({'email' : current_user})
@@ -52,7 +52,6 @@ def specific_user():
 
 
 @bp.route('/user/<string:id>', methods=['GET'])
-@jwt_required()
 def redacted_user(id):
     try:
         # Convert the string ID to an ObjectId
