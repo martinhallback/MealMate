@@ -100,6 +100,26 @@
 
 }
 
+/*SKA KANSKE AN>VÄndas*/
+
+/*.card-img-top {
+    display: block;
+    margin: 0 auto;
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.modal-img {
+    display: block;
+    margin: 0 auto;
+    width: 250px ;
+    height: 200px;
+    object-fit: cover; 
+    border-radius: 5px;
+}*/
+
 .cardAD .btn.btn-primary.buy-btn {
     background-color: transparent;
     color: #006267;

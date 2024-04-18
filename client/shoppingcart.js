@@ -46,31 +46,31 @@ function createCartCards(cartData) {
 
 
             cartCardHTML += `
-            <div class="shoppingcartCard mb-3" id="shoppingcartCard" style="max-width: 540px;">
-        <button class="removeCartItemBtn" type="button" onclick="editCartQuantity('${itemId}', 'removeAll')">X</button>
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="data:image/png;base64,${itemImage}" class="shoppingcart-img" alt="Food Image">
-            </div>
-            <div class="col-md-8">
-                <div class="shoppingcartCard-body">
-                    <h5 class="shoppingcartCard-title">${itemName}</h5>
-                    <div class="quantity-price-container">
-                        <div class="changeQuantityBtns">
-                            <span class="quantity-label">Quantity: </span>
-                            <div class="removeItemBtn" type="button" onclick="editCartQuantity('${itemId}', 'remove')">-</div> 
-                            <span class="quantity-number">${itemquantitiy}</span>
-                            <div class="addItemBtn" type="button" onclick="editCartQuantity('${itemId}', 'add')">+</div>
-                            <p id="quantityError" style="color: black; display: none;">Already max quantity</p>  
+                <div class="shoppingcartCard mb-3" id="shoppingcartCard" style="max-width: 540px;">
+                <button class="removeCartItemBtn" type="button" onclick="editCartQuantity('${itemId}', 'removeAll')">X</button>
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="data:image/png;base64,${itemImage}" class="shoppingcart-img" alt="Food Image">
                         </div>
-                        <span class="price-label">Price per dish: ${itemPrice} kr</span>
-                        <br>
-                        <span class="price-label">Total price: ${itemPrice * itemquantitiy} kr</span>
+                        <div class="col-md-8">
+                            <div class="shoppingcartCard-body">
+                                <h5 class="shoppingcartCard-title">${itemName}</h5>
+                                <div class="quantity-price-container">
+                                    <div class="changeQuantityBtns">
+                                        <span class="quantity-label">Quantity: </span>
+                                        <div class="removeItemBtn" type="button" onclick="editCartQuantity('${itemId}', 'remove')">-</div> 
+                                        <span class="quantity-number">${itemquantitiy}</span>
+                                        <div class="addItemBtn" type="button" onclick="editCartQuantity('${itemId}', 'add')">+</div>
+                                        <p id="quantityError" style="color: black; display: none;">Already max quantity</p>  
+                                    </div>
+                                    <span class="price-label">Price per dish: ${itemPrice} kr</span>
+                                    <br>
+                                    <span class="price-label">Total price: ${itemPrice * itemquantitiy} kr</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>`;
+                </div>`;
         });
     }
 
@@ -116,6 +116,8 @@ function editCartQuantity(itemId, action) {
                 }
             } else if (action === 'add' && item.quantity < maxItemQuant) {
                 item.quantity++;
+            } else if (action === 'removeAll') {
+                cartData.splice(index, 1);
             } else if (action === 'removeAll') {
                 cartData.splice(index, 1);
             }
