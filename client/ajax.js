@@ -363,7 +363,7 @@ function getPurchases(userID, role, callback){
   });
 }
 
-function putPurchase(id, rating, review, callback){
+function putPurchase(id, rating, review){
   $.ajax({
     url: host + '/purchase/' + id,
     type: 'PUT',
