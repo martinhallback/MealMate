@@ -383,3 +383,19 @@ function putPurchase(id, rating, review, callback){
 }
 
 
+//GET a single user based on userID, without sensitive information
+function getPurchase(ID, callback){
+  $.ajax({
+    url: host + '/purchase/' + ID,
+    type: 'GET',
+    contentType: 'application/json',
+    success: function(response){
+      callback(response);
+    },
+    error: function(JQxhr, status, error){
+      console.log("Error fetching user: " + error);
+      callback(null);
+    }
+  });
+}
+
