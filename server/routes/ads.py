@@ -11,8 +11,6 @@ from main import db
 #import relevant classes
 from classes import advertisement
 
-from routes import allergy
-
 bp = Blueprint('ads', __name__)
 
 def query_to_adverts(inDict):
@@ -24,17 +22,6 @@ def query_to_adverts(inDict):
             except Exception as e:
                 print(e) 
     return advertisements
-
-def query_to_allergies(inDict):
-
-
-    return None
-
-def query_to_protiens(inDict):
-    return None
-
-def query_to_protein_source(inDict):
-    return None
 
 
 # GET for all ads
