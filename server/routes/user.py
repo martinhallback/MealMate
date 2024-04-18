@@ -17,7 +17,7 @@ bp = Blueprint('user', __name__)
 @jwt_required()
 def user_profile():
     current_user = get_jwt_identity()
-    cursor = db['user'].find_one({'email' : current_user}, {'pwHash' : 0})
+    cursor = db['user'].find_one({'email' : current_user}, {'pwHash' : 0, 'isAdmin' : 0})
     if cursor is None:
         return jsonify({'error': "Your user could not be found"}), 400
     usr = user.User(dict(cursor))
@@ -68,7 +68,6 @@ def redacted_user(id):
         oid = ObjectId(id)
     except:
         return jsonify({"error": "Invalid ID format"}), 400
-
     if request.method == 'GET':
         user_collection = db["user"]
         cursor = user_collection.find_one({"_id": oid}, {'pwHash': 0, 'phoneNumber': 0, 'PNumber': 0, 'address': 0, 'isAdmin': 0})
