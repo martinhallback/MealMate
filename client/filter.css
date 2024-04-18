@@ -1,37 +1,34 @@
 .rectangularfilter-container {
     position: fixed;
-    padding-top: 35px; /* Adjust padding as needed */
+    padding-top: 35px; 
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 10px;
     left: 15px;
     top: 112px;
-    background-color: #C6D7CD; /* Example background color, adjust as needed */
-    color: black; /* Text color */
-    font-size: 20px; /* Adjust font size as needed */
-    text-align: left; /* Center the header text */
+    background-color: #C6D7CD; 
+    color: black; 
+    font-size: 20px; 
+    text-align: left; 
     width: 150px;
     height: 545px;
-    border-radius: 0 0 30px 30px; /* top-left, top-right, bottom-right, bottom-left */
+    border-radius: 0 0 30px 30px; 
     overflow-y: auto;
 }
 
 
 .filter-options label {
-    font-size: 14px; /* Adjust the font size as needed */
+    font-size: 14px; 
 }
 
 .apply-button {
-    /*position: absolute;
-    bottom: 10px; /* Adjust as needed 
-    right: 10px; /* Adjust as needed */
     margin-top: 5px;
     margin-left: 75px;
     background-color: #006267;
     color: white;
-    border-radius: 20px; /* Rounded edges */
+    border-radius: 20px; 
     padding: 4px 8px;
-    cursor: pointer; /* Change cursor to pointer on hover */
+    cursor: pointer; 
     font-size: 14px;
     border: none;
 }
@@ -43,17 +40,16 @@
 
 
 .cicularfilter-container {
-    position: fixed; /* This positions the container relative to its nearest positioned ancestor */
-    top: 90px; /* Adjust this value as needed to move the circle up */
-    left: 15px; /* Adjust this value as needed to move the circle to the left */
-   /* position: relative; /* Establishes a positioning context for the overlay */
-    width: 50px; /* Diameter of the circular background */
+    position: fixed; 
+    top: 90px; 
+    left: 15px; 
+    width: 50px; 
     height: 50px;
     cursor: pointer;
-    display: flex; /* Ensures content is centered */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    border-radius: 50%; /* Ensures the container is circular */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    border-radius: 50%; 
     z-index: 3;
 }
 
@@ -67,53 +63,48 @@
 .circle-background {
     width: 100%;
     height: 100%;
-    border-radius: 50%; /* Makes it circular */
-    background-color: #006267; /* Example color */
-    position: absolute; /* Ensures it's behind the image */
-    z-index: 1; /* Lower stacking context than the image */
+    border-radius: 50%; 
+    background-color: #006267; 
+    position: absolute; 
+    z-index: 1; 
 }
 
 
 .cicularfilter-container img {
-    z-index: 2; /* Ensures the image is above the circular background */
-    width: 55%; /* Adjust size as needed */
-    height: auto; /* Maintain aspect ratio */
-    /* If you need to ensure the image is always a circle or specific shape, you can add: */
-    /* border-radius: 50%; */
+    z-index: 2; 
+    width: 55%; 
+    height: auto; 
 }
 
 
 .pillfilter-container {
-    position: fixed; /* This positions the container relative to its nearest positioned ancestor */
-    top: 90px; /* Adjust this value as needed to move the circle up */
-    left: 15px; /* Adjust this value as needed to move the circle to the left */
-   /* position: relative; /* Establishes a positioning context for the overlay */
-    width: 150px; /* Diameter of the circular background */
+    position: fixed; 
+    top: 90px; 
+    left: 15px; 
+    width: 150px; 
     height: 50px;
     cursor: pointer;
-    display: flex; /* Ensures content is centered */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
     border-radius: 25px; 
     z-index: 3;
-    background-color: #006267; /* Adjust color as needed */
+    background-color: #006267; 
 }
 
 .pill-background {
     width: 100%;
     height: 100%;
-    border-radius: 25px; /* Makes it circular */
-    background-color: #006267; /* Example color */
-    position: absolute; /* Ensures it's behind the image */
-    z-index: 1; /* Lower stacking context than the image */
+    border-radius: 25px; 
+    background-color: #006267; 
+    position: absolute; 
+    z-index: 1; 
 }
 
 .pillfilter-container img {
-    z-index: 2; /* Ensures the image is above the pill background */
-    width: 18%; /* Adjust size as needed */
-    height: auto; /* Maintain aspect ratio */
-    /* If you need to ensure the image is always a circle or specific shape, you can add: */
-    /* border-radius: 50%; */
+    z-index: 2; 
+    width: 18%; 
+    height: auto; 
 }  
 
 .pill-background:hover {
@@ -141,13 +132,12 @@
 .select-protein-container {
     display: flex;
     flex-wrap: wrap; 
-   /* gap: 1px; /* Adjusts the space between items */
 }
 
 
 .select-meat-box{
-    border-radius: 25px; /* Makes it circular */
-    background-color: #9fd7b6; /* Example color */
+    border-radius: 25px; 
+    background-color: #9fd7b6; 
     border-color: #006267;
     border-width: 1px;
     border-style: solid;
@@ -159,14 +149,14 @@
 }
 
 .select-meat-box:not(.active-click):hover{
-    background-color: #d52a3897; /* Hover color */
+    background-color: #d52a3897; 
     border-color: #9a000d;
 }
 
 
 .select-fish-box{
-    border-radius: 25px; /* Makes it circular */
-    background-color: #9fd7b6; /* Example color */
+    border-radius: 25px; 
+    background-color: #9fd7b6;
     border-color: #006267;
     border-width: 1px;
     border-style: solid;
@@ -178,13 +168,13 @@
 }
 
 .select-fish-box:not(.active-click):hover{
-    background-color: #d52a3897; /* Hover color */
+    background-color: #d52a3897; 
     border-color: #9a000d;
 }
 
 .select-poultry-box{
-    border-radius: 25px; /* Makes it circular */
-    background-color: #9fd7b6; /* Example color */
+    border-radius: 25px; 
+    background-color: #9fd7b6; 
     border-color: #006267;
     border-width: 1px;
     border-style: solid;
@@ -197,13 +187,13 @@
 }
 
 .select-poultry-box:not(.active-click):hover{
-    background-color: #d52a3897; /* Hover color */
+    background-color: #d52a3897; 
     border-color: #9a000d;
 }
 
 .select-dairy-box{
-    border-radius: 25px; /* Makes it circular */
-    background-color: #9fd7b6; /* Example color */
+    border-radius: 25px;
+    background-color: #9fd7b6; 
     border-color: #006267;
     border-width: 1px;
     border-style: solid;
@@ -215,13 +205,13 @@
 }
 
 .select-dairy-box:not(.active-click):hover{
-    background-color: #d52a3897; /* Hover color */
+    background-color: #d52a3897;
     border-color: #9a000d;
 }
 
 .select-plantbased-box{
-    border-radius: 25px; /* Makes it circular */
-    background-color: #9fd7b6; /* Example color */
+    border-radius: 25px; 
+    background-color: #9fd7b6; 
     border-color: #006267;
     border-width: 1px;
     border-style: solid;
@@ -233,13 +223,13 @@
 }
 
 .select-plantbased-box:not(.active-click):hover{
-    background-color: #d52a3897; /* Hover color */
+    background-color: #d52a3897; 
     border-color: #9a000d;
 }
 
 .select-shellfish-box{
-    border-radius: 25px; /* Makes it circular */
-    background-color: #9fd7b6; /* Example color */
+    border-radius: 25px; 
+    background-color: #9fd7b6; 
     border-color: #006267;
     border-width: 1px;
     border-style: solid;
@@ -253,12 +243,12 @@
 }
 
 .select-shellfish-box:not(.active-click):hover{
-    background-color: #d52a3897; /* Hover color */
+    background-color: #d52a3897; 
     border-color: #9a000d;
 }
 
 .active-click {
-    background-color: #d52a3897; /* Clicked color */
+    background-color: #d52a3897; 
     border-color: #9a000d;
 }
 
@@ -290,20 +280,20 @@
     width: 130px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1000;
-    padding: 5px; /* Padding moved here from .scrollable-content */
-    padding-bottom: 30px; /* Space for the close-btn */
-    max-height: 125px; /* Adjusted for total dropdown height including close-btn */
-    overflow: hidden; /* Ensures only .scrollable-content scrolls */
+    padding: 5px; 
+    padding-bottom: 30px; 
+    max-height: 125px; 
+    overflow: hidden; 
 }
 
 .protein-scrollable-content {
-    max-height: 95px; /* Adjust height to allow space for close-btn */
+    max-height: 95px; 
     overflow-y: auto;
 }
 
 .protein-close-btn {
     position: absolute;
-    bottom: 5px; /* Ensure this positions the button correctly */
+    bottom: 5px; 
     right: 5px;
     cursor: pointer;
     font-size: 14px;
@@ -348,20 +338,20 @@
     width: 130px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1000;
-    padding: 5px; /* Padding moved here from .scrollable-content */
-    padding-bottom: 30px; /* Space for the close-btn */
-    max-height: 125px; /* Adjusted for total dropdown height including close-btn */
-    overflow: hidden; /* Ensures only .scrollable-content scrolls */
+    padding: 5px; 
+    padding-bottom: 30px; 
+    max-height: 125px; 
+    overflow: hidden; 
 }
 
 .scrollable-content {
-    max-height: 95px; /* Adjust height to allow space for close-btn */
+    max-height: 95px; 
     overflow-y: auto;
 }
 
 .allergy-close-btn {
     position: absolute;
-    bottom: 5px; /* Ensure this positions the button correctly */
+    bottom: 5px; 
     right: 5px;
     cursor: pointer;
     font-size: 14px;
