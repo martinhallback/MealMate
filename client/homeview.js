@@ -72,7 +72,7 @@ function createCard(index, card) {
   return cardHtml;
 }
 
-async function foodAdModal(card, index, seller){
+function foodAdModal(card, index, seller){
   calculateAvgRating(seller, function(rating){
     if (isNaN(rating)) {
       rating = "unrated seller";
