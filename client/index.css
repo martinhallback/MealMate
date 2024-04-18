@@ -21,12 +21,14 @@ body {
     overflow-x: hidden;
     font-family: 'Brandon Grotesque Bold', 'helvetica', sans-serif;
     padding: 0;
+    background-color: #fbf9ef;
+
 }
 
 .container{
     min-height: calc(95vh);
     padding-bottom: 10px;
-
+    background-color: #fbf9ef;
     width: 100%; /* Ensure the container stretches across the entire width */
     max-width: none; /* Allow the container to exceed its maximum width */
     padding: 0; /* Remove any padding */

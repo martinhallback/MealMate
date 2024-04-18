@@ -2,6 +2,7 @@
 .shoppingCartCont {
     display: flex; 
     justify-content: center;
+    margin-top: 10%;
 }
 
 .shoppingcartCards {
@@ -14,8 +15,9 @@
     width: 1000px; 
     margin-bottom: 20px;
     overflow: hidden; 
-    border: 1px solid black;
-    border-radius: 50px;
+    border-bottom: 1px solid #c6d7cd;
+    /*border: 1px solid black;*/
+    /*border-radius: 50px;*/
 }
 .shoppingcartCard img {
     width: 100%; 
@@ -29,19 +31,19 @@
 
 .shoppingcartCard-title {
     margin-bottom: 10px;
-    text-align: center;
     font-weight: bold;
 }
 .shoppingcartCards h1 {
     text-align: center;
     margin-bottom: 25px;
+    color: #006267;
   }
 
 .shoppingcartCard-text {
     margin-bottom: 0;
 }
 .shoppingcartLeftWrap {
-    background-color: rgb(242, 241, 241); 
+    background-color: rgb(255, 255, 255); 
     padding: 20px; 
     border-top-left-radius: 50px; 
     border-bottom-left-radius: 50px;
@@ -50,7 +52,7 @@
 }
 
 .continue-shopping{
-    background-color: black;
+    background-color: #006267;
     color: white;
     border-radius: 20px;
     border: none;
@@ -58,12 +60,12 @@
 
 .continue-shopping:hover{
     font-weight: bold; 
-    background-color: black;
+    background-color: #00494d;
     color: white;
 }
 
 .shoppingcartRight{
-    background-color: black; 
+    background-color: #006267; 
     padding: 20px; 
     border-top-right-radius: 50px; 
     border-bottom-right-radius: 50px;

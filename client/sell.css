@@ -36,15 +36,12 @@
 .startSelling {
     font-family: 'Clearface heavy', serif;
     padding: 10px;
-    /* Add padding for better appearance */
     border-radius: 4px;
-    /* Add rounded corners for better appearance */
     font-weight: bold;
-    /* Make titles bold */
     max-width: 800px;
     margin: 0 auto;
-    margin-top: 50px;
-    /* Add margin below the button */
+    margin-top: 100px;
+    margin-bottom: 60px;
 }
 
 .benefitsText {
@@ -160,22 +157,18 @@ button[id="submitCreateAd"]:hover {
 
 #SellQuestionsContainer {
     text-align: center;
-    /*margin-top: 20px; /* Adds space above the text as needed */
-    /*margin-left: auto; /* Center the container horizontally */
-    /*margin-right: auto; /* Center the container horizontally */
+    padding-top: 100px;
+    padding-bottom: 60px;
     flex-direction: column;
     display: flex;
     justify-content: space-around;
     background-color: #C6D7CD;
     color: #006267;
-    /* Set text color */
     font-family: 'Brandon Grotesque Bold', 'helvetica', sans-serif;
     font-weight: normal;
-    /* Set normal weight for labels */
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    /* Include padding and border in the element's total width and height */
 }
 
 .ifQuestionsTitle {
