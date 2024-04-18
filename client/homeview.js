@@ -6,7 +6,8 @@ function homeview(ads) {
   $('.homeviewContainer').append('<h2 class="foodNearMeTitle">Food near me</h2>');
   // Embed Google Map
   var mapIframe = document.createElement('iframe');
-  mapIframe.src = "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d16726.078168885902!2d15.57146175!3d58.3974506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1szh-TW!2sse!4v1712847287937!5m2!1szh-TW!2sse";
+  
+  mapIframe.src = "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d16726.078168885902!2d15.57146175!3d58.3974506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssv!2sse!4v1713448415102!5m2!1ssv!2sse"
   mapIframe.classList.add('google-map'); // Add a class to the iframe element
   mapIframe.height = "450";
   mapIframe.style.border = "0";
@@ -39,7 +40,7 @@ function homeview(ads) {
         $('.adContainer').append(cardHtml);
         getUser(card.sellerID, function(seller){
           var modal = foodAdModal(card, index, seller);
-          $('.homeviewContainer').append(modal);
+          
         });
       });
     }
@@ -71,44 +72,13 @@ function createCard(index, card) {
   return cardHtml;
 }
 
-function foodAdModal(card, index, seller){
-  var modalHtml = '<div class="modal fade" id="foodadmodal_' + index + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
-      '<div class="modal-dialog">' +
-      '<div class="modal-content">' +
-      '<div class="modal-header">' +
-      '<h5 class="cardAd-modal-title" id="exampleModalLabel">' + card.dishName + '</h5>' +
-      '<button type="adbutton" class="close-btn" data-bs-dismiss="modal" aria-label="Close"></button>' +
-      '</div>' +
-      '<div class="cardAd-modal-body">' +
-      '<img src="data:image/png;base64,' + card.imagePath + '" class="modal-img" alt="Food Image">' +
-      '<p class="cardAd-description-text">' + card.description + '</p>' +
-      '<p><span class="cookDate-modal-label">Cook Date:</span> ' + card.cookDate + '</p>' +
-      '<p><span class="quantity-modal-label">Quantity:</span> ' + card.quantity + '</p>' +
-      '<p><span class="price-modal-label">Price:</span> ' + card.portionPrice + ' kr/pc</p>' +
-      '<p><span class="seller-modal-label">Seller:</span> ' + seller.name + '</p>' +
-      '</div>' +
-      '<div class="modal-footer">' +
-      '<button type="adbutton" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>' +
-      '<button type="adbutton" class="btn btn-primary add-to-cart-btn" onclick="addtocart(\'' + card._id + '\', ' + index + ')">Add to Shopping Cart</button>' +
-      '</div>' +
-      '</div>' +
-      '</div>' +
-      '</div>';
-  return modalHtml;
-}
-
-function foodAdModal(card, index, seller){
-  getAverageRating(seller._id, function(averageRating, numberOfRatings) {
-      var rating;
-      if (numberOfRatings == 0) {
-          rating = "unrated seller";
-      } else {
-          rating = averageRating.toFixed(1) + '/5';
-      }
-      // Continue with your code here, using the rating variable
-      // For example:
-      //console.log("Rating: " + rating);
-  
+async function foodAdModal(card, index, seller){
+  calculateAvgRating(seller, function(rating){
+    if (isNaN(rating)) {
+      rating = "unrated seller";
+    }else{
+      rating = rating + '/5';
+    }
     var modalHtml = '<div class="modal fade" id="foodadmodal_' + index + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
       '<div class="modal-dialog">' +
       '<div class="modal-content">' +
@@ -133,7 +103,7 @@ function foodAdModal(card, index, seller){
       '</div>' +
       '</div>';
   $('.homeviewContainer').append(modalHtml);
-  });
+  })
 }
 
 function calculateAvgRating(seller, callback) {
@@ -142,7 +112,7 @@ function calculateAvgRating(seller, callback) {
           var totRating = 0;
           var ratingCount = 0;
           purchases.forEach(pur => {
-            if (typeof pur.sellerRating === 'number' && !isNaN(pur.sellerRating)) {
+              if (pur.sellerRating !== null) {
                   totRating += pur.sellerRating;
                   ratingCount++;
               }
@@ -158,7 +128,6 @@ function calculateAvgRating(seller, callback) {
   });
 }
 
-//ad to cart
 function addtocart(id, index) {
   getAd(id, function (ad) {
     if (ad) {
