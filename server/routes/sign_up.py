@@ -21,17 +21,18 @@ def sign_up():
         return jsonify({'error': "User with this email already exists", 'errorCode' : 11}), 400
     try:
         pw = data.pop('password')
-        data.pop('university')
         print("Test")
         usr = user.User(data)
         usr.set_password(pw)
+        usr.unserialise_from_client()
         users.insert_one(usr.serialise_db())
         return jsonify({'success' : "User was successfully added to the database"}), 200
     except:
         usrDict = dict(email=data['email'], name=data['name'], phoneNumber=data['phoneNumber'], 
-                        studentID=data['studentID'])
+                        studentID=data['studentID'], university=data['university'])
         usr = user.User(usrDict)
         usr.set_password(data['password'])
+        usr.unserialise_from_client()
         users.insert_one(usr.serialise_db())
         return jsonify({'success' : "User was successfully added to the database, but not with all attributes in the provided data"}), 200
 

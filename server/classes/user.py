@@ -50,7 +50,8 @@ class User(object):
         return self.remove_nulls(obj)
     
     def unserialise_from_client(self):
-        self._id = ObjectId(self._id)
+        if self._id is not None:
+            self._id = ObjectId(self._id)
         if self.university is not None:
             self.university = ObjectId(self.university)
         if self.location is not None:
