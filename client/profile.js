@@ -92,10 +92,20 @@ function populateTable(purchases, isPurchaseHistory) {
                     </button>
                 </td>
             ` : ''}
+              ${!isPurchaseHistory ? `
+                <td>
+                    <button type="button" class="btn btn-primary reviewBtn" data-toggle="modal" data-target="#reviewModal_${index}">
+                        Customer Review
+                    </button>
+                </td>
+            ` : ''}
         `;
         tableBody.appendChild(row);
         if(isPurchaseHistory){
             createReviewModal(purchase._id, index)
+        } else {
+            console.log("You are now on the selling page. createViewModal will load next");
+            createViewModal(purchase._id, index);
         }
     });
 }
@@ -112,7 +122,7 @@ function createReviewModal(purchaseID, index){
     '</button>' +
     '</div>' +
     '<div class="modal-body">' +
-    '<textarea id="reviewText" class="form-control" rows="3" placeholder="Write your review here..." required></textarea>' +
+    '<textarea id="reviewText_'+index+'" class="form-control" rows="3" placeholder="Write your review here..." required></textarea>' +
     '<div class="mt-3">' +
     '<label for="ratingInput">Rating:</label>' +
     '<div class="rating">' +
@@ -131,18 +141,66 @@ function createReviewModal(purchaseID, index){
     '</div>' +
     '<div class="modal-footer">' +
     '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>' +
-    '<button type="button" class="btn btn-primary" onclick="submitReview(\'' + purchaseID + '\')" data-dismiss="modal">Submit Review</button>' +
+    '<button type="button" class="btn btn-primary" onclick="submitReview(\'' + purchaseID + '\', ' + index + ')" data-dismiss="modal">Submit Review</button>' +
     '</div>' +
     '</form>' +
     '</div>' +
     '</div>' +
     '</div>';
 
-    $(".container").append(modalHTML)
+    $(".container").append(modalHTML);
 }
 
-function submitReview(id){
-    var review = document.getElementById("reviewText").value;
+function createViewModal(purchaseID, index){
+    getPurchase(purchaseID, function(purchase){
+        console.log(purchase.reviewText);
+        var text;
+        var rat;
+        if(purchase.reviewText){
+            text = purchase.reviewText;
+            rat = purchase.sellerRating;
+        }else{
+            text = "Ingen review given än";
+            rat = 0;
+        }
+
+        var modalHTML = '<div class="modal fade" id="reviewModal_' + index + '" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel" aria-hidden="true">' +
+        '<div class="modal-dialog" role="document">' +
+        '<div class="modal-content">' +
+        '<form id="customerReviewForm">' +
+        '<div class="modal-header">' +
+        '<h5 class="modal-title" id="reviewModalLabel">Customer review of your product</h5>' +
+        '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+        '<span aria-hidden="true">&times;</span>' +
+        '</button>' +
+        '</div>' +
+         '<div class="modal-body">' +
+        '<p id="customerReview" class="form-control" rows="3" required>' + text + '</p>' +
+        '<p>Rating: '+ rat +'</p>'
+        '<div class="mt-3">' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '<div class="modal-footer">' +
+        '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>' +
+        '</div>' +
+        '</form>' +
+        '</div>' +
+        '</div>' +
+        '</div>';
+
+        $(".container").append(modalHTML);
+    });
+     
+    console.log("createViewModal has been fully loaded");
+
+}
+
+function submitReview(id, index){
+    var review = document.getElementById("reviewText_" + index).value;
+    //var review = document.getElementById("reviewText").value;
+    console.log(review);
+    console.log("Inuti submitReview");
     var rating = document.querySelector('input[name="rating"]:checked').value;
     putPurchase(id, rating, review)
 
