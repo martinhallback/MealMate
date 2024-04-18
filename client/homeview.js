@@ -6,7 +6,8 @@ function homeview(ads) {
   $('.homeviewContainer').append('<h2 class="foodNearMeTitle">Food near me</h2>');
   // Embed Google Map
   var mapIframe = document.createElement('iframe');
-  mapIframe.src = "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d16726.078168885902!2d15.57146175!3d58.3974506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1szh-TW!2sse!4v1712847287937!5m2!1szh-TW!2sse";
+  
+  mapIframe.src = "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d16726.078168885902!2d15.57146175!3d58.3974506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssv!2sse!4v1713448415102!5m2!1ssv!2sse"
   mapIframe.classList.add('google-map'); // Add a class to the iframe element
   mapIframe.height = "450";
   mapIframe.style.border = "0";
@@ -16,11 +17,10 @@ function homeview(ads) {
   $('.homeviewContainer').append(mapIframe);
   /*End of Google Map */
   $('.homeviewContainer').append('<div class="adContainer">' + '</div>');
-  /*Filter content*/
-  $('.homeviewContainer').append('<div id="filter-container" class="filter-container"></div>');
-  $('.homeviewContainer').append('<div id="content-container" class="content-container"></div>');
-  $('#filter-container').load('filter.html', function () {
-  });
+    var filterContainer = $('<div id="filter-container" class="filter-container"></div>');
+    filterContainer.html(filterHtmlContent);
+    $('.adContainer').prepend(filterContainer);
+
 
   if(!ads){
     getAds(function(cardData){
@@ -31,6 +31,7 @@ function homeview(ads) {
   }
       handleclicks();
   }
+
   
   function handleCardData(cardData){
     if(cardData){
@@ -72,7 +73,13 @@ function createCard(index, card) {
 }
 
 function foodAdModal(card, index, seller){
-  var modalHtml = '<div class="modal fade" id="foodadmodal_' + index + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
+  calculateAvgRating(seller, function(rating){
+    if (isNaN(rating)) {
+      rating = "unrated seller";
+    }else{
+      rating = rating.toFixed(1) + '/5';
+    }
+    var modalHtml = '<div class="modal fade" id="foodadmodal_' + index + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
       '<div class="modal-dialog">' +
       '<div class="modal-content">' +
       '<div class="modal-header">' +
@@ -86,6 +93,7 @@ function foodAdModal(card, index, seller){
       '<p><span class="quantity-modal-label">Quantity:</span> ' + card.quantity + '</p>' +
       '<p><span class="price-modal-label">Price:</span> ' + card.portionPrice + ' kr/pc</p>' +
       '<p><span class="seller-modal-label">Seller:</span> ' + seller.name + '</p>' +
+      '<p>Rating: ' + rating + '</p>' +
       '</div>' +
       '<div class="modal-footer">' +
       '<button type="adbutton" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>' +
@@ -94,7 +102,8 @@ function foodAdModal(card, index, seller){
       '</div>' +
       '</div>' +
       '</div>';
-  return modalHtml;
+  $('.homeviewContainer').append(modalHtml);
+  })
 }
 
 function foodAdModal(card, index, seller){
