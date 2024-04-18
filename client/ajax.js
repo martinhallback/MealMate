@@ -16,6 +16,30 @@ $.ajax({
 });
 }
 
+function getAverageRating(id, callback) {
+  $.ajax({
+      url: host + '/averageRating/' + id,
+      type: 'GET',
+      contentType: "application/json",
+      success: function(response) {
+          var averageRating = response.averageRating;
+          var numberOfReviews = response.numberOfReviews;
+          if (averageRating === null || averageRating === undefined) {
+            callback(null, numberOfReviews);
+          } else {
+            console.log(averageRating)
+            callback(averageRating, numberOfReviews);
+          }
+      },
+      error: function(JQxhr, status, error) {
+          console.log(error);
+          callback(null, null); // Pass null for both parameters on error
+      }
+  });
+}
+
+
+
 //GET all ads
 function getAds(callback){
   $.ajax({
