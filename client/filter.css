@@ -1,6 +1,11 @@
 .rectangularfilter-container {
+<<<<<<< HEAD
+    position: absolute;
+    padding-top: 35px; /* Adjust padding as needed */
+=======
     position: fixed;
     padding-top: 35px; 
+>>>>>>> e1625a6553feedd6482478a30dcb91355e869674
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 10px;
@@ -40,10 +45,18 @@
 
 
 .cicularfilter-container {
+<<<<<<< HEAD
+    position: absolute; /* This positions the container relative to its nearest positioned ancestor */
+    top: 90px; /* Adjust this value as needed to move the circle up */
+    left: 15px; /* Adjust this value as needed to move the circle to the left */
+   /* position: relative; /* Establishes a positioning context for the overlay */
+    width: 50px; /* Diameter of the circular background */
+=======
     position: fixed; 
     top: 90px; 
     left: 15px; 
     width: 50px; 
+>>>>>>> e1625a6553feedd6482478a30dcb91355e869674
     height: 50px;
     cursor: pointer;
     display: flex; 
@@ -78,10 +91,18 @@
 
 
 .pillfilter-container {
+<<<<<<< HEAD
+    position: absolute; /* This positions the container relative to its nearest positioned ancestor */
+    top: 90px; /* Adjust this value as needed to move the circle up */
+    left: 15px; /* Adjust this value as needed to move the circle to the left */
+   /* position: relative; /* Establishes a positioning context for the overlay */
+    width: 150px; /* Diameter of the circular background */
+=======
     position: fixed; 
     top: 90px; 
     left: 15px; 
     width: 150px; 
+>>>>>>> e1625a6553feedd6482478a30dcb91355e869674
     height: 50px;
     cursor: pointer;
     display: flex;
