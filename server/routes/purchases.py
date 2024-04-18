@@ -13,10 +13,6 @@ from routes.admin import verify_admin
 
 bp = Blueprint('purchases', __name__)
 
-purchases_collection = db['purchase']
-
-
-
 
 @bp.route('/purchases', methods = ['GET'])
 @jwt_required()
@@ -24,7 +20,7 @@ def purchases():
     current_user = get_jwt_identity()
     if not verify_admin(current_user):
         return jsonify({'error' : "You don't have the autority for this request"}), 403
-    cursor = purchases_collection.find({})
+    cursor = db['purchase'].find({})
     if cursor is None:
         return jsonify({'error': "Database collection could not be accessed ", 'errorCode' : 31}), 503
     query = list(cursor)
@@ -39,7 +35,6 @@ def purchases():
     return jsonify(json_purchases), 200
 
 
-
 @bp.route('/purchases/<string:role>', methods = ['GET'])
 @jwt_required()
 def user_purchases(role):
@@ -48,9 +43,9 @@ def user_purchases(role):
     beller = user.User(dict(cursor))
 
     if role == 'buyer':
-        cursor = purchases_collection.find({"buyer": beller._id})
+        cursor = db['purchase'].find({"buyer": beller._id})
     elif role == 'seller':
-        cursor = purchases_collection.find({"seller": beller._id})
+        cursor = db['purchase'].find({"seller": beller._id})
     else:
         return jsonify({'error' : "Invalid URL"}), 404
     query = list(cursor)
