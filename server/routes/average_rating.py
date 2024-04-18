@@ -23,7 +23,7 @@ def get_review(id):
     
     cursor = db['purchase'].find({'sellerID' : oid})
     if cursor is None:
-        return jsonify({'success': "No previous purchases made", 'averageRating' : None, 'numberOfReviews' : 0}), 204
+        return jsonify({'message': "No previous purchases made", 'averageRating' : None, 'numberOfReviews' : 0}), 200
     query = list(cursor)
     purchases = []
     for item in query:
@@ -38,6 +38,9 @@ def get_review(id):
         if psch.sellerRating is not None:
             total_rating += psch.sellerRating
             number_ratings += 1
-    average_rating = total_rating/number_ratings
-
-    return ({'averageRating' : float(average_rating), 'numberOfReviews' : number_ratings}), 200
+    if number_ratings == 0:
+        return jsonify({'message': "No reviews have been submitted", 'averageRating' : None, 'numberOfReviews' : 0}), 200
+    else:    
+        average_rating = total_rating/number_ratings
+        print({'averageRating' : float(average_rating), 'numberOfReviews' : number_ratings})
+        return jsonify({'averageRating' : float(average_rating), 'numberOfReviews' : number_ratings}), 200
