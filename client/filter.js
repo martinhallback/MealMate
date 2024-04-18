@@ -59,9 +59,11 @@ $(document).ready(function(){
             $(this).show();
             $('#RectangularFilterContainer').slideToggle();
             isRectangularVisible = true;
+            $('.adContainer').css('padding-left', '190px');
         } else if (isRectangularVisible) {
             $('#RectangularFilterContainer').slideToggle().promise().done(function() {
                 $('#dropdown').hide();
+                $('.adContainer').css('padding-left', '30px');
                // isDropdownVisible = false;
                 isAnimating = true;
                 $('#PillFilterContainer').animate({

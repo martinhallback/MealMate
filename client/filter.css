@@ -1,5 +1,5 @@
 .rectangularfilter-container {
-    position: fixed;
+    position: absolute;
     padding-top: 35px; /* Adjust padding as needed */
     padding-left: 10px;
     padding-right: 10px;
@@ -43,7 +43,7 @@
 
 
 .cicularfilter-container {
-    position: fixed; /* This positions the container relative to its nearest positioned ancestor */
+    position: absolute; /* This positions the container relative to its nearest positioned ancestor */
     top: 90px; /* Adjust this value as needed to move the circle up */
     left: 15px; /* Adjust this value as needed to move the circle to the left */
    /* position: relative; /* Establishes a positioning context for the overlay */
@@ -84,7 +84,7 @@
 
 
 .pillfilter-container {
-    position: fixed; /* This positions the container relative to its nearest positioned ancestor */
+    position: absolute; /* This positions the container relative to its nearest positioned ancestor */
     top: 90px; /* Adjust this value as needed to move the circle up */
     left: 15px; /* Adjust this value as needed to move the circle to the left */
    /* position: relative; /* Establishes a positioning context for the overlay */

@@ -1,5 +1,6 @@
 /*homeview.css*/
 .homeviewContainer {
+    position: relative;
     max-width: none;
     padding: 0;
     width: 100%;
@@ -8,6 +9,14 @@
     padding-bottom: 80px;
     box-sizing: border-box;
     min-width: fit-content;
+}
+
+.filter-container{
+    position: absolute;
+    z-index: 1000;
+    top: 940px;
+    left :5px;
+   
 }
 
 .homeviewImage {
@@ -39,6 +48,12 @@
     flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 100px;
+    margin-right: 20px;
+    transition: 0.4s;
+    min-height: 450px;
+    padding-right: 30px;
+    padding-left: 30px;
+
 }
 
 .cardAD,
@@ -53,6 +68,8 @@
     align-content: space-around;
     justify-content: space-around;
     margin: 10px;
+    margin-left: 20px;
+    transition: 0.3s;
 }
 
 .ADcard-title {
