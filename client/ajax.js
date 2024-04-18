@@ -6,6 +6,13 @@ $.ajax({
   url: host + '/ad/' + id,
   type: 'GET',
   contentType: 'application/json',
+  beforeSend: function(xhr) {
+    const authData = JSON.parse(sessionStorage.getItem('auth'));
+    const token = authData ? authData.token : null;
+    if (token) {
+        xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+    }
+  },
   success: function(response){
     callback(response)
   },
@@ -90,11 +97,18 @@ function getUser(userID, callback){
 }
 
 //GET for a single user, including all information
-function loadUser(userID, callback) {
+function loadUser(callback) {
   $.ajax({
-    url: host + '/user/' + userID + '/full', 
+    url: host + '/user', 
     type: 'GET',
     contentType:"application/json",
+    beforeSend: function(xhr) {
+      const authData = JSON.parse(sessionStorage.getItem('auth'));
+      const token = authData ? authData.token : null;
+      if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      }
+    },
     success: function(user) {
       callback(user);
     }
@@ -102,11 +116,18 @@ function loadUser(userID, callback) {
 }
 
 //PUT for a user
-function putUser(userID, settingsData, callback) {
+function putUser(settingsData, callback) {
   $.ajax({
-    url: host + '/user/' + userID, 
+    url: host + '/user', 
     type: 'PUT',
     contentType:"application/json",
+    beforeSend: function(xhr) {
+      const authData = JSON.parse(sessionStorage.getItem('auth'));
+      const token = authData ? authData.token : null;
+      if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      }
+    },
     data: JSON.stringify(settingsData),
     success: function(response) {
       callback(response);
@@ -117,11 +138,18 @@ function putUser(userID, settingsData, callback) {
 })
 }
 
-function putPassword(userID, passwordData, callback) {
+function putPassword(passwordData, callback) {
   $.ajax({
-    url: host + '/change-password/' + userID, 
+    url: host + '/change-password', 
     type: 'PUT',
     contentType:"application/json",
+    beforeSend: function(xhr) {
+      const authData = JSON.parse(sessionStorage.getItem('auth'));
+      const token = authData ? authData.token : null;
+      if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      }
+    },
     data: JSON.stringify(passwordData),
     success: function(response) {
       callback(response, null);
@@ -233,39 +261,37 @@ function postSignUp(email, name, password, phoneNumber, university, studentID, c
   });
 }
 
-function postAd(userID, dishName, cookDate, imagePath, description, quantity, portionPrice, protein, allergy, callback){
-  getUser(userID, function(user){
-    if(user){
-      $.ajax({
-        url: host + '/ad',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify({
-            user: {
-              _id : user._id,
-              email : user.email,
-              isVerified : user.isVerified
-            },
-            ad : {
-              dishName: dishName,
-              cookDate: cookDate,
-              imagePath: imagePath,
-              description: description,
-              quantity: quantity,
-              portionPrice: portionPrice,
-              protein: protein,
-              allergy: allergy
-            },
-        }),
-        success: function() {
-          callback(true)
+function postAd(dishName, cookDate, imagePath, description, quantity, portionPrice, protein, allergy, callback){
+  $.ajax({
+    url: host + '/ad',
+    type: 'POST',
+    contentType: 'application/json',
+    beforeSend: function(xhr) {
+      const authData = JSON.parse(sessionStorage.getItem('auth'));
+      const token = authData ? authData.token : null;
+      if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      }
+    },
+    data: JSON.stringify({
+        ad : {
+          dishName: dishName,
+          cookDate: cookDate,
+          imagePath: imagePath,
+          description: description,
+          quantity: quantity,
+          portionPrice: portionPrice,
+          protein: protein,
+          allergy: allergy
         },
-        error: function(JQxhr, status, error){
-          console.log('Error when posting ad: ' + error)
-          callback(false)
-        },
-      });
-    }
+    }),
+    success: function() {
+      callback(true)
+    },
+    error: function(JQxhr, status, error){
+      console.log('Error when posting ad: ' + error)
+      callback(false)
+    },
   });
 }
 
@@ -276,6 +302,13 @@ function postPurchase(totalPrice, quantity, buyerID, sellerID, ad, dishName, cal
     url: host + '/purchase',
     type: 'POST',
     contentType: 'application/json',
+    beforeSend: function(xhr) {
+      const authData = JSON.parse(sessionStorage.getItem('auth'));
+      const token = authData ? authData.token : null;
+      if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      }
+    },
     data: JSON.stringify({
         totalPrice:  totalPrice,
         quantity: quantity,
@@ -301,9 +334,13 @@ function deleteAd(id, userID){
     url: host + '/ad/' + id,
     type: 'DELETE',
     contentType: 'application/json',
-    data: JSON.stringify({
-      user: userID,
-    }),
+    beforeSend: function(xhr) {
+      const authData = JSON.parse(sessionStorage.getItem('auth'));
+      const token = authData ? authData.token : null;
+      if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      }
+    },
     success: function() {
     }, 
     error: function(JQxhr, status, error) {
@@ -318,6 +355,13 @@ function putAd(id, quantity){
     url: host + '/ad/' + id,
     type: 'PUT',
     contentType: 'application/json',
+    beforeSend: function(xhr) {
+      const authData = JSON.parse(sessionStorage.getItem('auth'));
+      const token = authData ? authData.token : null;
+      if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      }
+    },
     data: JSON.stringify({
       quantity: quantity,
     }),
@@ -348,7 +392,7 @@ function filterOnSellerID(sellerID, callback){
 
 function getPurchases(userID, role, callback){
   $.ajax({
-    url: host + '/purchases/' + userID + '/' + role,
+    url: host + '/purchases/' + role,
     type: 'GET',
     contentType: 'application/json',
     headers: {"Authorization": "Bearer " + JSON.parse(sessionStorage.getItem('auth')).token},

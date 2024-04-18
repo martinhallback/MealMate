@@ -2,6 +2,7 @@ from bson import ObjectId
 from flask import jsonify
 from flask import Blueprint
 from flask import request
+from flask_jwt_extended import jwt_required, get_jwt_identity
 
 from main import db
 
@@ -11,32 +12,21 @@ from classes import user
 bp = Blueprint('user', __name__)
 
 
-@bp.route('/user/<string:id>', methods=['GET', 'PUT'])
-def specific_user(id):
-    try:
-        # Convert the string ID to an ObjectId
-        oid = ObjectId(id)
-    except:
-        return jsonify({"error": "Invalid ID format"}), 400
-
+@bp.route('/user', methods=['GET', 'PUT'])
+@jwt_required()
+def specific_user():    
+    current_user = get_jwt_identity()
+    cursor = db['user'].find_one({'email' : current_user})
+    
     if request.method == 'GET':
-        # Should only be allowed for GET
-        # Use the ObjectId to query the database
-        user_collection = db["user"]
-        cursor = user_collection.find_one({"_id": oid}, {'pwHash': 0, 'phoneNumber': 0, 'PNumber': 0, 'address': 0, 'isAdmin': 0})
         if cursor is None:
             return jsonify({'error': "No object with the given ID exists."}), 404
         query = dict(cursor)
         us = user.User(query)
         return jsonify(us.serialise_client()), 200
-    
+
     elif request.method == 'PUT':
         data = request.get_json()
-        try:
-            # Convert the string ID to an ObjectId
-            oid = ObjectId(id)
-        except:
-            return jsonify({"error": "Invalid ID format"}), 400
              
         removeData = {}
 
@@ -53,7 +43,7 @@ def specific_user(id):
         del usr._id
 
         user_collection = db["user"]
-        result = user_collection.update_one({'_id': oid}, {'$set': usr.serialise_db(), '$unset': removeData})
+        result = user_collection.update_one({'_id': cursor['_id']}, {'$set': usr.serialise_db(), '$unset': removeData})
         
         # Print the result
         print(result.modified_count)  # This will print the number of documents modified (should be 1 if successful)
@@ -61,8 +51,8 @@ def specific_user(id):
         
 
 
-@bp.route('/user/<string:id>/full', methods=['GET'])
-def full_user(id):
+@bp.route('/user/<string:id>', methods=['GET'])
+def redacted_user(id):
     try:
         # Convert the string ID to an ObjectId
         oid = ObjectId(id)
@@ -73,11 +63,10 @@ def full_user(id):
         # Should only be allowed for GET
         # Use the ObjectId to query the database
         user_collection = db["user"]
-        cursor = user_collection.find_one({"_id": oid})
+        cursor = user_collection.find_one({"_id": oid}, {'pwHash': 0, 'phoneNumber': 0, 'PNumber': 0, 'address': 0, 'isAdmin': 0})
         if cursor is None:
             return jsonify({'error': "No object with the given ID exists."}), 404
         query = dict(cursor)
         us = user.User(query)
         return jsonify(us.serialise_client()), 200
-    
     
