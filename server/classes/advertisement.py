@@ -45,8 +45,11 @@ class Advertisement(object):
             for i in range(len(self.allergy)):
                 self.allergy[i] = ObjectId(self.allergy[i])
         if self.cookDate is not None:
+            print(self.cookDate)
             try:
                 self.cookDate=datetime.fromisoformat(self.cookDate)
+            except ValueError:
+                self.cookDate = datetime.strptime(self.cookDate, "%Y-%m-%dT%H:%M:%S.%fZ")
             except:
                 print("Date not updating")
     

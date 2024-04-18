@@ -38,7 +38,10 @@ class Purchase(object):
         self.buyer = ObjectId(self.buyer)
         self.seller = ObjectId(self.seller)
         if(self.date is not None):
-            self.date=datetime.fromisoformat(self.date)
+            try:
+                self.date=datetime.fromisoformat(self.date)
+            except ValueError:
+                self.date = datetime.strptime(self.date, "%Y-%m-%dT%H:%M:%S.%fZ")
         if(self.sellerRating is not None):
             self.sellerRating = float(self.sellerRating)
         
