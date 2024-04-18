@@ -6,10 +6,6 @@ $(document).ready(function () {
     $(".container").load("accountdetails.html .profileContainer", function () {
         loadAccountdetails();
     });
-
-    $(".container").on("click", ".reviewBtn", function () { 
-        $('#reviewModal').modal('show');
-    });
   
     $(".container").on('click', '#accountbutton', function (e) {
       e.preventDefault(); // Prevent the default behavior of the anchor element
@@ -22,20 +18,21 @@ $(document).ready(function () {
   
     $(".container").on('click', '#purchaseHistoryBtn', function (e) {
         e.preventDefault();
-        console.log('Purchase history button clicked');
         $('.container').empty();
         $(".container").load("purchasehistory.html .profileContainer", function () { 
             var userID = JSON.parse(sessionStorage.getItem('auth')).user;
             getPurchases(userID, 'buyer', function(purchases){
-                console.log(purchases)
                 if(!purchases || purchases.length == 0){
                     $('#purchaseTable tbody').append("<p>You have no purchase history</p>")
                 }else{
                     populateTable(purchases, true);
-                }
-                
-            }) 
+                    
+                    
+                } 
+            })
         });
+
+
     });
   
     $(".container").on('click', '#soldProductsbutton', function (e) {
@@ -76,22 +73,6 @@ $(document).ready(function () {
         });
       });
     });
-
-    $(".container").on("click", "#submitReview", function () {
-        console.log("Clicked on the submit review button");
-        $('#reviewModal').modal('hide');
-        const index = parseInt(document.getElementById("reviewModal").getAttribute("data-index"));
-        const reviewText = document.getElementById("reviewText").value;
-        purchases[index].review = reviewText;
-
-        // Close review modal
-        $('#reviewModal').modal('hide');
-
-        // Display review text modal
-        $('#reviewTextContent').text(reviewText);
-        $('#reviewTextModal').modal('show');
-    });
-
 });
 }
 
@@ -108,14 +89,65 @@ function populateTable(purchases, isPurchaseHistory) {
             <td>${purchase.quantity}</td>
             ${isPurchaseHistory ? `
                 <td>
-                    <button type="button" class="btn btn-primary reviewBtn" data-toggle="modal" data-target="#reviewModal" data-index="${index}">
+                    <button type="button" class="btn btn-primary reviewBtn" data-toggle="modal" data-target="#reviewModal_${index}">
                         Give Review
                     </button>
                 </td>
             ` : ''}
         `;
         tableBody.appendChild(row);
+        if(isPurchaseHistory){
+            createReviewModal(purchase._id, index)
+        }
     });
+}
+
+function createReviewModal(purchaseID, index){
+    var modalHTML = '<div class="modal fade" id="reviewModal_' + index + '" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel" aria-hidden="true">' +
+    '<div class="modal-dialog" role="document">' +
+    '<div class="modal-content">' +
+    '<form id="reviewForm">' +
+    '<div class="modal-header">' +
+    '<h5 class="modal-title" id="reviewModalLabel">Give Review</h5>' +
+    '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+    '<span aria-hidden="true">&times;</span>' +
+    '</button>' +
+    '</div>' +
+    '<div class="modal-body">' +
+    '<textarea id="reviewText" class="form-control" rows="3" placeholder="Write your review here..." required></textarea>' +
+    '<div class="mt-3">' +
+    '<label for="ratingInput">Rating:</label>' +
+    '<div class="rating">' +
+    '<input type="radio" id="star1" name="rating" value="1" required>' +
+    '<label for="star1">1</label>' +
+    '<input type="radio" id="star2" name="rating" value="2" required>' +
+    '<label for="star2">2</label>' +
+    '<input type="radio" id="star3" name="rating" value="3" required>' +
+    '<label for="star3">3</label>' +
+    '<input type="radio" id="star4" name="rating" value="4" required>' +
+    '<label for="star4">4</label>' +
+    '<input type="radio" id="star5" name="rating" value="5" required>' +
+    '<label for="star5">5 stars</label>' +
+    '</div>' +
+    '</div>' +
+    '</div>' +
+    '<div class="modal-footer">' +
+    '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>' +
+    '<button type="button" class="btn btn-primary" onclick="submitReview(\'' + purchaseID + '\')" data-dismiss="modal">Submit Review</button>' +
+    '</div>' +
+    '</form>' +
+    '</div>' +
+    '</div>' +
+    '</div>';
+
+    $(".container").append(modalHTML)
+}
+
+function submitReview(id){
+    var review = document.getElementById("reviewText").value;
+    var rating = document.querySelector('input[name="rating"]:checked').value;
+    putPurchase(id, rating, review)
+
 }
 
 function loadAccountdetails() {
