@@ -320,7 +320,7 @@ function putAd(id, quantity){
     contentType: 'application/json',
     data: JSON.stringify({
       quantity: quantity,
-  }),
+    }),
     success: function() {
         
     }, 
@@ -359,6 +359,25 @@ function getPurchases(userID, role, callback){
         console.error('Error: ' + error);
         console.log(JQxhr)
         callback(null)
+    }
+  });
+}
+
+function putPurchase(id, rating, review, callback){
+  $.ajax({
+    url: host + '/purchase/' + id,
+    type: 'PUT',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      sellerRating: rating,
+      reviewText: review
+    }), 
+    success: function() {
+        
+    }, 
+    error: function(JQxhr, status, error) {
+        console.error('Error: ' + error);
+        console.log(JQxhr)
     }
   });
 }
