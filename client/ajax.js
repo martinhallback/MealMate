@@ -116,9 +116,17 @@ function getUser(userID, callback){
 //GET for a single user, including all information
 function loadUser(userID, callback) {
   $.ajax({
-    url: host + '/user/' + userID + '/full', 
+    url: host + '/user', 
     type: 'GET',
     contentType:"application/json",
+    beforeSend: function(xhr) {
+      const authData = JSON.parse(sessionStorage.getItem('auth'));
+      const token = authData ? authData.token : null;
+      if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      }
+  },
+  
     success: function(user) {
       callback(user);
     }
@@ -128,10 +136,18 @@ function loadUser(userID, callback) {
 //PUT for a user
 function putUser(userID, settingsData, callback) {
   $.ajax({
-    url: host + '/user/' + userID, 
+    url: host + '/user', 
     type: 'PUT',
     contentType:"application/json",
     data: JSON.stringify(settingsData),
+    beforeSend: function(xhr) {
+      const authData = JSON.parse(sessionStorage.getItem('auth'));
+      const token = authData ? authData.token : null;
+      if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      }
+  },
+  
     success: function(response) {
       callback(response);
     },
