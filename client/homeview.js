@@ -131,6 +131,7 @@ function calculateAvgRating(seller, callback) {
   });
 }
 
+//ad to cart
 function addtocart(id, index) {
   getAd(id, function (ad) {
     if (ad) {
