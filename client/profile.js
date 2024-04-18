@@ -26,13 +26,9 @@ $(document).ready(function () {
                     $('#purchaseTable tbody').append("<p>You have no purchase history</p>")
                 }else{
                     populateTable(purchases, true);
-                    
-                    
                 } 
             })
         });
-
-
     });
   
     $(".container").on('click', '#soldProductsbutton', function (e) {
