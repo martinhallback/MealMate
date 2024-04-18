@@ -23,6 +23,22 @@ $.ajax({
 });
 }
 
+function getAverageRating(id, callback) {
+  $.ajax({
+    url: host + '/averageRating/' + id, 
+    type: 'GET',
+    contentType:"application/json",
+    success: function(locations) {
+      callback(locations);  
+    },
+    error: function(JQxhr, status, error){
+      console.log(error);
+      callback(null)
+    }
+})
+}
+
+
 //GET all ads
 function getAds(callback){
   $.ajax({
