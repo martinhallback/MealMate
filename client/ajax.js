@@ -27,7 +27,6 @@ function getAverageRating(id, callback) {
           if (averageRating === null || averageRating === undefined) {
             callback(null, numberOfReviews);
           } else {
-            console.log(averageRating)
             callback(averageRating, numberOfReviews);
           }
       },
@@ -67,7 +66,6 @@ function filteringAds(allergy, proteinType, proteinSource, portionPrice, callbac
     proteinSource : proteinSourceString,
     portionPrice : portionPrice
   };
-  console.log(requestData)
   function removeNullKeys(obj) {
     Object.keys(obj).forEach(key => {
         if (obj[key] === null) {
@@ -77,15 +75,12 @@ function filteringAds(allergy, proteinType, proteinSource, portionPrice, callbac
     return obj;
   }  
   var nullPurged = removeNullKeys(requestData);
-  console.log("No nulls", nullPurged)
    $.ajax({
     url: host + '/ads/filter',
     type: 'GET',
     contentType: 'application/json',
     data : nullPurged,
     success: function(response){
-      console.log("fetched all the ads");
-      //ladda om ads från hemsidan. 
       callback(response)
     },
     error: function(JQxhr, status, error){
