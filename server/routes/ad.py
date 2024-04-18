@@ -104,3 +104,18 @@ def post_ads():
         ads.insert_one(advert.serialise_db())
         return jsonify({'success' : "Your advertisement has been published"}), 200
     return jsonify({'error' : "You need to log in"}), 401
+
+
+@bp.route('/ad/quantity/<string:obj_id>', methods=['PUT'])
+def change_quantity_ad(obj_id):
+    try:
+        objID = ObjectId(obj_id)
+    except:
+        return jsonify({'error': "invalid id"}), 400
+    ads = db['advertisement']
+    data = request.get_json()
+    updateResult = ads.update_one({'_id': objID}, {'$set': {'quantity' : int(data['quantity'])}})
+    if updateResult.modified_count == 1:
+        return jsonify({'success': "The advertisement was updated successfully"}), 200
+    else:
+        return jsonify({'error': "Advertisement not found"}), 404
