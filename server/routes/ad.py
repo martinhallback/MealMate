@@ -70,15 +70,12 @@ def ad(obj_id):
 
 
 @bp.route('/ad', methods=['POST'])
-#@jwt_required()
+@jwt_required()
 def post_ads():
     data = request.get_json()
-    try:
-        usr = user.User(data['user'])
-    except Exception as e:
-        print("Contact backend!!!\n", e)
-        return jsonify({'error' : "Your user is invalid"}), 401
-    usr.unserialise_from_client()
+    current_user = get_jwt_identity()
+    cursor = db['user'].find_one({"email" : current_user})
+    usr = user.User(dict(cursor))
     if usr.isVerified:
         try:
             advert = advertisement.Advertisement(data['ad'])
