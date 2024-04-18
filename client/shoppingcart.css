@@ -3,6 +3,7 @@
     display: flex; 
     justify-content: center;
     margin-top: 10%;
+    margin-bottom: 10%;
 }
 
 .shoppingcartCards {
@@ -15,14 +16,38 @@
     width: 1000px; 
     margin-bottom: 20px;
     overflow: hidden; 
-    border-bottom: 1px solid #c6d7cd;
+    border-top: 1px solid #c6d7cd;
+    position: relative;
     /*border: 1px solid black;*/
     /*border-radius: 50px;*/
 }
+.removeCartItemBtn {
+    top: 5px;
+    right: 20px;
+    position: absolute;
+    background-color: #c6d7cd;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1; /* Add this line */
+}
+
+.removeCartItemBtn:hover {
+    background-color: #adadad;
+}
+
 .shoppingcartCard img {
-    width: 100%; 
-    height: auto;
-    border-radius: 5px 0 0 5px;
+    width: 130px;
+    height: 130px;
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    border-radius: 5px;
+    display: block; 
+    margin: auto; /* Center horizontally */
+    position: absolute; /* Position absolutely */
+    top: 0; bottom: 0; /* Center vertically */
+    margin-left: 20%;
 }
 
 .shoppingcartCard-body {
