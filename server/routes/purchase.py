@@ -39,7 +39,7 @@ def specific_purchase(id):
             psch.unserialise_from_client()
         except:
             return jsonify({'error': "Corrupted document"}), 400
-        
+        print(psch.serialise_db())
         updateResult = purchase_collection.update_one({'_id' : oid}, {'$set' : psch.serialise_db()})
         if updateResult.modified_count == 1:
             return jsonify({'success' : "The advertisement was updated successfully"}), 200
@@ -47,13 +47,6 @@ def specific_purchase(id):
             return jsonify({'success' : "The advertisement was updated", 'error' : "More than one user was modified, contact backend", 'errorCode' : 99}), 200
         else:
             return jsonify({'error' : "advertisement was not updated"})
-
-        cursor = purchase_collection.find_one({"_id": oid})
-        try:
-            purchase.Purchase(cursor)
-        except:
-            return jsonify({'error': "Corrupted database document"}), 500
-        request
 
 
 

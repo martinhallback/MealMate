@@ -21,7 +21,7 @@ def get_review(id):
     except:
         return jsonify({"error": "Invalid ID format"}), 400
     
-    cursor = db['purchase'].find({'sellerID' : oid})
+    cursor = db['purchase'].find({'seller' : oid})
     if cursor is None:
         return jsonify({'message': "No previous purchases made", 'averageRating' : None, 'numberOfReviews' : 0}), 200
     query = list(cursor)
@@ -42,5 +42,4 @@ def get_review(id):
         return jsonify({'message': "No reviews have been submitted", 'averageRating' : None, 'numberOfReviews' : 0}), 200
     else:    
         average_rating = total_rating/number_ratings
-        print({'averageRating' : float(average_rating), 'numberOfReviews' : number_ratings})
         return jsonify({'averageRating' : float(average_rating), 'numberOfReviews' : number_ratings}), 200
