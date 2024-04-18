@@ -54,7 +54,7 @@ def user_purchases(role):
     else:
         return jsonify({'error' : "Invalid URL"}), 404
     query = list(cursor)
-    purchases = []
+    purchases = [] 
     for item in query:
         pur = dict(item)
         try:
