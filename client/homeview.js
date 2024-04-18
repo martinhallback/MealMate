@@ -40,7 +40,7 @@ function homeview(ads) {
         $('.adContainer').append(cardHtml);
         getUser(card.sellerID, function(seller){
           console.log(seller);
-          var modal = foodAdModal(card, index, seller);
+          foodAdModal(card, index, seller);
           
         });
       });
@@ -80,7 +80,7 @@ function foodAdModal(card, index, seller){
     if (isNaN(rating)) {
       rating = "unrated seller";
     }else{
-      rating = rating + '/5';
+      rating = rating.toFixed(1) + '/5';
     }
     var modalHtml = '<div class="modal fade" id="foodadmodal_' + index + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
       '<div class="modal-dialog">' +
@@ -115,7 +115,7 @@ function calculateAvgRating(seller, callback) {
           var totRating = 0;
           var ratingCount = 0;
           purchases.forEach(pur => {
-              if (pur.sellerRating !== null) {
+            if (typeof pur.sellerRating === 'number' && !isNaN(pur.sellerRating)) {
                   totRating += pur.sellerRating;
                   ratingCount++;
               }
