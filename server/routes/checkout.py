@@ -1,14 +1,11 @@
 from flask import Blueprint
 from flask import jsonify
 from flask import request
-from flask_jwt_extended import jwt_required
 
 import configuration
 
-from bson import ObjectId
 
 import stripe
-from flask import redirect
 
 from main import db
 stripe.api_key = 'sk_test_51P3jTUJ3D9d5Vz3Fm0K2btxJFKZp5k9bH0xa6AOvvR3xXiMixVyrR8fLQUOCX0dICoSGTf1hW3Uye4yDQhIh8kCT00LfZHxjaZ'
@@ -46,6 +43,3 @@ def checkout():
         
         except Exception as e:
             return jsonify({'error': str(e)}), 500
-
-        #return redirect(checkout_session.url, code=303)
-        #return True, 303
