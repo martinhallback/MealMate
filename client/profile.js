@@ -29,8 +29,6 @@ $(document).ready(function () {
                 } 
             })
         });
-
-
     });
   
     $(".container").on('click', '#soldProductsbutton', function (e) {
