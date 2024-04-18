@@ -38,8 +38,6 @@ function getAverageRating(id, callback) {
   });
 }
 
-
-
 //GET all ads
 function getAds(callback){
   $.ajax({
@@ -162,6 +160,13 @@ function putPassword(userID, passwordData, callback) {
     url: host + '/change-password', 
     type: 'PUT',
     contentType:"application/json",
+    beforeSend: function(xhr) {
+      const authData = JSON.parse(sessionStorage.getItem('auth'));
+      const token = authData ? authData.token : null;
+      if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      }
+    },
     data: JSON.stringify(passwordData),
     success: function(response) {
       callback(response, null);
@@ -361,9 +366,16 @@ function deleteAd(id, userID){
 
 function putAd(id, quantity){
   $.ajax({
-    url: host + '/ad/' + id,
+    url: host + '/ad/quantity' + id,
     type: 'PUT',
     contentType: 'application/json',
+    beforeSend: function(xhr) {
+      const authData = JSON.parse(sessionStorage.getItem('auth'));
+      const token = authData ? authData.token : null;
+      if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      }
+    },
     data: JSON.stringify({
       quantity: quantity,
     }),
@@ -414,6 +426,13 @@ function putPurchase(id, rating, review){
     url: host + '/purchase/' + id,
     type: 'PUT',
     contentType: 'application/json',
+    beforeSend: function(xhr) {
+      const authData = JSON.parse(sessionStorage.getItem('auth'));
+      const token = authData ? authData.token : null;
+      if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      }
+    },
     data: JSON.stringify({
       sellerRating: rating,
       reviewText: review
@@ -435,6 +454,13 @@ function getPurchase(ID, callback){
     url: host + '/purchase/' + ID,
     type: 'GET',
     contentType: 'application/json',
+    beforeSend: function(xhr) {
+      const authData = JSON.parse(sessionStorage.getItem('auth'));
+      const token = authData ? authData.token : null;
+      if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      }
+    },
     success: function(response){
       callback(response);
     },
