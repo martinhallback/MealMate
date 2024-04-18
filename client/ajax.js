@@ -351,6 +351,7 @@ function getPurchases(userID, role, callback){
     url: host + '/purchases/' + userID + '/' + role,
     type: 'GET',
     contentType: 'application/json',
+    headers: {"Authorization": "Bearer " + JSON.parse(sessionStorage.getItem('auth')).token},
     success: function(pruchases) {
         callback(pruchases);
     }, 
