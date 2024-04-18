@@ -39,6 +39,8 @@ class Purchase(object):
         self.seller = ObjectId(self.seller)
         if(self.date is not None):
             self.date=datetime.fromisoformat(self.date)
+        if(self.sellerRating is not None):
+            self.sellerRating = float(self.sellerRating)
         
         
         

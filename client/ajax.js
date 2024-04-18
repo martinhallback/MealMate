@@ -320,7 +320,7 @@ function putAd(id, quantity){
     contentType: 'application/json',
     data: JSON.stringify({
       quantity: quantity,
-  }),
+    }),
     success: function() {
         
     }, 
@@ -351,6 +351,7 @@ function getPurchases(userID, role, callback){
     url: host + '/purchases/' + userID + '/' + role,
     type: 'GET',
     contentType: 'application/json',
+    headers: {"Authorization": "Bearer " + JSON.parse(sessionStorage.getItem('auth')).token},
     success: function(pruchases) {
         callback(pruchases);
     }, 
@@ -362,4 +363,39 @@ function getPurchases(userID, role, callback){
   });
 }
 
+function putPurchase(id, rating, review){
+  $.ajax({
+    url: host + '/purchase/' + id,
+    type: 'PUT',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      sellerRating: rating,
+      reviewText: review
+    }), 
+    success: function() {
+        
+    }, 
+    error: function(JQxhr, status, error) {
+        console.error('Error: ' + error);
+        console.log(JQxhr)
+    }
+  });
+}
+
+
+//GET a single user based on userID, without sensitive information
+function getPurchase(ID, callback){
+  $.ajax({
+    url: host + '/purchase/' + ID,
+    type: 'GET',
+    contentType: 'application/json',
+    success: function(response){
+      callback(response);
+    },
+    error: function(JQxhr, status, error){
+      console.log("Error fetching user: " + error);
+      callback(null);
+    }
+  });
+}
 

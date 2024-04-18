@@ -7,7 +7,6 @@ $(document).ready(function(){
 
    getAllergies(function(allergies){
     allergies.forEach(function(allergy) {
-        // Assuming 'type' is the property that holds the name of the allergy
         var checkbox = $('<label><input type="checkbox" name="' + allergy._id  + '" value="' + allergy.type  + '" data-type="allergyType"> ' + allergy.type + '</label><br>');
         $('#optionsForm').append(checkbox);
     });
@@ -16,7 +15,6 @@ $(document).ready(function(){
     getProteins(function(proteins){
         proteins.forEach(function(protein) {
             if (protein.type != 'Other') {
-            // Assuming 'type' is the property that holds the name of the allergy
             var checkbox = $('<div class="' + protein.source + '"><label><input type="checkbox" name="' + protein._id  + '" value="' + protein.type  + '" id="' + protein.source + '" data-type="proteinSource"> ' + protein.type + '</label></div>');
             $('#proteinForm').append(checkbox);
             }
