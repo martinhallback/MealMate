@@ -9,7 +9,6 @@ $(document).ready(function () {
   
     $(".container").on('click', '#accountbutton', function (e) {
       e.preventDefault(); // Prevent the default behavior of the anchor element
-      console.log('Account button clicked');
       $('.container').empty();
       $(".container").load("accountdetails.html .profileContainer", function () { 
         loadAccountdetails();
@@ -37,7 +36,6 @@ $(document).ready(function () {
         $(".container").load("soldProducts.html .profileContainer", function () {
             var userID = JSON.parse(sessionStorage.getItem('auth')).user;
             getPurchases(userID, 'seller', function(purchases){
-                console.log(purchases)
                 if(!purchases || purchases.length == 0){
                     $('#purchaseTable tbody').append("<p>You have no sell history</p>")
                 }else{
@@ -50,7 +48,6 @@ $(document).ready(function () {
 
     $(".container").on('click', '#currentOffersbutton', function (e) {
         e.preventDefault(); 
-        console.log('Current offers button clicked');
         $('.container').empty();
         $(".container").load("currentOffers.html .profileContainer", function () {
             loadCurrentOffers();
@@ -59,7 +56,6 @@ $(document).ready(function () {
   
     $(".container").on('click', '#settingsbutton', function (e) {
       e.preventDefault(); 
-      console.log('Setting button clicked');
       $('.container').empty();
   
       $(".container").load("settings.html .profileContainer", function () { 
@@ -102,7 +98,6 @@ function populateTable(purchases, isPurchaseHistory) {
         if(isPurchaseHistory){
             createReviewModal(purchase._id, index)
         } else {
-            console.log("You are now on the selling page. createViewModal will load next");
             createViewModal(purchase._id, index);
         }
     });
@@ -151,7 +146,6 @@ function createReviewModal(purchaseID, index){
 
 function createViewModal(purchaseID, index){
     getPurchase(purchaseID, function(purchase){
-        console.log(purchase.reviewText);
         var text;
         var rat;
         if(purchase.reviewText){
@@ -190,15 +184,13 @@ function createViewModal(purchaseID, index){
         $(".container").append(modalHTML);
     });
      
-    console.log("createViewModal has been fully loaded");
+   
 
 }
 
 function submitReview(id, index){
     var review = document.getElementById("reviewText_" + index).value;
     //var review = document.getElementById("reviewText").value;
-    console.log(review);
-    console.log("Inuti submitReview");
     var rating = document.querySelector('input[name="rating"]:checked').value;
     putPurchase(id, rating, review)
 
@@ -210,7 +202,6 @@ function loadAccountdetails() {
     var accountEmail = document.getElementById("accountEmail");
     var accountRating = document.getElementById("accountRating");
 
-    console.log("Inuti loadAccount");
     getUser(userID, function (usr) {
         accountEmail.text = usr.email;
         if (usr.isVerified)
@@ -331,7 +322,6 @@ function savePassword() {
 
 function loadCurrentOffers(){
     var userID = JSON.parse(sessionStorage.getItem('auth')).user;
-    console.log("current offers")
     filterOnSellerID(userID, function(ads){
         $('#purchaseTable tbody').empty();
         if(!ads || ads.length == 0){

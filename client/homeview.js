@@ -39,8 +39,7 @@ function homeview(ads) {
         var cardHtml = createCard(index, card);
         $('.adContainer').append(cardHtml);
         getUser(card.sellerID, function(seller){
-          var modal = foodAdModal(card, index, seller);
-          $('.homeviewContainer').append(modal);
+          foodAdModal(card, index, seller);
         });
       });
     }
