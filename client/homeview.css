@@ -90,12 +90,15 @@
 
 .card-img-top {
     max-width: 100%;
-    height: auto;
-    /* Maintain aspect ratio */
+    
     display: block;
     /* Ensure proper spacing */
     margin: 0 auto;
     /* Center the image horizontally */
+    width: 300px;  /* Set to desired width */
+    height: 200px;  /* Set to desired height */
+    object-fit: cover;
+
 }
 
 .cardAD .btn.btn-primary.buy-btn {
@@ -120,6 +123,12 @@
     background-color: transparent;
     color: #006267;
 }
+
+.modal-img {
+    width: 300px;  /* Set to desired width */
+    height: 200px;  /* Set to desired height */
+    object-fit: cover;
+  }
 
 /*CardAdModal*/
 .modal-header .cardAd-modal-title {

@@ -59,11 +59,16 @@ function homeview(ads) {
   }  
 
 function createCard(index, card) {
+  var maxLength = 100;  // Set to desired maximum length
+  var trimmedDescription = card.description.length > maxLength
+    ? card.description.substring(0, maxLength - 3) + "..."
+    : card.description + "".padEnd(maxLength - card.description.length, " ");
+
   var cardHtml = '<div class="cardAD">' +
     '<div class="card-body">' +
     '<img src="data:image/png;base64,' + card.imagePath + '" class="card-img-top" alt="...">' +
     '<h5 class="ADcard-title">' + card.dishName + '</h5>' +
-    '<p class="ADcard-text">' + card.description + '</p>' +
+    '<p class="ADcard-text">' + trimmedDescription + '</p>' +
     '<p class="ADcard-price">Price: ' + card.portionPrice + ' kr/pc</p>' +
     '<button type="button" class="btn btn-primary buy-btn" data-toggle="modal" data-target="#homeviewmodal_' + index + '">View</button>' +
     '</div>' +
