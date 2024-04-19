@@ -181,7 +181,8 @@
 .quantity-modal-label,
 .price-modal-label,
 .seller-modal-label,
-.cookDate-modal-label {
+.cookDate-modal-label,
+.rating-modal-label {
     font-family: 'Brandon Grotesque Bold';
     color: #000;
 }
