@@ -48,16 +48,7 @@ def user_profile():
         
         changes = user.User(data)
         changes.unserialise_from_client()
-        usr_db = usr.serialise_db()
-        for key in data:
-            usr_db[key] = data[key] 
-        usr_db.pop('_id')
-
-        user_collection = db["user"]
-        result = user_collection.update_one({'_id': usr._id}, {'$set': usr_db, '$unset': removeData})
-        
-        # Print the result
-        print(result.modified_count)  # This will print the number of documents modified (should be 1 if successful)
+        result = db['user'].update_one({'_id': usr._id}, {'$set': changes.serialise_db(), '$unset': removeData})
         return jsonify({'success' : "Successfully updated the user"}), 200
         
 
