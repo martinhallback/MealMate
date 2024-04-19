@@ -156,7 +156,7 @@ function createViewModal(purchaseID, index){
             text = purchase.reviewText;
             rat = purchase.sellerRating;
         }else{
-            text = "Ingen review given än";
+            text = "No review has been given yet";
             rat = 0;
         }
 
@@ -214,7 +214,16 @@ function loadAccountdetails() {
             accountVerification.text = "No";
         
     })
+
+    getAverageRating(userID, function(averageRating, numberOfRatings) {
+        if (numberOfRatings == 0) {
+            accountRating.text = "unrated seller";
+        } else {
+            accountRating.text = averageRating.toFixed(1) + '/5';
+        }
+    })
 }
+
 
 function setFieldValues(usr) {
     var settingsform = document.getElementById("settingsForm");
