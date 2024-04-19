@@ -74,11 +74,11 @@ def update_or_delete_ad(obj_id):
             return jsonify({'error': "advertisement was not updated"}), 500
 
     elif request.method == 'DELETE':
-        delete_result = ads.delete_one({'_id': objID, 'sellerID': usr._id})
+        delete_result = ads.delete_one({'_id': objID})
         if delete_result.deleted_count > 0:
             return jsonify({'success': "Your advertisement has been deleted"}), 200
         else:
-            return jsonify({'error': "The given ad was not yours or was already deleted"}), 403
+            return jsonify({'error': "The given ad is already deleted"}), 403
 
 
 @bp.route('/ad', methods=['POST'])
