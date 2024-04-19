@@ -157,7 +157,7 @@ async function convertImageToBase64(fileInput, callback) {
     img.src = URL.createObjectURL(file);
     img.onload = async function() {
         try {
-            const compressedFile = await compressImage(img, 0.1, 0.1);
+            const compressedFile = await compressImage(img, 1, 1);
             var reader = new FileReader();
 
             reader.onloadend = function() {

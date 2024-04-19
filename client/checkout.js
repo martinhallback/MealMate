@@ -43,6 +43,7 @@ function handleSuccess(){
 
 function addPurchaceHistory(cartData, buyerID){
     cartData.forEach(function(item){
+        addDetailsToHTML(item)
         var totalPrice = item.portionPrice * item.quantity
         postPurchase(totalPrice, item.quantity, buyerID, item.sellerID, item._id, item.dishName, function(response){
             if(!response){
@@ -50,6 +51,15 @@ function addPurchaceHistory(cartData, buyerID){
             }
         });
     });
+}
+
+function addDetailsToHTML(item){
+    getUser(item.sellerID, function(response){
+        var sellerEmail = response.email
+        document.append("<p> Please contact " + sellerEmail + " to pick up your lunchbox</p>")
+        
+    });
+    
 }
 
 function removeBoughtFromDb(cartData, buyerID){
