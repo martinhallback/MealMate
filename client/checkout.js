@@ -56,8 +56,7 @@ function addPurchaceHistory(cartData, buyerID){
 function addDetailsToHTML(item){
     getUser(item.sellerID, function(response){
         var sellerEmail = response.email
-        document.append("<p> Please contact " + sellerEmail + " to pick up your lunchbox</p>")
-        
+        $('body').append("<p> Please contact " + sellerEmail + " to pick up your lunchbox</p>");
     });
     
 }
