@@ -49,7 +49,7 @@ function logOutUser(){
 }
 
 function validateAndSubmit() {
-    var email = document.getElementById('loginEmail').value;
+    var email = document.getElementById('signupEmail').value;
     var phoneNumber = document.getElementById('pnum').value;
     if (email.indexOf('@') === -1) {
         document.getElementById('emailError').style.display = 'block';

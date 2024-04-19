@@ -268,6 +268,7 @@ function postSignUp(email, name, password, phoneNumber, university, studentID, c
     },
     error: function(JQxhr, status, error){
       console.log('Error when signing up: ' + error)
+      console.log(JQxhr)
       callback(false)
     },
   });
