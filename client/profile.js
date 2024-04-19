@@ -331,13 +331,15 @@ function loadCurrentOffers(){
         if(!ads || ads.length == 0){
             $('#purchaseTable tbody').append('<p> You currently have no ads listed </p>')
         }else{
+            index = 0;
             ads.forEach(function(ad){
-                var row = `<tr>
+                index = index + 1;
+                var row = `<tr id="row_${index}">
                     <td>${ad.dishName}</td>
                     <td>${ad.cookDate}</td>
                     <td>${ad.portionPrice * ad.quantity}</td>
                     <td>${ad.quantity}</td>
-                    <td><button class="btn btn-danger remove-btn" onclick="removeCurrentAd('${ad._id}', '${userID}')">Remove</button></td>
+                    <td><button class="btn btn-danger remove-btn" onclick="removeCurrentAd('${ad._id}', '${userID}', '${index}')">Remove</button></td>
                     </tr>`;
                 $('#purchaseTable tbody').append(row);
             });
@@ -345,7 +347,10 @@ function loadCurrentOffers(){
     });
 }
 
-function removeCurrentAd(id, userID){
+function removeCurrentAd(id, userID, index){
+    document.getElementById("row_" + index).remove()
     deleteAd(id, userID)
-    loadCurrentOffers()
+    setTimeout(function() {
+        loadCurrentOffers()
+    }, 100);
 }

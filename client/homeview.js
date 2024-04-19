@@ -110,6 +110,45 @@ function foodAdModal(card, index, seller){
   })
 }
 
+function foodAdModal(card, index, seller){
+  getAverageRating(seller._id, function(averageRating, numberOfRatings) {
+      var rating;
+      if (numberOfRatings == 0) {
+          rating = "unrated seller";
+      } else {
+          rating = averageRating.toFixed(1) + '/5';
+      }
+      // Continue with your code here, using the rating variable
+      // For example:
+      //console.log("Rating: " + rating);
+  
+    var modalHtml = '<div class="modal fade" id="foodadmodal_' + index + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
+      '<div class="modal-dialog">' +
+      '<div class="modal-content">' +
+      '<div class="modal-header">' +
+      '<h5 class="cardAd-modal-title" id="exampleModalLabel">' + card.dishName + '</h5>' +
+      '<button type="adbutton" class="close-btn" data-bs-dismiss="modal" aria-label="Close"></button>' +
+      '</div>' +
+      '<div class="cardAd-modal-body">' +
+      '<img src="data:image/png;base64,' + card.imagePath + '" class="modal-img" alt="Food Image">' +
+      '<p class="cardAd-description-text">' + card.description + '</p>' +
+      '<p><span class="cookDate-modal-label">Cook Date:</span> ' + card.cookDate + '</p>' +
+      '<p><span class="quantity-modal-label">Quantity:</span> ' + card.quantity + '</p>' +
+      '<p><span class="price-modal-label">Price:</span> ' + card.portionPrice + ' kr/pc</p>' +
+      '<p><span class="seller-modal-label">Seller:</span> ' + seller.name + '</p>' +
+      '<p><span class="rating-modal-label">Rating:</span> ' + rating + '</p>' +
+      '</div>' +
+      '<div class="modal-footer">' +
+      '<button type="adbutton" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>' +
+      '<button type="adbutton" class="btn btn-primary add-to-cart-btn" onclick="addtocart(\'' + card._id + '\', ' + index + ')">Add to Shopping Cart</button>' +
+      '</div>' +
+      '</div>' +
+      '</div>' +
+      '</div>';
+  $('.homeviewContainer').append(modalHtml);
+  });
+}
+
 function calculateAvgRating(seller, callback) {
   getPurchases(seller._id, "seller", function (purchases) {
       if (purchases) {
