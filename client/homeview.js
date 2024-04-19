@@ -136,7 +136,7 @@ function foodAdModal(card, index, seller){
       '<p><span class="quantity-modal-label">Quantity:</span> ' + card.quantity + '</p>' +
       '<p><span class="price-modal-label">Price:</span> ' + card.portionPrice + ' kr/pc</p>' +
       '<p><span class="seller-modal-label">Seller:</span> ' + seller.name + '</p>' +
-      '<p>Rating: ' + rating + '</p>' +
+      '<p><span class="rating-modal-label">Rating:</span> ' + rating + '</p>' +
       '</div>' +
       '<div class="modal-footer">' +
       '<button type="adbutton" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>' +

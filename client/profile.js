@@ -22,6 +22,7 @@ $(document).ready(function () {
             var userID = JSON.parse(sessionStorage.getItem('auth')).user;
             getPurchases(userID, 'buyer', function(purchases){
                 if(!purchases || purchases.length == 0){
+                    $('#purchaseTable tbody').empty();
                     $('#purchaseTable tbody').append("<p>You have no purchase history</p>")
                 }else{
                     populateTable(purchases, true);
@@ -37,6 +38,7 @@ $(document).ready(function () {
             var userID = JSON.parse(sessionStorage.getItem('auth')).user;
             getPurchases(userID, 'seller', function(purchases){
                 if(!purchases || purchases.length == 0){
+                    $('#purchaseTable tbody').empty();
                     $('#purchaseTable tbody').append("<p>You have no sell history</p>")
                 }else{
                     populateTable(purchases, false);
@@ -81,9 +83,11 @@ function populateTable(purchases, isPurchaseHistory) {
             <td>${purchase.quantity}</td>
             ${isPurchaseHistory ? `
                 <td>
-                    <button type="button" class="btn btn-primary reviewBtn" data-toggle="modal" data-target="#reviewModal_${index}">
-                        Give Review
-                    </button>
+                    ${!purchase.sellerRating ? `
+                        <button id="reviewButton_${index}" type="button" class="btn btn-primary reviewBtn" data-toggle="modal" data-target="#reviewModal_${index}">
+                            Give Review
+                        </button>
+                    ` : ''}
                 </td>
             ` : ''}
               ${!isPurchaseHistory ? `
@@ -152,7 +156,7 @@ function createViewModal(purchaseID, index){
             text = purchase.reviewText;
             rat = purchase.sellerRating;
         }else{
-            text = "Ingen review given än";
+            text = "No review has been given yet";
             rat = 0;
         }
 
@@ -193,7 +197,7 @@ function submitReview(id, index){
     //var review = document.getElementById("reviewText").value;
     var rating = document.querySelector('input[name="rating"]:checked').value;
     putPurchase(id, rating, review)
-
+    document.getElementById("reviewButton_" + index).style.display = 'none';
 }
 
 function loadAccountdetails() {
@@ -210,7 +214,16 @@ function loadAccountdetails() {
             accountVerification.text = "No";
         
     })
+
+    getAverageRating(userID, function(averageRating, numberOfRatings) {
+        if (numberOfRatings == 0) {
+            accountRating.text = "unrated seller";
+        } else {
+            accountRating.text = averageRating.toFixed(1) + '/5';
+        }
+    })
 }
+
 
 function setFieldValues(usr) {
     var settingsform = document.getElementById("settingsForm");
@@ -325,15 +338,17 @@ function loadCurrentOffers(){
     filterOnSellerID(userID, function(ads){
         $('#purchaseTable tbody').empty();
         if(!ads || ads.length == 0){
-            $('#purchaseTable tbody').append('<p> you have no current ads listed </p>')
+            $('#purchaseTable tbody').append('<p> You currently have no ads listed </p>')
         }else{
+            index = 0;
             ads.forEach(function(ad){
-                var row = `<tr>
+                index = index + 1;
+                var row = `<tr id="row_${index}">
                     <td>${ad.dishName}</td>
                     <td>${ad.cookDate}</td>
                     <td>${ad.portionPrice * ad.quantity}</td>
                     <td>${ad.quantity}</td>
-                    <td><button class="btn btn-danger remove-btn" onclick="removeCurrentAd('${ad._id}', '${userID}')">Remove</button></td>
+                    <td><button class="btn btn-danger remove-btn" onclick="removeCurrentAd('${ad._id}', '${userID}', '${index}')">Remove</button></td>
                     </tr>`;
                 $('#purchaseTable tbody').append(row);
             });
@@ -341,7 +356,10 @@ function loadCurrentOffers(){
     });
 }
 
-function removeCurrentAd(id, userID){
+function removeCurrentAd(id, userID, index){
+    document.getElementById("row_" + index).remove()
     deleteAd(id, userID)
-    loadCurrentOffers()
+    setTimeout(function() {
+        loadCurrentOffers()
+    }, 100);
 }
