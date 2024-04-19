@@ -22,6 +22,7 @@ $(document).ready(function () {
             var userID = JSON.parse(sessionStorage.getItem('auth')).user;
             getPurchases(userID, 'buyer', function(purchases){
                 if(!purchases || purchases.length == 0){
+                    $('#purchaseTable tbody').empty();
                     $('#purchaseTable tbody').append("<p>You have no purchase history</p>")
                 }else{
                     populateTable(purchases, true);
@@ -37,6 +38,7 @@ $(document).ready(function () {
             var userID = JSON.parse(sessionStorage.getItem('auth')).user;
             getPurchases(userID, 'seller', function(purchases){
                 if(!purchases || purchases.length == 0){
+                    $('#purchaseTable tbody').empty();
                     $('#purchaseTable tbody').append("<p>You have no sell history</p>")
                 }else{
                     populateTable(purchases, false);
@@ -81,9 +83,11 @@ function populateTable(purchases, isPurchaseHistory) {
             <td>${purchase.quantity}</td>
             ${isPurchaseHistory ? `
                 <td>
-                    <button type="button" class="btn btn-primary reviewBtn" data-toggle="modal" data-target="#reviewModal_${index}">
-                        Give Review
-                    </button>
+                    ${!purchase.sellerRating ? `
+                        <button id="reviewButton_${index}" type="button" class="btn btn-primary reviewBtn" data-toggle="modal" data-target="#reviewModal_${index}">
+                            Give Review
+                        </button>
+                    ` : ''}
                 </td>
             ` : ''}
               ${!isPurchaseHistory ? `
@@ -193,7 +197,7 @@ function submitReview(id, index){
     //var review = document.getElementById("reviewText").value;
     var rating = document.querySelector('input[name="rating"]:checked').value;
     putPurchase(id, rating, review)
-
+    document.getElementById("reviewButton_" + index).style.display = 'none';
 }
 
 function loadAccountdetails() {
@@ -325,7 +329,7 @@ function loadCurrentOffers(){
     filterOnSellerID(userID, function(ads){
         $('#purchaseTable tbody').empty();
         if(!ads || ads.length == 0){
-            $('#purchaseTable tbody').append('<p> you have no current ads listed </p>')
+            $('#purchaseTable tbody').append('<p> You currently have no ads listed </p>')
         }else{
             ads.forEach(function(ad){
                 var row = `<tr>
