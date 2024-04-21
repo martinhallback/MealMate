@@ -74,32 +74,9 @@
 .card-img-top {
     max-width: 100%;
     height: auto;
-    /* Maintain aspect ratio */
     display: block;
-    /* Ensure proper spacing */
     margin: 0 auto;
-    /* Center the image horizontally */
 }
-
-/*SKA KANSKE AN>VÄndas*/
-
-/*.card-img-top {
-    display: block;
-    margin: 0 auto;
-    width: 130px;
-    height: 130px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.modal-img {
-    display: block;
-    margin: 0 auto;
-    width: 250px ;
-    height: 200px;
-    object-fit: cover; 
-    border-radius: 5px;
-}*/
 
 .cardAD .btn.btn-primary.buy-btn {
     background-color: transparent;
@@ -152,11 +129,8 @@
 
 .cardAd-modal-header {
     display: flex;
-    /* Use flexbox for easier alignment */
     align-items: center;
-    /* Vertically align items in the header */
     justify-content: space-between;
-    /* Space between title and close button */
 }
 
 .cardAd-modal-body {
