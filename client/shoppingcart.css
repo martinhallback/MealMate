@@ -38,22 +38,6 @@
     background-color: #adadad;
 }
 
-.quantity-number {
-    cursor: pointer;
-}
-
-.quantity-select {
-    background: transparent;
-    border: none; /* Optional: removes border */
-    width: 60px; /* Set width to fit your layout */
-    box-shadow: none;
-}
-
-.quantity-select:focus {
-    outline: none; /* Optional: removes focus outline */
-}
-
-
 .shoppingcartCard img {
     width: 130px;
     height: 130px;
@@ -121,6 +105,9 @@ color: white;
 
 .cartEmptyText{
     font-weight: bold;
+    text-align: center;  
+    width: 100%; 
+    padding-top: 40%;  
 }
 
 .paymentText, .totalPrice, .totalQuantity{
