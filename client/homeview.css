@@ -90,35 +90,10 @@
 
 .card-img-top {
     max-width: 100%;
-    
+    height: auto;
     display: block;
     margin: 0 auto;
-    /* Center the image horizontally */
-    width: 300px;  /* Set to desired width */
-    height: 200px;  /* Set to desired height */
-    object-fit: cover;
-
 }
-
-/*SKA KANSKE AN>VÄndas*/
-
-/*.card-img-top {
-    display: block;
-    margin: 0 auto;
-    width: 130px;
-    height: 130px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.modal-img {
-    display: block;
-    margin: 0 auto;
-    width: 250px ;
-    height: 200px;
-    object-fit: cover; 
-    border-radius: 5px;
-}*/
 
 .cardAD .btn.btn-primary.buy-btn {
     background-color: transparent;
@@ -144,8 +119,6 @@
 }
 
 .modal-img {
-    width: 300px;  /* Set to desired width */
-    height: 200px;  /* Set to desired height */
     object-fit: cover;
   }
 
