@@ -41,7 +41,7 @@ def admin_view():
     for item in query:
         usr = dict(item)
         try:
-            users.append(users.User(usr))
+            users.append(user.User(usr))
         except Exception as e:
             print(e)
     return jsonify([item.serialise_client() for item in users]), 200
