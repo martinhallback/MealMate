@@ -35,3 +35,19 @@ def admin_view():
         except Exception as e:
             print(e)
     return jsonify([item.serialise_client() for item in users]), 200
+
+@bp.route('admin/update/<string:id>', methods = ['PUT'])
+@jwt_required()
+def verify_user(id):
+    current_user = get_jwt_identity()
+    if not verify_admin(current_user):
+        return jsonify({'error' : "You don't have the autority for this request"}), 403
+    try:
+        obj_id = ObjectId(id)
+    except:
+        return 400
+    update_result = db['user'].update_one({'_id' : obj_id}, {'$set' : {'isVerified' : True}})
+    if update_result.modified_count == 1:
+        return jsonify({'success' : "user is now verified"}), 200
+    else:
+        return jsonify({'error' : "User was not found, or already verified"}), 400
