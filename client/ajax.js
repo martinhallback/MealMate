@@ -490,9 +490,9 @@ function getAllUsers(callback){
   });
 }
 
-function putUserAdmin(id, callback){
+function verifyUser(id){
   $.ajax({
-    url: host + '/update/update/' + id,
+    url: host + '/admin/verify/' + id,
     type: 'PUT',
     contentType: 'application/json',
     beforeSend: function(xhr) {
@@ -507,6 +507,50 @@ function putUserAdmin(id, callback){
     error: function(JQxhr, status, error){
       console.log(error);
       console.log(JQxhr);
+    }
+  });
+}
+
+function verifyAdmin(id){
+  $.ajax({
+    url: host + '/admin/admin/' + id,
+    type: 'PUT',
+    contentType: 'application/json',
+    beforeSend: function(xhr) {
+      const authData = JSON.parse(sessionStorage.getItem('auth'));
+      const token = authData ? authData.token : null;
+      if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      }
+    },
+    success: function(response){
+    },
+    error: function(JQxhr, status, error){
+      console.log(error);
+      console.log(JQxhr);
+    }
+  });
+}
+
+function getAdmin(callback){
+  $.ajax({
+    url: host + '/admin/is_admin',
+    type: 'GET',
+    contentType: 'application/json',
+    beforeSend: function(xhr) {
+      const authData = JSON.parse(sessionStorage.getItem('auth'));
+      const token = authData ? authData.token : null;
+      if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      }
+    },
+    success: function(response){
+      callback(true)
+    },
+    error: function(JQxhr, status, error){
+      console.log(error);
+      console.log(JQxhr);
+      callback(false)
     }
   });
 }

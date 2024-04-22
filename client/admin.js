@@ -1,6 +1,7 @@
 function loadAdminView(){
     $('.container').empty();
     getAllUsers(function(users){
+        console.log(users)
         if(users){
             makeTable(users)
         }else{
@@ -17,6 +18,7 @@ function makeTable(users) {
         '<th>Email</th>' +
         '<th>University ID</th>' +
         '<th>Verify</th>' +
+        '<th>Make Admin</th>' +
         '</tr>' +
         '</thead>' +
         '<tbody>' +
@@ -33,14 +35,32 @@ function populateUsers(users) {
         rows += '<tr>' +
             '<td>' + user.name + '</td>' +
             '<td>' + user.email + '</td>' +
-            '<td>' + user.universityID + '</td>' +
-            '<td><button onclick="verifyUser(\'' + user.id + '\')">Verify</button></td>' +
-            '</tr>';
+            '<td>' + user.studentID + '</td>';
+        
+        if (!user.isVerified) {
+            rows += '<td><button onclick="verifyUser(\'' + user._id + '\')">Verify</button></td>';
+        } else {
+            rows += '<td>Verified</td>';
+        }
+        if (!user.isAdmin) {
+            rows += '<td><button onclick="makeAdmin(\'' + user._id + '\')">Make Admin</button></td>';
+        } else {
+            rows += '<td>Admin</td>';
+        }
+        
+        rows += '</tr>';
     });
     return rows;
 }
 
 function verifyUser(id){
-    putUserAdmin(id)
+    verifyUser(id)
+    setTimeout(10)
+    loadAdminView()
+}
+
+function makeAdmin(id){
+    verifyAdmin(id)
+    setTimeout(10)
     loadAdminView()
 }
