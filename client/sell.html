@@ -33,6 +33,11 @@
                 <input type="date" class="sellinput" id="lunchboxMadeDate" name="lunchboxMadeDate" required>
             </div>
             <div class="form-group">
+                <label for="lunchboxCoordinates">Pick-up adress:</label>
+                <p>Format adress as: Street, Number, Postalcode, City</p>
+                <input type="adress" class="sellinput" id="lunchboxCoordinates" name="lunchboxCoordinates" required>
+            </div>
+            <div class="form-group">
                 <label for="lunchboxAllergens">Allergens:</label>
                 <p>Its important that you check all allergens in your lunchbox!</p>
                     <div id="allergensList" class="allergens-list">
@@ -53,6 +58,7 @@
             <button type="button" class="btn btn-primary" id="submitCreateAd">Create Ad</button>
         </form>
     </div>
+   
 </body>
 
 </html>
