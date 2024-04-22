@@ -36,9 +36,12 @@ class User(object):
 
     def check_password(self, password):
         return bcrypt.check_password_hash(self.pwHash, password)
-
-    def verify(self):
-        self.isVerified = True
+    
+    def isAdministrator(self):
+        if self.isAdmin is None or self.isAdmin is False:
+            return False
+        else:
+            return True
 
     def __repr__(self):
         return '<user {}: {}, email: {}, is_admin: {}>'.format(str(self._id), self.fullName, self.email, self.isAdmin)
