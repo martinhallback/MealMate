@@ -44,11 +44,13 @@ function createCartCards(cartData) {
             totPrice = (item.portionPrice * itemquantitiy) + totPrice;
             totQuantity = item.quantity + totQuantity;
 
+
             cartCardHTML += `
                 <div class="shoppingcartCard mb-3" id="shoppingcartCard" style="max-width: 540px;">
+                <button class="removeCartItemBtn" type="button" onclick="editCartQuantity('${itemId}', 'removeAll')">X</button>
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="Images/Basket.png" id="cartCardImg" class="img-fluid rounded-start">
+                            <img src="data:image/png;base64,${itemImage}" class="shoppingcart-img" alt="Food Image">
                         </div>
                         <div class="col-md-8">
                             <div class="shoppingcartCard-body">
@@ -114,9 +116,15 @@ function editCartQuantity(itemId, action) {
                 }
             } else if (action === 'add' && item.quantity < maxItemQuant) {
                 item.quantity++;
+            } else if (action === 'removeAll') {
+                cartData.splice(index, 1);
+            } else if (action === 'removeAll') {
+                cartData.splice(index, 1);
             }
             sessionStorage.setItem('cart', JSON.stringify(cartData));
             createCartCards(cartData);
         }
     });
 }
+
+

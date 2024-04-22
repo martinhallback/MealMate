@@ -26,17 +26,11 @@
    font-family: 'Brandon Grotesque Bold';
 }
 
-/* Style for the Log in button */
 #logoutBtn,
 #signUpBtn,
 #logInBtn {
    background-color: #006267;
    color: white;
    border-color: transparent;
-   /* Optionally remove button border */
    font-family: 'Brandon Grotesque Bold';
 }
-
-/*button[id="submitCreateAd"]:hover {
-    background-color: #adbdb3;
- }*/

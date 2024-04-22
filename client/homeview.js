@@ -1,8 +1,7 @@
 function homeview(ads) {
   $('.container').empty();
   $('.container').append('<div class="homeviewContainer">' + '</div>');
-  var homeviewImageUrl = 'Images/homeviewImage.jpg'; //  image URL with your image
-  $('.homeviewContainer').append('<img src="' + homeviewImageUrl + '" alt="homeview" class="homeviewImage">');
+  $('.homeviewContainer').append('<img src="Images/homeviewImage.jpg" alt="homeview" class="homeviewImage">');
   $('.homeviewContainer').append('<h2 class="foodNearMeTitle">Food near me</h2>');
   // Embed Google Map
  /*var mapIframe = document.createElement('iframe');
@@ -28,7 +27,6 @@ function homeview(ads) {
     filterContainer.html(filterHtmlContent);
     $('.adContainer').prepend(filterContainer);
 
-
   if(!ads){
     getAds(function(cardData){
       handleCardData(cardData)
@@ -39,6 +37,18 @@ function homeview(ads) {
       handleclicks();
   }
 
+function map(){
+  var mapIframe = document.createElement('iframe');
+  
+  mapIframe.src = "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d16726.078168885902!2d15.57146175!3d58.3974506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssv!2sse!4v1713448415102!5m2!1ssv!2sse"
+  mapIframe.classList.add('google-map');
+  mapIframe.height = "450";
+  mapIframe.style.border = "0";
+  mapIframe.allowfullscreen = true;
+  mapIframe.loading = "lazy";
+  mapIframe.referrerpolicy = "no-referrer-when-downgrade";
+  $('.homeviewContainer').append(mapIframe);
+}
   
   function handleCardData(cardData){
     if(cardData){
@@ -66,7 +76,7 @@ function homeview(ads) {
   }  
 
 function createCard(index, card) {
-  var maxLength = 100;  // Set to desired maximum length
+  var maxLength = 100; 
   var trimmedDescription = card.description.length > maxLength
     ? card.description.substring(0, maxLength - 3) + "..."
     : card.description + "".padEnd(maxLength - card.description.length, " ");
@@ -125,9 +135,6 @@ function foodAdModal(card, index, seller){
       } else {
           rating = averageRating.toFixed(1) + '/5';
       }
-      // Continue with your code here, using the rating variable
-      // For example:
-      //console.log("Rating: " + rating);
   
     var modalHtml = '<div class="modal fade" id="foodadmodal_' + index + '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">' +
       '<div class="modal-dialog">' +
@@ -178,7 +185,6 @@ function calculateAvgRating(seller, callback) {
   });
 }
 
-//ad to cart
 function addtocart(id, index) {
   getAd(id, function (ad) {
     if (ad) {

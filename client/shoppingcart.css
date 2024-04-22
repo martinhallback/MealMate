@@ -2,6 +2,8 @@
 .shoppingCartCont {
     display: flex; 
     justify-content: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
 }
 
 .shoppingcartCards {
@@ -14,13 +16,37 @@
     width: 1000px; 
     margin-bottom: 20px;
     overflow: hidden; 
-    border: 1px solid black;
-    border-radius: 50px;
+    border-top: 1px solid #c6d7cd;
+    position: relative;
+
 }
+.removeCartItemBtn {
+    top: 5px;
+    right: 20px;
+    position: absolute;
+    background-color: #c6d7cd;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1; 
+}
+
+.removeCartItemBtn:hover {
+    background-color: #adadad;
+}
+
 .shoppingcartCard img {
-    width: 100%; 
-    height: auto;
-    border-radius: 5px 0 0 5px;
+    width: 130px;
+    height: 130px;
+    object-fit: cover; 
+    border-radius: 5px;
+    display: block; 
+    margin: auto;
+    position: absolute; 
+    top: 0; bottom: 0;
+    margin-left: 20%;
 }
 
 .shoppingcartCard-body {
@@ -29,19 +55,19 @@
 
 .shoppingcartCard-title {
     margin-bottom: 10px;
-    text-align: center;
     font-weight: bold;
 }
 .shoppingcartCards h1 {
     text-align: center;
     margin-bottom: 25px;
+    color: #006267;
   }
 
 .shoppingcartCard-text {
     margin-bottom: 0;
 }
 .shoppingcartLeftWrap {
-    background-color: rgb(242, 241, 241); 
+    background-color: rgb(255, 255, 255); 
     padding: 20px; 
     border-top-left-radius: 50px; 
     border-bottom-left-radius: 50px;
@@ -50,7 +76,7 @@
 }
 
 .continue-shopping{
-    background-color: black;
+    background-color: #006267;
     color: white;
     border-radius: 20px;
     border: none;
@@ -58,12 +84,12 @@
 
 .continue-shopping:hover{
     font-weight: bold; 
-    background-color: black;
+    background-color: #00494d;
     color: white;
 }
 
 .shoppingcartRight{
-    background-color: black; 
+    background-color: #006267; 
     padding: 20px; 
     border-top-right-radius: 50px; 
     border-bottom-right-radius: 50px;
@@ -78,6 +104,9 @@ color: white;
 
 .cartEmptyText{
     font-weight: bold;
+    text-align: center;  
+    width: 100%; 
+    padding-top: 40%;  
 }
 
 .paymentText, .totalPrice, .totalQuantity{
@@ -163,10 +192,10 @@ color: white;
     font-weight: bold;
 }
 #quantityError {
-    display: none; /* Initially hide the error message */
-    color: black; /* Set the text color to red */
-    font-size: 14px; /* Adjust the font size as needed */
-    margin-top: 5px; /* Add some top margin for spacing */
+    display: none; 
+    color: black; 
+    font-size: 14px; 
+    margin-top: 5px; 
 }
 
 #cartPaymentImg{

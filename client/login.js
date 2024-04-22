@@ -28,6 +28,11 @@ function logInUser(){
             $('#signupLink').toggleClass('d-none', true);
             $('#logoutLink').toggleClass('d-none', false);
             $('#profile').toggleClass('d-none', false);
+            getAdmin(function(isAdmin){
+                if(isAdmin){
+                  $('.nav-link#adminLink').toggleClass('d-none', false);
+                }
+            })
         }else if(error){           
             $('#passwordError').text(error);
         }
@@ -39,11 +44,9 @@ function logOutUser(){
         $('#logout-modal').modal('show');
         $("#logoutBtn").off().on('click', function (e) {
             sessionStorage.removeItem('auth');
-            $('#loginLink').toggleClass('d-none', false);
-            $('#signupLink').toggleClass('d-none', false);
-            $('#logoutLink').toggleClass('d-none', true);
-            $('#profile').toggleClass('d-none', true);
-            $('#logout-modal').modal('hide');
+            var host = window.location.protocol + '//' + location.host
+            window.location.href = host
+             
         });
     });
 }

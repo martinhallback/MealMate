@@ -6,7 +6,11 @@ $(document).ready(function () {
   $('.nav-link#signupLink').toggleClass('d-none', signedIn);
   $('.nav-link#logoutLink').toggleClass('d-none', !signedIn);
   $('.navbar-profile#profile').toggleClass('d-none', !signedIn);
-
+  getAdmin(function(isAdmin){
+    if(isAdmin){
+      $('.nav-link#adminLink').toggleClass('d-none', !signedIn);
+    }
+  })
 
   loadFooter();
 
@@ -68,6 +72,9 @@ function handleNavigationLinks(linkText){
       break;
     case 'My Profile':
       loadMyProfile();
+      break;
+    case 'Admin':
+      loadAdminView();
       break;
   }
 
