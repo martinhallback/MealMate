@@ -1,6 +1,6 @@
 .rectangularfilter-container {
     position: absolute;
-    padding-top: 35px; /* Adjust padding as needed */
+    padding-top: 35px; 
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 10px;
@@ -40,11 +40,10 @@
 
 
 .cicularfilter-container {
-    position: absolute; /* This positions the container relative to its nearest positioned ancestor */
-    top: 90px; /* Adjust this value as needed to move the circle up */
-    left: 15px; /* Adjust this value as needed to move the circle to the left */
-   /* position: relative; /* Establishes a positioning context for the overlay */
-    width: 50px; /* Diameter of the circular background */
+    position: absolute; 
+    top: 90px;
+    left: 15px; 
+    width: 50px; 
     height: 50px;
     cursor: pointer;
     display: flex; 
@@ -79,11 +78,10 @@
 
 
 .pillfilter-container {
-    position: absolute; /* This positions the container relative to its nearest positioned ancestor */
-    top: 90px; /* Adjust this value as needed to move the circle up */
-    left: 15px; /* Adjust this value as needed to move the circle to the left */
-   /* position: relative; /* Establishes a positioning context for the overlay */
-    width: 150px; /* Diameter of the circular background */
+    position: absolute; 
+    top: 90px; 
+    left: 15px; 
+    width: 150px; 
     height: 50px;
     cursor: pointer;
     display: flex;
@@ -272,7 +270,6 @@
   .select-protein-box:hover {
     box-shadow: 0 0 1px 1px #fff;
     background-color: #a51f2ab7;
-   /* #C6D7CD; */
   }
 
   .protein-dropdown-content {

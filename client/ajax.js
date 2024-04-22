@@ -32,12 +32,11 @@ function getAverageRating(id, callback) {
       },
       error: function(JQxhr, status, error) {
           console.log(error);
-          callback(null, null); // Pass null for both parameters on error
+          callback(null, null); 
       }
   });
 }
 
-//GET all ads
 function getAds(callback){
   $.ajax({
     url: host + '/ads',
