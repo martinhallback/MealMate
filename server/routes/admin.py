@@ -36,7 +36,7 @@ def admin_view():
             print(e)
     return jsonify([item.serialise_client() for item in users]), 200
 
-@bp.route('admin/update/<string:id>', methods = ['PUT'])
+@bp.route('/admin/update/<string:id>', methods = ['PUT'])
 @jwt_required()
 def verify_user(id):
     current_user = get_jwt_identity()
