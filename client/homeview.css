@@ -92,7 +92,6 @@
     max-width: 100%;
     
     display: block;
-    /* Ensure proper spacing */
     margin: 0 auto;
     /* Center the image horizontally */
     width: 300px;  /* Set to desired width */
@@ -158,11 +157,8 @@
 
 .cardAd-modal-header {
     display: flex;
-    /* Use flexbox for easier alignment */
     align-items: center;
-    /* Vertically align items in the header */
     justify-content: space-between;
-    /* Space between title and close button */
 }
 
 .cardAd-modal-body {
