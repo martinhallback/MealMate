@@ -467,3 +467,91 @@ function getPurchase(ID, callback){
   });
 }
 
+function getAllUsers(callback){
+  $.ajax({
+    url: host + '/admin/users',
+    type: 'GET',
+    contentType: 'application/json',
+    beforeSend: function(xhr) {
+      const authData = JSON.parse(sessionStorage.getItem('auth'));
+      const token = authData ? authData.token : null;
+      if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      }
+    },
+    success: function(response){
+      callback(response)
+    },
+    error: function(JQxhr, status, error){
+      console.log(error);
+      console.log(JQxhr);
+      callback(null)
+    }
+  });
+}
+
+function verifyUser(id){
+  $.ajax({
+    url: host + '/admin/verify/' + id,
+    type: 'PUT',
+    contentType: 'application/json',
+    beforeSend: function(xhr) {
+      const authData = JSON.parse(sessionStorage.getItem('auth'));
+      const token = authData ? authData.token : null;
+      if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      }
+    },
+    success: function(response){
+    },
+    error: function(JQxhr, status, error){
+      console.log(error);
+      console.log(JQxhr);
+    }
+  });
+}
+
+function verifyAdmin(id){
+  $.ajax({
+    url: host + '/admin/admin/' + id,
+    type: 'PUT',
+    contentType: 'application/json',
+    beforeSend: function(xhr) {
+      const authData = JSON.parse(sessionStorage.getItem('auth'));
+      const token = authData ? authData.token : null;
+      if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      }
+    },
+    success: function(response){
+    },
+    error: function(JQxhr, status, error){
+      console.log(error);
+      console.log(JQxhr);
+    }
+  });
+}
+
+function getAdmin(callback){
+  $.ajax({
+    url: host + '/admin/is_admin',
+    type: 'GET',
+    contentType: 'application/json',
+    beforeSend: function(xhr) {
+      const authData = JSON.parse(sessionStorage.getItem('auth'));
+      const token = authData ? authData.token : null;
+      if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      }
+    },
+    success: function(response){
+      callback(true)
+    },
+    error: function(JQxhr, status, error){
+      console.log(error);
+      console.log(JQxhr);
+      callback(false)
+    }
+  });
+}
+
