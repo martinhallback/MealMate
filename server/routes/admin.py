@@ -48,7 +48,7 @@ def admin_view():
 
 @bp.route('/admin/verify/<string:id>', methods = ['PUT'])
 @jwt_required()
-def verify_user(id):
+def admin_verify_user(id):
     current_user = get_jwt_identity()
     if not verify_admin(current_user):
         return jsonify({'error' : "You don't have the authority for this request"}), 403
