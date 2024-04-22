@@ -55,7 +55,7 @@ def verify_user(id):
     try:
         obj_id = ObjectId(id)
     except:
-        return 400
+        return '', 400
     update_result = db['user'].update_one({'_id' : obj_id}, {'$set' : {'isVerified' : True}})
     if update_result.modified_count == 1:
         return jsonify({'success' : "user is now verified"}), 200
@@ -72,7 +72,7 @@ def make_admin(id):
     try:
         obj_id = ObjectId(id)
     except:
-        return 400
+        return '', 400
     update_result = db['user'].update_one({'_id' : obj_id}, {'$set' : {'isAdmin' : True}})
     if update_result.modified_count == 1:
         return jsonify({'success' : "user is now an admin"}), 200
