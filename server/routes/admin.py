@@ -24,9 +24,9 @@ def verify_admin(verify):
 def isAdmin():
     current_user = get_jwt_identity()
     if not verify_admin(current_user):
-        return 404
+        return '', 404
     else:
-        return 204
+        return '', 204
 
 
 @bp.route('/admin/users', methods = ['GET'])
