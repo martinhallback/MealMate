@@ -33,7 +33,6 @@ function homeview(ads) {
           foodAdModal(card, index, seller);
         });
         if (card.address) {
-          console.log(card.address)
           geocodeAddress(geocoder, card.address, index);
       }
       });
@@ -182,11 +181,11 @@ var geocoder;
   function loadGoogleMapsApi() {
     var script = document.createElement('script');
     script.type = 'text/javascript';
-    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCHuLn8wqveRQGVQiYF1CaU6q_1_UmyysM&libraries=places&callback=initMap';
+    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAYFrJR3MR5d1z-69KD6eR1lks2JpFyc28&libraries=places&callback=initMap';
     document.head.appendChild(script);
   }
   
-  function initMap() {
+  async function initMap() {
      map = new google.maps.Map(document.getElementById("map-container"), {
         center: {lat: 58.410084, lng: 15.611031},
         zoom: 13
@@ -200,7 +199,6 @@ var geocoder;
           if (status === 'OK') {
               var lat = results[0].geometry.location.lat();
               var lng = results[0].geometry.location.lng();
-              console.log("Coordinates of " + address + ": Latitude = " + lat + ", Longitude = " + lng);
               
             var marker = new google.maps.Marker({
                 map: map,
