@@ -5,6 +5,7 @@ $(document).ready(function () {
   $('.nav-link#loginLink').toggleClass('d-none', signedIn);
   $('.nav-link#signupLink').toggleClass('d-none', signedIn);
   $('.nav-link#logoutLink').toggleClass('d-none', !signedIn);
+  $('.nav-link#adminLink').toggleClass('d-none', !signedIn);
   $('.navbar-profile#profile').toggleClass('d-none', !signedIn);
 
 
@@ -68,6 +69,9 @@ function handleNavigationLinks(linkText){
       break;
     case 'My Profile':
       loadMyProfile();
+      break;
+    case 'Admin':
+      loadAdminView();
       break;
   }
 

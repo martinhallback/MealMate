@@ -467,3 +467,47 @@ function getPurchase(ID, callback){
   });
 }
 
+function getAllUsers(callback){
+  $.ajax({
+    url: host + '/admin/users',
+    type: 'GET',
+    contentType: 'application/json',
+    beforeSend: function(xhr) {
+      const authData = JSON.parse(sessionStorage.getItem('auth'));
+      const token = authData ? authData.token : null;
+      if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      }
+    },
+    success: function(response){
+      callback(response)
+    },
+    error: function(JQxhr, status, error){
+      console.log(error);
+      console.log(JQxhr);
+      callback(null)
+    }
+  });
+}
+
+function putUserAdmin(id, callback){
+  $.ajax({
+    url: host + '/update/update/' + id,
+    type: 'PUT',
+    contentType: 'application/json',
+    beforeSend: function(xhr) {
+      const authData = JSON.parse(sessionStorage.getItem('auth'));
+      const token = authData ? authData.token : null;
+      if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      }
+    },
+    success: function(response){
+    },
+    error: function(JQxhr, status, error){
+      console.log(error);
+      console.log(JQxhr);
+    }
+  });
+}
+
