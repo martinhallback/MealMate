@@ -5,7 +5,7 @@ function homeview(ads) {
   $('.homeviewContainer').append('<img src="' + homeviewImageUrl + '" alt="homeview" class="homeviewImage">');
   $('.homeviewContainer').append('<h2 class="foodNearMeTitle">Food near me</h2>');
   // Embed Google Map
-  var mapIframe = document.createElement('iframe');
+ /*var mapIframe = document.createElement('iframe');
   
   mapIframe.src = "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d16726.078168885902!2d15.57146175!3d58.3974506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssv!2sse!4v1713448415102!5m2!1ssv!2sse"
   mapIframe.classList.add('google-map'); // Add a class to the iframe element
@@ -15,7 +15,14 @@ function homeview(ads) {
   mapIframe.loading = "lazy";
   mapIframe.referrerpolicy = "no-referrer-when-downgrade";
   $('.homeviewContainer').append(mapIframe);
-  /*End of Google Map */
+  End of Google Map */
+
+  var mapContainer = $('<div id="map-container" class="map-container" style="height: 450px;"></div>');
+  $('.homeviewContainer').append(mapContainer);
+
+  loadGoogleMapsApi();
+   
+  
   $('.homeviewContainer').append('<div class="adContainer">' + '</div>');
     var filterContainer = $('<div id="filter-container" class="filter-container"></div>');
     filterContainer.html(filterHtmlContent);
@@ -186,7 +193,44 @@ function addtocart(id, index) {
   $('#foodadmodal_' + index).modal('hide');
 }
 
+function loadGoogleMapsApi() {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCHuLn8wqveRQGVQiYF1CaU6q_1_UmyysM&libraries=places&callback=initMap';
+  document.head.appendChild(script);
+}
 
+function initMap() {
+  var map = new google.maps.Map(document.getElementById("map-container"), {
+      center: {lat: 58.410084, lng: 15.611031},
+      zoom: 13
+  });
+
+  var geocoder = new google.maps.Geocoder();
+
+  function geocodeAddress(geocoder, address) {
+    if (address.trim() === "") return;
+    geocoder.geocode({ 'address': address }, function(results, status) {
+        if (status === 'OK') {
+            var lat = results[0].geometry.location.lat();
+            var lng = results[0].geometry.location.lng();
+            console.log("Coordinates of " + address + ": Latitude = " + lat + ", Longitude = " + lng);
+            
+            new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location,
+              icon: {
+                  url: "images/MapPin.png",
+                  scaledSize: new google.maps.Size(32, 32)
+              }
+                });
+        } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+        }
+    });
+  }
+  geocodeAddress(geocoder, "Sisalgränd, 4, 582 12, Linköping");
+  }
 
 
 var filterHtmlContent = ` <div id="CicularFilterContainer" class="cicularfilter-container">

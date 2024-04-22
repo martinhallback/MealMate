@@ -11,6 +11,11 @@
     min-width: fit-content;
 }
 
+.map-container {
+    height: 450;
+    width: 100%;
+}
+
 .filter-container{
     position: absolute;
     z-index: 1000;
