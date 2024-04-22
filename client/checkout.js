@@ -54,9 +54,15 @@ function addPurchaceHistory(cartData, buyerID){
 }
 
 function addDetailsToHTML(item){
-    getUser(item.sellerID, function(response){
-        var sellerEmail = response.email
-        $('body').append("<p> Please contact " + sellerEmail + " to pick up your lunchbox</p>");
+    getSeller(item.sellerID, function(response){
+        var sellerEmail = response.email;
+        var sellerName = response.name;
+        var sellerNumber = response.phoneNumber;
+        $('.contact-card-name').html('<strong>Name:</strong> ' + sellerName);
+        $('.contact-card-number').html('<strong>Phone:</strong> ' + sellerNumber);
+        $('.contact-card-email').html('<strong>Email:</strong> ' + sellerEmail);
+        
+
     });
     
 }

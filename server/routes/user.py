@@ -70,8 +70,17 @@ def redacted_user(id):
 
 
 
-
-
-    
-    
+@bp.route('/seller/<string:id>', methods=['GET'])
+@jwt_required()
+def contact_seller_info(id):
+    try:
+        oid = ObjectId(id)
+    except:
+        return jsonify({"error": "Invalid ID format"}), 400
+    cursor = db['user'].find_one({"_id": oid}, {'phoneNumber' : 1, 'name' : 1, 'email' : 1})
+    if cursor is None:
+            return jsonify({'error': "No object with the given ID exists."}), 404
+    query = dict(cursor)
+    seller = user.User(query)
+    return jsonify(seller.serialise_client()), 200
     

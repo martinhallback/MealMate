@@ -105,6 +105,30 @@ function getUser(userID, callback){
   });
 }
 
+function getSeller(userID, callback){
+  $.ajax({
+    url: host + '/seller/' + userID,
+    type: 'GET',
+    contentType: 'application/json',
+    beforeSend: function(xhr) {
+      const authData = JSON.parse(sessionStorage.getItem('auth'));
+      const token = authData ? authData.token : null;
+      if (token) {
+          xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      }
+    },
+    success: function(response){
+      callback(response);
+    },
+    error: function(JQxhr, status, error){
+      console.log("Error fetching user: " + error);
+      callback(null);
+    }
+  });
+}
+
+
+
 //GET for a single user, including all information
 function loadUser(userID, callback) {
   $.ajax({
@@ -361,7 +385,7 @@ function deleteAd(id, userID){
 
 function putAd(id, quantity){
   $.ajax({
-    url: host + '/ad/quantity' + id,
+    url: host + '/ad/quantity/' + id,
     type: 'PUT',
     contentType: 'application/json',
     beforeSend: function(xhr) {
@@ -443,7 +467,6 @@ function putPurchase(id, rating, review){
 }
 
 
-//GET a single user based on userID, without sensitive information
 function getPurchase(ID, callback){
   $.ajax({
     url: host + '/purchase/' + ID,
