@@ -8,7 +8,7 @@ $(document).ready(function () {
     });
   
     $(".container").on('click', '#accountbutton', function (e) {
-      e.preventDefault(); // Prevent the default behavior of the anchor element
+      e.preventDefault();
       $('.container').empty();
       $(".container").load("accountdetails.html .profileContainer", function () { 
         loadAccountdetails();
@@ -72,7 +72,7 @@ $(document).ready(function () {
 
 function populateTable(purchases, isPurchaseHistory) {
     const tableBody = document.querySelector("#purchaseTable tbody");
-    tableBody.innerHTML = ""; // Clear table body before populating
+    tableBody.innerHTML = ""; 
 
     purchases.forEach((purchase, index) => {
         const row = document.createElement("tr");
@@ -194,7 +194,6 @@ function createViewModal(purchaseID, index){
 
 function submitReview(id, index){
     var review = document.getElementById("reviewText_" + index).value;
-    //var review = document.getElementById("reviewText").value;
     var rating = document.querySelector('input[name="rating"]:checked').value;
     putPurchase(id, rating, review)
     document.getElementById("reviewButton_" + index).style.display = 'none';
@@ -251,7 +250,7 @@ function setFieldValues(usr) {
             option.text = uni.name;
             option.value = uni._id
             if (uni._id == usr.university) { 
-                option.selected = true; // Pre-select the option
+                option.selected = true; 
             }
             uniDropdown.add(option);
         })
@@ -269,7 +268,7 @@ function setFieldValues(usr) {
             option.text = loc.area;
             option.value = loc._id
             if (loc._id == usr.location) { 
-                option.selected = true; // Pre-select the option
+                option.selected = true; 
             }
             areaDropdown.add(option);
         })

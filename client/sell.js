@@ -1,6 +1,5 @@
 // sell.js
 
-// Load the sell view
 function sellview() {
 
     $('.container').empty();
@@ -37,21 +36,17 @@ function showSellForm() {
         
         $("#submitCreateAd").on('click', async function (e) {
 
-            //check if logged in 
             var authData = JSON.parse(sessionStorage.getItem('auth'));
             if (authData && authData.token != null) {
-                //fetch userID from sessionstorage
                     var userID = authData.user;
-
-                    //fetch all input and check 
+ 
                     var dishName = $("#lunchboxTitle").val();
                     var cookDate = $("#lunchboxMadeDate").val();
-                    var fileInput = $("#lunchboxImage")[0]; // Access the DOM element to get the file
+                    var fileInput = $("#lunchboxImage")[0]; 
                     var imagePath = '';
                     try {
                         imagePath = await convertToBase64stringAsync(fileInput);
-                        console.log(imagePath); // Now imagePath has the correct value
-                        // Continue with the rest of your code that relies on imagePath
+                        console.log(imagePath);
                     } catch (error) {
                         console.error('An error occurred:', error);
                     }
@@ -72,7 +67,6 @@ function showSellForm() {
                         allergies.push(allergyId);
                     });
 
-                    //call the postAd() in ajax.js
                     postAd(userID, dishName, cookDate, imagePath, description, quantity, portionPrice, proteins, allergies, function(response){
                         if(response){
                             alert("You have sucessfully posted a ad")
@@ -147,10 +141,9 @@ function convertToBase64stringAsync(file_input) {
 
 
 function extractBase64(dataUrl) {
-    return dataUrl.split(',')[1]; // Splits the string at the comma and returns the second part (index 1)
+    return dataUrl.split(',')[1]; 
 }
 
-// Function to convert image to base64
 async function convertImageToBase64(fileInput, callback) {
     var file = fileInput.files[0];
     var img = new Image();
@@ -161,12 +154,12 @@ async function convertImageToBase64(fileInput, callback) {
             var reader = new FileReader();
 
             reader.onloadend = function() {
-                var base64DataUrl = reader.result; // This is the complete data URL
-                var base64String = extractBase64(base64DataUrl); // Extracts only the base64 part
-                callback(base64String); // Now you're passing only the base64 string to the callback
+                var base64DataUrl = reader.result; 
+                var base64String = extractBase64(base64DataUrl); 
+                callback(base64String); 
             }
 
-            reader.readAsDataURL(compressedFile); // this will trigger the onloadend event above
+            reader.readAsDataURL(compressedFile);
         } catch (error) {
             console.log(error);
         }
@@ -175,7 +168,6 @@ async function convertImageToBase64(fileInput, callback) {
 
 function compressImage(imgToCompress, resizingFactor, quality) {
     return new Promise((resolve, reject) => {
-        // resizing the image
         const canvas = document.createElement("canvas");
         const context = canvas.getContext("2d");
         
@@ -196,7 +188,6 @@ function compressImage(imgToCompress, resizingFactor, quality) {
         originalHeight * resizingFactor
         );
         
-        // reducing the quality of the image
         canvas.toBlob(
           (blob) => {
             if (blob) {

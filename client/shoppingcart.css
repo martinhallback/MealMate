@@ -18,8 +18,7 @@
     overflow: hidden; 
     border-top: 1px solid #c6d7cd;
     position: relative;
-    /*border: 1px solid black;*/
-    /*border-radius: 50px;*/
+
 }
 .removeCartItemBtn {
     top: 5px;
@@ -31,7 +30,7 @@
     color: white;
     font-size: 16px;
     cursor: pointer;
-    z-index: 1; /* Add this line */
+    z-index: 1; 
 }
 
 .removeCartItemBtn:hover {
@@ -41,12 +40,12 @@
 .shoppingcartCard img {
     width: 130px;
     height: 130px;
-    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    object-fit: cover; 
     border-radius: 5px;
     display: block; 
-    margin: auto; /* Center horizontally */
-    position: absolute; /* Position absolutely */
-    top: 0; bottom: 0; /* Center vertically */
+    margin: auto;
+    position: absolute; 
+    top: 0; bottom: 0;
     margin-left: 20%;
 }
 
@@ -193,10 +192,10 @@ color: white;
     font-weight: bold;
 }
 #quantityError {
-    display: none; /* Initially hide the error message */
-    color: black; /* Set the text color to red */
-    font-size: 14px; /* Adjust the font size as needed */
-    margin-top: 5px; /* Add some top margin for spacing */
+    display: none; 
+    color: black; 
+    font-size: 14px; 
+    margin-top: 5px; 
 }
 
 #cartPaymentImg{

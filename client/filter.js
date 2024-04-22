@@ -3,7 +3,6 @@ $(document).ready(function(){
     $('#PillFilterContainer').hide();
     var isRectangularVisible = false;
     var isAnimating = false;
-   // var isDropdownVisible = false;
 
    getAllergies(function(allergies){
     allergies.forEach(function(allergy) {
@@ -62,7 +61,6 @@ $(document).ready(function(){
             $('#RectangularFilterContainer').slideToggle().promise().done(function() {
                 $('#dropdown').hide();
                 $('.adContainer').css('padding-left', '30px');
-               // isDropdownVisible = false;
                 isAnimating = true;
                 $('#PillFilterContainer').animate({
                     opacity: 0,
@@ -75,7 +73,6 @@ $(document).ready(function(){
             });
         }
     });
-//});
 
 $('#PescitarianSelected').click(function() {
     if ($(this).prop('checked')) {
@@ -131,11 +128,6 @@ $('#select-plantbased-box').click(function() {
     $(this).toggleClass('active-click'); 
     $('#proteinForm .Vegan').toggle();
 });
-
-//$('#select-dairy-box').click(function() {
- //   $(this).toggleClass('active-click'); 
-  //  $('#proteinForm .Vegetarian').toggle();
-//});
 
 $('#select-box').click(function() {
    $('#dropdown').slideToggle(function() {
@@ -271,9 +263,6 @@ function applyFilters() {
     if ($('#select-plantbased-box').hasClass('active-click')) {
         proteinSource.push('Vegetarian', 'Vegan');
     }
-    //if ($('#select-dairy-box').hasClass('active-click')) {
-   //     proteinSource.push('Vegan');
-   // }
 
     filteringAds(allergy, proteinType, proteinSource, portionPrice, function(ads){
         homeview(ads);

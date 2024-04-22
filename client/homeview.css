@@ -93,9 +93,8 @@
     
     display: block;
     margin: 0 auto;
-    /* Center the image horizontally */
-    width: 300px;  /* Set to desired width */
-    height: 200px;  /* Set to desired height */
+    width: 300px;
+    height: 200px;  
     object-fit: cover;
 
 }
@@ -124,12 +123,11 @@
 }
 
 .modal-img {
-    width: 300px;  /* Set to desired width */
-    height: 200px;  /* Set to desired height */
+    width: 300px;
+    height: 200px;
     object-fit: cover;
-  }
+}
 
-/*CardAdModal*/
 .modal-header .cardAd-modal-title {
     font-family: 'Brandon Grotesque Bold';
     text-align: center;
@@ -182,7 +180,6 @@
     background-color: #00494d;
 }
 
-/* Modal title */
 .quantity-modal-label,
 .price-modal-label,
 .seller-modal-label,

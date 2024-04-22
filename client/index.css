@@ -1,8 +1,8 @@
-/*FONTS*/
+
 @font-face {
     font-family: 'Brandon Grotesque Bold';
     src: url('Fonts/Brandon_Grotesque_bold.otf') format('opentype');
-    /* Add other font formats and their paths for cross-browser compatibility */
+    
 }
 
 @font-face {
@@ -14,7 +14,6 @@
     font-family: 'Brandon Grotesque Thin';
     src: url('Fonts/Brandon_Grotesque_thin.otf') format('opentype');
 }
-/*END OF FONTS*/
 
 body {
     max-width: 100vw;
@@ -29,21 +28,18 @@ body {
     min-height: calc(95vh);
     padding-bottom: 10px;
     background-color: #fbf9ef;
-    width: 100%; /* Ensure the container stretches across the entire width */
-    max-width: none; /* Allow the container to exceed its maximum width */
-    padding: 0; /* Remove any padding */
-    margin: 0; /* Remove any margin */
+    width: 100%; 
+    max-width: none; 
+    padding: 0; 
+    margin: 0; 
 }
 
 
 .git  {
     min-height: calc(60vh);
     padding-bottom: 10px;
-    /*min-width: fit-content;*/
     width: 100%;
-    /* Ensure the container stretches across the entire width */
     max-width: none;
-    /* Allow the container to exceed its maximum width */
     padding: 0;
     margin: 0;
     font-family: 'Brandon Grotesque Bold', 'helvetica', sans-serif;
