@@ -3,19 +3,6 @@ function homeview(ads) {
   $('.container').append('<div class="homeviewContainer">' + '</div>');
   $('.homeviewContainer').append('<img src="Images/homeviewImage.jpg" alt="homeview" class="homeviewImage">');
   $('.homeviewContainer').append('<h2 class="foodNearMeTitle">Food near me</h2>');
-  // Embed Google Map
- /*var mapIframe = document.createElement('iframe');
-  
-  mapIframe.src = "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d16726.078168885902!2d15.57146175!3d58.3974506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssv!2sse!4v1713448415102!5m2!1ssv!2sse"
-  mapIframe.classList.add('google-map'); // Add a class to the iframe element
-  mapIframe.height = "450";
-  mapIframe.style.border = "0";
-  mapIframe.allowfullscreen = true;
-  mapIframe.loading = "lazy";
-  mapIframe.referrerpolicy = "no-referrer-when-downgrade";
-  $('.homeviewContainer').append(mapIframe);
-  End of Google Map */
-
   var mapContainer = $('<div id="map-container" class="map-container" style="height: 450px;"></div>');
   $('.homeviewContainer').append(mapContainer);
 
@@ -37,19 +24,6 @@ function homeview(ads) {
       handleclicks();
   }
 
-function map(){
-  var mapIframe = document.createElement('iframe');
-  
-  mapIframe.src = "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d16726.078168885902!2d15.57146175!3d58.3974506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ssv!2sse!4v1713448415102!5m2!1ssv!2sse"
-  mapIframe.classList.add('google-map');
-  mapIframe.height = "450";
-  mapIframe.style.border = "0";
-  mapIframe.allowfullscreen = true;
-  mapIframe.loading = "lazy";
-  mapIframe.referrerpolicy = "no-referrer-when-downgrade";
-  $('.homeviewContainer').append(mapIframe);
-}
-  
   function handleCardData(cardData){
     if(cardData){
       $.each(cardData, function(index, card) {
@@ -58,10 +32,14 @@ function map(){
         getUser(card.sellerID, function(seller){
           foodAdModal(card, index, seller);
         });
+        if (card.address) {
+          console.log(card.address)
+          geocodeAddress(geocoder, card.address, index);
+      }
       });
     }
   }
-  
+
   function handleclicks(){
     $('.homeviewContainer').on('click', '.buy-btn', function() {
       var modalIndex = $(this).data('target').split('_')[1];
@@ -199,46 +177,48 @@ function addtocart(id, index) {
   $('#foodadmodal_' + index).modal('hide');
 }
 
-function loadGoogleMapsApi() {
-  var script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCHuLn8wqveRQGVQiYF1CaU6q_1_UmyysM&libraries=places&callback=initMap';
-  document.head.appendChild(script);
-}
-
-function initMap() {
-  var map = new google.maps.Map(document.getElementById("map-container"), {
-      center: {lat: 58.410084, lng: 15.611031},
-      zoom: 13
-  });
-
-  var geocoder = new google.maps.Geocoder();
-
-  function geocodeAddress(geocoder, address) {
-    if (address.trim() === "") return;
-    geocoder.geocode({ 'address': address }, function(results, status) {
-        if (status === 'OK') {
-            var lat = results[0].geometry.location.lat();
-            var lng = results[0].geometry.location.lng();
-            console.log("Coordinates of " + address + ": Latitude = " + lat + ", Longitude = " + lng);
-            
-            new google.maps.Marker({
-              map: map,
-              position: results[0].geometry.location,
-              icon: {
-                  url: "images/MapPin.png",
-                  scaledSize: new google.maps.Size(32, 32)
-              }
-                });
-        } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-        }
+var geocoder;
+  var map;
+  function loadGoogleMapsApi() {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCHuLn8wqveRQGVQiYF1CaU6q_1_UmyysM&libraries=places&callback=initMap';
+    document.head.appendChild(script);
+  }
+  
+  function initMap() {
+     map = new google.maps.Map(document.getElementById("map-container"), {
+        center: {lat: 58.410084, lng: 15.611031},
+        zoom: 13
     });
+     geocoder = new google.maps.Geocoder();
   }
-  geocodeAddress(geocoder, "Sisalgränd, 4, 582 12, Linköping");
-  }
-
-
+  
+    function geocodeAddress(geocoder, address, index) {
+      if (address.trim() === "") return;
+      geocoder.geocode({ 'address': address }, function(results, status) {
+          if (status === 'OK') {
+              var lat = results[0].geometry.location.lat();
+              var lng = results[0].geometry.location.lng();
+              console.log("Coordinates of " + address + ": Latitude = " + lat + ", Longitude = " + lng);
+              
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location,
+                icon: {
+                    url: "images/MapPin.png",
+                    scaledSize: new google.maps.Size(32, 32)
+                }
+                  });
+                  marker.addListener('click', function() {
+                    $('#foodadmodal_' + index).modal('show');
+                  });
+          } else {
+              alert('Geocode was not successful for the following reason: ' + status);
+          }
+      });
+    }    
+  
 var filterHtmlContent = ` <div id="CicularFilterContainer" class="cicularfilter-container">
 <div class="circle-background"></div>
 <img src="images/funnel-32.png"> 

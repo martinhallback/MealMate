@@ -273,7 +273,7 @@ function postSignUp(email, name, password, phoneNumber, university, studentID, c
   });
 }
 
-function postAd(userID, dishName, cookDate, imagePath, description, quantity, portionPrice, protein, allergy, callback){
+function postAd(userID, dishName, cookDate, imagePath, description, quantity, portionPrice, protein, allergy, address, callback){
   $.ajax({
     url: host + '/ad',
     type: 'POST',
@@ -293,7 +293,8 @@ function postAd(userID, dishName, cookDate, imagePath, description, quantity, po
           quantity: quantity,
           portionPrice: portionPrice,
           protein: protein,
-          allergy: allergy
+          allergy: allergy,
+          address: address
     }),
     success: function() {
       callback(true)
