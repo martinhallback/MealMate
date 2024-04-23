@@ -13,6 +13,7 @@ class Advertisement(object):
     sellerID = None
     protein = None
     allergy = None
+    address = None
     
 
     def __init__(self, inDict):

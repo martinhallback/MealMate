@@ -43,6 +43,7 @@ function showSellForm() {
                     var dishName = $("#lunchboxTitle").val();
                     var cookDate = $("#lunchboxMadeDate").val();
                     var fileInput = $("#lunchboxImage")[0]; 
+                    var address = $("#lunchboxCoordinates").val();
                     var imagePath = '';
                     try {
                         imagePath = await convertToBase64stringAsync(fileInput);
@@ -67,7 +68,7 @@ function showSellForm() {
                         allergies.push(allergyId);
                     });
 
-                    postAd(userID, dishName, cookDate, imagePath, description, quantity, portionPrice, proteins, allergies, function(response){
+                    postAd(userID, dishName, cookDate, imagePath, description, quantity, portionPrice, proteins, allergies, address, function(response){
                         if(response){
                             alert("You have sucessfully posted a ad")
                             
