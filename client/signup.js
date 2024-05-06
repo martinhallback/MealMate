@@ -53,9 +53,13 @@ function postNewUser() {
   newUserUni = document.getElementById('university').value;
   newUserSID = document.getElementById('studentid').value;
 
-  postSignUp(newUserEmail, newUserName, newUserPassword, newUserPhone, newUserUni, newUserSID, function(response){
-      if(response){
-          $('#signup-modal').modal('hide');
+  postSignUp(newUserEmail, newUserName, newUserPassword, newUserPhone, newUserUni, newUserSID, function(response, error){
+      if (response) {
+          $('#signup-modal').modal('hide').on('hidden.bs.modal', function () {
+            alert("You have successfully signed up to MealMate. Please log in using your chosen email and password.")
+          });
+      } else if (error) {
+        $('#alreadyExistingEmailError').text(error);
       }
   }); 
 }

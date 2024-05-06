@@ -287,13 +287,16 @@ function postSignUp(email, name, password, phoneNumber, university, studentID, c
         studentID : studentID,
     }),
     success: function() {
-      callback(true)
-    },
-    error: function(JQxhr, status, error){
-      console.log('Error when signing up: ' + error)
-      console.log(JQxhr)
-      callback(false)
-    },
+      callback(true, null);
+    }, 
+    error: function(JQxhr, error) {
+      console.error('Error: ' + error);
+      if (JQxhr.status === 400) {
+        callback(null, 'User with this email already exists.');
+      } else {
+        callback(null, null);
+      }
+    } 
   });
 }
 
